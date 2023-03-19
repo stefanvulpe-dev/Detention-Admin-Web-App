@@ -10,12 +10,9 @@ It will also be recorded: the date of the meeting, its nature and duration (e.g.
 
 ## Authors
 
-Stefan Vulpe  
-[stefanvulpe-dev](https://github.com/stefanvulpe-dev)
-Octavian Gavril  
-[octaviangavril](https://github.com/octaviangavril)
-Razvan Chichirau 
-[HardChallenge](https://github.com/HardChallenge)
+- Stefan Vulpe [stefanvulpe-dev](https://github.com/stefanvulpe-dev)
+- Octavian Gavril [octaviangavril](https://github.com/octaviangavril)
+- Razvan Chichirau [HardChallenge](https://github.com/HardChallenge)
 
 
 <!-- ## Acknowledgments
