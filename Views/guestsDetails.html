@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Content/css/main.css">
-    <title>Contact</title>
+    <title>Detalii despre vizitatori</title>
 </head>
+
 <body style="background-color: gray;">
     <header class="header">
         <img class="header__logo" src="../assets/header/Broken-Dreams.png" alt="Logo">
@@ -40,23 +42,33 @@
         </nav>
     </header>
 
-    <main class="contact">
-        <h1 class="contact__title">Contactati-ne mai jos</h1>
-        <form action="#" class="contact__form">
-            <fieldset class="contact__form-fieldset">
-                <legend class="contact__form-legend">Detalii personale</legend>
-                <label for="first-name">Nume</label>
-                <input id="first-name" type="text">
-                <label for="last-name">Prenume</label>
-                <input id="last-name" type="text">
-                <label for="email">Email</label>
-                <input id="email" type="email">
-                <label for="suggestions">Sugestii</label>
-                <textarea name="suggestions" id="suggestions" cols="30" rows="10" placeholder="Cu ce va putem ajuta?"></textarea>
-            <input class="contact__form-button" type="submit" value="Trimite">
-            </fieldset>            
-        </form>
+    <section class="aside">
+        <button class="aside__button">Adauga vizitator</button>
+        <button class="aside__button">Sterge toti vizitatorii</button>
+    </section>
+    
+    <main class="guest-main">
+        <div class="guest-main__guest-card">
+            <img src="../assets//guest-details/photo1.svg" alt="guest photo" class="visitor-card__photo">
+            <p class="guest-main__guest-card__name">
+                <h3 class="guest-main__guest-card__label">Nume:</h3>
+                <span class="guest-main__guest-card__info">Moko Fanush</span>
+            </p>
+            <p class="guest-main__guest-card__dBirh">
+                <h3 class="guest-main__guest-card__label">Data nasterii:</h3>
+                <time class="guest-main__guest-card__info" datetime="1973-09-23">24.09.1973</time>
+            </p>
+            <button class="guest-main__guest-card__delete">
+                <img src="../assets/guest-details/trash.svg" alt="delete button">
+            </button>
+            <button class="guest-main__guest-card__edit">
+                <img src="../assets/guest-details/pen.svg" alt="edit button">
+            </button>
+        </div>
+        <a href="" class="guest-main__next-page">Continua</a>
     </main>
+
+   
 
     <footer class="footer">
         <p class="footer__copyright">
@@ -89,4 +101,5 @@
     </footer>
 
 </body>
+
 </html>

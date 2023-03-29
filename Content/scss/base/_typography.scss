@@ -18,7 +18,7 @@ $font-sizes: (
     huge: 3rem
 );
 
-:is(header, main, section, footer) :is(h1, h2, h3, p, span, a, label, input, legend, textarea) {
+:is(header, main, section, footer) :is(h1, h2, h3, p, span, a, label, input, legend, textarea, time) {
     font-family: $ff-primary;
 }
 
@@ -56,4 +56,46 @@ $font-sizes: (
 :is(.main, .stats-info) :is(p, a) {
     font-size: map-get($font-sizes, small);
     font-weight: map-get($font-weights, regular);
+}
+
+.contact {
+    &__title {
+        font-family: $ff-primary;
+        font-size: map-get($font-sizes, huge);
+        font-weight: map-get($font-weights, bold);
+    }
+
+    &__form-fieldset{
+        font-size: map-get($font-sizes, regular);
+        font-weight: map-get($font-weights, semi-bold);
+    }
+    :is(&__form-legend,&__form-button){
+        font-size: map-get($font-sizes, large);
+    }
+}
+
+.aside {
+    &__button-text {
+        font-size: map-get($font-sizes, large);
+        font-weight: map-get($font-weights, semi-bold);
+    }
+}
+
+.guest-main {
+    &__guest-card {
+        font-size: map-get($font-sizes, regular);
+
+        &__label {
+            font-weight: map-get($font-weights, bold);
+        }
+
+        &__info {
+            font-weight: map-get($font-weights, semi-bold);
+        }
+    }
+
+    &__next-page {
+        font-size: map-get($font-sizes, large);
+        font-weight: map-get($font-weights, semi-bold);
+    }
 }
