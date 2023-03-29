@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lobster&display=swap");
 *,
 *::before,
 *::after {
@@ -30,8 +31,8 @@ body {
 }
 
 /* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+a {
+  text-decoration: none;
 }
 
 /* Make images easier to work with */
@@ -62,4 +63,36 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+:is(header, main, section, footer) :is(h1, h2, h3, p, span, a, label, input, legend, textarea) {
+  font-family: "Inter", sans-serif;
+}
+
+.hero__title {
+  font-family: "Inter", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+}
+.hero__title--logo {
+  font-family: "Lobster", cursive;
+  font-size: 3rem;
+  font-weight: 700;
+}
+.hero__description {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.hero__main-link {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.header__nav {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+:is(.main, .stats-info) :is(p, a) {
+  font-size: 1rem;
+  font-weight: 400;
 }/*# sourceMappingURL=main.css.map */

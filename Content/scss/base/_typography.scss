@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lobster&display=swap');
+
+$ff-primary: 'Inter', sans-serif;
+$ff-secondary: 'Lobster', cursive;
+
+$font-weights: (
+    regular: 400, 
+    semi-bold: 600, 
+    bold: 700
+);
+
+$font-sizes: (
+    small: 1rem, 
+    regular: 1.125rem, 
+    medium: 1.25rem, 
+    large: 1.5rem, 
+    extra-large: 2rem, 
+    huge: 3rem
+);
+
+:is(header, main, section, footer) :is(h1, h2, h3, p, span, a, label, input, legend, textarea) {
+    font-family: $ff-primary;
+}
+
+.hero {
+    &__title {
+        font-family: $ff-primary;
+        font-size: map-get($font-sizes, huge);
+        font-weight: map-get($font-weights, bold);
+
+        &--logo {
+            font-family: $ff-secondary;
+            font-size: map-get($font-sizes, huge);
+            font-weight: map-get($font-weights, bold);
+        }
+    }
+
+    &__description {
+        font-size: map-get($font-sizes, medium);
+        font-weight: map-get($font-weights, regular);
+    }
+    
+    &__main-link {
+        font-size: map-get($font-sizes, medium);
+        font-weight: map-get($font-weights, bold);
+    }
+}
+
+.header {
+    &__nav {
+        font-size: map-get($font-sizes, medium);
+        font-weight: map-get($font-weights, semi-bold);
+    }
+}
+
+:is(.main, .stats-info) :is(p, a) {
+    font-size: map-get($font-sizes, small);
+    font-weight: map-get($font-weights, regular);
+}
