@@ -57,3 +57,19 @@ $font-sizes: (
     font-size: map-get($font-sizes, small);
     font-weight: map-get($font-weights, regular);
 }
+
+.contact {
+    &__title {
+        font-family: $ff-primary;
+        font-size: map-get($font-sizes, huge);
+        font-weight: map-get($font-weights, bold);
+    }
+
+    &__form-fieldset{
+        font-size: map-get($font-sizes, regular);
+        font-weight: map-get($font-weights, semi-bold);
+    }
+    :is(&__form-legend,&__form-button){
+        font-size: map-get($font-sizes, large);
+    }
+}

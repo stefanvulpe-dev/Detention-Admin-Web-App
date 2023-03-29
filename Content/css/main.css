@@ -95,4 +95,17 @@ select {
 :is(.main, .stats-info) :is(p, a) {
   font-size: 1rem;
   font-weight: 400;
+}
+
+.contact__title {
+  font-family: "Inter", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+}
+.contact__form-fieldset {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+:is(.contact__form-legend, .contact__form-button) {
+  font-size: 1.5rem;
 }/*# sourceMappingURL=main.css.map */
