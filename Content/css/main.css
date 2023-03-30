@@ -133,6 +133,51 @@ select {
   font-weight: 600;
 }
 
+.details__title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.details__form {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+:is(header, .hero) :is(h1, p, a) {
+  color: hsl(0, 0%, 100%);
+}
+
+.hero :is(.hero__main-link) {
+  color: hsl(0, 0%, 0%);
+}
+
+.main__title {
+  color: hsl(0, 0%, 100%);
+}
+
+:is(.card) :is(h2, p) {
+  color: hsl(0, 0%, 0%);
+}
+
+.card .card__container-date {
+  color: hsl(0, 0%, 35%);
+}
+.card__container-link {
+  color: hsl(0, 0%, 0%);
+}
+
+.footer :is(p) {
+  color: hsl(0, 0%, 100%);
+}
+
+.stats-info :is(p, span) {
+  color: hsl(0, 0%, 100%);
+}
+
+.contact :is(h1, label, legend, button) {
+  color: hsl(0, 0%, 100%);
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -172,38 +217,4 @@ select {
 }
 .header__nav-list .list__item-icon {
   max-width: 20%;
-=======
-:is(header, .hero) :is(h1, p, a) {
-  color: hsl(0, 0%, 100%);
-}
-
-.hero :is(.hero__main-link) {
-  color: hsl(0, 0%, 0%);
-}
-
-.main__title {
-  color: hsl(0, 0%, 100%);
-}
-
-:is(.card) :is(h2, p) {
-  color: hsl(0, 0%, 0%);
-}
-
-.card .card__container-date {
-  color: hsl(0, 0%, 35%);
-}
-.card__container-link {
-  color: hsl(0, 0%, 0%);
-}
-
-.footer :is(p) {
-  color: hsl(0, 0%, 100%);
-}
-
-.stats-info :is(p, span) {
-  color: hsl(0, 0%, 100%);
-}
-
-.contact :is(h1, label, legend, button) {
-  color: hsl(0, 0%, 100%);
 }/*# sourceMappingURL=main.css.map */
