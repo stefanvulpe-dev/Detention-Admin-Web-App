@@ -1,0 +1,64 @@
+@use '../base/' as *;
+@use '../sass-utils/' as *;
+
+
+.about {
+
+    &__title {
+        @include flex-display(center, center, 1rem);
+        padding: 1.5rem 1.5rem 4rem 1.5rem;
+
+        &-text {
+            color: map-get($colors, primary-white);
+            font-weight: map-get($font-weights, regular);
+            font-size: map-get($font-sizes, huge);
+        }
+
+        &-icon {
+            width: map-get($font-sizes, huge);
+        }
+    }
+
+    &__container {
+        .title-text {
+            color: map-get($colors, primary-white);
+            font-weight: map-get($font-weights, bold);
+            font-size: map-get($font-sizes, large);
+        }
+
+        .line {
+            flex: 1;
+            height: 0.25rem;
+            border-radius: 0.5rem;
+            background-color: map-get($colors, primary-white);
+        }
+
+        &__title-left {
+            @include flex-display(center, center, 0.5rem);
+            padding: 0 3rem 0 2rem;
+        }
+
+        &__title-right {
+            @include flex-display(center, center, 0.5rem);
+            flex-direction: row-reverse;
+            padding: 0 3rem 0 2rem;
+        }
+
+        &-description {
+            display: inline-block;
+            width: 100%;
+            color: map-get($colors, primary-white);
+            font-size: map-get($font-sizes, medium);
+        }
+
+        &-photo {
+            display: inline-block;
+            width: 90%;
+        }
+
+        &__info {
+            @include grid-display(1fr 1fr, 1fr, 2rem, center, center, center, center);
+            padding: 0 2rem 0 2rem;
+        }
+    }
+}

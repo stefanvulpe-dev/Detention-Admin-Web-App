@@ -194,6 +194,7 @@ select {
   gap: 1rem;
   background-color: hsl(0, 0%, 0%);
   padding: 1rem 2.5rem 1rem 2.5rem;
+  margin-top: 3rem;
 }
 
 .header__logo {
@@ -226,7 +227,6 @@ select {
 }
 .header__nav-list .list__item-icon {
   max-width: 20%;
-
 }
 
 .footer__copyright {
@@ -238,6 +238,8 @@ select {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  min-width: 1rem;
+  flex-basis: 272px;
 }
 .footer .social-links__list .list-item {
   min-width: 10%;
@@ -246,5 +248,67 @@ select {
 .footer .social-links__list .list-item-arrow {
   min-width: 20%;
   flex-shrink: 0;
+}
 
+.about__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 4rem 1.5rem;
+}
+.about__title-text {
+  color: hsl(0, 0%, 100%);
+  font-weight: 400;
+  font-size: 3rem;
+}
+.about__title-icon {
+  width: 3rem;
+}
+.about__container .title-text {
+  color: hsl(0, 0%, 100%);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.about__container .line {
+  flex: 1;
+  height: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: hsl(0, 0%, 100%);
+}
+.about__container__title-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 3rem 0 2rem;
+}
+.about__container__title-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-direction: row-reverse;
+  padding: 0 3rem 0 2rem;
+}
+.about__container-description {
+  display: inline-block;
+  width: 100%;
+  color: hsl(0, 0%, 100%);
+  font-size: 1.25rem;
+}
+.about__container-photo {
+  display: inline-block;
+  width: 90%;
+}
+.about__container__info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 2rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 0 2rem 0 2rem;
 }/*# sourceMappingURL=main.css.map */
