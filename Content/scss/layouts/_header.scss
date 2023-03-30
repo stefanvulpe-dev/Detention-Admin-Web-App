@@ -1,0 +1,9 @@
+@use '../sass-utils/' as *;
+@use '../base/' as *;
+
+.header {
+    @include flex-display(space-between, center, 1rem);
+    background-color: map-get($colors, primary-dark);
+    padding: 0.75rem 2rem 0.75rem 2rem;
+
+}
