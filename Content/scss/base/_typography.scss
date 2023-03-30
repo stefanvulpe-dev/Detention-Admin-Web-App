@@ -58,6 +58,12 @@ $font-sizes: (
     font-weight: map-get($font-weights, regular);
 }
 
+.stats-info {
+    .highlight {
+        font-size: map-get($font-sizes, large);
+    }
+}
+
 .contact {
     &__title {
         font-family: $ff-primary;
