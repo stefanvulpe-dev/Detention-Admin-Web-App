@@ -265,6 +265,9 @@ select {
 .about__title-icon {
   width: 3rem;
 }
+.about__container {
+  margin: 1rem 0 1rem 0;
+}
 .about__container .title-text {
   color: hsl(0, 0%, 100%);
   font-weight: 700;
@@ -292,14 +295,12 @@ select {
   padding: 0 3rem 0 2rem;
 }
 .about__container-description {
-  display: inline-block;
   width: 100%;
   color: hsl(0, 0%, 100%);
   font-size: 1.25rem;
 }
 .about__container-photo {
-  display: inline-block;
-  width: 90%;
+  width: 80%;
 }
 .about__container__info {
   display: grid;

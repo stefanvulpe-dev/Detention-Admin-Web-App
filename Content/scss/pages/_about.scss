@@ -20,6 +20,8 @@
     }
 
     &__container {
+        margin: 1rem 0 1rem 0;
+
         .title-text {
             color: map-get($colors, primary-white);
             font-weight: map-get($font-weights, bold);
@@ -45,15 +47,13 @@
         }
 
         &-description {
-            display: inline-block;
             width: 100%;
             color: map-get($colors, primary-white);
             font-size: map-get($font-sizes, medium);
         }
 
         &-photo {
-            display: inline-block;
-            width: 90%;
+            width: 80%;
         }
 
         &__info {
