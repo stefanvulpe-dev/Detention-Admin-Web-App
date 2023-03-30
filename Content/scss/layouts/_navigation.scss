@@ -41,8 +41,7 @@
     }
 
     .social-links__list {
-        @include flex-display(center, center, 1rem);
-        gap: 2rem;
+        @include flex-display(center, center, 2rem);
 
         .list-item {
             min-width: 10%;
