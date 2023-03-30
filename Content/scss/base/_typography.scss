@@ -99,3 +99,14 @@ $font-sizes: (
         font-weight: map-get($font-weights, semi-bold);
     }
 }
+.details {
+    &__title {
+        font-size: map-get($font-sizes, extra-large);
+        font-weight: map-get($font-weights, bold);
+    }
+    &__form {
+        font-family: $ff-primary;
+        font-size: map-get($font-sizes, medium);
+        font-weight: map-get($font-weights, bold);
+    }
+}

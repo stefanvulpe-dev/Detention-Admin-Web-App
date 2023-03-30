@@ -127,4 +127,14 @@ select {
 .guest-main__next-page {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.details__title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.details__form {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
 }/*# sourceMappingURL=main.css.map */
