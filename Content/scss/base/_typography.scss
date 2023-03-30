@@ -4,17 +4,18 @@ $ff-primary: 'Inter', sans-serif;
 $ff-secondary: 'Lobster', cursive;
 
 $font-weights: (
-    regular: 400, 
-    semi-bold: 600, 
+    regular: 400,
+    semi-bold: 600,
     bold: 700
 );
 
 $font-sizes: (
-    small: 1rem, 
-    regular: 1.125rem, 
-    medium: 1.25rem, 
-    large: 1.5rem, 
-    extra-large: 2rem, 
+    very-small: 0.75rem,
+    small: 1rem,
+    regular: 1.125rem,
+    medium: 1.25rem,
+    large: 1.5rem,
+    extra-large: 2rem,
     huge: 3rem
 );
 
@@ -39,7 +40,7 @@ $font-sizes: (
         font-size: map-get($font-sizes, medium);
         font-weight: map-get($font-weights, regular);
     }
-    
+
     &__main-link {
         font-size: map-get($font-sizes, medium);
         font-weight: map-get($font-weights, bold);
@@ -65,11 +66,12 @@ $font-sizes: (
         font-weight: map-get($font-weights, bold);
     }
 
-    &__form-fieldset{
+    &__form-fieldset {
         font-size: map-get($font-sizes, regular);
         font-weight: map-get($font-weights, semi-bold);
     }
-    :is(&__form-legend,&__form-button){
+
+    :is(&__form-legend, &__form-button) {
         font-size: map-get($font-sizes, large);
     }
 }

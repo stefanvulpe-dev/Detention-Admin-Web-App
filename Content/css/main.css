@@ -127,4 +127,45 @@ select {
 .guest-main__next-page {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: hsl(0, 0%, 0%);
+  padding: 0.75rem 2rem 0.75rem 2rem;
+}
+
+.header__logo {
+  max-width: 30%;
+}
+.header__nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  gap: 1rem;
+}
+.header__nav-list .list__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.header__nav-list .list__item .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+.header__nav-list .list__item-text {
+  color: hsl(0, 0%, 100%);
+  font-size: 0.75rem;
+}
+.header__nav-list .list__item-icon {
+  max-width: 20%;
 }/*# sourceMappingURL=main.css.map */
