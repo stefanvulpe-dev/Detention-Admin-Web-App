@@ -133,46 +133,6 @@ select {
   font-weight: 600;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  background-color: hsl(0, 0%, 0%);
-  padding: 0.75rem 2rem 0.75rem 2rem;
-}
-
-.header__logo {
-  max-width: 30%;
-}
-.header__nav-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  gap: 1rem;
-}
-.header__nav-list .list__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-.header__nav-list .list__item .nav-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-direction: row;
-  gap: 0.75rem;
-}
-.header__nav-list .list__item-text {
-  color: hsl(0, 0%, 100%);
-  font-size: 0.75rem;
-}
-.header__nav-list .list__item-icon {
-  max-width: 20%;
-=======
 :is(header, .hero) :is(h1, p, a) {
   color: hsl(0, 0%, 100%);
 }
@@ -206,4 +166,74 @@ select {
 
 .contact :is(h1, label, legend, button) {
   color: hsl(0, 0%, 100%);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: hsl(0, 0%, 0%);
+  padding: 0.75rem 2rem 0.75rem 2rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: hsl(0, 0%, 0%);
+  padding: 1rem 2.5rem 1rem 2.5rem;
+}
+
+.header__logo {
+  max-width: 30%;
+}
+.header__nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  gap: 1rem;
+}
+.header__nav-list .list__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.header__nav-list .list__item .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+.header__nav-list .list__item-text {
+  color: hsl(0, 0%, 100%);
+  font-size: 0.75rem;
+}
+.header__nav-list .list__item-icon {
+  max-width: 20%;
+}
+
+.footer__copyright {
+  white-space: nowrap;
+  font-size: 0.75rem;
+}
+.footer .social-links__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  gap: 2rem;
+}
+.footer .social-links__list .list-item {
+  min-width: 10%;
+  flex-shrink: 0;
+}
+.footer .social-links__list .list-item-arrow {
+  min-width: 20%;
+  flex-shrink: 0;
 }/*# sourceMappingURL=main.css.map */

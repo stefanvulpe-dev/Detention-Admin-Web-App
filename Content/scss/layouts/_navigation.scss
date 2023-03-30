@@ -32,3 +32,27 @@
     }
 
 }
+
+.footer {
+
+    &__copyright {
+        white-space: nowrap;
+        font-size: map-get($font-sizes, very-small);
+    }
+
+    .social-links__list {
+        @include flex-display(center, center, 1rem);
+        gap: 2rem;
+
+        .list-item {
+            min-width: 10%;
+            flex-shrink: 0;
+        }
+
+        .list-item-arrow {
+            min-width: 20%;
+            flex-shrink: 0;
+        }
+    }
+
+}
