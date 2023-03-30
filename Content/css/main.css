@@ -133,6 +133,16 @@ select {
   font-weight: 600;
 }
 
+.details__title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.details__form {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
 :is(header, .hero) :is(h1, p, a) {
   color: hsl(0, 0%, 100%);
 }
@@ -216,6 +226,7 @@ select {
 }
 .header__nav-list .list__item-icon {
   max-width: 20%;
+
 }
 
 .footer__copyright {
@@ -235,4 +246,5 @@ select {
 .footer .social-links__list .list-item-arrow {
   min-width: 20%;
   flex-shrink: 0;
+
 }/*# sourceMappingURL=main.css.map */
