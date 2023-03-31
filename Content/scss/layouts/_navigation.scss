@@ -8,7 +8,7 @@
     }
 
     &__nav-list {
-        @include flex-display(space-between, center, 1rem);
+        @include flex-display(space-between, center, 1.5rem);
         gap: 1.5rem;
 
         .list__item {
@@ -22,7 +22,6 @@
 
             &-text {
                 color: map-get($colors, primary-white);
-                font-size: map-get($font-sizes, small);
             }
 
             &-icon {
@@ -37,22 +36,23 @@
 
     &__copyright {
         white-space: nowrap;
-        font-size: map-get($font-sizes, very-small);
+        font-size: map-get($font-sizes, small);
     }
 
     .social-links__list {
         @include flex-display(center, center, 2rem);
         min-width: 1rem;
-        flex-basis: 272px;
 
         .list-item {
-            min-width: 10%;
+            max-width: 15%;
             flex-shrink: 0;
+            @include flex-display(center, center, 0);
         }
 
-        .list-item-arrow {
-            min-width: 20%;
+        .list-item--arrow {
+            max-width: 15%;
             flex-shrink: 0;
+            @include flex-display(center, center, 0);
         }
     }
 

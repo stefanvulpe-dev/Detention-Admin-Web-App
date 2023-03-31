@@ -2,8 +2,13 @@
 @use '../base/' as *;
 
 .footer {
-    @include flex-display(space-between, center, 1rem);
     background-color: map-get($colors, primary-dark);
-    padding: 1rem 2.5rem 1rem 2.5rem;
+    padding-block: 1.5rem;
     margin-top: 3rem;
+
+    &__container {
+        @include flex-display(space-between, center, 1rem);
+        width: min(90%, 83.5rem);
+        margin-inline: auto;
+    }
 }

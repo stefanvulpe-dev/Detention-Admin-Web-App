@@ -2,7 +2,11 @@
 @use '../base/' as *;
 
 .header {
-    @include flex-display(space-between, center, 1rem);
     background-color: map-get($colors, primary-dark);
-    padding: 1.75rem;
+    padding: 1.65rem;
+    &__container {
+        width: min(90%, 83.5rem);
+        margin-inline: auto;
+        @include flex-display(space-between, center, 1rem);
+    }
 }

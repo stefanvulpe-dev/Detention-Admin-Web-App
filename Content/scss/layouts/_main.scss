@@ -1,0 +1,81 @@
+@use '../sass-utils/' as *;
+@use '../base/' as *;
+
+.main {
+    width: 90%;
+    margin-inline: auto;
+    @include grid-display(auto, auto, 3rem, center, center, center, center);
+    margin-top: 3rem;
+    &__rule {
+        width: 100%;
+        background-color: map-get($colors, primary-white);
+        height: 5px;
+        border-radius: 5rem;
+    }
+
+    &__container {
+        max-width: 83.5rem;
+        @include grid-display(repeat(4, 1fr), auto, 3rem, center, center, center, center);
+        grid-template-areas: 
+            'slimCard1 wideCard1 wideCard1 slimCard2'
+            'slimCard1 wideCard2 wideCard2 slimCard2';
+
+            #slimCard1 {
+                grid-area: slimCard1;
+            }
+
+            #slimCard2 {
+                grid-area: slimCard2;
+            }
+
+            #wideCard1 {
+                grid-area: wideCard1;
+                @include grid-display(1fr 2fr, repeat(3, 1fr), 0.5rem, center, center);
+
+                .card__img {
+                    grid-row: 1 / span 3;
+                    border-top-right-radius: 0;
+                    border-bottom-left-radius: 1.5rem;
+                }
+            }
+
+            #wideCard2 {
+                grid-area: wideCard2;
+
+                @include grid-display(2fr 1fr, repeat(3, 1fr), 0.5rem, center, center);
+
+                .card__img {
+                    grid-row: 1 / span 3;
+                    grid-column: 2 / 3;
+                    border-bottom-right-radius: 1.5rem;
+                    border-top-left-radius: 0;
+                }
+            }
+
+            .card {
+                background-color: map-get($colors, secondary-white);
+                @include grid-display(auto, auto, 1rem, center, center, center, center);
+                border-radius: 1.5rem;
+
+                &__img {
+                    border-top-left-radius: 1.5rem;
+                    border-top-right-radius: 1.5rem;
+                }
+
+                &__description {
+                    width: 85%;
+                    text-align: center;
+                }
+
+                &__title {
+                    padding-block: 1.5rem;
+                    border-bottom: 3px dashed map-get($colors, secondary-gray);
+                }
+
+                &__container {
+                    @include flex-display(space-between, center, 1rem);
+                    padding: 1rem;
+                }
+            }
+    }
+}
