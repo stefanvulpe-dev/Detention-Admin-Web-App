@@ -67,6 +67,21 @@ $colors: (
     color: map-get($colors, primary-white);
 }
 
+.about {
+    &__title {
+        &-text {
+            color: map-get($colors, primary-white);
+        }
+    }
+
+    &__container {
+        .title-text {
+            color: map-get($colors, primary-white);
+        }
+
+        &-description {
+            color: map-get($colors, primary-white);
+        }
 .stats-info{
     &__card {
         background-color: red;

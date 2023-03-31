@@ -2,7 +2,7 @@
 @use '../base/' as *;
 
 .main {
-    width: 90%;
+    width: min(90%, 82.5rem);
     margin-inline: auto;
     @include grid-display(auto, auto, 3rem, center, center, center, center);
     margin-top: 3rem;
@@ -14,8 +14,8 @@
     }
 
     &__container {
-        max-width: 83.5rem;
-        @include grid-display(1.25fr 1fr 1fr 1.25fr, auto, 3rem, center, center, center, center);
+        width: 100%;
+        @include grid-display(1.35fr 1fr 1fr 1.35fr, auto, 3rem, center, center, center, center);
         grid-template-areas: 
             'slimCard1 wideCard1 wideCard1 slimCard2'
             'slimCard1 wideCard2 wideCard2 slimCard2';
@@ -37,6 +37,7 @@
                     border-top-right-radius: 0;
                     border-bottom-left-radius: 1.5rem;
                     align-self: stretch;
+                    object-fit: cover;
                 }
             }
 
@@ -51,9 +52,10 @@
                     border-bottom-right-radius: 1.5rem;
                     border-top-left-radius: 0;
                     align-self: stretch;
+                    object-fit: cover;
                 }
             }
-
+            
             .card {
                 background-color: map-get($colors, secondary-white);
                 @include grid-display(auto, auto, 1rem, center, center, center, center);
@@ -62,6 +64,10 @@
                 &__img {
                     border-top-left-radius: 1.5rem;
                     border-top-right-radius: 1.5rem;
+                }
+
+                &__title {
+                    text-align: center;
                 }
 
                 &__description {
