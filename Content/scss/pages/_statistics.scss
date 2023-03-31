@@ -7,20 +7,39 @@ body{
     background-repeat: no-repeat;
 }
 .stats-info {
-    @include grid-display(1fr 1fr 1fr,auto,4rem,center,center,center,center);
-    padding: 6rem;
-    width: 66%;
-    margin: 0 auto;
+    padding: 6rem 1.65rem 6rem 1.65rem;
+    &__container {
+        padding: 0rem 6rem 0rem 6rem;
+        width: min(90%, 83.5rem);
+        margin-inline: auto; 
+        @include grid-display(1fr 1fr 1fr,auto,4rem,center,center,center,center);
+    }
 }
 .stats-main {
-    @include grid-display(auto,1fr 1fr,0,center,center,center,center);
-    
-    &__chart-container{
-        padding: 6rem;
-        border-top: 0.25rem solid;
+    @include flex-display(center, center, 1rem);
+    flex-direction: column;
+    padding: 0rem 1.65rem 6rem 1.65rem;
 
-        h2 {
-            padding: 2rem;
+    &__chart-container{
+        width: min(90%, 83.5rem);
+        padding: 6rem;
+        border-top: 0.5rem solid;
+        border-radius: 0.25rem;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+            justify-content: center;
+            min-width:  min(90%, 83.5rem);
+            width: max(100%,55rem);
+            
+        }
+
+        &__title {
+            width: max(79%,20rem);
+            padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+            margin-bottom: -2rem;
+            box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);
         }
     }
 }

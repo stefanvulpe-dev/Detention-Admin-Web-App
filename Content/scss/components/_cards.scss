@@ -1,10 +1,10 @@
 @use '../sass-utils/' as *;
 @use '../base/' as *;
 
-.stats-info__card {
+.stats-info__container__card {
     &--1,&--2,&--3{
     border-radius: 0.7rem;
-    padding: 2rem 0rem 2rem 0rem;
+    padding: 2rem 1.65rem 2rem 1.65rem;
     text-align: center;
     @include flex-display(left,auto,0);
     height: 100%;

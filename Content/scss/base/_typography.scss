@@ -67,12 +67,12 @@ $font-sizes: (
    } 
 }
 
-.stats-info {
+.stats-info__container {
     .highlight {
         font-size: map-get($font-sizes, huge);
         font-weight: map-get($font-weights,bold);
     }
-    &__description {
+    .stats-info__container__description {
         font-size: map-get($font-sizes, large);
         font-weight: map-get($font-weights, semi-bold);
     }
