@@ -103,6 +103,9 @@ select {
 .main .card__title {
   font-size: 1.35rem;
 }
+.main .card__container {
+  font-size: 0.75rem;
+}
 
 .stats-info .highlight {
   font-size: 1.5rem;
@@ -293,6 +296,9 @@ select {
   align-items: center;
   align-content: center;
 }
+.hero__title {
+  text-align: center;
+}
 .hero__description {
   width: 70%;
   text-align: center;
@@ -326,7 +332,7 @@ select {
   }
 }
 .main {
-  width: 90%;
+  width: 80%;
   margin-inline: auto;
   display: grid;
   grid-template-columns: auto;
@@ -347,7 +353,7 @@ select {
 .main__container {
   max-width: 83.5rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1.35fr 1fr 1fr 1.35fr;
   grid-template-rows: auto;
   gap: 3rem;
   justify-items: center;
@@ -377,6 +383,8 @@ select {
   grid-row: 1/span 3;
   border-top-right-radius: 0;
   border-bottom-left-radius: 1.5rem;
+  align-self: stretch;
+  object-fit: cover;
 }
 .main__container #wideCard2 {
   grid-area: wideCard2;
@@ -394,6 +402,8 @@ select {
   grid-column: 2/3;
   border-bottom-right-radius: 1.5rem;
   border-top-left-radius: 0;
+  align-self: stretch;
+  object-fit: cover;
 }
 .main__container .card {
   background-color: hsl(0, 0%, 80%);
@@ -411,6 +421,9 @@ select {
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
 }
+.main__container .card__title {
+  text-align: center;
+}
 .main__container .card__description {
   width: 85%;
   text-align: center;
@@ -427,6 +440,51 @@ select {
   padding: 1rem;
 }
 
+@media screen and (max-width: 1650px) {
+  .main__container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "slimCard1 wideCard1 wideCard1" "wideCard2 wideCard2 slimCard2";
+  }
+}
+@media screen and (max-width: 1150px) {
+  .main__container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "slimCard1 slimCard2" "wideCard1 wideCard1" "wideCard2 wideCard2";
+  }
+  .main__container .card {
+    max-width: 80%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .main .card {
+    max-width: 60%;
+  }
+  .main__container {
+    grid-template-columns: none;
+    grid-template-areas: "slimCard1" "slimCard2" "wideCard1" "wideCard2";
+  }
+  .main__container #wideCard1 {
+    grid-template-columns: none;
+    grid-template-rows: none;
+  }
+  .main__container #wideCard1 .card__img {
+    aspect-ratio: 1/1;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 1.5rem;
+    grid-row: 1/2;
+  }
+  .main__container #wideCard2 {
+    grid-template-columns: none;
+    grid-template-rows: none;
+  }
+  .main__container #wideCard2 .card__img {
+    aspect-ratio: 1/1;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 1.5rem;
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+}
 .about__title {
   display: flex;
   justify-content: center;

@@ -64,6 +64,10 @@ $font-sizes: (
     &__title {
         font-size: map-get($font-sizes, medium);
     }
+    
+    &__container {
+        font-size: map-get($font-sizes, very-small);
+    }
    } 
 }
 
