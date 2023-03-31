@@ -347,7 +347,7 @@ select {
 .main__container {
   max-width: 83.5rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1.25fr 1fr 1fr 1.25fr;
   grid-template-rows: auto;
   gap: 3rem;
   justify-items: center;
@@ -367,7 +367,7 @@ select {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: repeat(3, 1fr);
-  gap: 0.5rem;
+  gap: 1rem;
   justify-items: center;
   justify-content: center;
   align-items: center;
@@ -377,6 +377,7 @@ select {
   grid-row: 1/span 3;
   border-top-right-radius: 0;
   border-bottom-left-radius: 1.5rem;
+  align-self: stretch;
 }
 .main__container #wideCard2 {
   grid-area: wideCard2;
@@ -394,6 +395,7 @@ select {
   grid-column: 2/3;
   border-bottom-right-radius: 1.5rem;
   border-top-left-radius: 0;
+  align-self: stretch;
 }
 .main__container .card {
   background-color: hsl(0, 0%, 80%);
@@ -423,7 +425,7 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
 }
 
