@@ -1,0 +1,95 @@
+@use '../sass-utils/' as *;
+
+@include media(map-get($breakpoints, huge)) {
+    .main {
+        &__container {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas: 
+            'slimCard1 wideCard1 wideCard1'
+            'wideCard2 wideCard2 slimCard2';
+
+            #wideCard1 {
+                justify-self: end;
+            }
+
+            #wideCard2 {
+                justify-self: start;
+            }
+
+            :is(#slimCard1, #slimCard2) {
+                max-width: 20rem;
+            }
+
+            :is(#wideCard1, #wideCard2) {
+                max-width: 40rem;
+            }
+            
+        }
+    }
+}
+
+@include media(map-get($breakpoints, large)) {
+    .main {
+        &__container {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: 
+            'slimCard1 slimCard2'
+            'wideCard1 wideCard1'
+            'wideCard2 wideCard2';
+        }
+        
+        #wideCard1 {
+            justify-self: center;
+        }
+
+        #wideCard2 {
+            justify-self: center;
+        }
+
+    }
+}
+
+@include media(map-get($breakpoints, medium)) {
+    .main {
+        .card {
+            max-width: 60%;
+        }
+
+        &__container {
+            grid-template-columns: none;
+            grid-template-areas: 
+                'slimCard1'
+                'slimCard2'
+                'wideCard1'
+                'wideCard2';
+            
+            #wideCard1 {
+                grid-template-columns: none;
+                grid-template-rows: none;
+                
+                .card__img {
+                    aspect-ratio: 1 / 1;
+                    border-bottom-left-radius: 0;
+                    border-top-right-radius: 1.5rem;
+                    grid-row: 1 / 2;
+                }
+            }
+    
+            #wideCard2 {
+                grid-template-columns: none;
+                grid-template-rows: none;
+        
+                .card__img {
+                    aspect-ratio: 1 / 1;
+                    border-bottom-right-radius: 0;
+                    border-top-left-radius: 1.5rem;
+                    grid-row: 1 / 2;
+                    grid-column: 1 / 2;
+                }
+            }  
+            :is(#wideCard1, #wideCard2) {
+                max-width: 20rem;
+            }     
+        }
+    }
+}

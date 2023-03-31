@@ -67,45 +67,71 @@ select {
     scroll-behavior: auto !important;
   }
 }
+:root {
+  --fs-very-small: 0.65rem;
+  --fs-small: 0.875rem;
+  --fs-regular: 1rem;
+  --fs-medium: 1.15rem;
+  --fs-large: 1.35rem;
+  --fs-extra-large: 1.75rem;
+  --fs-huge: 2rem;
+}
+
+@media screen and (min-width: 800px) {
+  :root {
+    --fs-very-small: 0.75rem;
+    --fs-small: 1rem;
+    --fs-regular: 1.125rem;
+    --fs-medium: 1.35rem;
+    --fs-large: 1.5rem;
+    --fs-extra-large: 2rem;
+    --fs-huge: 3rem;
+  }
+}
 :is(header, main, section, footer) :is(h1, h2, h3, p, span, a, label, input, legend, textarea, time) {
   font-family: "Inter", sans-serif;
 }
 
 .hero__title {
   font-family: "Inter", sans-serif;
-  font-size: 3rem;
+  font-size: var(--fs-huge);
   font-weight: 700;
 }
 .hero__title--logo {
   font-family: "Lobster", cursive;
-  font-size: 3rem;
+  font-size: var(--fs-huge);
   font-weight: 700;
 }
 .hero__description {
-  font-size: 1.35rem;
+  font-size: var(--fs-medium);
   font-weight: 400;
 }
 .hero__main-link {
-  font-size: 1.35rem;
+  font-size: var(--fs-medium);
   font-weight: 700;
 }
 
 .header__nav {
-  font-size: 1.35rem;
+  font-size: var(--fs-medium);
   font-weight: 600;
 }
 
 :is(.main, .stats-info) :is(p, a) {
-  font-size: 1rem;
+  font-size: var(--fs-small);
   font-weight: 400;
 }
 
 .main .card__title {
-  font-size: 1.35rem;
+  font-size: var(--fs-medium);
+}
+.main .card__container {
+  font-size: var(--fs-small);
 }
 
+
 .stats-info__container .highlight {
-  font-size: 3rem;
+.stats-info .highlight {
+  font-size: var(--fs-large);
   font-weight: 700;
 }
 .stats-info__container .stats-info__container__description {
@@ -115,24 +141,24 @@ select {
 
 .contact__title {
   font-family: "Inter", sans-serif;
-  font-size: 3rem;
+  font-size: var(--fs-huge);
   font-weight: 700;
 }
 .contact__form-fieldset {
-  font-size: 1.125rem;
+  font-size: var(--fs-regular);
   font-weight: 600;
 }
 :is(.contact__form-legend, .contact__form-button) {
-  font-size: 1.5rem;
+  font-size: var(--fs-large);
 }
 
 .aside__button-text {
-  font-size: 1.5rem;
+  font-size: var(--fs-large);
   font-weight: 600;
 }
 
 .guest-main__guest-card {
-  font-size: 1.125rem;
+  font-size: var(--fs-regular);
 }
 .guest-main__guest-card__label {
   font-weight: 700;
@@ -141,18 +167,30 @@ select {
   font-weight: 600;
 }
 .guest-main__next-page {
-  font-size: 1.5rem;
+  font-size: var(--fs-large);
   font-weight: 600;
 }
 
 .details__title {
-  font-size: 2rem;
+  font-size: var(--fs-extra-large);
   font-weight: 700;
 }
 .details__form {
   font-family: "Inter", sans-serif;
-  font-size: 1.35rem;
+  font-size: var(--fs-medium);
   font-weight: 700;
+}
+
+.about__title-text {
+  font-weight: 400;
+  font-size: var(--fs-huge);
+}
+.about__container .title-text {
+  font-weight: 700;
+  font-size: var(--fs-large);
+}
+.about__container-description {
+  font-size: var(--fs-medium);
 }
 
 :is(header, .hero) :is(h1, p, a) {
@@ -202,6 +240,16 @@ select {
 
 .stats-main__chart-container__title {
   background-color: hsl(120, 5%, 11%);
+.about__title-text {
+  color: hsl(0, 0%, 100%);
+}
+.about__container .title-text {
+  color: hsl(0, 0%, 100%);
+}
+.about__container-description {
+  color: hsl(0, 0%, 100%);
+.stats-info__card {
+  background-color: red;
 }
 
 .header {
@@ -253,7 +301,7 @@ select {
   align-items: center;
   gap: 1rem;
   flex-direction: row;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 .header__nav-list .list__item-text {
   color: hsl(0, 0%, 100%);
@@ -264,7 +312,7 @@ select {
 
 .footer__copyright {
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 .footer .social-links__list {
   display: flex;
@@ -312,6 +360,9 @@ select {
   align-items: center;
   align-content: center;
 }
+.hero__title {
+  text-align: center;
+}
 .hero__description {
   width: 70%;
   text-align: center;
@@ -345,7 +396,7 @@ select {
   }
 }
 .main {
-  width: 90%;
+  width: min(90%, 82.5rem);
   margin-inline: auto;
   display: grid;
   grid-template-columns: auto;
@@ -364,9 +415,9 @@ select {
   border-radius: 5rem;
 }
 .main__container {
-  max-width: 83.5rem;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr 1.25fr;
+  grid-template-columns: 1.35fr 1fr 1fr 1.35fr;
   grid-template-rows: auto;
   gap: 3rem;
   justify-items: center;
@@ -397,6 +448,7 @@ select {
   border-top-right-radius: 0;
   border-bottom-left-radius: 1.5rem;
   align-self: stretch;
+  object-fit: cover;
 }
 .main__container #wideCard2 {
   grid-area: wideCard2;
@@ -415,6 +467,7 @@ select {
   border-bottom-right-radius: 1.5rem;
   border-top-left-radius: 0;
   align-self: stretch;
+  object-fit: cover;
 }
 .main__container .card {
   background-color: hsl(0, 0%, 80%);
@@ -432,6 +485,9 @@ select {
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
 }
+.main__container .card__title {
+  text-align: center;
+}
 .main__container .card__description {
   width: 85%;
   text-align: center;
@@ -448,6 +504,69 @@ select {
   padding: 1rem;
 }
 
+@media screen and (max-width: 1650px) {
+  .main__container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "slimCard1 wideCard1 wideCard1" "wideCard2 wideCard2 slimCard2";
+  }
+  .main__container #wideCard1 {
+    justify-self: end;
+  }
+  .main__container #wideCard2 {
+    justify-self: start;
+  }
+  .main__container :is(#slimCard1, #slimCard2) {
+    max-width: 20rem;
+  }
+  .main__container :is(#wideCard1, #wideCard2) {
+    max-width: 40rem;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .main__container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "slimCard1 slimCard2" "wideCard1 wideCard1" "wideCard2 wideCard2";
+  }
+  .main #wideCard1 {
+    justify-self: center;
+  }
+  .main #wideCard2 {
+    justify-self: center;
+  }
+}
+@media screen and (max-width: 800px) {
+  .main .card {
+    max-width: 60%;
+  }
+  .main__container {
+    grid-template-columns: none;
+    grid-template-areas: "slimCard1" "slimCard2" "wideCard1" "wideCard2";
+  }
+  .main__container #wideCard1 {
+    grid-template-columns: none;
+    grid-template-rows: none;
+  }
+  .main__container #wideCard1 .card__img {
+    aspect-ratio: 1/1;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 1.5rem;
+    grid-row: 1/2;
+  }
+  .main__container #wideCard2 {
+    grid-template-columns: none;
+    grid-template-rows: none;
+  }
+  .main__container #wideCard2 .card__img {
+    aspect-ratio: 1/1;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 1.5rem;
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  .main__container :is(#wideCard1, #wideCard2) {
+    max-width: 20rem;
+  }
+}
 .about__title {
   display: flex;
   justify-content: center;
@@ -455,21 +574,11 @@ select {
   gap: 1rem;
   padding: 1.5rem 1.5rem 4rem 1.5rem;
 }
-.about__title-text {
-  color: hsl(0, 0%, 100%);
-  font-weight: 400;
-  font-size: 3rem;
-}
 .about__title-icon {
-  width: 3rem;
+  width: 2rem;
 }
 .about__container {
   margin: 1rem 0 1rem 0;
-}
-.about__container .title-text {
-  color: hsl(0, 0%, 100%);
-  font-weight: 700;
-  font-size: 1.5rem;
 }
 .about__container .line {
   flex: 1;
@@ -494,8 +603,6 @@ select {
 }
 .about__container-description {
   width: 100%;
-  color: hsl(0, 0%, 100%);
-  font-size: 1.35rem;
 }
 .about__container-photo {
   width: 80%;
@@ -513,7 +620,7 @@ select {
 }
 
 .contact__title {
-  font-size: 3rem;
+  font-size: 2rem;
   font-style: italic;
   text-align: center;
   margin: 5rem 2rem 2rem 2rem;
@@ -544,7 +651,7 @@ select {
 .contact__form label[for=email],
 .contact__form label[for=suggestions] {
   display: block;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   color: hsl(0, 0%, 90.2%);
   margin-bottom: 0.5rem;
 }
@@ -564,7 +671,7 @@ select {
 }
 .contact__form textarea[name=suggestions]::placeholder {
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 .contact__form-button {
   margin-left: 12rem;
@@ -575,7 +682,7 @@ select {
   padding: 1rem 1.5rem 1rem 1.5rem;
   cursor: pointer;
   background-color: transparent;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 400;
   font-family: "Inter", sans-serif;
 }

@@ -69,5 +69,23 @@ $colors: (
         &__title {
             background-color: map-get($colors,secondary-black);
         }
+.about {
+    &__title {
+        &-text {
+            color: map-get($colors, primary-white);
+        }
+    }
+
+    &__container {
+        .title-text {
+            color: map-get($colors, primary-white);
+        }
+
+        &-description {
+            color: map-get($colors, primary-white);
+        }
+.stats-info{
+    &__card {
+        background-color: red;
     }
 }
