@@ -2,14 +2,14 @@
 @use '../base/' as *;
 
 .header {
-
+    
     &__logo {
         max-width: 30%;
     }
 
     &__nav-list {
         @include flex-display(space-between, center, 1rem);
-        gap: map-get($font-sizes, small);
+        gap: 1.5rem;
 
         .list__item {
             @include flex-display(center, center, 1rem);
@@ -22,7 +22,7 @@
 
             &-text {
                 color: map-get($colors, primary-white);
-                font-size: map-get($font-sizes, very-small);
+                font-size: map-get($font-sizes, small);
             }
 
             &-icon {
