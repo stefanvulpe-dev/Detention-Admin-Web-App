@@ -1,0 +1,14 @@
+@use '../sass-utils/' as *;
+@use '../base/' as *;
+
+.stats-info__card {
+    &--1,&--2,&--3{
+    border-radius: 0.7rem;
+    padding: 2rem 0rem 2rem 0rem;
+    text-align: center;
+    @include flex-display(left,auto,0);
+    height: 100%;
+    width: 100%;
+    box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+    }    
+}
