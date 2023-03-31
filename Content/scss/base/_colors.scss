@@ -93,3 +93,21 @@ $colors: (
         background-color: red;
     }
 }
+.guest-main {
+    &__aside {
+        &__button {
+            color: map-get($colors,primary-white);
+            background-color: map-get($colors, primary-dark-gray);
+        }
+    }
+    &__list {
+        &__card{
+        background-color: map-get($colors,secondary-white);
+        }
+        &__next-page{
+            font-size: var(--fs-large);
+            color: map-get($colors,primary-white);
+            background-color: map-get($colors,accent-red);
+        }
+    }
+}
