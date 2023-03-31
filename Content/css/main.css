@@ -412,7 +412,7 @@ select {
 .contact__form input {
   margin-bottom: 3.5rem;
   padding-left: 0.25rem;
-  width: 25rem;
+  width: 30rem;
   height: 2.5rem;
   background-color: hsl(0, 0%, 90.2%);
   border: none;
@@ -422,7 +422,7 @@ select {
   background-color: hsl(0, 0%, 90.2%);
   padding: 1rem;
   border-radius: 0.5rem;
-  width: 25rem;
+  width: 30rem;
 }
 .contact__form textarea[name=suggestions]::placeholder {
   font-weight: 400;
