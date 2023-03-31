@@ -103,11 +103,12 @@ $font-sizes: (
    } 
 }
 
-.stats-info {
+.stats-info__container {
     .highlight {
         font-size: var(--fs-large);
         font-weight: map-get($font-weights,bold);
     }
+    .stats-info__container__description {
     &__description {
         font-size: var(--fs-large);
         font-weight: map-get($font-weights, semi-bold);

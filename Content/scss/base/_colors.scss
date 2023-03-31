@@ -48,7 +48,7 @@ $colors: (
     color: map-get($colors, primary-white);
 }
 
-.stats-info__card {
+.stats-info__container__card {
     &--1 {
         background-color: map-get($colors,accent-maroon);
     }
@@ -60,13 +60,15 @@ $colors: (
     }
 }
 
-.stats-main h2 {
-    background-color: map-get($colors, secondary-black );
-}
 .contact :is(h1, label, legend, button) {
     color: map-get($colors, primary-white);
 }
 
+.stats-main {
+    &__chart-container {
+        &__title {
+            background-color: map-get($colors,secondary-black);
+        }
 .about {
     &__title {
         &-text {
