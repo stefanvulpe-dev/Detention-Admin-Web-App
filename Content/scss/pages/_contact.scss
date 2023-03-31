@@ -1,0 +1,79 @@
+@use '../base/' as *;
+@use '../sass-utils/' as *;
+
+.contact {
+    &__title {
+        font-size: map-get($font-sizes, huge);
+        font-style: italic;
+        text-align: center;
+        margin: 5rem 2rem 2rem 2rem;
+    }
+
+    &__form {
+
+        &-fieldset {
+            @include flex-display(center, center, 3rem);
+            flex-direction: column;
+            padding: 2rem;
+            width: 50%;
+            height: auto;
+            border-color: map-get($colors, primary-white);
+            border-radius: 7px;
+            border: none;
+            line-height: 1rem;
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
+            margin: auto;
+        }
+
+        legend {
+            background-color: map-get($colors, secondary-gray);
+            font-weight: map-get($font-weights, regular);
+            padding: 1rem 0.35rem 1rem 0.35rem;
+        }
+
+        label[for=first-name],
+        label[for=last-name],
+        label[for=email],
+        label[for=suggestions] {
+            display: block;
+            font-size: map-get($font-sizes, medium);
+            color: hsl(0, 0, 90.2%);
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            margin-bottom: 4rem;
+            padding-left: 0.25rem;
+            width: 20rem;
+            height: 2rem;
+            background-color: hsl(0, 0, 90.2%);
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        textarea[name=suggestions] {
+            background-color: hsl(0, 0, 90.2%);
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        textarea[name=suggestions]::placeholder {
+            font-weight: map-get($font-weights, regular);
+            font-size: map-get($font-sizes, small);
+        }
+
+        &-button {
+            margin-left: 12rem;
+            border-width: 0.25rem;
+            border-style: solid;
+            border-color: map-get($colors, primary-white);
+            border-radius: 0.5rem;
+            padding: 1rem 1.5rem 1rem 1.5rem;
+            cursor: pointer;
+            background-color: transparent;
+            font-size: map-get($font-sizes, medium);
+            font-weight: map-get($font-weights, regular);
+            font-family: $ff-primary;
+        }
+    }
+}
