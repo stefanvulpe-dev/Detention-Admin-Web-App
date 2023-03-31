@@ -1,0 +1,49 @@
+@use '../sass-utils/' as *;
+@use '../base/' as *;
+
+.hero {
+    min-height: 100vh;
+    background-image: url(../../../assets/acasa/hero-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    @include flex-display(center, center, 0);
+    
+    .wrapper {
+        width: 80%;
+        margin-inline: auto;
+        @include grid-display(auto, auto, 2.5rem, center, center, center, center);
+        
+    }
+
+    &__description {
+        width: 70%;
+        text-align: center;
+    }
+
+    &__main-link {
+        padding: 1rem calc(1rem + 5vw);
+        background-color: map-get($colors, accent-red);
+        border-radius: 2rem;
+        transition: all 250ms ease-in-out;
+    }
+
+    &__main-link:is(:hover, :focus) {
+        box-shadow: 0 0 3.5rem map-get($colors, accent-red);
+    }
+
+    &__arrow {
+        position: relative;
+        top: 0;
+        animation-name: moving-arrows;
+        animation-duration: 750ms;
+        animation-delay: 500ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-direction: alternate;
+    }
+}
+
+@include keyframes(moving-arrows) {
+    from {top: 0;}
+    to {top: 1rem;}
+}
