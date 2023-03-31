@@ -178,55 +178,8 @@ select {
   color: hsl(0, 0%, 100%);
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  background-color: hsl(0, 0%, 0%);
-  padding: 0.75rem 2rem 0.75rem 2rem;
-}
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  background-color: hsl(0, 0%, 0%);
-  padding: 1rem 2.5rem 1rem 2.5rem;
-  margin-top: 3rem;
-}
-
-.header__logo {
-  max-width: 30%;
-}
-.header__nav-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  gap: 1rem;
-}
-.header__nav-list .list__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-.header__nav-list .list__item .nav-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-direction: row;
-  gap: 0.75rem;
-}
-.header__nav-list .list__item-text {
+:is(header, .hero) :is(h1, p, a) {
   color: hsl(0, 0%, 100%);
-  font-size: 0.75rem;
-}
-.header__nav-list .list__item-icon {
-  max-width: 20%;
 }
 
 .footer__copyright {
@@ -297,6 +250,102 @@ select {
 .about__container-description {
   width: 100%;
   color: hsl(0, 0%, 100%);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: hsl(0, 0%, 0%);
+  padding: 1.5rem 2rem 1.5rem 2rem;
+}
+
+.header__logo {
+  max-width: 30%;
+}
+.header__nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  gap: 1.5rem;
+}
+.header__nav-list .list__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.header__nav-list .list__item .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+.header__nav-list .list__item-text {
+  color: hsl(0, 0%, 100%);
+  font-size: 1rem;
+}
+.header__nav-list .list__item-icon {
+  max-width: 20%;
+}
+
+.hero {
+  min-height: 100vh;
+  background-image: url(../../../assets/acasa/hero-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+.hero .wrapper {
+  width: 80%;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: 2.5rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.hero__description {
+  width: 70%;
+  text-align: center;
+}
+.hero__main-link {
+  padding: 1rem calc(1rem + 5vw);
+  background-color: hsl(0, 97%, 65%);
+  border-radius: 2rem;
+  transition: all 250ms ease-in-out;
+}
+.hero__main-link:is(:hover, :focus) {
+  box-shadow: 0 0 3.5rem hsl(0, 97%, 65%);
+}
+.hero__arrow {
+  position: relative;
+  top: 0;
+  animation-name: moving-arrows;
+  animation-duration: 750ms;
+  animation-delay: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+@keyframes moving-arrows {
+  from {
+    top: 0;
+  }
+  to {
+    top: 1rem;
+  }
   font-size: 1.25rem;
 }
 .about__container-photo {
