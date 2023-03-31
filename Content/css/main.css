@@ -133,7 +133,6 @@ select {
   font-weight: 600;
 }
 
-<<<<<<< HEAD
 .details__title {
   font-size: 2rem;
   font-weight: 700;
@@ -144,8 +143,6 @@ select {
   font-weight: 700;
 }
 
-=======
->>>>>>> hero_styling
 :is(header, .hero) :is(h1, p, a) {
   color: hsl(0, 0%, 100%);
 }
@@ -187,8 +184,7 @@ select {
   align-items: center;
   gap: 1rem;
   background-color: hsl(0, 0%, 0%);
-<<<<<<< HEAD
-  padding: 0.75rem 2rem 0.75rem 2rem;
+  padding: 1.75rem;
 }
 
 .footer {
@@ -199,9 +195,6 @@ select {
   background-color: hsl(0, 0%, 0%);
   padding: 1rem 2.5rem 1rem 2.5rem;
   margin-top: 3rem;
-=======
-  padding: 1.5rem 2rem 1.5rem 2rem;
->>>>>>> hero_styling
 }
 
 .header__logo {
@@ -212,11 +205,7 @@ select {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-<<<<<<< HEAD
-  gap: 1rem;
-=======
   gap: 1.5rem;
->>>>>>> hero_styling
 }
 .header__nav-list .list__item {
   display: flex;
@@ -261,6 +250,60 @@ select {
   flex-shrink: 0;
 }
 
+.hero {
+  min-height: 100vh;
+  background-image: url(../../../assets/acasa/hero-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+.hero .wrapper {
+  width: 80%;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: 2.5rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.hero__description {
+  width: 70%;
+  text-align: center;
+}
+.hero__main-link {
+  padding: 1rem calc(1rem + 5vw);
+  background-color: hsl(0, 97%, 65%);
+  border-radius: 2rem;
+  transition: all 250ms ease-in-out;
+}
+.hero__main-link:is(:hover, :focus) {
+  box-shadow: 0 0 3.5rem hsl(0, 97%, 65%);
+}
+.hero__arrow {
+  position: relative;
+  top: 0;
+  animation-name: moving-arrows;
+  animation-duration: 750ms;
+  animation-delay: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+@keyframes moving-arrows {
+  from {
+    top: 0;
+  }
+  to {
+    top: 1rem;
+  }
+}
 .about__title {
   display: flex;
   justify-content: center;
@@ -318,59 +361,9 @@ select {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 2rem;
-}
-.hero {
-  min-height: 100vh;
-  background-image: url(../../../assets/acasa/hero-bg.jpg);
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-}
-.hero .wrapper {
-  width: 80%;
-  margin-inline: auto;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  gap: 2.5rem;
   justify-items: center;
   justify-content: center;
   align-items: center;
   align-content: center;
   padding: 0 2rem 0 2rem;
-}
-.hero__description {
-  width: 70%;
-  text-align: center;
-}
-.hero__main-link {
-  padding: 1rem calc(1rem + 5vw);
-  background-color: hsl(0, 97%, 65%);
-  border-radius: 2rem;
-  transition: all 250ms ease-in-out;
-}
-.hero__main-link:is(:hover, :focus) {
-  box-shadow: 0 0 3.5rem hsl(0, 97%, 65%);
-}
-.hero__arrow {
-  position: relative;
-  top: 0;
-  animation-name: moving-arrows;
-  animation-duration: 750ms;
-  animation-delay: 500ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-direction: alternate;
-}
-
-@keyframes moving-arrows {
-  from {
-    top: 0;
-  }
-  to {
-    top: 1rem;
-  }
 }/*# sourceMappingURL=main.css.map */
