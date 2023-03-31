@@ -30,7 +30,8 @@ body {
   line-height: 1.5;
   background-image: url("../../../assets/background.png");
   background-color: #cccccc;
-  background-size: contain;
+  background-size: cover;
+  background-position: center;
 }
 
 /* A elements that don't have a class get default styles */
@@ -376,6 +377,7 @@ select {
   font-style: italic;
   text-align: center;
   margin: 5rem 2rem 2rem 2rem;
+  white-space: nowrap;
 }
 .contact__form-fieldset {
   display: flex;
@@ -383,7 +385,7 @@ select {
   align-items: center;
   gap: 3rem;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 2rem;
   width: 50%;
   height: auto;
   border-color: hsl(0, 0%, 100%);
@@ -403,15 +405,15 @@ select {
 .contact__form label[for=email],
 .contact__form label[for=suggestions] {
   display: block;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: hsl(0, 0%, 90.2%);
   margin-bottom: 0.5rem;
 }
 .contact__form input {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   padding-left: 0.25rem;
-  width: 20rem;
-  height: 2rem;
+  width: 25rem;
+  height: 2.5rem;
   background-color: hsl(0, 0%, 90.2%);
   border: none;
   border-radius: 0.5rem;
@@ -420,13 +422,14 @@ select {
   background-color: hsl(0, 0%, 90.2%);
   padding: 1rem;
   border-radius: 0.5rem;
+  width: 25rem;
 }
 .contact__form textarea[name=suggestions]::placeholder {
   font-weight: 400;
   font-size: 1rem;
 }
 .contact__form-button {
-  margin-left: 12rem;
+  margin-left: 25rem;
   border-width: 0.25rem;
   border-style: solid;
   border-color: hsl(0, 0%, 100%);
@@ -437,4 +440,13 @@ select {
   font-size: 1.25rem;
   font-weight: 400;
   font-family: "Inter", sans-serif;
+  transition: opacity 0.2s, padding 0.2s, font-size 0.2s;
+}
+.contact__form-button:hover {
+  opacity: 0.7;
+  padding: 1.5rem 2rem 1.5rem 2rem;
+  font-size: 1.5rem;
+}
+.contact__form-button:active {
+  opacity: 0.5;
 }/*# sourceMappingURL=main.css.map */
