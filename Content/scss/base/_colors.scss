@@ -44,10 +44,25 @@ $colors: (
     color: map-get($colors, primary-white);
 }
 
-.stats-info :is(p, span) {
+.stats-info :is(p, span), .stats-main {
     color: map-get($colors, primary-white);
 }
 
+.stats-info__card {
+    &--1 {
+        background-color: map-get($colors,accent-maroon);
+    }
+    &--2 {
+        background-color: map-get($colors,accent-green);
+    }
+    &--3 {
+        background-color: map-get($colors,accent-light-green);
+    }
+}
+
+.stats-main h2 {
+    background-color: map-get($colors, secondary-black );
+}
 .contact :is(h1, label, legend, button) {
     color: map-get($colors, primary-white);
 }
@@ -67,5 +82,8 @@ $colors: (
         &-description {
             color: map-get($colors, primary-white);
         }
+.stats-info{
+    &__card {
+        background-color: red;
     }
 }

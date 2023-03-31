@@ -130,6 +130,12 @@ select {
 
 .stats-info .highlight {
   font-size: var(--fs-large);
+  font-size: 3rem;
+  font-weight: 700;
+}
+.stats-info__description {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .contact__title {
@@ -213,8 +219,22 @@ select {
   color: hsl(0, 0%, 100%);
 }
 
-.stats-info :is(p, span) {
+.stats-info :is(p, span), .stats-main {
   color: hsl(0, 0%, 100%);
+}
+
+.stats-info__card--1 {
+  background-color: hsl(320, 15%, 19%);
+}
+.stats-info__card--2 {
+  background-color: hsl(148, 30%, 46%);
+}
+.stats-info__card--3 {
+  background-color: hsl(90, 18%, 64%);
+}
+
+.stats-main h2 {
+  background-color: hsl(120, 5%, 11%);
 }
 
 .contact :is(h1, label, legend, button) {
@@ -229,6 +249,8 @@ select {
 }
 .about__container-description {
   color: hsl(0, 0%, 100%);
+.stats-info__card {
+  background-color: red;
 }
 
 .header {
@@ -416,7 +438,7 @@ select {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: repeat(3, 1fr);
-  gap: 0.5rem;
+  gap: 1rem;
   justify-items: center;
   justify-content: center;
   align-items: center;
@@ -479,7 +501,7 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
 }
 
@@ -664,4 +686,55 @@ select {
   font-size: 1.15rem;
   font-weight: 400;
   font-family: "Inter", sans-serif;
+}
+
+body {
+  background-image: url(../../../assets/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.stats-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 4rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 6rem;
+  width: 66%;
+  margin: 0 auto;
+}
+
+.stats-main {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.stats-main__chart-container {
+  padding: 6rem;
+  border-top: 0.25rem solid;
+}
+.stats-main__chart-container h2 {
+  padding: 2rem;
+}
+
+.stats-info__card--1, .stats-info__card--2, .stats-info__card--3 {
+  border-radius: 0.7rem;
+  padding: 2rem 0rem 2rem 0rem;
+  text-align: center;
+  display: flex;
+  justify-content: left;
+  align-items: auto;
+  gap: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
 }/*# sourceMappingURL=main.css.map */

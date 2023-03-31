@@ -30,7 +30,7 @@
 
             #wideCard1 {
                 grid-area: wideCard1;
-                @include grid-display(1fr 2fr, repeat(3, 1fr), 0.5rem, center, center);
+                @include grid-display(1fr 2fr, repeat(3, 1fr), 1rem, center, center);
 
                 .card__img {
                     grid-row: 1 / span 3;
@@ -81,7 +81,7 @@
                 }
 
                 &__container {
-                    @include flex-display(space-between, center, 1rem);
+                    @include flex-display(space-between, center, 1.5rem);
                     padding: 1rem;
                 }
             }
