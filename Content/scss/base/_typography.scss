@@ -109,9 +109,10 @@ $font-sizes: (
         font-weight: map-get($font-weights,bold);
     }
     .stats-info__container__description {
-    &__description {
-        font-size: var(--fs-large);
-        font-weight: map-get($font-weights, semi-bold);
+        &__description {
+            font-size: var(--fs-large);
+            font-weight: map-get($font-weights, semi-bold);
+        }
     }
 }
 
