@@ -82,22 +82,26 @@ select {
   font-weight: 700;
 }
 .hero__description {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 400;
 }
 .hero__main-link {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
 }
 
 .header__nav {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 600;
 }
 
 :is(.main, .stats-info) :is(p, a) {
   font-size: 1rem;
   font-weight: 400;
+}
+
+.main .card__title {
+  font-size: 1.35rem;
 }
 
 .stats-info .highlight {
@@ -142,7 +146,7 @@ select {
 }
 .details__form {
   font-family: "Inter", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
 }
 
@@ -182,22 +186,30 @@ select {
 }
 
 .header {
+  background-color: hsl(0, 0%, 0%);
+  padding: 1.65rem;
+}
+.header__container {
+  width: min(90%, 83.5rem);
+  margin-inline: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  background-color: hsl(0, 0%, 0%);
-  padding: 1.75rem;
 }
 
 .footer {
+  background-color: hsl(0, 0%, 0%);
+  padding-block: 1.5rem;
+  margin-top: 3rem;
+}
+.footer__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  background-color: hsl(0, 0%, 0%);
-  padding: 1rem 2.5rem 1rem 2.5rem;
-  margin-top: 3rem;
+  width: min(90%, 83.5rem);
+  margin-inline: auto;
 }
 
 .header__logo {
@@ -207,7 +219,7 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   gap: 1.5rem;
 }
 .header__nav-list .list__item {
@@ -226,7 +238,6 @@ select {
 }
 .header__nav-list .list__item-text {
   color: hsl(0, 0%, 100%);
-  font-size: 1rem;
 }
 .header__nav-list .list__item-icon {
   max-width: 20%;
@@ -234,7 +245,7 @@ select {
 
 .footer__copyright {
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 .footer .social-links__list {
   display: flex;
@@ -242,15 +253,22 @@ select {
   align-items: center;
   gap: 2rem;
   min-width: 1rem;
-  flex-basis: 272px;
 }
 .footer .social-links__list .list-item {
-  min-width: 10%;
+  max-width: 15%;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
 }
-.footer .social-links__list .list-item-arrow {
-  min-width: 20%;
+.footer .social-links__list .list-item--arrow {
+  max-width: 15%;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
 }
 
 .hero {
@@ -264,7 +282,7 @@ select {
   gap: 0;
 }
 .hero .wrapper {
-  width: 80%;
+  width: min(80%, 83.5rem);
   margin-inline: auto;
   display: grid;
   grid-template-columns: auto;
@@ -307,6 +325,108 @@ select {
     top: 1rem;
   }
 }
+.main {
+  width: 90%;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: 3rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 3rem;
+}
+.main__rule {
+  width: 100%;
+  background-color: hsl(0, 0%, 100%);
+  height: 5px;
+  border-radius: 5rem;
+}
+.main__container {
+  max-width: 83.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 3rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  grid-template-areas: "slimCard1 wideCard1 wideCard1 slimCard2" "slimCard1 wideCard2 wideCard2 slimCard2";
+}
+.main__container #slimCard1 {
+  grid-area: slimCard1;
+}
+.main__container #slimCard2 {
+  grid-area: slimCard2;
+}
+.main__container #wideCard1 {
+  grid-area: wideCard1;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.5rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.main__container #wideCard1 .card__img {
+  grid-row: 1/span 3;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 1.5rem;
+}
+.main__container #wideCard2 {
+  grid-area: wideCard2;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.5rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.main__container #wideCard2 .card__img {
+  grid-row: 1/span 3;
+  grid-column: 2/3;
+  border-bottom-right-radius: 1.5rem;
+  border-top-left-radius: 0;
+}
+.main__container .card {
+  background-color: hsl(0, 0%, 80%);
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: 1rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border-radius: 1.5rem;
+}
+.main__container .card__img {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+.main__container .card__description {
+  width: 85%;
+  text-align: center;
+}
+.main__container .card__title {
+  padding-block: 1.5rem;
+  border-bottom: 3px dashed hsl(0, 0%, 35%);
+}
+.main__container .card__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
 .about__title {
   display: flex;
   justify-content: center;
@@ -354,7 +474,7 @@ select {
 .about__container-description {
   width: 100%;
   color: hsl(0, 0%, 100%);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
 }
 .about__container-photo {
   width: 80%;
@@ -403,7 +523,7 @@ select {
 .contact__form label[for=email],
 .contact__form label[for=suggestions] {
   display: block;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   color: hsl(0, 0%, 90.2%);
   margin-bottom: 0.5rem;
 }
@@ -434,7 +554,7 @@ select {
   padding: 1rem 1.5rem 1rem 1.5rem;
   cursor: pointer;
   background-color: transparent;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 400;
   font-family: "Inter", sans-serif;
 }/*# sourceMappingURL=main.css.map */
