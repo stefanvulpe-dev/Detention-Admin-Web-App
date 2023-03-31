@@ -128,14 +128,12 @@ select {
   font-size: var(--fs-small);
 }
 
-
 .stats-info__container .highlight {
-.stats-info .highlight {
   font-size: var(--fs-large);
   font-weight: 700;
 }
-.stats-info__container .stats-info__container__description {
-  font-size: 1.5rem;
+.stats-info__container .stats-info__container__description__description {
+  font-size: var(--fs-large);
   font-weight: 600;
 }
 
@@ -240,6 +238,8 @@ select {
 
 .stats-main__chart-container__title {
   background-color: hsl(120, 5%, 11%);
+}
+
 .about__title-text {
   color: hsl(0, 0%, 100%);
 }
@@ -248,6 +248,8 @@ select {
 }
 .about__container-description {
   color: hsl(0, 0%, 100%);
+}
+
 .stats-info__card {
   background-color: red;
 }

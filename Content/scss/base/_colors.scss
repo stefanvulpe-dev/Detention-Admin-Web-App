@@ -69,6 +69,8 @@ $colors: (
         &__title {
             background-color: map-get($colors,secondary-black);
         }
+    }
+}
 .about {
     &__title {
         &-text {
@@ -84,6 +86,8 @@ $colors: (
         &-description {
             color: map-get($colors, primary-white);
         }
+    }
+}
 .stats-info{
     &__card {
         background-color: red;
