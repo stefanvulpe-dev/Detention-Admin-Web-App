@@ -51,3 +51,21 @@ $colors: (
 .contact :is(h1, label, legend, button) {
     color: map-get($colors, primary-white);
 }
+
+.about {
+    &__title {
+        &-text {
+            color: map-get($colors, primary-white);
+        }
+    }
+
+    &__container {
+        .title-text {
+            color: map-get($colors, primary-white);
+        }
+
+        &-description {
+            color: map-get($colors, primary-white);
+        }
+    }
+}

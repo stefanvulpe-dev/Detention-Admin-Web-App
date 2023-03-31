@@ -2,7 +2,7 @@
 @use '../base/' as *;
 
 .main {
-    width: 80%;
+    width: min(90%, 82.5rem);
     margin-inline: auto;
     @include grid-display(auto, auto, 3rem, center, center, center, center);
     margin-top: 3rem;
@@ -14,7 +14,7 @@
     }
 
     &__container {
-        max-width: 83.5rem;
+        width: 100%;
         @include grid-display(1.35fr 1fr 1fr 1.35fr, auto, 3rem, center, center, center, center);
         grid-template-areas: 
             'slimCard1 wideCard1 wideCard1 slimCard2'
@@ -55,7 +55,7 @@
                     object-fit: cover;
                 }
             }
-
+            
             .card {
                 background-color: map-get($colors, secondary-white);
                 @include grid-display(auto, auto, 1rem, center, center, center, center);
