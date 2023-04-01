@@ -6,6 +6,7 @@
     margin-inline: auto;
     @include grid-display(auto, auto, 3rem, center, center, center, center);
     margin-top: 3rem;
+
     &__rule {
         width: 100%;
         background-color: map-get($colors, primary-white);
@@ -16,74 +17,88 @@
     &__container {
         width: 100%;
         @include grid-display(1.35fr 1fr 1fr 1.35fr, auto, 3rem, center, center, center, center);
-        grid-template-areas: 
+        grid-template-areas:
             'slimCard1 wideCard1 wideCard1 slimCard2'
             'slimCard1 wideCard2 wideCard2 slimCard2';
 
-            #slimCard1 {
-                grid-area: slimCard1;
+        #slimCard1 {
+            grid-area: slimCard1;
+        }
+
+        #slimCard2 {
+            grid-area: slimCard2;
+        }
+
+        #wideCard1 {
+            grid-area: wideCard1;
+            @include grid-display(1fr 2fr, repeat(3, 1fr), 1rem, center, center);
+
+            .card__img {
+                grid-row: 1 / span 3;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 1.5rem;
+                align-self: stretch;
+                object-fit: cover;
+            }
+        }
+
+        #wideCard2 {
+            grid-area: wideCard2;
+
+            @include grid-display(2fr 1fr, repeat(3, 1fr), 0.5rem, center, center);
+
+            .card__img {
+                grid-row: 1 / span 3;
+                grid-column: 2 / 3;
+                border-bottom-right-radius: 1.5rem;
+                border-top-left-radius: 0;
+                align-self: stretch;
+                object-fit: cover;
+            }
+        }
+
+        .card {
+            background-color: map-get($colors, secondary-white);
+            @include grid-display(auto, auto, 1rem, center, center, center, center);
+            border-radius: 1.5rem;
+
+            &__img {
+                border-top-left-radius: 1.5rem;
+                border-top-right-radius: 1.5rem;
             }
 
-            #slimCard2 {
-                grid-area: slimCard2;
+            &__title {
+                text-align: center;
             }
 
-            #wideCard1 {
-                grid-area: wideCard1;
-                @include grid-display(1fr 2fr, repeat(3, 1fr), 1rem, center, center);
-
-                .card__img {
-                    grid-row: 1 / span 3;
-                    border-top-right-radius: 0;
-                    border-bottom-left-radius: 1.5rem;
-                    align-self: stretch;
-                    object-fit: cover;
-                }
+            &__description {
+                width: 85%;
+                text-align: center;
             }
 
-            #wideCard2 {
-                grid-area: wideCard2;
+            &__title {
+                padding-block: 1.5rem;
+                border-bottom: 3px dashed map-get($colors, secondary-gray);
+            }
 
-                @include grid-display(2fr 1fr, repeat(3, 1fr), 0.5rem, center, center);
+            &__container {
+                @include flex-display(space-between, center, 1.5rem);
+                padding: 1rem;
 
-                .card__img {
-                    grid-row: 1 / span 3;
-                    grid-column: 2 / 3;
-                    border-bottom-right-radius: 1.5rem;
-                    border-top-left-radius: 0;
-                    align-self: stretch;
-                    object-fit: cover;
+                &-link {
+                    transition: padding 0.3s, background-color 0.3s, color 0.3s, border-width 0.3s, border-radius 0.3s;
+                }
+
+                &-link:hover {
+                    padding: 0.5rem;
+                    border-width: 0.05rem;
+                    border-radius: 2rem;
+                }
+
+                &-link:active {
+                    opacity: 0.8;
                 }
             }
-            
-            .card {
-                background-color: map-get($colors, secondary-white);
-                @include grid-display(auto, auto, 1rem, center, center, center, center);
-                border-radius: 1.5rem;
-
-                &__img {
-                    border-top-left-radius: 1.5rem;
-                    border-top-right-radius: 1.5rem;
-                }
-
-                &__title {
-                    text-align: center;
-                }
-
-                &__description {
-                    width: 85%;
-                    text-align: center;
-                }
-
-                &__title {
-                    padding-block: 1.5rem;
-                    border-bottom: 3px dashed map-get($colors, secondary-gray);
-                }
-
-                &__container {
-                    @include flex-display(space-between, center, 1.5rem);
-                    padding: 1rem;
-                }
-            }
+        }
     }
 }

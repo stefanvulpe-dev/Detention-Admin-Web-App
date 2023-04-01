@@ -202,6 +202,10 @@ select {
 .main__title {
   color: hsl(0, 0%, 100%);
 }
+.main__container .card__container-link:hover {
+  background-color: hsl(0, 97%, 65%);
+  color: hsl(0, 0%, 100%);
+}
 
 :is(.card) :is(h2, p) {
   color: hsl(0, 0%, 0%);
@@ -218,7 +222,8 @@ select {
   color: hsl(0, 0%, 100%);
 }
 
-.stats-info :is(p, span), .stats-main {
+.stats-info :is(p, span),
+.stats-main {
   color: hsl(0, 0%, 100%);
 }
 
@@ -504,6 +509,17 @@ select {
   align-items: center;
   gap: 1.5rem;
   padding: 1rem;
+}
+.main__container .card__container-link {
+  transition: padding 0.3s, background-color 0.3s, color 0.3s, border-width 0.3s, border-radius 0.3s;
+}
+.main__container .card__container-link:hover {
+  padding: 0.5rem;
+  border-width: 0.05rem;
+  border-radius: 2rem;
+}
+.main__container .card__container-link:active {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 1650px) {

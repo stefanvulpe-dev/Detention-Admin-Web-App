@@ -25,6 +25,20 @@ $colors: (
     &__title {
         color: map-get($colors, primary-white);
     }
+
+    &__container {
+
+        .card {
+
+            &__container {
+
+                &-link:hover {
+                    background-color: map-get($colors, accent-red); // se poate schimba
+                    color: map-get($colors, primary-white);
+                }
+            }
+        }
+    }
 }
 
 :is(.card) :is(h2, p) {
@@ -35,6 +49,7 @@ $colors: (
     .card &__container-date {
         color: map-get($colors, secondary-gray);
     }
+
     &__container-link {
         color: map-get($colors, primary-dark);
     }
@@ -44,19 +59,22 @@ $colors: (
     color: map-get($colors, primary-white);
 }
 
-.stats-info :is(p, span), .stats-main {
+.stats-info :is(p, span),
+.stats-main {
     color: map-get($colors, primary-white);
 }
 
 .stats-info__container__card {
     &--1 {
-        background-color: map-get($colors,accent-maroon);
+        background-color: map-get($colors, accent-maroon);
     }
+
     &--2 {
-        background-color: map-get($colors,accent-green);
+        background-color: map-get($colors, accent-green);
     }
+
     &--3 {
-        background-color: map-get($colors,accent-light-green);
+        background-color: map-get($colors, accent-light-green);
     }
 }
 
@@ -67,10 +85,11 @@ $colors: (
 .stats-main {
     &__chart-container {
         &__title {
-            background-color: map-get($colors,secondary-black);
+            background-color: map-get($colors, secondary-black);
         }
     }
 }
+
 .about {
     &__title {
         &-text {
@@ -88,7 +107,8 @@ $colors: (
         }
     }
 }
-.stats-info{
+
+.stats-info {
     &__card {
         background-color: red;
     }
