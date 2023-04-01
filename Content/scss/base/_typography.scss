@@ -159,11 +159,13 @@ $font-sizes: (
     }
 
 }
+
 .details {
     &__title {
         font-size: var(--fs-extra-large);
         font-weight: map-get($font-weights, bold);
     }
+
     &__form {
         font-family: $ff-primary;
         font-size: var(--fs-medium);
@@ -171,23 +173,73 @@ $font-sizes: (
     }
 }
 
-.about {
+
+.contact {
     &__title {
-        &-text {
-            
+        font-family: $ff-primary;
+        font-weight: map-get($font-weights, bold);
+        font-size: map-get($font-sizes, huge);
+        font-style: italic;
+    }
+
+    &__form {
+        &-fieldset {
+            font-size: var(--fs-regular);
+            font-weight: map-get($font-weights, semi-bold);
+        }
+
+        legend {
             font-weight: map-get($font-weights, regular);
-            font-size: var(--fs-huge);
+        }
+
+        label[for=first-name],
+        label[for=last-name],
+        label[for=email],
+        label[for=suggestions] {
+            font-size: map-get($font-sizes, large);
+
+        }
+
+        textarea[name=suggestions]::placeholder {
+            font-weight: map-get($font-weights, regular);
+            font-size: map-get($font-sizes, small);
+        }
+
+        &-button {
+            font-size: map-get($font-sizes, medium);
+            font-weight: map-get($font-weights, regular);
+            font-family: $ff-primary;
         }
     }
 
+    :is(&__form-legend, &__form-button) {
+        font-size: var(--fs-large);
+    }
+}
+
+
+.about {
+
+    &__title {
+
+        &-text {
+            font-weight: map-get($font-weights, regular);
+            font-size: map-get($font-sizes, huge);
+        }
+
+    }
+
     &__container {
+
+
         .title-text {
             font-weight: map-get($font-weights, bold);
-            font-size: var(--fs-large);
+            font-size: map-get($font-sizes, large);
         }
 
         &-description {
-            font-size: var(--fs-medium);
+            font-size: map-get($font-sizes, medium);
+
         }
     }
 }
