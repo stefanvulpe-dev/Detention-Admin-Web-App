@@ -28,9 +28,6 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background-image: url("../../../assets/background.png");
-  background-color: #cccccc;
-  background-size: contain;
 }
 
 /* A elements that don't have a class get default styles */
@@ -191,6 +188,50 @@ select {
   font-size: var(--fs-medium);
 }
 
+.contact__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  font-style: italic;
+}
+.contact__form-fieldset {
+  font-size: var(--fs-regular);
+  font-weight: 600;
+}
+.contact__form legend {
+  font-weight: 400;
+}
+.contact__form label[for=first-name],
+.contact__form label[for=last-name],
+.contact__form label[for=email],
+.contact__form label[for=suggestions] {
+  font-size: 1.5rem;
+}
+.contact__form textarea[name=suggestions]::placeholder {
+  font-weight: 400;
+  font-size: 1rem;
+}
+.contact__form-button {
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+:is(.contact__form-legend, .contact__form-button) {
+  font-size: var(--fs-large);
+}
+
+.about__title-text {
+  font-weight: 400;
+  font-size: 3rem;
+}
+.about__container .title-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.about__container-description {
+  font-size: 1.25rem;
+}
+
 :is(header, .hero) :is(h1, p, a) {
   color: hsl(0, 0%, 100%);
 }
@@ -236,19 +277,48 @@ select {
   color: hsl(0, 0%, 100%);
 }
 
-.stats-main__chart-container__title {
-  background-color: hsl(120, 5%, 11%);
+
+.contact {
+  background-color: #cccccc;
+}
+.contact__form-fieldset {
+  border-color: hsl(0, 0%, 100%);
+}
+.contact__form legend {
+  background-color: hsl(0, 0%, 35%);
+}
+.contact__form label[for=first-name],
+.contact__form label[for=last-name],
+.contact__form label[for=email],
+.contact__form label[for=suggestions] {
+  color: hsl(0, 0%, 90.2%);
+}
+.contact__form input {
+  background-color: hsl(0, 0%, 90.2%);
+}
+.contact__form textarea[name=suggestions] {
+  background-color: hsl(0, 0%, 90.2%);
+}
+.contact__form-button {
+  border-color: hsl(0, 0%, 100%);
+  background-color: transparent;
 }
 
+.about {
+  background-color: #cccccc;
+}
 .about__title-text {
   color: hsl(0, 0%, 100%);
 }
 .about__container .title-text {
   color: hsl(0, 0%, 100%);
 }
-.about__container-description {
-  color: hsl(0, 0%, 100%);
+
+.about__container .line {
+  background-color: hsl(0, 0%, 100%);
 }
+
+
 
 .stats-info__card {
   background-color: red;
@@ -277,8 +347,10 @@ select {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  width: min(90%, 83.5rem);
-  margin-inline: auto;
+
+  background-color: hsl(0, 0%, 0%);
+  padding: 1rem 2.5rem 1rem 2.5rem;
+
 }
 
 .header__logo {
@@ -397,6 +469,12 @@ select {
     top: 1rem;
   }
 }
+
+.about {
+  background-image: url("../../../assets/background.png");
+  background-size: cover;
+  background-position: center;
+
 .main {
   width: min(90%, 82.5rem);
   margin-inline: auto;
@@ -580,13 +658,13 @@ select {
   width: 2rem;
 }
 .about__container {
-  margin: 1rem 0 1rem 0;
+  margin-top: 1rem;
+
 }
 .about__container .line {
   flex: 1;
   height: 0.25rem;
   border-radius: 0.5rem;
-  background-color: hsl(0, 0%, 100%);
 }
 .about__container__title-left {
   display: flex;
@@ -605,9 +683,12 @@ select {
 }
 .about__container-description {
   width: 100%;
+  color: hsl(0, 0%, 100%);
+
 }
 .about__container-photo {
   width: 80%;
+  padding-top: 2rem;
 }
 .about__container__info {
   display: grid;
@@ -618,14 +699,22 @@ select {
   justify-content: center;
   align-items: center;
   align-content: center;
-  padding: 0 2rem 0 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 
+.contact {
+  background-image: url("../../../assets/background.png");
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 2rem 2rem 2rem;
+}
 .contact__title {
+
   font-size: 2rem;
   font-style: italic;
   text-align: center;
-  margin: 5rem 2rem 2rem 2rem;
+  white-space: nowrap;
+  margin-bottom: 2rem;
 }
 .contact__form-fieldset {
   display: flex;
@@ -633,10 +722,9 @@ select {
   align-items: center;
   gap: 3rem;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 2rem;
   width: 50%;
   height: auto;
-  border-color: hsl(0, 0%, 100%);
   border-radius: 7px;
   border: none;
   line-height: 1rem;
@@ -644,8 +732,6 @@ select {
   margin: auto;
 }
 .contact__form legend {
-  background-color: hsl(0, 0%, 35%);
-  font-weight: 400;
   padding: 1rem 0.35rem 1rem 0.35rem;
 }
 .contact__form label[for=first-name],
@@ -658,16 +744,14 @@ select {
   margin-bottom: 0.5rem;
 }
 .contact__form input {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   padding-left: 0.25rem;
-  width: 20rem;
-  height: 2rem;
-  background-color: hsl(0, 0%, 90.2%);
+  width: 30rem;
+  height: 2.5rem;
   border: none;
   border-radius: 0.5rem;
 }
 .contact__form textarea[name=suggestions] {
-  background-color: hsl(0, 0%, 90.2%);
   padding: 1rem;
   border-radius: 0.5rem;
 }
@@ -676,10 +760,9 @@ select {
   font-size: 0.875rem;
 }
 .contact__form-button {
-  margin-left: 12rem;
+  margin-left: 25rem;
   border-width: 0.25rem;
   border-style: solid;
-  border-color: hsl(0, 0%, 100%);
   border-radius: 0.5rem;
   padding: 1rem 1.5rem 1rem 1.5rem;
   cursor: pointer;

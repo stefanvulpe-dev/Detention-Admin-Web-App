@@ -2,11 +2,16 @@
 @use '../sass-utils/' as *;
 
 .contact {
+
+    background-image: url("../../../assets/background.png");
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 2rem 2rem 2rem;
+
     &__title {
-        font-size: map-get($font-sizes, huge);
-        font-style: italic;
         text-align: center;
-        margin: 5rem 2rem 2rem 2rem;
+        white-space: nowrap;
+        margin-bottom: 2rem;
     }
 
     &__form {
@@ -14,10 +19,9 @@
         &-fieldset {
             @include flex-display(center, center, 3rem);
             flex-direction: column;
-            padding: 2rem;
+            padding: 2rem 2rem 2rem 2rem;
             width: 50%;
             height: auto;
-            border-color: map-get($colors, primary-white);
             border-radius: 7px;
             border: none;
             line-height: 1rem;
@@ -26,8 +30,6 @@
         }
 
         legend {
-            background-color: map-get($colors, secondary-gray);
-            font-weight: map-get($font-weights, regular);
             padding: 1rem 0.35rem 1rem 0.35rem;
         }
 
@@ -36,44 +38,42 @@
         label[for=email],
         label[for=suggestions] {
             display: block;
-            font-size: map-get($font-sizes, medium);
-            color: hsl(0, 0, 90.2%);
             margin-bottom: 0.5rem;
         }
 
         input {
-            margin-bottom: 4rem;
+            margin-bottom: 3.5rem;
             padding-left: 0.25rem;
-            width: 20rem;
-            height: 2rem;
-            background-color: hsl(0, 0%, 90.2%);
+            width: 30rem;
+            height: 2.5rem;
             border: none;
             border-radius: 0.5rem;
         }
 
         textarea[name=suggestions] {
-            background-color: hsl(0, 0%, 90.2%);
             padding: 1rem;
             border-radius: 0.5rem;
-        }
-
-        textarea[name=suggestions]::placeholder {
-            font-weight: map-get($font-weights, regular);
-            font-size: map-get($font-sizes, small);
+            width: 30rem;
         }
 
         &-button {
-            margin-left: 12rem;
+            margin-left: 25rem;
             border-width: 0.25rem;
             border-style: solid;
-            border-color: map-get($colors, primary-white);
             border-radius: 0.5rem;
             padding: 1rem 1.5rem 1rem 1.5rem;
             cursor: pointer;
-            background-color: transparent;
-            font-size: map-get($font-sizes, medium);
-            font-weight: map-get($font-weights, regular);
-            font-family: $ff-primary;
+            transition: opacity 0.2s, padding 0.2s, font-size 0.2s;
+        }
+
+        &-button:hover {
+            opacity: 0.7;
+            padding: 1.5rem 2rem 1.5rem 2rem;
+            font-size: map-get($font-sizes, large);
+        }
+
+        &-button:active {
+            opacity: 0.5;
         }
     }
 }
