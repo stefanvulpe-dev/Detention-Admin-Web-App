@@ -105,15 +105,13 @@ $font-sizes: (
 
 .stats-info__container {
     .highlight {
-        font-size: var(--fs-large);
+        font-size: var(--fs-huge);
         font-weight: map-get($font-weights,bold);
     }
     .stats-info__container__description {
-        &__description {
-            font-size: var(--fs-large);
+            font-size: var(--fs-extra-large);
             font-weight: map-get($font-weights, semi-bold);
-        }
-    }
+        }    
 }
 
 .contact {
@@ -133,14 +131,16 @@ $font-sizes: (
     }
 }
 
-.aside {
-    &__button-text {
-        font-size: var(--fs-large);
-        font-weight: map-get($font-weights, semi-bold);
-    }
-}
+
 
 .guest-main {
+    font-family: $ff-primary;
+    &__aside {
+        &__button{
+        font-size: var(--fs-large);
+        font-weight: map-get($font-weights, semi-bold);
+        }
+    }
     &__guest-card {
         font-size: var(--fs-regular);
 

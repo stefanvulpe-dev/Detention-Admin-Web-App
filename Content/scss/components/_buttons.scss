@@ -1,0 +1,25 @@
+@use '../base/colors' as *;
+.guest-main {
+    &__aside__button {
+        width: max(100%,10rem);
+        padding: 1rem;
+        border-radius: 0.7rem;
+        border-style: none;
+        box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+        cursor: pointer;
+        transition: all 250ms ease-in-out;
+        &:is(:hover, :focus) {
+            box-shadow: 0 0 3.5rem map-get($colors, accent-charcoal);
+        }
+    }
+    &__list__next-page {
+        text-align: center;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        width: min(8rem,27%);
+        transition: all 250ms ease-in-out;
+        &:is(:hover, :focus) {
+            box-shadow: 0 0 3.5rem map-get($colors, accent-red);
+        }
+    }
+}
