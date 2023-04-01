@@ -28,9 +28,6 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background-image: url("../../../assets/background.png");
-  background-color: #cccccc;
-  background-size: contain;
 }
 
 /* A elements that don't have a class get default styles */
@@ -129,11 +126,11 @@ select {
 }
 
 .stats-info__container .highlight {
-  font-size: var(--fs-large);
+  font-size: var(--fs-huge);
   font-weight: 700;
 }
-.stats-info__container .stats-info__container__description__description {
-  font-size: var(--fs-large);
+.stats-info__container .stats-info__container__description {
+  font-size: var(--fs-extra-large);
   font-weight: 600;
 }
 
@@ -150,11 +147,13 @@ select {
   font-size: var(--fs-large);
 }
 
-.aside__button-text {
+.guest-main {
+  font-family: "Inter", sans-serif;
+}
+.guest-main__aside__button {
   font-size: var(--fs-large);
   font-weight: 600;
 }
-
 .guest-main__guest-card {
   font-size: var(--fs-regular);
 }
@@ -189,6 +188,50 @@ select {
 }
 .about__container-description {
   font-size: var(--fs-medium);
+}
+
+.contact__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  font-style: italic;
+}
+.contact__form-fieldset {
+  font-size: var(--fs-regular);
+  font-weight: 600;
+}
+.contact__form legend {
+  font-weight: 400;
+}
+.contact__form label[for=first-name],
+.contact__form label[for=last-name],
+.contact__form label[for=email],
+.contact__form label[for=suggestions] {
+  font-size: 1.5rem;
+}
+.contact__form textarea[name=suggestions]::placeholder {
+  font-weight: 400;
+  font-size: 1rem;
+}
+.contact__form-button {
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+:is(.contact__form-legend, .contact__form-button) {
+  font-size: var(--fs-large);
+}
+
+.about__title-text {
+  font-weight: 400;
+  font-size: 3rem;
+}
+.about__container .title-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.about__container-description {
+  font-size: 1.25rem;
 }
 
 :is(header, .hero) :is(h1, p, a) {
@@ -241,22 +284,64 @@ select {
   color: hsl(0, 0%, 100%);
 }
 
-.stats-main__chart-container__title {
-  background-color: hsl(120, 5%, 11%);
+
+.contact {
+  background-color: #cccccc;
+}
+.contact__form-fieldset {
+  border-color: hsl(0, 0%, 100%);
+}
+.contact__form legend {
+  background-color: hsl(0, 0%, 35%);
+}
+.contact__form label[for=first-name],
+.contact__form label[for=last-name],
+.contact__form label[for=email],
+.contact__form label[for=suggestions] {
+  color: hsl(0, 0%, 90.2%);
+}
+.contact__form input {
+  background-color: hsl(0, 0%, 90.2%);
+}
+.contact__form textarea[name=suggestions] {
+  background-color: hsl(0, 0%, 90.2%);
+}
+.contact__form-button {
+  border-color: hsl(0, 0%, 100%);
+  background-color: transparent;
 }
 
+.about {
+  background-color: #cccccc;
+}
 .about__title-text {
   color: hsl(0, 0%, 100%);
 }
 .about__container .title-text {
   color: hsl(0, 0%, 100%);
 }
-.about__container-description {
-  color: hsl(0, 0%, 100%);
+
+.about__container .line {
+  background-color: hsl(0, 0%, 100%);
 }
+
+
 
 .stats-info__card {
   background-color: red;
+}
+
+.guest-main__aside__button {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(169, 26%, 20%);
+}
+.guest-main__list__card {
+  background-color: hsl(0, 0%, 80%);
+}
+.guest-main__list__next-page {
+  font-size: var(--fs-large);
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 97%, 65%);
 }
 
 .header {
@@ -282,8 +367,10 @@ select {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  width: min(90%, 83.5rem);
-  margin-inline: auto;
+
+  background-color: hsl(0, 0%, 0%);
+  padding: 1rem 2.5rem 1rem 2.5rem;
+
 }
 
 .header__logo {
@@ -402,6 +489,12 @@ select {
     top: 1rem;
   }
 }
+
+.about {
+  background-image: url("../../../assets/background.png");
+  background-size: cover;
+  background-position: center;
+
 .main {
   width: min(90%, 82.5rem);
   margin-inline: auto;
@@ -596,13 +689,13 @@ select {
   width: 2rem;
 }
 .about__container {
-  margin: 1rem 0 1rem 0;
+  margin-top: 1rem;
+
 }
 .about__container .line {
   flex: 1;
   height: 0.25rem;
   border-radius: 0.5rem;
-  background-color: hsl(0, 0%, 100%);
 }
 .about__container__title-left {
   display: flex;
@@ -621,9 +714,12 @@ select {
 }
 .about__container-description {
   width: 100%;
+  color: hsl(0, 0%, 100%);
+
 }
 .about__container-photo {
   width: 80%;
+  padding-top: 2rem;
 }
 .about__container__info {
   display: grid;
@@ -634,14 +730,22 @@ select {
   justify-content: center;
   align-items: center;
   align-content: center;
-  padding: 0 2rem 0 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 
+.contact {
+  background-image: url("../../../assets/background.png");
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 2rem 2rem 2rem;
+}
 .contact__title {
+
   font-size: 2rem;
   font-style: italic;
   text-align: center;
-  margin: 5rem 2rem 2rem 2rem;
+  white-space: nowrap;
+  margin-bottom: 2rem;
 }
 .contact__form-fieldset {
   display: flex;
@@ -649,10 +753,9 @@ select {
   align-items: center;
   gap: 3rem;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 2rem;
   width: 50%;
   height: auto;
-  border-color: hsl(0, 0%, 100%);
   border-radius: 7px;
   border: none;
   line-height: 1rem;
@@ -660,8 +763,6 @@ select {
   margin: auto;
 }
 .contact__form legend {
-  background-color: hsl(0, 0%, 35%);
-  font-weight: 400;
   padding: 1rem 0.35rem 1rem 0.35rem;
 }
 .contact__form label[for=first-name],
@@ -674,16 +775,14 @@ select {
   margin-bottom: 0.5rem;
 }
 .contact__form input {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   padding-left: 0.25rem;
-  width: 20rem;
-  height: 2rem;
-  background-color: hsl(0, 0%, 90.2%);
+  width: 30rem;
+  height: 2.5rem;
   border: none;
   border-radius: 0.5rem;
 }
 .contact__form textarea[name=suggestions] {
-  background-color: hsl(0, 0%, 90.2%);
   padding: 1rem;
   border-radius: 0.5rem;
 }
@@ -692,10 +791,9 @@ select {
   font-size: 0.875rem;
 }
 .contact__form-button {
-  margin-left: 12rem;
+  margin-left: 25rem;
   border-width: 0.25rem;
   border-style: solid;
-  border-color: hsl(0, 0%, 100%);
   border-radius: 0.5rem;
   padding: 1rem 1.5rem 1rem 1.5rem;
   cursor: pointer;
@@ -754,6 +852,71 @@ body {
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   margin-bottom: -2rem;
   box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);
+}
+
+.guest-main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto;
+  gap: 4rem;
+  justify-items: normal;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+  padding: 6rem 1.65rem 6rem 1.65rem;
+  width: min(90%, 83.5rem);
+  margin-inline: auto;
+}
+.guest-main__aside {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  gap: 3rem;
+  flex-direction: column;
+  padding: 0rem 4rem 0rem 0rem;
+  border-right: 0.25rem solid white;
+  border-radius: 0.25rem;
+}
+.guest-main__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: normal;
+  gap: 3rem;
+  flex-direction: column;
+}
+.guest-main__list__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+}
+
+.guest-main__aside__button {
+  width: max(100%, 10rem);
+  padding: 1rem;
+  border-radius: 0.7rem;
+  border-style: none;
+  box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+.guest-main__aside__button:is(:hover, :focus) {
+  box-shadow: 0 0 3.5rem hsl(203, 19%, 30%);
+}
+.guest-main__list__next-page {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: min(8rem, 27%);
+  transition: all 250ms ease-in-out;
+}
+.guest-main__list__next-page:is(:hover, :focus) {
+  box-shadow: 0 0 3.5rem hsl(0, 97%, 65%);
 }
 
 .stats-info__container__card--1, .stats-info__container__card--2, .stats-info__container__card--3 {

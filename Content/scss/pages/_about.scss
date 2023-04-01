@@ -1,8 +1,11 @@
 @use '../base/' as *;
 @use '../sass-utils/' as *;
 
-
 .about {
+
+    background-image: url("../../../assets/background.png");
+    background-size: cover;
+    background-position: center;
 
     &__title {
         @include flex-display(center, center, 1rem);
@@ -14,13 +17,13 @@
     }
 
     &__container {
-        margin: 1rem 0 1rem 0;
+        margin-top: 1rem;
+
 
         .line {
             flex: 1;
             height: 0.25rem;
             border-radius: 0.5rem;
-            background-color: map-get($colors, primary-white);
         }
 
         &__title-left {
@@ -40,11 +43,12 @@
 
         &-photo {
             width: 80%;
+            padding-top: 2rem;
         }
 
         &__info {
             @include grid-display(1fr 1fr, 1fr, 2rem, center, center, center, center);
-            padding: 0 2rem 0 2rem;
+            padding: 0 2rem 2rem 2rem;
         }
     }
 }

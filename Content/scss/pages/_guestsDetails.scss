@@ -1,0 +1,28 @@
+@use '../sass-utils/' as *;
+@use '../base/' as *;
+
+.guest-main {
+    @include grid-display(1fr 3fr, auto, 4rem, normal,center,center,normal);
+    padding: 6rem 1.65rem 6rem 1.65rem;
+    width: min(90%, 83.5rem);
+    margin-inline: auto;
+    &__aside {
+        @include flex-display(start,flex-start,3rem);
+        flex-direction: column;
+        padding: 0rem 4rem 0rem 0rem;
+        border-right: 0.25rem  solid white;
+        border-radius: 0.25rem;
+    }
+    &__list {
+        @include flex-display(space-between,normal,3rem);
+        flex-direction: column;    
+        &__card {
+            @include flex-display(space-between,center,1rem);
+            flex-direction: row;
+            width: 100%;;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+        }
+    }
+}

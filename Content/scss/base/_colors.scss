@@ -82,15 +82,55 @@ $colors: (
     color: map-get($colors, primary-white);
 }
 
+
 .stats-main {
     &__chart-container {
         &__title {
-            background-color: map-get($colors, secondary-black);
+            background-color: map-get($colors, secondary-black);}}}
+
+.contact {
+
+    background-color: #cccccc;
+
+    &__form {
+
+        &-fieldset {
+            border-color: map-get($colors, primary-white);
+        }
+
+        legend {
+            background-color: map-get($colors, secondary-gray);
+        }
+
+        label[for=first-name],
+        label[for=last-name],
+        label[for=email],
+        label[for=suggestions] {
+            color: hsl(0, 0%, 90.2%);
+        }
+
+        input {
+            background-color: hsl(0, 0%, 90.2%);
+        }
+
+        textarea[name=suggestions] {
+            background-color: hsl(0, 0%, 90.2%);
+
+        }
+
+        &-button {
+            border-color: map-get($colors, primary-white);
+            background-color: transparent;
+
         }
     }
 }
 
 .about {
+
+    background-color: #cccccc;
+
+
     &__title {
         &-text {
             color: map-get($colors, primary-white);
@@ -102,6 +142,11 @@ $colors: (
             color: map-get($colors, primary-white);
         }
 
+
+        .line {
+            background-color: map-get($colors, primary-white);
+        }
+
         &-description {
             color: map-get($colors, primary-white);
         }
@@ -111,5 +156,23 @@ $colors: (
 .stats-info {
     &__card {
         background-color: red;
+    }
+}
+.guest-main {
+    &__aside {
+        &__button {
+            color: map-get($colors,primary-white);
+            background-color: map-get($colors, primary-dark-gray);
+        }
+    }
+    &__list {
+        &__card{
+        background-color: map-get($colors,secondary-white);
+        }
+        &__next-page{
+            font-size: var(--fs-large);
+            color: map-get($colors,primary-white);
+            background-color: map-get($colors,accent-red);
+        }
     }
 }
