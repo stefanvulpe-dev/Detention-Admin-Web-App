@@ -35,6 +35,7 @@ $colors: (
     .card &__container-date {
         color: map-get($colors, secondary-gray);
     }
+
     &__container-link {
         color: map-get($colors, primary-dark);
     }
@@ -50,4 +51,71 @@ $colors: (
 
 .contact :is(h1, label, legend, button) {
     color: map-get($colors, primary-white);
+}
+
+.contact {
+
+    background-color: #cccccc;
+
+    &__form {
+
+        &-fieldset {
+            border-color: map-get($colors, primary-white);
+        }
+
+        legend {
+            background-color: map-get($colors, secondary-gray);
+        }
+
+        label[for=first-name],
+        label[for=last-name],
+        label[for=email],
+        label[for=suggestions] {
+            color: hsl(0, 0%, 90.2%);
+        }
+
+        input {
+            background-color: hsl(0, 0%, 90.2%);
+        }
+
+        textarea[name=suggestions] {
+            background-color: hsl(0, 0%, 90.2%);
+
+        }
+
+        &-button {
+            border-color: map-get($colors, primary-white);
+            background-color: transparent;
+
+        }
+    }
+}
+
+
+.about {
+
+    background-color: #cccccc;
+
+
+    &__title {
+
+        &-text {
+            color: map-get($colors, primary-white);
+        }
+    }
+
+    &__container {
+
+        .title-text {
+            color: map-get($colors, primary-white);
+        }
+
+        .line {
+            background-color: map-get($colors, primary-white);
+        }
+
+        &-description {
+            color: map-get($colors, primary-white);
+        }
+    }
 }

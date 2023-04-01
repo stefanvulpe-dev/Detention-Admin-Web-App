@@ -143,6 +143,50 @@ select {
   font-weight: 700;
 }
 
+.contact__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  font-style: italic;
+}
+.contact__form-fieldset {
+  font-size: var(--fs-regular);
+  font-weight: 600;
+}
+.contact__form legend {
+  font-weight: 400;
+}
+.contact__form label[for=first-name],
+.contact__form label[for=last-name],
+.contact__form label[for=email],
+.contact__form label[for=suggestions] {
+  font-size: 1.5rem;
+}
+.contact__form textarea[name=suggestions]::placeholder {
+  font-weight: 400;
+  font-size: 1rem;
+}
+.contact__form-button {
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+:is(.contact__form-legend, .contact__form-button) {
+  font-size: var(--fs-large);
+}
+
+.about__title-text {
+  font-weight: 400;
+  font-size: 3rem;
+}
+.about__container .title-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.about__container-description {
+  font-size: 1.25rem;
+}
+
 :is(header, .hero) :is(h1, p, a) {
   color: hsl(0, 0%, 100%);
 }
@@ -175,6 +219,48 @@ select {
 }
 
 .contact :is(h1, label, legend, button) {
+  color: hsl(0, 0%, 100%);
+}
+
+.contact {
+  background-color: #cccccc;
+}
+.contact__form-fieldset {
+  border-color: hsl(0, 0%, 100%);
+}
+.contact__form legend {
+  background-color: hsl(0, 0%, 35%);
+}
+.contact__form label[for=first-name],
+.contact__form label[for=last-name],
+.contact__form label[for=email],
+.contact__form label[for=suggestions] {
+  color: hsl(0, 0%, 90.2%);
+}
+.contact__form input {
+  background-color: hsl(0, 0%, 90.2%);
+}
+.contact__form textarea[name=suggestions] {
+  background-color: hsl(0, 0%, 90.2%);
+}
+.contact__form-button {
+  border-color: hsl(0, 0%, 100%);
+  background-color: transparent;
+}
+
+.about {
+  background-color: #cccccc;
+}
+.about__title-text {
+  color: hsl(0, 0%, 100%);
+}
+.about__container .title-text {
+  color: hsl(0, 0%, 100%);
+}
+.about__container .line {
+  background-color: hsl(0, 0%, 100%);
+}
+.about__container-description {
   color: hsl(0, 0%, 100%);
 }
 
@@ -305,7 +391,6 @@ select {
 }
 .about {
   background-image: url("../../../assets/background.png");
-  background-color: #cccccc;
   background-size: cover;
   background-position: center;
 }
@@ -316,27 +401,16 @@ select {
   gap: 1rem;
   padding: 1.5rem 1.5rem 4rem 1.5rem;
 }
-.about__title-text {
-  color: hsl(0, 0%, 100%);
-  font-weight: 400;
-  font-size: 3rem;
-}
 .about__title-icon {
   width: 3rem;
 }
 .about__container {
   margin-top: 1rem;
 }
-.about__container .title-text {
-  color: hsl(0, 0%, 100%);
-  font-weight: 700;
-  font-size: 1.5rem;
-}
 .about__container .line {
   flex: 1;
   height: 0.25rem;
   border-radius: 0.5rem;
-  background-color: hsl(0, 0%, 100%);
 }
 .about__container__title-left {
   display: flex;
@@ -356,7 +430,6 @@ select {
 .about__container-description {
   width: 100%;
   color: hsl(0, 0%, 100%);
-  font-size: 1.25rem;
 }
 .about__container-photo {
   width: 80%;
@@ -376,14 +449,11 @@ select {
 
 .contact {
   background-image: url("../../../assets/background.png");
-  background-color: #cccccc;
   background-size: cover;
   background-position: center;
   padding: 5rem 2rem 2rem 2rem;
 }
 .contact__title {
-  font-size: 3rem;
-  font-style: italic;
   text-align: center;
   white-space: nowrap;
   margin-bottom: 2rem;
@@ -397,7 +467,6 @@ select {
   padding: 2rem 2rem 2rem 2rem;
   width: 50%;
   height: auto;
-  border-color: hsl(0, 0%, 100%);
   border-radius: 7px;
   border: none;
   line-height: 1rem;
@@ -405,8 +474,6 @@ select {
   margin: auto;
 }
 .contact__form legend {
-  background-color: hsl(0, 0%, 35%);
-  font-weight: 400;
   padding: 1rem 0.35rem 1rem 0.35rem;
 }
 .contact__form label[for=first-name],
@@ -414,8 +481,6 @@ select {
 .contact__form label[for=email],
 .contact__form label[for=suggestions] {
   display: block;
-  font-size: 1.5rem;
-  color: hsl(0, 0%, 90.2%);
   margin-bottom: 0.5rem;
 }
 .contact__form input {
@@ -423,32 +488,21 @@ select {
   padding-left: 0.25rem;
   width: 30rem;
   height: 2.5rem;
-  background-color: hsl(0, 0%, 90.2%);
   border: none;
   border-radius: 0.5rem;
 }
 .contact__form textarea[name=suggestions] {
-  background-color: hsl(0, 0%, 90.2%);
   padding: 1rem;
   border-radius: 0.5rem;
   width: 30rem;
-}
-.contact__form textarea[name=suggestions]::placeholder {
-  font-weight: 400;
-  font-size: 1rem;
 }
 .contact__form-button {
   margin-left: 25rem;
   border-width: 0.25rem;
   border-style: solid;
-  border-color: hsl(0, 0%, 100%);
   border-radius: 0.5rem;
   padding: 1rem 1.5rem 1rem 1.5rem;
   cursor: pointer;
-  background-color: transparent;
-  font-size: 1.25rem;
-  font-weight: 400;
-  font-family: "Inter", sans-serif;
   transition: opacity 0.2s, padding 0.2s, font-size 0.2s;
 }
 .contact__form-button:hover {
