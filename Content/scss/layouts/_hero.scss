@@ -9,10 +9,14 @@
     @include flex-display(center, center, 0);
     
     .wrapper {
-        width: 80%;
+        width: min(80%, 83.5rem);
         margin-inline: auto;
         @include grid-display(auto, auto, 2.5rem, center, center, center, center);
         
+    }
+
+    &__title {
+        text-align: center;
     }
 
     &__description {
