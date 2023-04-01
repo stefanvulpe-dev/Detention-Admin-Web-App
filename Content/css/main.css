@@ -28,10 +28,6 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background-image: url("../../../assets/background.png");
-  background-color: #cccccc;
-  background-size: cover;
-  background-position: center;
 }
 
 /* A elements that don't have a class get default styles */
@@ -198,7 +194,6 @@ select {
   gap: 1rem;
   background-color: hsl(0, 0%, 0%);
   padding: 1rem 2.5rem 1rem 2.5rem;
-  margin-top: 3rem;
 }
 
 .header__logo {
@@ -308,6 +303,12 @@ select {
     top: 1rem;
   }
 }
+.about {
+  background-image: url("../../../assets/background.png");
+  background-color: #cccccc;
+  background-size: cover;
+  background-position: center;
+}
 .about__title {
   display: flex;
   justify-content: center;
@@ -324,7 +325,7 @@ select {
   width: 3rem;
 }
 .about__container {
-  margin: 1rem 0 1rem 0;
+  margin-top: 1rem;
 }
 .about__container .title-text {
   color: hsl(0, 0%, 100%);
@@ -359,6 +360,7 @@ select {
 }
 .about__container-photo {
   width: 80%;
+  padding-top: 2rem;
 }
 .about__container__info {
   display: grid;
@@ -369,15 +371,22 @@ select {
   justify-content: center;
   align-items: center;
   align-content: center;
-  padding: 0 2rem 0 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 
+.contact {
+  background-image: url("../../../assets/background.png");
+  background-color: #cccccc;
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 2rem 2rem 2rem;
+}
 .contact__title {
   font-size: 3rem;
   font-style: italic;
   text-align: center;
-  margin: 5rem 2rem 2rem 2rem;
   white-space: nowrap;
+  margin-bottom: 2rem;
 }
 .contact__form-fieldset {
   display: flex;

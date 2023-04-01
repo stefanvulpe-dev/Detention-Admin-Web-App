@@ -5,5 +5,4 @@
     @include flex-display(space-between, center, 1rem);
     background-color: map-get($colors, primary-dark);
     padding: 1rem 2.5rem 1rem 2.5rem;
-    margin-top: 3rem;
 }

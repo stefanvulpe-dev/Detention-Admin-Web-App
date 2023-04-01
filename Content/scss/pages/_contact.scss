@@ -2,12 +2,19 @@
 @use '../sass-utils/' as *;
 
 .contact {
+
+    background-image: url("../../../assets/background.png");
+    background-color: #cccccc;
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 2rem 2rem 2rem;
+
     &__title {
         font-size: map-get($font-sizes, huge);
         font-style: italic;
         text-align: center;
-        margin: 5rem 2rem 2rem 2rem;
         white-space: nowrap;
+        margin-bottom: 2rem;
     }
 
     &__form {
