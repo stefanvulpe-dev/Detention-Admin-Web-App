@@ -21,33 +21,32 @@ $font-sizes: (
 );
 
 :root {
-    --fs-very-small: #{map-get($font-sizes, very-small)}; 
-    --fs-small: #{map-get($font-sizes, small)}; 
-    --fs-regular: #{map-get($font-sizes, regular)}; 
-    --fs-medium: #{map-get($font-sizes, medium)}; 
-    --fs-large: #{map-get($font-sizes, large)}; 
-    --fs-extra-large: #{map-get($font-sizes, extra-large)}; 
-    --fs-huge: #{map-get($font-sizes, huge)}; 
+    --fs-very-small: #{map-get($font-sizes, very-small)};
+    --fs-small: #{map-get($font-sizes, small)};
+    --fs-regular: #{map-get($font-sizes, regular)};
+    --fs-medium: #{map-get($font-sizes, medium)};
+    --fs-large: #{map-get($font-sizes, large)};
+    --fs-extra-large: #{map-get($font-sizes, extra-large)};
+    --fs-huge: #{map-get($font-sizes, huge)};
 }
 
 @include media-min(map-get($breakpoints, medium)) {
-    $font-sizes: (
-        very-small: 0.75rem,
+    $font-sizes: (very-small: 0.75rem,
         small: 1rem,
         regular: 1.125rem,
         medium: 1.35rem,
         large: 1.5rem,
         extra-large: 2rem,
-        huge: 3rem
-    );
+        huge: 3rem);
+
     :root {
-        --fs-very-small: #{map-get($font-sizes, very-small)}; 
-        --fs-small: #{map-get($font-sizes, small)}; 
-        --fs-regular: #{map-get($font-sizes, regular)}; 
-        --fs-medium: #{map-get($font-sizes, medium)}; 
-        --fs-large: #{map-get($font-sizes, large)}; 
-        --fs-extra-large: #{map-get($font-sizes, extra-large)}; 
-        --fs-huge: #{map-get($font-sizes, huge)}; 
+        --fs-very-small: #{map-get($font-sizes, very-small)};
+        --fs-small: #{map-get($font-sizes, small)};
+        --fs-regular: #{map-get($font-sizes, regular)};
+        --fs-medium: #{map-get($font-sizes, medium)};
+        --fs-large: #{map-get($font-sizes, large)};
+        --fs-extra-large: #{map-get($font-sizes, extra-large)};
+        --fs-huge: #{map-get($font-sizes, huge)};
     }
 }
 
@@ -92,26 +91,27 @@ $font-sizes: (
 }
 
 .main {
-   .card {
-    &__title {
-        font-size: var(--fs-medium);
+    .card {
+        &__title {
+            font-size: var(--fs-medium);
+        }
+
+        &__container {
+            font-size: var(--fs-small);
+        }
     }
-    
-    &__container {
-        font-size: var(--fs-small);
-    }
-   } 
 }
 
 .stats-info__container {
     .highlight {
         font-size: var(--fs-huge);
-        font-weight: map-get($font-weights,bold);
+        font-weight: map-get($font-weights, bold);
     }
+
     .stats-info__container__description {
-            font-size: var(--fs-extra-large);
-            font-weight: map-get($font-weights, semi-bold);
-        }    
+        font-size: var(--fs-extra-large);
+        font-weight: map-get($font-weights, semi-bold);
+    }
 }
 
 .contact {
@@ -135,12 +135,14 @@ $font-sizes: (
 
 .guest-main {
     font-family: $ff-primary;
+
     &__aside {
-        &__button{
-        font-size: var(--fs-large);
-        font-weight: map-get($font-weights, semi-bold);
+        &__button {
+            font-size: var(--fs-large);
+            font-weight: map-get($font-weights, semi-bold);
         }
     }
+
     &__guest-card {
         font-size: var(--fs-regular);
 
@@ -240,6 +242,54 @@ $font-sizes: (
         &-description {
             font-size: map-get($font-sizes, medium);
 
+        }
+    }
+}
+
+.details {
+
+    &__info {
+
+        &__title {
+            font-weight: map-get($font-weights, bold);
+        }
+
+        &__line {
+            height: 0.5rem;
+            width: 60rem;
+        }
+    }
+
+    &__form {
+
+        &__labels {
+
+            &__container {
+                font-size: map-get($font-sizes, large);
+
+                .form-text {
+                    font-size: map-get($font-sizes, regular);
+                }
+
+                .form-input {
+                    width: 25rem;
+                    height: 3rem;
+                }
+
+                input[type=date]::-webkit-calendar-picker-indicator,
+                input[type=time]::-webkit-calendar-picker-indicator {
+                    font-size: 1.75rem;
+                }
+
+                .form-textarea {
+                    max-width: 25rem;
+                    min-width: 25rem;
+                }
+            }
+        }
+
+        &__submit {
+            font-size: map-get($font-sizes, extra-large);
         }
     }
 }

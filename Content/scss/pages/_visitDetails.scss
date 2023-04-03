@@ -1,0 +1,66 @@
+@use '../sass-utils/' as *;
+@use '../base/' as *;
+
+.details {
+    margin: 4rem 8rem 8rem 8rem;
+    min-width: 60rem;
+
+    &__info {
+        @include flex-display(center, center, 0rem);
+        flex-direction: column;
+        padding-bottom: 3rem;
+
+        &__title {
+            text-align: center;
+            padding-top: 3rem;
+        }
+
+        &__line {
+            border-radius: 1rem;
+            border: none;
+            text-align: center;
+        }
+    }
+
+    &__form {
+        margin-bottom: 15rem;
+
+        &__labels {
+            @include grid-display(1fr 1fr, 1fr 1fr 1fr, 2rem, center, center, start, center);
+            column-gap: 0;
+            padding: 0 4rem 10rem 4rem;
+
+            &__container {
+                @include flex-display(center, start, 0.5rem);
+                flex-direction: column;
+
+                .form-input {
+                    padding: 0 0.5rem 0 0.5rem;
+                }
+
+
+                .form-textarea {
+                    padding-left: 0.5rem;
+                }
+            }
+        }
+
+        &__submit {
+            margin-top: 4rem;
+            border: none;
+            border-radius: 0.4rem;
+            padding: 1.25rem 3.25rem 1.25rem 3.25rem;
+            cursor: pointer;
+            float: right;
+            transition: opacity 0.15s;
+        }
+
+        &__submit:hover {
+            opacity: 0.85;
+        }
+
+        &__submit:active {
+            opacity: 0.65;
+        }
+    }
+}

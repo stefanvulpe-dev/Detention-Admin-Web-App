@@ -29,7 +29,8 @@
                     </li>
                     <li class="list__item">
                         <a href="statistics.html" class="nav-link">
-                            <img class="list__item-icon" src="../assets/header/statistics-icon.svg" alt="statistics-logo">
+                            <img class="list__item-icon" src="../assets/header/statistics-icon.svg"
+                                alt="statistics-logo">
                             <p class="list__item-text">Statistici</p>
                         </a>
                     </li>
@@ -45,27 +46,43 @@
     </header>
 
     <main class="details">
-        <h1 class="details__title">Introduceti detaliile referitoare la vizita</h1>
-        <hr>
+        <div class="details__info">
+            <h1 class="details__info__title">Introduceti detaliile referitoare la vizita</h1>
+            <hr class="details__info__line">
+        </div>
         <form action="#" class="details__form">
-            <label for="visit-date">Data realizarii vizitei *</label>
-            <input required id="visit-date" type="date">
+            <div class="details__form__labels">
+                <div class="details__form__labels__container">
+                    <label class="form-text" for="visit-date">Data realizarii vizitei *</label>
+                    <input class="form-input" required id="visit-date" type="date">
+                </div>
 
-            <label for="objects-data">Obiecte date/furnizate de condamnat *</label>
-            <input required id="object-data" type="text">
+                <div class="details__form__labels__container">
+                    <label class="form-text" for="objects-data">Obiecte date/furnizate de condamnat *</label>
+                    <input class="form-input" required id="object-data" type="text">
+                </div>
 
-            <label for="visit-nature">Natura vizitei *</label>
-            <input required id="visit-nature" type="text">
+                <div class="details__form__labels__container">
+                    <label class="form-text" for="visit-nature">Natura vizitei *</label>
+                    <textarea class="form-textarea" required id="visit-nature" type="text"></textarea>
+                </div>
 
-            <label for="summary">Rezumatul discutiilor *</label>
-            <input required id="summary" type="textarea">
+                <div class="details__form__labels__container">
+                    <label class="form-text" for="summary">Rezumatul discutiilor *</label>
+                    <textarea class="form-textarea" required id="visit-nature" type="text"></textarea>
+                </div>
 
-            <label for="visit-time">Durata vizitei *</label>
-            <input required id="visit-time" type="time">
+                <div class="details__form__labels__container">
+                    <label class="form-text" for="visit-time">Durata vizitei *</label>
+                    <input class="form-input" required id="visit-time" type="time">
+                </div>
 
-            <label for="prisoner-mood">Starea detinutului *</label>
-            <input required id="prisoner-mood" type="text">
+                <div class="details__form__labels__container">
+                    <label class="form-text" for="prisoner-mood">Starea detinutului *</label>
+                    <input class="form-input" required id="prisoner-mood" type="text">
+                </div>
 
+            </div>
             <button type="submit" class="details__form__submit">Trimite</button>
 
         </form>
