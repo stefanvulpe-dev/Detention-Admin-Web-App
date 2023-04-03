@@ -262,10 +262,6 @@ select {
 .main__title {
   color: hsl(0, 0%, 100%);
 }
-.main__container .card__container-link:hover {
-  background-color: hsl(0, 97%, 65%);
-  color: hsl(0, 0%, 100%);
-}
 
 :is(.card) :is(h2, p) {
   color: hsl(0, 0%, 0%);
@@ -399,8 +395,8 @@ select {
 
 .footer {
   background-color: hsl(0, 0%, 0%);
-  padding: 1rem 2.5rem 1rem 2.5rem;
   padding-block: 1.5rem;
+  margin-top: 3rem;
 }
 .footer__container {
   display: flex;
@@ -549,14 +545,14 @@ select {
 .main__container {
   width: 100%;
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr 1.35fr;
+  grid-template-columns: auto;
   grid-template-rows: auto;
   gap: 3rem;
   justify-items: center;
   justify-content: center;
   align-items: center;
   align-content: center;
-  grid-template-areas: "slimCard1 wideCard1 wideCard1 slimCard2" "slimCard1 wideCard2 wideCard2 slimCard2";
+  grid-template-areas: "slimCard1" "slimCard2" "wideCard1" "wideCard2";
 }
 .main__container #slimCard1 {
   grid-area: slimCard1;
@@ -567,8 +563,8 @@ select {
 .main__container #wideCard1 {
   grid-area: wideCard1;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: auto;
+  grid-template-rows: auto;
   gap: 1rem;
   justify-items: center;
   justify-content: center;
@@ -576,17 +572,18 @@ select {
   align-content: center;
 }
 .main__container #wideCard1 .card__img {
-  grid-row: 1/span 3;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 1.5rem;
+  aspect-ratio: 16/9;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  object-position: 50% 20%;
   align-self: stretch;
   object-fit: cover;
 }
 .main__container #wideCard2 {
   grid-area: wideCard2;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: auto;
+  grid-template-rows: auto;
   gap: 0.5rem;
   justify-items: center;
   justify-content: center;
@@ -594,14 +591,15 @@ select {
   align-content: center;
 }
 .main__container #wideCard2 .card__img {
-  grid-row: 1/span 3;
-  grid-column: 2/3;
-  border-bottom-right-radius: 1.5rem;
-  border-top-left-radius: 0;
+  aspect-ratio: 16/9;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
   align-self: stretch;
   object-fit: cover;
+  object-position: 50% 20%;
 }
 .main__container .card {
+  max-width: 20rem;
   background-color: hsl(0, 0%, 80%);
   display: grid;
   grid-template-columns: auto;
@@ -636,78 +634,48 @@ select {
   padding: 1rem;
 }
 .main__container .card__container-link {
-  transition: padding 0.3s, background-color 0.3s, color 0.3s, border-width 0.3s, border-radius 0.3s;
+  transition: all 250ms ease-in-out;
 }
-.main__container .card__container-link:hover {
-  padding: 0.5rem;
-  border-width: 0.05rem;
-  border-radius: 2rem;
-}
-.main__container .card__container-link:active {
-  opacity: 0.8;
+.main__container .card__container-link:is(:hover, :focus) {
+  font-weight: 700;
 }
 
-@media screen and (max-width: 1650px) {
+@media screen and (min-width: 800px) {
+  .main__container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "slimCard1 slimCard2" "wideCard1 wideCard1" "wideCard2 wideCard2";
+  }
+  .main :is(#wideCard1, #wideCard2) {
+    max-width: 42.5rem;
+  }
+  .main #wideCard1 {
+    grid-template-columns: 1.35fr 2fr;
+  }
+  .main #wideCard1 .card__img {
+    grid-row: 1/span 3;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 1.5rem;
+  }
+  .main #wideCard2 {
+    grid-template-columns: 2fr 1.35fr;
+  }
+  .main #wideCard2 .card__img {
+    grid-row: 1/span 3;
+    grid-column: 2/-2;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 1.5rem;
+  }
+}
+@media screen and (min-width: 1150px) {
   .main__container {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "slimCard1 wideCard1 wideCard1" "wideCard2 wideCard2 slimCard2";
   }
-  .main__container #wideCard1 {
-    justify-self: end;
-  }
-  .main__container #wideCard2 {
-    justify-self: start;
-  }
-  .main__container :is(#slimCard1, #slimCard2) {
-    max-width: 20rem;
-  }
-  .main__container :is(#wideCard1, #wideCard2) {
-    max-width: 40rem;
-  }
 }
-@media screen and (max-width: 1150px) {
+@media screen and (min-width: 1470px) {
   .main__container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "slimCard1 slimCard2" "wideCard1 wideCard1" "wideCard2 wideCard2";
-  }
-  .main #wideCard1 {
-    justify-self: center;
-  }
-  .main #wideCard2 {
-    justify-self: center;
-  }
-}
-@media screen and (max-width: 800px) {
-  .main .card {
-    max-width: 60%;
-  }
-  .main__container {
-    grid-template-columns: none;
-    grid-template-areas: "slimCard1" "slimCard2" "wideCard1" "wideCard2";
-  }
-  .main__container #wideCard1 {
-    grid-template-columns: none;
-    grid-template-rows: none;
-  }
-  .main__container #wideCard1 .card__img {
-    aspect-ratio: 1/1;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 1.5rem;
-    grid-row: 1/2;
-  }
-  .main__container #wideCard2 {
-    grid-template-columns: none;
-    grid-template-rows: none;
-  }
-  .main__container #wideCard2 .card__img {
-    aspect-ratio: 1/1;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 1.5rem;
-    grid-row: 1/2;
-    grid-column: 1/2;
-  }
-  .main__container :is(#wideCard1, #wideCard2) {
-    max-width: 20rem;
+    grid-template-columns: 1.15fr 1fr 1fr 1.15fr;
+    grid-template-areas: "slimCard1 wideCard1 wideCard1 slimCard2" "slimCard1 wideCard2 wideCard2 slimCard2";
   }
 }
 .about {
