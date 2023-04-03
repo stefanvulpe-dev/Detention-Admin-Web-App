@@ -86,7 +86,10 @@ $colors: (
 .stats-main {
     &__chart-container {
         &__title {
-            background-color: map-get($colors, secondary-black);}}}
+            background-color: map-get($colors, secondary-black);
+        }
+    }
+}
 
 .contact {
 
@@ -158,21 +161,52 @@ $colors: (
         background-color: red;
     }
 }
+
 .guest-main {
     &__aside {
         &__button {
-            color: map-get($colors,primary-white);
+            color: map-get($colors, primary-white);
             background-color: map-get($colors, primary-dark-gray);
         }
     }
+
     &__list {
-        &__card{
-        background-color: map-get($colors,secondary-white);
+        &__card {
+            background-color: map-get($colors, secondary-white);
         }
-        &__next-page{
+
+        &__next-page {
             font-size: var(--fs-large);
-            color: map-get($colors,primary-white);
-            background-color: map-get($colors,accent-red);
+            color: map-get($colors, primary-white);
+            background-color: map-get($colors, accent-red);
+        }
+    }
+}
+
+.details {
+    color: map-get($colors, primary-white);
+
+    &__info {
+
+        background-color: map-get($colors, accent-charcoal);
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
+
+        &__line {
+            background-color: map-get($colors, primary-white);
+        }
+    }
+
+    &__form {
+
+        &__labels {
+            background-color: map-get($colors, accent-charcoal);
+            box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.6);
+        }
+
+        &__submit {
+            background-color: map-get($colors, accent-red);
+            color: map-get($colors, primary-white);
+            box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
         }
     }
 }
