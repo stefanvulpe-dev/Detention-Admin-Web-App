@@ -2,27 +2,46 @@
 @use '../base/' as *;
 
 .guest-main {
-    @include grid-display(1fr 3fr, auto, 4rem, normal,center,center,normal);
+    @include grid-display(1fr 3fr, auto, 4rem, normal,center,center,start);
     padding: 6rem 1.65rem 6rem 1.65rem;
     width: min(90%, 83.5rem);
     margin-inline: auto;
+    min-height: 100vh;
     &__aside {
         @include flex-display(start,flex-start,3rem);
         flex-direction: column;
         padding: 0rem 4rem 0rem 0rem;
         border-right: 0.25rem  solid white;
         border-radius: 0.25rem;
+        height: 100vh;
     }
     &__list {
-        @include flex-display(space-between,normal,3rem);
-        flex-direction: column;    
+        @include flex-display(space-between,flex-end,3rem);
+        flex-direction: column;  
+        align-self: start;
         &__card {
             @include flex-display(space-between,center,1rem);
             flex-direction: row;
-            width: 100%;;
+            width: 100%;
+            min-width: 30rem;
             padding: 1rem;
             border-radius: 0.5rem;
             box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+            &__buttons{
+                :is(&__edit,&__delete) 
+                {
+                    border-style: none;
+                    background: none;
+                    background-color: white;
+                    padding: 0.25rem;
+                    box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+                    border-radius: 0.25rem; 
+                    transition: background-color 0.25s;
+                    &:hover{
+                        background-color: map-get($colors,secondary-white);                         
+                    }
+                }
+            }
         }
     }
 }

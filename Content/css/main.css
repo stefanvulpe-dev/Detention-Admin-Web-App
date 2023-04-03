@@ -395,8 +395,8 @@ select {
 
 .footer {
   background-color: hsl(0, 0%, 0%);
+  padding: 1rem 2.5rem 1rem 2.5rem;
   padding-block: 1.5rem;
-  margin-top: 3rem;
 }
 .footer__container {
   display: flex;
@@ -683,6 +683,11 @@ select {
   background-size: cover;
   background-position: center;
 }
+.about {
+  background-image: url("../../../assets/background.png");
+  background-size: cover;
+  background-position: center;
+}
 .about__title {
   display: flex;
   justify-content: center;
@@ -861,10 +866,11 @@ body {
   justify-items: normal;
   justify-content: center;
   align-items: center;
-  align-content: normal;
+  align-content: start;
   padding: 6rem 1.65rem 6rem 1.65rem;
   width: min(90%, 83.5rem);
   margin-inline: auto;
+  min-height: 100vh;
 }
 .guest-main__aside {
   display: flex;
@@ -875,13 +881,15 @@ body {
   padding: 0rem 4rem 0rem 0rem;
   border-right: 0.25rem solid white;
   border-radius: 0.25rem;
+  height: 100vh;
 }
 .guest-main__list {
   display: flex;
   justify-content: space-between;
-  align-items: normal;
+  align-items: flex-end;
   gap: 3rem;
   flex-direction: column;
+  align-self: start;
 }
 .guest-main__list__card {
   display: flex;
@@ -890,9 +898,22 @@ body {
   gap: 1rem;
   flex-direction: row;
   width: 100%;
+  min-width: 30rem;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+}
+:is(.guest-main__list__card__buttons__edit, .guest-main__list__card__buttons__delete) {
+  border-style: none;
+  background: none;
+  background-color: white;
+  padding: 0.25rem;
+  box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+  border-radius: 0.25rem;
+  transition: background-color 0.25s;
+}
+:is(.guest-main__list__card__buttons__edit, .guest-main__list__card__buttons__delete):hover {
+  background-color: hsl(0, 0%, 80%);
 }
 
 .details {
@@ -974,9 +995,10 @@ body {
 }
 .guest-main__list__next-page {
   text-align: center;
+  align-self: flex-end;
   padding: 1rem;
   border-radius: 0.5rem;
-  width: min(8rem, 27%);
+  width: max(10rem, 20%);
   transition: all 250ms ease-in-out;
 }
 .guest-main__list__next-page:is(:hover, :focus) {
