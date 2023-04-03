@@ -178,22 +178,10 @@ select {
   font-weight: 700;
 }
 
-.about__title-text {
-  font-weight: 400;
-  font-size: var(--fs-huge);
-}
-.about__container .title-text {
-  font-weight: 700;
-  font-size: var(--fs-large);
-}
-.about__container-description {
-  font-size: var(--fs-medium);
-}
-
 .contact__title {
   font-family: "Inter", sans-serif;
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2rem;
   font-style: italic;
 }
 .contact__form-fieldset {
@@ -207,14 +195,14 @@ select {
 .contact__form label[for=last-name],
 .contact__form label[for=email],
 .contact__form label[for=suggestions] {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
 }
 .contact__form textarea[name=suggestions]::placeholder {
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 .contact__form-button {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 400;
   font-family: "Inter", sans-serif;
 }
@@ -224,14 +212,14 @@ select {
 
 .about__title-text {
   font-weight: 400;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .about__container .title-text {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
 }
 .about__container-description {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 :is(header, .hero) :is(h1, p, a) {
@@ -284,6 +272,9 @@ select {
   color: hsl(0, 0%, 100%);
 }
 
+.stats-main__chart-container__title {
+  background-color: hsl(120, 5%, 11%);
+}
 
 .contact {
   background-color: #cccccc;
@@ -320,12 +311,12 @@ select {
 .about__container .title-text {
   color: hsl(0, 0%, 100%);
 }
-
 .about__container .line {
   background-color: hsl(0, 0%, 100%);
 }
-
-
+.about__container-description {
+  color: hsl(0, 0%, 100%);
+}
 
 .stats-info__card {
   background-color: red;
@@ -359,18 +350,16 @@ select {
 
 .footer {
   background-color: hsl(0, 0%, 0%);
+  padding: 1rem 2.5rem 1rem 2.5rem;
   padding-block: 1.5rem;
-  margin-top: 3rem;
 }
 .footer__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-
-  background-color: hsl(0, 0%, 0%);
-  padding: 1rem 2.5rem 1rem 2.5rem;
-
+  width: min(90%, 83.5rem);
+  margin-inline: auto;
 }
 
 .header__logo {
@@ -489,12 +478,6 @@ select {
     top: 1rem;
   }
 }
-
-.about {
-  background-image: url("../../../assets/background.png");
-  background-size: cover;
-  background-position: center;
-
 .main {
   width: min(90%, 82.5rem);
   margin-inline: auto;
@@ -678,6 +661,11 @@ select {
     max-width: 20rem;
   }
 }
+.about {
+  background-image: url("../../../assets/background.png");
+  background-size: cover;
+  background-position: center;
+}
 .about__title {
   display: flex;
   justify-content: center;
@@ -690,7 +678,6 @@ select {
 }
 .about__container {
   margin-top: 1rem;
-
 }
 .about__container .line {
   flex: 1;
@@ -714,8 +701,6 @@ select {
 }
 .about__container-description {
   width: 100%;
-  color: hsl(0, 0%, 100%);
-
 }
 .about__container-photo {
   width: 80%;
@@ -740,9 +725,6 @@ select {
   padding: 5rem 2rem 2rem 2rem;
 }
 .contact__title {
-
-  font-size: 2rem;
-  font-style: italic;
   text-align: center;
   white-space: nowrap;
   margin-bottom: 2rem;
@@ -770,8 +752,6 @@ select {
 .contact__form label[for=email],
 .contact__form label[for=suggestions] {
   display: block;
-  font-size: 1.15rem;
-  color: hsl(0, 0%, 90.2%);
   margin-bottom: 0.5rem;
 }
 .contact__form input {
@@ -785,10 +765,7 @@ select {
 .contact__form textarea[name=suggestions] {
   padding: 1rem;
   border-radius: 0.5rem;
-}
-.contact__form textarea[name=suggestions]::placeholder {
-  font-weight: 400;
-  font-size: 0.875rem;
+  width: 30rem;
 }
 .contact__form-button {
   margin-left: 25rem;
@@ -797,10 +774,15 @@ select {
   border-radius: 0.5rem;
   padding: 1rem 1.5rem 1rem 1.5rem;
   cursor: pointer;
-  background-color: transparent;
-  font-size: 1.15rem;
-  font-weight: 400;
-  font-family: "Inter", sans-serif;
+  transition: opacity 0.2s, padding 0.2s, font-size 0.2s;
+}
+.contact__form-button:hover {
+  opacity: 0.7;
+  padding: 1.5rem 2rem 1.5rem 2rem;
+  font-size: 1.35rem;
+}
+.contact__form-button:active {
+  opacity: 0.5;
 }
 
 body {
@@ -862,10 +844,11 @@ body {
   justify-items: normal;
   justify-content: center;
   align-items: center;
-  align-content: normal;
+  align-content: start;
   padding: 6rem 1.65rem 6rem 1.65rem;
   width: min(90%, 83.5rem);
   margin-inline: auto;
+  min-height: 100vh;
 }
 .guest-main__aside {
   display: flex;
@@ -876,13 +859,15 @@ body {
   padding: 0rem 4rem 0rem 0rem;
   border-right: 0.25rem solid white;
   border-radius: 0.25rem;
+  height: 100vh;
 }
 .guest-main__list {
   display: flex;
   justify-content: space-between;
-  align-items: normal;
+  align-items: flex-end;
   gap: 3rem;
   flex-direction: column;
+  align-self: start;
 }
 .guest-main__list__card {
   display: flex;
@@ -891,9 +876,22 @@ body {
   gap: 1rem;
   flex-direction: row;
   width: 100%;
+  min-width: 30rem;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+}
+:is(.guest-main__list__card__buttons__edit, .guest-main__list__card__buttons__delete) {
+  border-style: none;
+  background: none;
+  background-color: white;
+  padding: 0.25rem;
+  box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
+  border-radius: 0.25rem;
+  transition: background-color 0.25s;
+}
+:is(.guest-main__list__card__buttons__edit, .guest-main__list__card__buttons__delete):hover {
+  background-color: hsl(0, 0%, 80%);
 }
 
 .guest-main__aside__button {
@@ -910,9 +908,10 @@ body {
 }
 .guest-main__list__next-page {
   text-align: center;
+  align-self: flex-end;
   padding: 1rem;
   border-radius: 0.5rem;
-  width: min(8rem, 27%);
+  width: max(10rem, 20%);
   transition: all 250ms ease-in-out;
 }
 .guest-main__list__next-page:is(:hover, :focus) {
