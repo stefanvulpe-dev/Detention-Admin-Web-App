@@ -25,20 +25,6 @@ $colors: (
     &__title {
         color: map-get($colors, primary-white);
     }
-
-    &__container {
-
-        .card {
-
-            &__container {
-
-                &-link:hover {
-                    background-color: map-get($colors, accent-red); // se poate schimba
-                    color: map-get($colors, primary-white);
-                }
-            }
-        }
-    }
 }
 
 :is(.card) :is(h2, p) {
