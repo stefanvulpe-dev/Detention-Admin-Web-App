@@ -105,7 +105,19 @@ $font-sizes: (
     }
 }
 
-:is(.main, .stats-info) :is(p, a) {
+:is(.main) :is(p, a) {
+    font-size: var(--fs-small);
+    font-weight: map-get($font-weights, regular);
+}
+
+@include media-min(map-get($breakpoints, large)) {
+    :is(.main) :is(p, a) {
+        font-size: var(--fs-very-small);
+    }
+    
+}
+
+:is(.stats-info) :is(p, a) {
     font-size: var(--fs-very-small);
     font-weight: map-get($font-weights, regular);
 }
