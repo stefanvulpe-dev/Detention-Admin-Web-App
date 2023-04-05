@@ -50,19 +50,26 @@
         <form action="#" class="contact__form">
             <fieldset class="contact__form-fieldset">
                 <legend class="contact__form-legend">Detalii personale</legend>
-                <div class="contact__form-info">
-                    <label for="first-name">Nume</label>
-                    <input id="first-name" type="text">
-                    <label for="last-name">Prenume</label>
-                    <input id="last-name" type="text">
-                    <label for="email">Email</label>
-                    <input id="email" type="email">
-                    <label for="suggestions">Sugestii</label>
-                    <textarea name="suggestions" id="suggestions" cols="30" rows="10"
-                        placeholder="Cu ce va putem ajuta?"></textarea>
-                </div>
-
-                <button class="contact__form-button" type="submit">Trimite &#8594;</button>
+                    <div class="contact__form-wrapper">
+                        <div class="contact__form-field">
+                            <label for="first-name">Nume</label>
+                            <input id="first-name" type="text" name="first-name">
+                        </div>
+                        <div class="contact-form-field">
+                            <label for="last-name">Prenume</label>
+                            <input id="last-name" type="text">
+                        </div>
+                        <div class="contact__form-field">
+                            <label for="email">Email</label>
+                            <input id="email" type="email">
+                        </div>
+                        <div class="contact__form-field">
+                            <label for="suggestions">Sugestii</label>
+                            <textarea name="suggestions" id="suggestions" cols="30" rows="10"
+                                placeholder="Cu ce va putem ajuta?"></textarea>
+                        </div>
+                        <button class="contact__form-button" type="submit">Trimite &#8594;</button>
+                    </div>
             </fieldset>
         </form>
     </main>
