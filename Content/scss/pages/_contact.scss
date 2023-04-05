@@ -8,27 +8,26 @@
     &__title {
         text-align: center;
         white-space: nowrap;
-        margin: 3rem 2rem 2rem 2rem;
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        transition: ease all 1s;
     }
 
     &__form {
+        margin: auto;
+        position: relative;
 
         &-fieldset {
-            @include flex-display(center, center, 3rem);
-            flex-direction: column;
             padding: 2rem 2rem 2rem 2rem;
-            margin: 5rem 0 5rem 0;
-            width: 50%;
-            height: auto;
             border-radius: 7px;
             border: none;
             line-height: 1rem;
-            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
-            margin: auto;
+            margin-bottom: 10rem;
         }
 
         legend {
             padding: 1rem 0.35rem 1rem 0.35rem;
+            transition: font-size 1s;
         }
 
         label[for=first-name],
@@ -42,7 +41,7 @@
         input {
             margin-bottom: 3.5rem;
             padding-left: 0.25rem;
-            width: 30rem;
+            width: 80%; //min(60%, 30rem);
             height: 2.5rem;
             border: none;
             border-radius: 0.5rem;
@@ -51,11 +50,13 @@
         textarea[name=suggestions] {
             padding: 1rem;
             border-radius: 0.5rem;
-            width: 30rem;
+            width: 80%;
         }
 
         &-button {
-            margin-left: 25rem;
+            position: absolute;
+            bottom: -15%;
+            left: 20%;
             border-width: 0.25rem;
             border-style: solid;
             border-radius: 0.5rem;

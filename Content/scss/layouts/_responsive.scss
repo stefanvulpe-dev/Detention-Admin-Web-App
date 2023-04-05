@@ -1,10 +1,11 @@
 @use '../sass-utils/' as *;
+@use '../base/' as *;
 
 @include media-min(map-get($breakpoints, medium)) {
     .main {
         &__container {
             grid-template-columns: 1fr 1fr;
-            grid-template-areas: 
+            grid-template-areas:
                 'slimCard1 slimCard2'
                 'wideCard1 wideCard1'
                 'wideCard2 wideCard2';
@@ -26,12 +27,58 @@
 
         #wideCard2 {
             grid-template-columns: 2fr 1.35fr;
-            
+
             .card__img {
                 grid-row: 1 / span 3;
                 grid-column: 2 / -2;
                 border-top-left-radius: 0;
                 border-bottom-right-radius: 1.5rem;
+            }
+        }
+    }
+
+    .contact {
+        &__title {
+            font-size: map-get($font-sizes, huge);
+            transition: ease all 1s;
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        &__form {
+            text-align: left;
+
+            &-fieldset {
+                background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
+                margin: auto;
+                width: 40rem;
+            }
+
+            legend {
+                font-size: map-get($font-sizes, large);
+                transition: font-size 1s;
+            }
+
+            label[for=first-name],
+            label[for=last-name],
+            label[for=email],
+            label[for=suggestions] {
+                margin-left: 2rem;
+            }
+
+            textarea[name=suggestions] {
+                min-width: 80%;
+                margin-left: 2rem;
+            }
+
+            input {
+                width: auto;
+                min-width: 80%;
+                margin-left: 2rem;
+            }
+
+            &-button {
+                margin-left: max(40%, 25rem);
             }
         }
     }
@@ -41,9 +88,9 @@
     .main {
         &__container {
             grid-template-columns: repeat(3, 1fr);
-            grid-template-areas: 
-            'slimCard1 wideCard1 wideCard1'
-            'wideCard2 wideCard2 slimCard2';
+            grid-template-areas:
+                'slimCard1 wideCard1 wideCard1'
+                'wideCard2 wideCard2 slimCard2';
         }
     }
 }
@@ -53,8 +100,8 @@
         &__container {
             grid-template-columns: 1.15fr 1fr 1fr 1.15fr;
             grid-template-areas:
-            'slimCard1 wideCard1 wideCard1 slimCard2'
-            'slimCard1 wideCard2 wideCard2 slimCard2';            
+                'slimCard1 wideCard1 wideCard1 slimCard2'
+                'slimCard1 wideCard2 wideCard2 slimCard2';
         }
     }
 }
