@@ -50,6 +50,26 @@ $font-sizes: (
     }
 }
 
+@include media-min(map-get($breakpoints, large)) {
+    $font-sizes: (very-small: 0.85rem,
+        small: 1.15rem,
+        regular: 1.25rem,
+        medium: 1.4rem,
+        large: 1.55rem,
+        extra-large: 2.15rem,
+        huge: 3.3rem);
+
+    :root {
+        --fs-very-small: #{map-get($font-sizes, very-small)};
+        --fs-small: #{map-get($font-sizes, small)};
+        --fs-regular: #{map-get($font-sizes, regular)};
+        --fs-medium: #{map-get($font-sizes, medium)};
+        --fs-large: #{map-get($font-sizes, large)};
+        --fs-extra-large: #{map-get($font-sizes, extra-large)};
+        --fs-huge: #{map-get($font-sizes, huge)};
+    }
+}
+
 :is(header, main, section, footer) :is(h1, h2, h3, p, span, a, label, input, legend, textarea, time) {
     font-family: $ff-primary;
 }
@@ -109,9 +129,12 @@ $font-sizes: (
     }
 
     .stats-info__container__description {
-        font-size: var(--fs-extra-large);
+        font-size: var(--fs-large);
         font-weight: map-get($font-weights, semi-bold);
     }
+}
+.stats-main {
+    font-size: var(--fs-very-small);
 }
 
 .contact {
