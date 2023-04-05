@@ -41,24 +41,29 @@
         padding: 4rem 5rem 4rem 5rem;
         width: min(90%, 83.5rem);
         margin-inline: auto;
+
         &__container {
-            @include grid-display(1fr 1fr 1fr,auto,1rem,center,center,center,center);
+            @include grid-display(1fr 1fr 1fr, auto, 1rem, center, center, center, center);
         }
-    } 
-    .stats-main {  
-        padding: 0;       
+    }
+
+    .stats-main {
+        padding: 0;
+
         &__chart-container {
             margin-inline: auto;
             padding: 4rem 8rem 4rem 8rem;
             width: min(90%, 83.5rem);
             border-top: 0.35rem solid;
             border-radius: 0.25rem;
+
             &__title {
-                width: max(79%,20rem);
+                width: max(79%, 20rem);
                 padding: 1.5rem 1.5rem 2.5rem 1.5rem;
             }
         }
-        
+    }
+
     .contact {
         &__title {
             font-size: map-get($font-sizes, huge);
@@ -104,8 +109,8 @@
             }
         }
     }
-    }
 }
+
 
 @include media-min(map-get($breakpoints, large)) {
     .main {
@@ -117,23 +122,27 @@
         }
     }
 
-    .stats-info {        
+    .stats-info {
         padding: 4rem 5rem 4rem 5rem;
+
         &__container {
             width: min(90%, 83.5rem);
             margin-inline: auto;
-            @include grid-display(1fr 1fr 1fr,auto,2rem,center,center,center,center);
+            @include grid-display(1fr 1fr 1fr, auto, 2rem, center, center, center, center);
         }
-    } 
-    .stats-main {   
-        padding: 0;   
-        &__chart-container{
+    }
+
+    .stats-main {
+        padding: 0;
+
+        &__chart-container {
             border-top: 0.5rem solid;
             border-radius: 0.25rem;
             width: min(90%, 83.5rem);
-            padding: 4rem 8rem 4rem 8rem;     
+            padding: 4rem 8rem 4rem 8rem;
+
             &__title {
-                width: max(79%,20rem);
+                width: max(79%, 20rem);
                 padding: 1.5rem 1.5rem 2.5rem 1.5rem;
             }
         }
@@ -150,24 +159,27 @@
         }
     }
 
-    .stats-info {  
-        padding: 4rem 5rem 4rem 5rem;      
+    .stats-info {
+        padding: 4rem 5rem 4rem 5rem;
+
         &__container {
             width: min(90%, 83.5rem);
             margin-inline: auto;
-            @include grid-display(1fr 1fr 1fr,auto,2rem,center,center,center,center);
+            @include grid-display(1fr 1fr 1fr, auto, 2rem, center, center, center, center);
         }
-    } 
-    .stats-main {  
-            
-        &__chart-container{
+    }
+
+    .stats-main {
+
+        &__chart-container {
             border-top: 0.5rem solid;
             border-radius: 0.25rem;
-            width: min(90%, 83.5rem); 
-            margin-inline: auto ; 
-            padding: 4rem 8rem 4rem 8rem;     
+            width: min(90%, 83.5rem);
+            margin-inline: auto;
+            padding: 4rem 8rem 4rem 8rem;
+
             &__title {
-                width: max(79%,20rem);
+                width: max(79%, 20rem);
                 padding: 1.5rem 1.5rem 2.5rem 1.5rem;
             }
         }

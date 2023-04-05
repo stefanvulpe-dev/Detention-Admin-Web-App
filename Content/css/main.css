@@ -1001,40 +1001,40 @@ body {
     width: max(79%, 20rem);
     padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   }
-  .stats-main .contact__title {
+  .contact__title {
     font-size: 2rem;
     transition: ease all 1s;
     margin-top: 3rem;
     margin-bottom: 5rem;
   }
-  .stats-main .contact__form {
+  .contact__form {
     text-align: left;
   }
-  .stats-main .contact__form-fieldset {
+  .contact__form-fieldset {
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
     margin: auto;
     width: 40rem;
   }
-  .stats-main .contact__form legend {
+  .contact__form legend {
     font-size: 1.35rem;
     transition: font-size 1s;
   }
-  .stats-main .contact__form label[for=first-name],
-  .stats-main .contact__form label[for=last-name],
-  .stats-main .contact__form label[for=email],
-  .stats-main .contact__form label[for=suggestions] {
+  .contact__form label[for=first-name],
+  .contact__form label[for=last-name],
+  .contact__form label[for=email],
+  .contact__form label[for=suggestions] {
     margin-left: 2rem;
   }
-  .stats-main .contact__form textarea[name=suggestions] {
+  .contact__form textarea[name=suggestions] {
     min-width: 80%;
     margin-left: 2rem;
   }
-  .stats-main .contact__form input {
+  .contact__form input {
     width: auto;
     min-width: 80%;
     margin-left: 2rem;
   }
-  .stats-main .contact__form-button {
+  .contact__form-button {
     margin-left: max(40%, 25rem);
   }
 }
