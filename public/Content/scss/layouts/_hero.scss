@@ -3,7 +3,7 @@
 
 .hero {
     min-height: 100vh;
-    background-image: url(../../../assets/acasa/hero-bg.jpg);
+    background-image: url("../../assets/acasa/hero-bg.jpg");
     background-size: cover;
     background-position: center;
     @include flex-display(center, center, 0);
