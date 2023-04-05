@@ -51,7 +51,7 @@ $font-sizes: (
 }
 
 @include media-min(map-get($breakpoints, large)) {
-    $font-sizes: (very-small: 0.85rem,
+    $font-sizes: (very-small: 1rem,
         small: 1.15rem,
         regular: 1.25rem,
         medium: 1.4rem,
@@ -106,7 +106,7 @@ $font-sizes: (
 }
 
 :is(.main, .stats-info) :is(p, a) {
-    font-size: var(--fs-small);
+    font-size: var(--fs-very-small);
     font-weight: map-get($font-weights, regular);
 }
 
