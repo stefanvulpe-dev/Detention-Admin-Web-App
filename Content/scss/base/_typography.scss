@@ -203,7 +203,7 @@ $font-sizes: (
     &__title {
         font-family: $ff-primary;
         font-weight: map-get($font-weights, bold);
-        font-size: map-get($font-sizes, huge);
+        font-size: map-get($font-sizes, large);
         font-style: italic;
     }
 
@@ -215,6 +215,7 @@ $font-sizes: (
 
         legend {
             font-weight: map-get($font-weights, regular);
+            font-size: map-get($font-sizes, medium);
         }
 
         label[for=first-name],
