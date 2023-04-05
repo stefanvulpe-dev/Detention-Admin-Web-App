@@ -68,18 +68,16 @@
         &__title {
             font-size: map-get($font-sizes, huge);
             transition: ease all 1s;
-            margin-top: 3rem;
-            margin-bottom: 5rem;
         }
 
         &__form {
-            text-align: left;
-            margin-bottom: 10rem;
-
+            
+            &-wrapper {
+                padding-inline: 3rem;
+            }
+            
             &-fieldset {
                 background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
-                margin: auto;
-                width: 40rem;
             }
 
             legend {
@@ -87,26 +85,8 @@
                 transition: font-size 1s;
             }
 
-            label[for=first-name],
-            label[for=last-name],
-            label[for=email],
-            label[for=suggestions] {
-                margin-left: 2rem;
-            }
-
-            textarea[name=suggestions] {
-                min-width: 80%;
-                margin-left: 2rem;
-            }
-
-            input {
-                width: auto;
-                min-width: 80%;
-                margin-left: 2rem;
-            }
-
             &-button {
-                margin-left: max(40%, 25rem);
+                justify-self: end;
             }
         }
     }

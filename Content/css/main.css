@@ -457,29 +457,35 @@ select {
   padding: 0 2rem 2rem 2rem;
 }
 
-.contact {
-  min-height: 90vh;
-}
 .contact__title {
+  margin-block: 3rem;
   text-align: center;
-  white-space: nowrap;
-  margin-top: 3rem;
-  margin-bottom: 5rem;
   transition: ease all 1s;
 }
 .contact__form {
-  margin: auto;
-  position: relative;
+  width: min(45rem, 90%);
+  margin-inline: auto;
+}
+.contact__form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 2.5rem;
+  justify-items: stretch;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding-inline: 1rem;
+  padding-bottom: 2rem;
 }
 .contact__form-fieldset {
-  padding: 2rem 2rem 2rem 2rem;
+  border: 0;
   border-radius: 7px;
-  border: none;
-  line-height: 1rem;
-  margin-bottom: 10rem;
 }
 .contact__form legend {
-  padding: 1rem 0.35rem 1rem 0.35rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  margin-inline: auto;
   transition: font-size 1s;
 }
 .contact__form label[for=first-name],
@@ -487,36 +493,32 @@ select {
 .contact__form label[for=email],
 .contact__form label[for=suggestions] {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.35rem;
 }
 .contact__form input {
-  margin-bottom: 3.5rem;
-  padding-left: 0.25rem;
-  width: 80%;
-  height: 2.5rem;
+  padding-block: 0.5rem;
+  width: 100%;
   border: none;
   border-radius: 0.5rem;
 }
 .contact__form textarea[name=suggestions] {
+  resize: none;
+  width: 100%;
+  height: 12.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  width: 80%;
 }
 .contact__form-button {
-  position: absolute;
-  bottom: -15%;
-  left: 20%;
   border-width: 0.25rem;
   border-style: solid;
   border-radius: 0.5rem;
-  padding: 1rem 1.5rem 1rem 1.5rem;
+  padding: 1rem 1.5rem;
   cursor: pointer;
-  white-space: nowrap;
   transition: opacity 0.2s, padding 0.2s, font-size 0.2s;
 }
 .contact__form-button:hover {
   opacity: 0.7;
-  padding: 1.5rem 2rem 1.5rem 2rem;
+  padding: 1.5rem 2rem;
   font-size: 1.35rem;
 }
 .contact__form-button:active {
@@ -1014,39 +1016,19 @@ body {
   .contact__title {
     font-size: 2rem;
     transition: ease all 1s;
-    margin-top: 3rem;
-    margin-bottom: 5rem;
   }
-  .contact__form {
-    text-align: left;
-    margin-bottom: 10rem;
+  .contact__form-wrapper {
+    padding-inline: 3rem;
   }
   .contact__form-fieldset {
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
-    margin: auto;
-    width: 40rem;
   }
   .contact__form legend {
     font-size: 1.35rem;
     transition: font-size 1s;
   }
-  .contact__form label[for=first-name],
-  .contact__form label[for=last-name],
-  .contact__form label[for=email],
-  .contact__form label[for=suggestions] {
-    margin-left: 2rem;
-  }
-  .contact__form textarea[name=suggestions] {
-    min-width: 80%;
-    margin-left: 2rem;
-  }
-  .contact__form input {
-    width: auto;
-    min-width: 80%;
-    margin-left: 2rem;
-  }
   .contact__form-button {
-    margin-left: max(40%, 25rem);
+    justify-self: end;
   }
 }
 @media screen and (min-width: 1150px) {
