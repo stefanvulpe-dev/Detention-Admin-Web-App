@@ -301,9 +301,6 @@ select {
   background-color: hsl(120, 5%, 11%);
 }
 
-.contact {
-  background-color: #cccccc;
-}
 .contact__form-fieldset {
   border-color: hsl(0, 0%, 100%);
 }
@@ -327,9 +324,6 @@ select {
   background-color: transparent;
 }
 
-.about {
-  background-color: #cccccc;
-}
 .about__title-text {
   color: hsl(0, 0%, 100%);
 }
@@ -395,8 +389,8 @@ select {
 
 .footer {
   background-color: hsl(0, 0%, 0%);
-  padding: 1rem 2.5rem 1rem 2.5rem;
   padding-block: 1.5rem;
+  margin-top: 3rem;
 }
 .footer__container {
   display: flex;
@@ -683,11 +677,6 @@ select {
   background-size: cover;
   background-position: center;
 }
-.about {
-  background-image: url("../../../assets/background.png");
-  background-size: cover;
-  background-position: center;
-}
 .about__title {
   display: flex;
   justify-content: center;
@@ -741,15 +730,12 @@ select {
 }
 
 .contact {
-  background-image: url("../../../assets/background.png");
-  background-size: cover;
-  background-position: center;
-  padding: 5rem 2rem 2rem 2rem;
+  min-height: 90vh;
 }
 .contact__title {
   text-align: center;
   white-space: nowrap;
-  margin-bottom: 2rem;
+  margin: 3rem 2rem 2rem 2rem;
 }
 .contact__form-fieldset {
   display: flex;
@@ -758,6 +744,7 @@ select {
   gap: 3rem;
   flex-direction: column;
   padding: 2rem 2rem 2rem 2rem;
+  margin: 5rem 0 5rem 0;
   width: 50%;
   height: auto;
   border-radius: 7px;
@@ -796,6 +783,7 @@ select {
   border-radius: 0.5rem;
   padding: 1rem 1.5rem 1rem 1.5rem;
   cursor: pointer;
+  white-space: nowrap;
   transition: opacity 0.2s, padding 0.2s, font-size 0.2s;
 }
 .contact__form-button:hover {

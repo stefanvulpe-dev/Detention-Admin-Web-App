@@ -3,15 +3,12 @@
 
 .contact {
 
-    background-image: url("../../../assets/background.png");
-    background-size: cover;
-    background-position: center;
-    padding: 5rem 2rem 2rem 2rem;
+    min-height: 90vh;
 
     &__title {
         text-align: center;
         white-space: nowrap;
-        margin-bottom: 2rem;
+        margin: 3rem 2rem 2rem 2rem;
     }
 
     &__form {
@@ -20,6 +17,7 @@
             @include flex-display(center, center, 3rem);
             flex-direction: column;
             padding: 2rem 2rem 2rem 2rem;
+            margin: 5rem 0 5rem 0;
             width: 50%;
             height: auto;
             border-radius: 7px;
@@ -63,6 +61,7 @@
             border-radius: 0.5rem;
             padding: 1rem 1.5rem 1rem 1.5rem;
             cursor: pointer;
+            white-space: nowrap;
             transition: opacity 0.2s, padding 0.2s, font-size 0.2s;
         }
 
