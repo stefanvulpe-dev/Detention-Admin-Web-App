@@ -124,7 +124,17 @@ select {
   font-weight: 600;
 }
 
-:is(.main, .stats-info) :is(p, a) {
+:is(.main) :is(p, a) {
+  font-size: var(--fs-small);
+  font-weight: 400;
+}
+
+@media screen and (min-width: 1150px) {
+  :is(.main) :is(p, a) {
+    font-size: var(--fs-very-small);
+  }
+}
+:is(.stats-info) :is(p, a) {
   font-size: var(--fs-very-small);
   font-weight: 400;
 }
