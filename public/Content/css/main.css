@@ -699,7 +699,16 @@ body {
   opacity: 0.65;
 }
 
-.login {
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+.container .login {
+  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -707,32 +716,32 @@ body {
   flex-direction: column;
   background-color: hsl(0, 0%, 24%);
   min-width: fit-content;
+  width: 80%;
   min-height: 40vh;
   padding: 3rem;
-  margin: 10% 5% 40% 5%;
   border-radius: 2rem;
 }
-.login__title {
+.container .login__title {
   white-space: nowrap;
   color: hsl(0, 0%, 100%);
   font-size: 1.75rem;
   margin-bottom: 1rem;
 }
-.login__form-field {
+.container .login__form-field {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 0;
   flex-direction: column;
 }
-.login__form-buttons {
+.container .login__form-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   flex-direction: column;
 }
-.login__form-buttons button {
+.container .login__form-buttons button {
   background-color: hsl(0, 97%, 65%);
   border-radius: 5rem;
   border: none;
@@ -741,21 +750,22 @@ body {
   color: hsl(0, 0%, 100%);
   font-size: 1.15rem;
   font-weight: 400;
+  font-family: "Inter", sans-serif;
   transition: opacity 0.15s;
 }
-.login__form-buttons button:hover {
+.container .login__form-buttons button:hover {
   opacity: 0.8;
 }
-.login__form-buttons button:active {
+.container .login__form-buttons button:active {
   opacity: 0.6;
 }
-.login label[for=email],
-.login label[for=password] {
+.container .login label[for=email],
+.container .login label[for=password] {
   font-weight: 400;
   color: hsl(0, 0%, 100%);
 }
-.login input[name=email],
-.login input[name=password] {
+.container .login input[name=email],
+.container .login input[name=password] {
   background-color: hsl(0, 0%, 85%);
   border: none;
   border-radius: 2rem;
@@ -1120,20 +1130,22 @@ body {
   .contact__form-button {
     justify-self: end;
   }
-  .login {
-    transition: box-shadow 1s;
+  .container {
+    height: 80vh;
+  }
+  .container .login {
     max-width: min(40rem, 80%);
     box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
   }
-  .login input[name=email],
-  .login input[name=password] {
+  .container .login input[name=email],
+  .container .login input[name=password] {
     width: max(80%, 25rem);
   }
-  .login__form-buttons {
+  .container .login__form-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 8rem;
     flex-direction: row;
   }
   .header .nav__toggle {

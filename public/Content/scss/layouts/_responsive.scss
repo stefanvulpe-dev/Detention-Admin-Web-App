@@ -91,21 +91,24 @@
         }
     }
 
-    .login {
-        transition: box-shadow 1s;
-        max-width: min(40rem, 80%);
-        box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
+    .container {
+        height: 80vh;
 
-        input[name=email],
-        input[name=password] {
-            width: max(80%, 25rem);
-        }
+        .login {
+            max-width: min(40rem, 80%);
+            box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
 
-        &__form {
+            input[name=email],
+            input[name=password] {
+                width: max(80%, 25rem);
+            }
 
-            &-buttons {
-                @include flex-display(center, center, 2rem);
-                flex-direction: row;
+            &__form {
+
+                &-buttons {
+                    @include flex-display(center, center, 8rem);
+                    flex-direction: row;
+                }
             }
         }
     }
