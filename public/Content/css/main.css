@@ -28,6 +28,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  margin: 0;
 }
 
 /* A elements that don't have a class get default styles */
@@ -717,7 +718,7 @@ body {
   left: -100%;
   right: 100%;
   bottom: 0;
-  z-index: 100;
+  z-index: 2;
   background: hsl(0, 0%, 0%);
   transition: 500ms ease-in-out;
 }
@@ -981,6 +982,120 @@ body {
 }
 .main__container .card__container-link:is(:hover, :focus) {
   font-weight: 700;
+}
+
+.guest-dialog {
+  font-family: "Inter", sans-serif;
+  display: none;
+  width: min(37.5rem, 90%);
+  position: absolute;
+  top: 6rem;
+  left: 50%;
+  z-index: 4;
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: 1rem;
+  background-color: hsl(203, 19%, 30%);
+  color: hsl(0, 0%, 100%);
+}
+.guest-dialog .header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0rem;
+  padding: 2rem 2.5rem;
+}
+.guest-dialog .header-wrapper .form-title {
+  font-size: var(--fs-large);
+}
+.guest-dialog .header-wrapper .form-toggle {
+  width: 35px;
+  height: 35px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.guest-dialog .header-wrapper .form-toggle .bar {
+  display: block;
+  height: 5px;
+  margin-bottom: 0.5rem;
+  background-color: hsl(0, 0%, 100%);
+}
+.guest-dialog .header-wrapper .form-toggle .bar:is(:nth-child(1)) {
+  transform: translateY(7px) rotate(-45deg);
+}
+.guest-dialog .header-wrapper .form-toggle .bar:is(:nth-child(2)) {
+  transform: translateY(-6px) rotate(45deg);
+}
+.guest-dialog .dialog__form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1.5rem;
+  justify-items: start;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 0 2.5rem 2rem 2.5rem;
+}
+.guest-dialog .dialog__form .field-wrapper {
+  width: 100%;
+  font-size: var(--fs-small);
+}
+.guest-dialog .dialog__form .field-wrapper label, .guest-dialog .dialog__form .field-wrapper input {
+  display: block;
+  width: 100%;
+}
+.guest-dialog .dialog__form .field-wrapper label {
+  margin-bottom: 0.5rem;
+  font-size: var(--fs-small);
+}
+.guest-dialog .dialog__form .field-wrapper input {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.guest-dialog .dialog__form .form-submit {
+  justify-self: end;
+  background-color: hsl(0, 97%, 65%);
+  border: 0;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  color: hsl(0, 0%, 100%);
+  padding: 0.75rem 2.5rem;
+  transition: all 350ms ease-in-out;
+}
+.guest-dialog .dialog__form .form-submit:is(:hover, :focus) {
+  box-shadow: 0 0 2rem hsl(0, 97%, 65%);
+}
+.guest-dialog .dialog__form .form-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.guest-dialog .dialog__form .form-footer .field-wrapper input[type=file] {
+  display: none;
+}
+.guest-dialog .dialog__form .form-footer .field-wrapper label[for=photo] {
+  background-color: hsl(0, 0%, 35%);
+  margin-bottom: 0;
+  padding-block: 0.75rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  backdrop-filter: blur(10px);
+}
+
+.visible {
+  display: block;
 }
 
 @media screen and (min-width: 875px) {
