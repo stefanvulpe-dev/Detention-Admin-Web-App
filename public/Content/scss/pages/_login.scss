@@ -1,0 +1,74 @@
+@use '../base/' as *;
+@use '../sass-utils/' as *;
+
+.login {
+    @include flex-display(center, center, 2rem);
+    flex-direction: column;
+    background-color: map-get($colors, light-black);
+    min-width: fit-content;
+    min-height: 40vh;
+    padding: 3rem;
+    margin: 10% 5% 40% 5%;
+    border-radius: 2rem;
+
+    &__title {
+        white-space: nowrap;
+        color: map-get($colors, primary-white);
+        font-size: map-get($font-sizes, extra-large);
+        margin-bottom: 1rem;
+    }
+
+    &__form {
+
+        &-field {
+            @include flex-display(center, flex-start, 0);
+            flex-direction: column;
+        }
+
+        &-buttons {
+            @include flex-display(center, center, 2rem);
+            flex-direction: column;
+
+            button {
+                background-color: map-get($colors, accent-red);
+                border-radius: 5rem;
+                border: none;
+                padding: .5rem 2.5rem .5rem 2.5rem;
+                cursor: pointer;
+
+                color: map-get($colors, primary-white);
+                font-size: map-get($font-sizes, medium);
+                font-weight: map-get($font-weights, regular);
+
+                transition: opacity 0.15s;
+            }
+
+            button:hover {
+                opacity: 0.8;
+            }
+
+            button:active {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    label[for=email],
+    label[for=password] {
+        font-weight: map-get($font-weights, regular);
+        color: map-get($colors, primary-white);
+    }
+
+    input[name=email],
+    input[name=password] {
+        background-color: map-get($colors, light-gray);
+        border: none;
+        border-radius: 2rem;
+        margin-bottom: 2rem;
+        padding: 0 0.5rem 0 0.5rem;
+        font-weight: map-get($font-weights, bold);
+        height: 2rem;
+    }
+
+
+}
