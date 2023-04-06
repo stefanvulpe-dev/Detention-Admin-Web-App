@@ -13,9 +13,9 @@
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role=list],
-ol[role=list] {
-  list-style: none;
+ul,
+ol {
+  list-style-type: none;
 }
 
 /* Set core root defaults */
@@ -74,7 +74,7 @@ select {
   --fs-huge: 2rem;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 875px) {
   :root {
     --fs-very-small: 0.75rem;
     --fs-small: 1rem;
@@ -120,7 +120,7 @@ select {
 }
 
 .header__nav {
-  font-size: var(--fs-medium);
+  font-size: var(--fs-extra-large);
   font-weight: 600;
 }
 
@@ -711,6 +711,34 @@ body {
   align-items: center;
   gap: 1rem;
 }
+.header__nav {
+  position: absolute;
+  top: 4.85rem;
+  left: -100%;
+  right: 100%;
+  bottom: 0;
+  z-index: 100;
+  background: hsl(0, 0%, 0%);
+  transition: 500ms ease-in-out;
+}
+.header__nav.active {
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.header :is(.nav__toggle, .bar) {
+  transition: all 500ms ease-in-out;
+}
+.header .nav__toggle.active .bar:is(:nth-child(1)) {
+  transform: translateY(11px) rotate(-45deg);
+}
+.header .nav__toggle.active .bar:is(:nth-child(2)) {
+  opacity: 0;
+}
+.header .nav__toggle.active .bar:is(:nth-child(3)) {
+  transform: translateY(-11px) rotate(45deg);
+}
 
 .footer {
   background-color: hsl(0, 0%, 0%);
@@ -719,28 +747,36 @@ body {
 }
 .footer__container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 3rem;
+  flex-direction: column;
   width: min(90%, 83.5rem);
   margin-inline: auto;
 }
 
 .header__logo {
-  max-width: 30%;
+  flex-basis: min(20%, 5rem);
+}
+.header .nav__toggle {
+  display: block;
+  width: 30px;
+}
+.header .nav__toggle .bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-bottom: 0.5rem;
+  background: hsl(0, 0%, 100%);
+}
+.header .nav__toggle .bar:is(:nth-child(3)) {
+  margin-bottom: 0;
 }
 .header__nav-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1.5rem;
-  gap: 1.5rem;
+  display: block;
 }
 .header__nav-list .list__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  margin-block: 4rem;
 }
 .header__nav-list .list__item .nav-link {
   display: flex;
@@ -758,31 +794,19 @@ body {
 }
 
 .footer__copyright {
-  white-space: nowrap;
+  order: 1;
+  text-align: center;
   font-size: 0.875rem;
 }
 .footer .social-links__list {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
-  min-width: 1rem;
+  gap: 3.5rem;
 }
 .footer .social-links__list .list-item {
-  max-width: 15%;
+  max-width: 10%;
   flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-}
-.footer .social-links__list .list-item--arrow {
-  max-width: 15%;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
 }
 
 .hero {
@@ -959,7 +983,7 @@ body {
   font-weight: 700;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 875px) {
   .main__container {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "slimCard1 slimCard2" "wideCard1 wideCard1" "wideCard2 wideCard2";
@@ -1029,6 +1053,34 @@ body {
   }
   .contact__form-button {
     justify-self: end;
+  }
+  .header .nav__toggle {
+    display: none;
+  }
+  .header__nav {
+    position: static;
+  }
+  .header__nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: var(--fs-medium);
+  }
+  .header__nav-list .list__item {
+    margin-block: 0;
+  }
+  .footer__container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footer__copyright {
+    order: 0;
+    font-size: var(--fs-small);
+  }
+  .footer .social-links__list .list-item {
+    max-width: 15%;
+    flex-shrink: 0;
   }
 }
 @media screen and (min-width: 1150px) {

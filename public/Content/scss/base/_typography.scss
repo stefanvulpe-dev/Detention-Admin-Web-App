@@ -100,7 +100,7 @@ $font-sizes: (
 
 .header {
     &__nav {
-        font-size: var(--fs-medium);
+        font-size: var(--fs-extra-large);
         font-weight: map-get($font-weights, semi-bold);
     }
 }
