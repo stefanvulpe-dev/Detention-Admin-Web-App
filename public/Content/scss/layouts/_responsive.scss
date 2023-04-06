@@ -90,6 +90,44 @@
             }
         }
     }
+
+    .header {
+        .nav__toggle {
+            display: none;
+        }
+
+        &__nav {
+            position: static;
+        }
+
+        &__nav-list {
+            @include flex-display(center, center, 1.5rem);
+            font-size: var(--fs-medium);
+
+            .list__item {
+                margin-block: 0;
+            }
+        }
+    }
+
+    .footer {
+        &__container {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        &__copyright {
+            order: 0;
+            font-size: var(--fs-small);
+        }
+
+        .social-links__list {
+            .list-item {
+                max-width: 15%;
+                flex-shrink: 0;
+            }
+        }
+    }
 }
 
 
