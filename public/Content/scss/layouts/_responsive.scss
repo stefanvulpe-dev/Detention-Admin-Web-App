@@ -71,11 +71,11 @@
         }
 
         &__form {
-            
+
             &-wrapper {
                 padding-inline: 3rem;
             }
-            
+
             &-fieldset {
                 background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
             }
@@ -87,6 +87,28 @@
 
             &-button {
                 justify-self: end;
+            }
+        }
+    }
+
+    .login {
+        height: 80vh;
+
+        .container {
+            max-width: min(40rem, 80%);
+            box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
+
+            input[name=email],
+            input[name=password] {
+                width: max(80%, 25rem);
+            }
+
+            &__form {
+
+                &-buttons {
+                    @include flex-display(center, center, 8rem);
+                    flex-direction: row;
+                }
             }
         }
     }
@@ -115,7 +137,7 @@
             flex-direction: row;
             justify-content: space-between;
         }
-        
+
         &__copyright {
             order: 0;
             font-size: var(--fs-small);
@@ -128,6 +150,7 @@
             }
         }
     }
+
 }
 
 
