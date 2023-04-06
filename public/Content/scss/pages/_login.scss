@@ -1,13 +1,13 @@
 @use '../base/' as *;
 @use '../sass-utils/' as *;
 
-.container {
+.login {
     @include flex-display(center, center, 0);
     flex-direction: column;
     padding-top: 2rem;
 
 
-    .login {
+    .container {
         box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
         @include flex-display(center, center, 2rem);
         flex-direction: column;

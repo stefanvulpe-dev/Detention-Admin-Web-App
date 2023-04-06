@@ -699,7 +699,7 @@ body {
   opacity: 0.65;
 }
 
-.container {
+.login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -707,7 +707,7 @@ body {
   flex-direction: column;
   padding-top: 2rem;
 }
-.container .login {
+.login .container {
   box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: center;
@@ -721,27 +721,27 @@ body {
   padding: 3rem;
   border-radius: 2rem;
 }
-.container .login__title {
+.login .container__title {
   white-space: nowrap;
   color: hsl(0, 0%, 100%);
   font-size: 1.75rem;
   margin-bottom: 1rem;
 }
-.container .login__form-field {
+.login .container__form-field {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 0;
   flex-direction: column;
 }
-.container .login__form-buttons {
+.login .container__form-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   flex-direction: column;
 }
-.container .login__form-buttons button {
+.login .container__form-buttons button {
   background-color: hsl(0, 97%, 65%);
   border-radius: 5rem;
   border: none;
@@ -753,19 +753,19 @@ body {
   font-family: "Inter", sans-serif;
   transition: opacity 0.15s;
 }
-.container .login__form-buttons button:hover {
+.login .container__form-buttons button:hover {
   opacity: 0.8;
 }
-.container .login__form-buttons button:active {
+.login .container__form-buttons button:active {
   opacity: 0.6;
 }
-.container .login label[for=email],
-.container .login label[for=password] {
+.login .container label[for=email],
+.login .container label[for=password] {
   font-weight: 400;
   color: hsl(0, 0%, 100%);
 }
-.container .login input[name=email],
-.container .login input[name=password] {
+.login .container input[name=email],
+.login .container input[name=password] {
   background-color: hsl(0, 0%, 85%);
   border: none;
   border-radius: 2rem;
@@ -1130,18 +1130,18 @@ body {
   .contact__form-button {
     justify-self: end;
   }
-  .container {
+  .login {
     height: 80vh;
   }
-  .container .login {
+  .login .container {
     max-width: min(40rem, 80%);
     box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
   }
-  .container .login input[name=email],
-  .container .login input[name=password] {
+  .login .container input[name=email],
+  .login .container input[name=password] {
     width: max(80%, 25rem);
   }
-  .container .login__form-buttons {
+  .login .container__form-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
