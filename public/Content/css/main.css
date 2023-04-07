@@ -159,6 +159,9 @@ select {
 .stats-main {
   font-size: var(--fs-very-small);
 }
+.stats-main__chart-container__title {
+  font-size: var(--fs-very-small);
+}
 
 .contact__title {
   font-family: "Inter", sans-serif;
@@ -246,6 +249,9 @@ select {
 }
 .about__container-description {
   font-size: 1.35rem;
+}
+.about-description {
+  font-size: 1.15rem;
 }
 
 .details__form__labels__title {
@@ -379,6 +385,11 @@ select {
   box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
 }
 
+.about {
+  width: min(65rem, 90%);
+  min-height: 100vh;
+  margin-inline: auto;
+}
 .about__title {
   transition: padding 1.5s;
   display: flex;
@@ -398,6 +409,8 @@ select {
   flex-direction: column;
 }
 .about__container-description {
+  text-align: center;
+  width: 75%;
   transition: font-size 1s;
   margin: 3rem 3rem 1rem 3rem;
   font-size: 1.15rem;
@@ -410,11 +423,12 @@ select {
   flex-direction: column;
   text-align: center;
   font-size: 1.75rem;
+  margin-top: 2rem;
 }
 .about__container-photo {
   width: 75%;
   max-width: 30rem;
-  margin-bottom: 5rem;
+  margin: auto;
 }
 .about__container .reverse {
   flex-direction: column-reverse;
@@ -517,29 +531,28 @@ body {
 }
 
 .stats-main {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 1rem;
   flex-direction: column;
   padding: 0rem 1.65rem 0rem 1.65rem;
 }
 .stats-main__chart-container {
-  width: min(90%, 83.5rem);
-  padding: 2rem 2rem 0rem 2rem;
+  width: min(90%, 62.5rem);
+  padding: 1.5rem;
   border-top: 0.25rem solid;
   border-radius: 0.25rem;
-  justify-content: center;
-  align-items: center;
 }
 .stats-main__chart-container img {
-  justify-content: center;
-  min-width: min(90%, 83.5rem);
-  width: max(100%, 55rem);
+  width: 90%;
+  margin: auto;
 }
 .stats-main__chart-container__title {
+  width: 80%;
   text-align: center;
-  width: 90%;
+  margin-inline: auto;
   padding: 0.5rem 0.5rem 2rem 0.5rem;
   margin-bottom: -2rem;
   box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);
@@ -620,12 +633,13 @@ body {
   justify-content: center;
   align-items: center;
   gap: auto;
-  width: min(45rem, 90%);
+  width: min(62.5rem, 90%);
   margin-inline: auto;
   padding-top: 3rem;
   min-height: 100vh;
 }
 .details__form {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -633,10 +647,10 @@ body {
   flex-direction: column;
 }
 .details__form__labels {
-  width: min(45rem, 100%);
+  width: 100%;
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   gap: 2rem;
   justify-items: center;
   justify-content: center;
@@ -651,18 +665,17 @@ body {
   align-items: start;
   gap: 0.5rem;
   flex-direction: column;
-  max-width: 100%;
   width: 100%;
 }
 .details__form__labels__container .form-input {
-  padding: 0rem 0.5rem 0rem 0.5rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
   width: 100%;
   max-width: 100vh;
 }
 .details__form__labels__container .form-textarea {
   border-radius: 0.5rem;
-  padding: 0rem 0.5rem 0rem 0.5rem;
+  padding: 2rem 0.5rem;
   width: 100%;
   resize: none;
 }
@@ -675,17 +688,15 @@ body {
 }
 .details__form__buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: start;
   gap: 20%;
   width: 100%;
-  width: min(45rem, 100%);
 }
 .details__form__buttons__submit, .details__form__buttons__back {
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem 2rem;
   border-radius: 0.75rem;
-  width: min(20rem, 40%);
   border: none;
   transition: all 250ms ease-in-out;
 }
@@ -700,14 +711,16 @@ body {
 }
 
 .login {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 0;
   flex-direction: column;
-  padding-top: 2rem;
+  margin-top: 5rem;
 }
 .login .container {
+  width: min(90%, 32.5rem);
   box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: center;
@@ -715,10 +728,7 @@ body {
   gap: 2rem;
   flex-direction: column;
   background-color: hsl(0, 0%, 24%);
-  min-width: fit-content;
-  width: 80%;
-  min-height: 40vh;
-  padding: 3rem;
+  padding: 5rem 2rem;
   border-radius: 2rem;
 }
 .login .container__title {
@@ -727,11 +737,14 @@ body {
   font-size: 1.75rem;
   margin-bottom: 1rem;
 }
+.login .container__form {
+  width: 100%;
+}
 .login .container__form-field {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 0;
+  gap: 1.75rem;
   flex-direction: column;
 }
 .login .container__form-buttons {
@@ -742,10 +755,11 @@ body {
   flex-direction: column;
 }
 .login .container__form-buttons button {
+  width: 100%;
   background-color: hsl(0, 97%, 65%);
   border-radius: 5rem;
   border: none;
-  padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+  padding: 0.75rem 2.5rem;
   cursor: pointer;
   color: hsl(0, 0%, 100%);
   font-size: 1.15rem;
@@ -766,13 +780,14 @@ body {
 }
 .login .container input[name=email],
 .login .container input[name=password] {
+  width: 100%;
   background-color: hsl(0, 0%, 85%);
   border: none;
   border-radius: 2rem;
   margin-bottom: 2rem;
   padding: 0 0.5rem 0 0.5rem;
   font-weight: 700;
-  height: 2rem;
+  padding: 0.65rem 1.5rem;
 }
 
 .guest-main__aside__button {
@@ -1257,15 +1272,7 @@ body {
     padding: 0;
   }
   .stats-main__chart-container {
-    margin-inline: auto;
     padding: 4rem 8rem 4rem 8rem;
-    width: min(90%, 83.5rem);
-    border-top: 0.35rem solid;
-    border-radius: 0.25rem;
-  }
-  .stats-main__chart-container__title {
-    width: max(79%, 20rem);
-    padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   }
   .contact__title {
     font-size: 2rem;
@@ -1284,22 +1291,7 @@ body {
   .contact__form-button {
     justify-self: end;
   }
-  .login {
-    height: 80vh;
-  }
-  .login .container {
-    max-width: min(40rem, 80%);
-    box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
-  }
-  .login .container input[name=email],
-  .login .container input[name=password] {
-    width: max(80%, 25rem);
-  }
   .login .container__form-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8rem;
     flex-direction: row;
   }
   .about__title {
@@ -1328,6 +1320,7 @@ body {
     gap: 0.5rem;
     flex-direction: row;
     padding: 0 3rem 0 2rem;
+    margin-top: 0;
   }
   .about__container__title-right {
     display: flex;
@@ -1336,10 +1329,12 @@ body {
     gap: 0.5rem;
     flex-direction: row-reverse;
     padding: 0 3rem 0 2rem;
+    margin-top: 0;
   }
   .about__container-description {
     width: 100%;
     font-size: 1.35rem;
+    text-align: left;
   }
   .about__container-photo {
     width: 80%;
@@ -1446,64 +1441,16 @@ body {
     justify-content: center;
     align-items: start;
     gap: auto;
-    width: min(83.5rem, 90%);
     margin-inline: auto;
-    height: 100vh;
-  }
-  .details__form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    flex-direction: column;
   }
   .details__form__labels {
-    width: min(83.5rem, 100%);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
-    gap: 2rem;
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    padding: 2rem;
-    border-radius: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
   }
   .details__form__labels__title {
     grid-area: 1/1/span 1/span 2;
   }
-  .details__form__labels__container {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    gap: 0.5rem;
-    flex-direction: column;
-    max-width: 100%;
-    width: 100%;
-  }
-  .details__form__labels__container .form-input {
-    width: 100%;
-    max-width: 100vh;
-  }
-  .details__form__labels__container .form-textarea {
-    padding: 0rem 0.5rem 0rem 0.5rem;
-    width: 100%;
-    resize: none;
-  }
-  .details__form__labels__title {
-    padding-bottom: 1.5rem;
-    width: 100%;
-    text-align: center;
-    border-bottom: 0.25rem solid white;
-    border-radius: 0.15rem;
-  }
-  .details__form__buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: auto;
-    width: min(83.5rem, 100%);
+  :is(.details__form__buttons__back, .details__form__buttons__submit) {
+    padding-inline: 3.5rem;
   }
 }
 @media screen and (min-width: 1150px) {
@@ -1514,33 +1461,8 @@ body {
   .stats-info {
     padding: 4rem 5rem 4rem 5rem;
   }
-  .stats-info__container {
-    width: min(90%, 83.5rem);
-    margin-inline: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 2rem;
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  }
   .stats-info__container__card--1, .stats-info__container__card--2, .stats-info__container__card--3 {
     padding: 1rem;
-  }
-  .stats-main {
-    padding: 0;
-  }
-  .stats-main__chart-container {
-    border-top: 0.5rem solid;
-    border-radius: 0.25rem;
-    width: min(90%, 83.5rem);
-    padding: 4rem 8rem 4rem 8rem;
-  }
-  .stats-main__chart-container__title {
-    width: max(79%, 20rem);
-    padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   }
   .guest-main__list {
     display: flex;
@@ -1585,31 +1507,5 @@ body {
   }
   .stats-info {
     padding: 4rem 5rem 4rem 5rem;
-  }
-  .stats-info__container {
-    width: min(90%, 83.5rem);
-    margin-inline: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 2rem;
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  }
-  .stats-info__container__card--1, .stats-info__container__card--2, .stats-info__container__card--3 {
-    padding: 1rem 2rem 1rem 2rem;
-  }
-  .stats-main__chart-container {
-    border-top: 0.5rem solid;
-    border-radius: 0.25rem;
-    width: min(90%, 83.5rem);
-    margin-inline: auto;
-    padding: 4rem 8rem 4rem 8rem;
-  }
-  .stats-main__chart-container__title {
-    width: max(79%, 20rem);
-    padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   }
 }/*# sourceMappingURL=main.css.map */
