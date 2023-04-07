@@ -15,7 +15,7 @@
         left: -100%;
         right: 100%;
         bottom: 0;
-        z-index: 100;
+        z-index: 2;
         background: map-get($colors, primary-dark);
         transition: 500ms ease-in-out;
     }

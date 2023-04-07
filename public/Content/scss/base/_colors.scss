@@ -10,7 +10,9 @@ $colors: (
     accent-beige: hsl(19, 91%, 78%),
     accent-maroon: hsl(320, 15%, 19%),
     accent-green: hsl(148, 30%, 46%),
-    accent-light-green: hsl(90, 18%, 64%)
+    accent-light-green: hsl(90, 18%, 64%),
+    light-black: hsl(0, 0%, 24%),
+    light-gray: hsl(0, 0%, 85%)
 );
 
 :is(header, .hero) :is(h1, p, a) {

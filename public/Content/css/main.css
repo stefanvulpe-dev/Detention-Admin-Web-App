@@ -28,6 +28,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  margin: 0;
 }
 
 /* A elements that don't have a class get default styles */
@@ -711,6 +712,82 @@ body {
   opacity: 0.65;
 }
 
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+.login .container {
+  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
+  background-color: hsl(0, 0%, 24%);
+  min-width: fit-content;
+  width: 80%;
+  min-height: 40vh;
+  padding: 3rem;
+  border-radius: 2rem;
+}
+.login .container__title {
+  white-space: nowrap;
+  color: hsl(0, 0%, 100%);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+.login .container__form-field {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  flex-direction: column;
+}
+.login .container__form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
+}
+.login .container__form-buttons button {
+  background-color: hsl(0, 97%, 65%);
+  border-radius: 5rem;
+  border: none;
+  padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+  cursor: pointer;
+  color: hsl(0, 0%, 100%);
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  transition: opacity 0.15s;
+}
+.login .container__form-buttons button:hover {
+  opacity: 0.8;
+}
+.login .container__form-buttons button:active {
+  opacity: 0.6;
+}
+.login .container label[for=email],
+.login .container label[for=password] {
+  font-weight: 400;
+  color: hsl(0, 0%, 100%);
+}
+.login .container input[name=email],
+.login .container input[name=password] {
+  background-color: hsl(0, 0%, 85%);
+  border: none;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem 0 0.5rem;
+  font-weight: 700;
+  height: 2rem;
+}
+
 .guest-main__aside__button {
   width: max(100%, 10rem);
   padding: 1rem;
@@ -766,7 +843,7 @@ body {
   left: -100%;
   right: 100%;
   bottom: 0;
-  z-index: 100;
+  z-index: 2;
   background: hsl(0, 0%, 0%);
   transition: 500ms ease-in-out;
 }
@@ -1032,6 +1109,120 @@ body {
   font-weight: 700;
 }
 
+.guest-dialog {
+  font-family: "Inter", sans-serif;
+  display: none;
+  width: min(37.5rem, 90%);
+  position: absolute;
+  top: 6rem;
+  left: 50%;
+  z-index: 4;
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: 1rem;
+  background-color: hsl(203, 19%, 30%);
+  color: hsl(0, 0%, 100%);
+}
+.guest-dialog .header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0rem;
+  padding: 2rem 2.5rem;
+}
+.guest-dialog .header-wrapper .form-title {
+  font-size: var(--fs-large);
+}
+.guest-dialog .header-wrapper .form-toggle {
+  width: 35px;
+  height: 35px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.guest-dialog .header-wrapper .form-toggle .bar {
+  display: block;
+  height: 5px;
+  margin-bottom: 0.5rem;
+  background-color: hsl(0, 0%, 100%);
+}
+.guest-dialog .header-wrapper .form-toggle .bar:is(:nth-child(1)) {
+  transform: translateY(7px) rotate(-45deg);
+}
+.guest-dialog .header-wrapper .form-toggle .bar:is(:nth-child(2)) {
+  transform: translateY(-6px) rotate(45deg);
+}
+.guest-dialog .dialog__form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1.5rem;
+  justify-items: start;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 0 2.5rem 2rem 2.5rem;
+}
+.guest-dialog .dialog__form .field-wrapper {
+  width: 100%;
+  font-size: var(--fs-small);
+}
+.guest-dialog .dialog__form .field-wrapper label, .guest-dialog .dialog__form .field-wrapper input {
+  display: block;
+  width: 100%;
+}
+.guest-dialog .dialog__form .field-wrapper label {
+  margin-bottom: 0.5rem;
+  font-size: var(--fs-small);
+}
+.guest-dialog .dialog__form .field-wrapper input {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.guest-dialog .dialog__form .form-submit {
+  justify-self: end;
+  background-color: hsl(0, 97%, 65%);
+  border: 0;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  color: hsl(0, 0%, 100%);
+  padding: 0.75rem 2.5rem;
+  transition: all 350ms ease-in-out;
+}
+.guest-dialog .dialog__form .form-submit:is(:hover, :focus) {
+  box-shadow: 0 0 2rem hsl(0, 97%, 65%);
+}
+.guest-dialog .dialog__form .form-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.guest-dialog .dialog__form .form-footer .field-wrapper input[type=file] {
+  display: none;
+}
+.guest-dialog .dialog__form .form-footer .field-wrapper label[for=photo] {
+  background-color: hsl(0, 0%, 35%);
+  margin-bottom: 0;
+  padding-block: 0.75rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  backdrop-filter: blur(10px);
+}
+
+.visible {
+  display: block;
+}
+
 @media screen and (min-width: 875px) {
   .main__container {
     grid-template-columns: 1fr 1fr;
@@ -1133,63 +1324,6 @@ body {
   .footer .social-links__list .list-item {
     max-width: 15%;
     flex-shrink: 0;
-  }
-  .guest-main {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: auto;
-    gap: 4rem;
-    justify-items: normal;
-    justify-content: center;
-    align-items: center;
-    align-content: start;
-    padding: 6rem 1.65rem 3rem 1.65rem;
-  }
-  .guest-main__aside {
-    display: flex;
-    justify-content: start;
-    align-items: flex-start;
-    gap: 3rem;
-    flex-direction: column;
-    padding: 0rem 6rem 0rem 0rem;
-    border-right: 0.25rem solid white;
-    border-bottom: none;
-    height: 100vh;
-  }
-  .guest-main__list {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 3rem;
-    flex-direction: column;
-    padding: 0rem;
-  }
-  .guest-main__list__card {
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: auto;
-    gap: 1rem;
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    align-content: start;
-  }
-  .guest-main__list__card__name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-direction: row;
-  }
-  .guest-main__list__card__dBirth {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-direction: row;
-  }
-  .guest-main__list__card__buttons {
-    flex-direction: column;
   }
 }
 @media screen and (min-width: 1150px) {
