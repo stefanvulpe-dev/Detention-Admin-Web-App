@@ -123,10 +123,59 @@
         }
     }
 
-  .header {
-    .nav__toggle {
-      display: none;
+    .about {
+    
+        &__title {
+            transition: padding 1.5s;
+            @include flex-display(center, center, 1rem);
+            padding: 1.5rem 1.5rem 4rem 1.5rem;
+
+            &-icon {
+                width: map-get($font-sizes, huge);
+            }
+        }
+    
+        .line {
+            flex: 1;
+            height: 0.25rem;
+            border-radius: 0.5rem;
+        }
+        &__container {
+            margin-top: 1rem;   
+    
+            &__title-left {
+                @include flex-display(center, center, 0.5rem);
+                flex-direction: row;
+                padding: 0 3rem 0 2rem;
+            }
+    
+            &__title-right {
+                @include flex-display(center, center, 0.5rem);
+                flex-direction: row-reverse;
+                padding: 0 3rem 0 2rem;
+            }
+    
+            &-description {
+                width: 100%;
+                font-size: map-get($font-sizes, large);
+            }
+    
+            &-photo {
+                width: 80%;
+                padding-top: 2rem;
+            }
+    
+            &__info {
+                @include grid-display(1fr 1fr, 1fr, 2rem, center, center, center, center);
+                padding: 0 2rem 2rem 2rem;
+            }
+        }
     }
+
+    .header {
+        .nav__toggle {
+            display: none;
+        }
 
     &__nav {
       position: static;

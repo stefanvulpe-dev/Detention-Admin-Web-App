@@ -256,23 +256,26 @@ $font-sizes: (
 }
 
 .about {
-  &__title {
-    &-text {
-      font-weight: map-get($font-weights, regular);
-      font-size: map-get($font-sizes, huge);
+    &__title {
+        &-text {
+            font-weight: map-get($font-weights, regular);
+        }
     }
-  }
+    &__container {
+        .title-text {
+            font-weight: map-get($font-weights, bold);
+            font-size: map-get($font-sizes, large);
+        }
 
-  &__container {
-    .title-text {
-      font-weight: map-get($font-weights, bold);
-      font-size: map-get($font-sizes, large);
+        &-description {
+            font-size: map-get($font-sizes, large);
+
+        }
     }
 
     &-description {
       font-size: map-get($font-sizes, medium);
     }
-  }
 }
 
 .details {   
