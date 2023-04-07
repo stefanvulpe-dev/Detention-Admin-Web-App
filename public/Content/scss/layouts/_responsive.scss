@@ -1,97 +1,107 @@
-@use '../sass-utils/' as *;
-@use '../base/' as *;
+@use "../sass-utils/" as *;
+@use "../base/" as *;
 
 @include media-min(map-get($breakpoints, medium)) {
-    .main {
-        &__container {
-            grid-template-columns: 1fr 1fr;
-            grid-template-areas:
-                'slimCard1 slimCard2'
-                'wideCard1 wideCard1'
-                'wideCard2 wideCard2';
-        }
-
-        :is(#wideCard1, #wideCard2) {
-            max-width: 42.5rem;
-        }
-
-        #wideCard1 {
-            grid-template-columns: 1.35fr 2fr;
-
-            .card__img {
-                grid-row: 1 / span 3;
-                border-top-right-radius: 0;
-                border-bottom-left-radius: 1.5rem;
-            }
-        }
-
-        #wideCard2 {
-            grid-template-columns: 2fr 1.35fr;
-
-            .card__img {
-                grid-row: 1 / span 3;
-                grid-column: 2 / -2;
-                border-top-left-radius: 0;
-                border-bottom-right-radius: 1.5rem;
-            }
-        }
+  .main {
+    &__container {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "slimCard1 slimCard2"
+        "wideCard1 wideCard1"
+        "wideCard2 wideCard2";
     }
 
-    .stats-info {
-        padding: 4rem 5rem 4rem 5rem;
-        width: min(90%, 83.5rem);
-        margin-inline: auto;
-
-        &__container {
-            @include grid-display(1fr 1fr 1fr, auto, 1rem, center, center, center, center);
-        }
+    :is(#wideCard1, #wideCard2) {
+      max-width: 42.5rem;
     }
 
-    .stats-main {
-        padding: 0;
+    #wideCard1 {
+      grid-template-columns: 1.35fr 2fr;
 
-        &__chart-container {
-            margin-inline: auto;
-            padding: 4rem 8rem 4rem 8rem;
-            width: min(90%, 83.5rem);
-            border-top: 0.35rem solid;
-            border-radius: 0.25rem;
-
-            &__title {
-                width: max(79%, 20rem);
-                padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-            }
-        }
+      .card__img {
+        grid-row: 1 / span 3;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 1.5rem;
+      }
     }
 
-    .contact {
-        &__title {
-            font-size: map-get($font-sizes, huge);
-            transition: ease all 1s;
+    #wideCard2 {
+      grid-template-columns: 2fr 1.35fr;
+
+      .card__img {
+        grid-row: 1 / span 3;
+        grid-column: 2 / -2;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 1.5rem;
+      }
+    }
+  }
+
+  .stats-info {
+    padding: 4rem 5rem 4rem 5rem;
+    width: min(90%, 83.5rem);
+    margin-inline: auto;
+
+    &__container {
+      @include grid-display(
+        1fr 1fr 1fr,
+        auto,
+        1rem,
+        center,
+        center,
+        center,
+        center
+      );
+      &__card {
+        &--1,
+        &--2,
+        &--3 {
+          padding: 1rem;
         }
+      }
+    }
+  }
+  .stats-main {
+    padding: 0;
+    &__chart-container {
+      margin-inline: auto;
+      padding: 4rem 8rem 4rem 8rem;
+      width: min(90%, 83.5rem);
+      border-top: 0.35rem solid;
+      border-radius: 0.25rem;
 
-        &__form {
+      &__title {
+        width: max(79%, 20rem);
+        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+      }
+    }
+  }
 
-            &-wrapper {
-                padding-inline: 3rem;
-            }
-
-            &-fieldset {
-                background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
-            }
-
-            legend {
-                font-size: map-get($font-sizes, large);
-                transition: font-size 1s;
-            }
-
-            &-button {
-                justify-self: end;
-            }
-        }
+  .contact {
+    &__title {
+      font-size: map-get($font-sizes, huge);
+      transition: ease all 1s;
     }
 
-    .login {
+    &__form {
+      &-wrapper {
+        padding-inline: 3rem;
+      }
+      &-fieldset {
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='white' stroke-width='5' stroke-dasharray='20' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
+      }
+
+      legend {
+        font-size: map-get($font-sizes, large);
+        transition: font-size 1s;
+      }
+
+      &-button {
+        justify-self: end;
+      }
+    }
+  }
+.login {
         height: 80vh;
 
         .container {
@@ -167,112 +177,238 @@
             display: none;
         }
 
-        &__nav {
-            position: static;
-        }
-
-        &__nav-list {
-            @include flex-display(center, center, 1.5rem);
-            font-size: var(--fs-medium);
-
-            .list__item {
-                margin-block: 0;
-            }
-        }
+    &__nav {
+      position: static;
     }
 
-    .footer {
-        &__container {
+    &__nav-list {
+      @include flex-display(center, center, 1.5rem);
+      font-size: var(--fs-medium);
+
+      .list__item {
+        margin-block: 0;
+      }
+    }
+  }
+
+  .footer {
+    &__container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__copyright {
+      order: 0;
+      font-size: var(--fs-small);
+    }
+
+    .social-links__list {
+      .list-item {
+        max-width: 15%;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .guest-main {
+    @include grid-display(1fr 3fr, auto, 4rem, normal, center, center, start);
+    padding: 6rem 1.65rem 3rem 1.65rem;
+    &__aside {
+      @include flex-display(start, flex-start, 3rem);
+      flex-direction: column;
+      padding: 0rem 6rem 0rem 0rem;
+      border-right: 0.25rem solid white;
+      border-bottom: none;
+      height: 100vh;
+    }
+    &__list {
+      @include flex-display(space-between, flex-end, 3rem);
+      flex-direction: column;
+      padding: 0rem;
+      &__card {
+        @include grid-display(1fr 2fr 2fr 1fr, auto, 1rem, center,center,center,start);
+        &__name{
+            @include flex-display(space-between, center, 1rem);
             flex-direction: row;
-            justify-content: space-between;
         }
-
-        &__copyright {
-            order: 0;
-            font-size: var(--fs-small);
+        &__dBirth{
+            @include flex-display(space-between, center, 1rem);
+            flex-direction: row;
         }
-
-        .social-links__list {
-            .list-item {
-                max-width: 15%;
-                flex-shrink: 0;
-            }
+        &__buttons {
+            flex-direction: column;
         }
+      }
     }
+  }
+
+  .details {   
+    @include flex-display(center,start,auto);
+    width: min(83.5rem, 90%);
+    margin-inline: auto;
+    height: 100vh;
+    &__form {  
+        @include flex-display(center,center,2rem);
+        flex-direction: column;              
+        &__labels {
+          width: min(83.5rem, 100%);
+            @include grid-display(1fr 1fr,auto auto auto auto, 2rem, center, center, center, center);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            &__title{
+              grid-area: 1/1/span 1/ span 2;
+            }
+            &__container {
+                @include flex-display(center, start, 0.5rem);
+                flex-direction: column;
+                max-width: 100%;
+                width: 100%;
+                .form-input{                    
+                    width: 100%;
+                    max-width: 100vh;
+                }
+                .form-textarea{
+                    padding: 0rem 0.5rem 0rem 0.5rem;
+                    width: 100%;
+                    resize: none;
+                }
+            }
+            &__title {
+            padding-bottom: 1.5rem;
+            width: 100%;
+            text-align: center;
+            border-bottom: 0.25rem solid white;
+            border-radius: 0.15rem;
+        }
+        }
+        &__buttons {
+          @include flex-display(center, center,auto);
+          width: min(83.5rem, 100%);          
+      }
+    }
+}
 
 }
 
-
 @include media-min(map-get($breakpoints, large)) {
-    .main {
-        &__container {
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-areas:
-                'slimCard1 wideCard1 wideCard1'
-                'wideCard2 wideCard2 slimCard2';
-        }
+  .main {
+    &__container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        "slimCard1 wideCard1 wideCard1"
+        "wideCard2 wideCard2 slimCard2";
     }
+  }
 
-    .stats-info {
-        padding: 4rem 5rem 4rem 5rem;
-
-        &__container {
-            width: min(90%, 83.5rem);
-            margin-inline: auto;
-            @include grid-display(1fr 1fr 1fr, auto, 2rem, center, center, center, center);
+  .stats-info {
+    padding: 4rem 5rem 4rem 5rem;
+    &__container {
+      width: min(90%, 83.5rem);
+      margin-inline: auto;
+      @include grid-display(
+        1fr 1fr 1fr,
+        auto,
+        2rem,
+        center,
+        center,
+        center,
+        center
+      );
+      &__card {
+        &--1,
+        &--2,
+        &--3 {
+          padding: 1rem;
         }
+      }
+    }    
+  }
+
+  .stats-main {
+    padding: 0;
+    &__chart-container {
+      border-top: 0.5rem solid;
+      border-radius: 0.25rem;
+      width: min(90%, 83.5rem);
+      padding: 4rem 8rem 4rem 8rem;
+
+      &__title {
+        width: max(79%, 20rem);
+        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+      }
     }
+  }
 
-    .stats-main {
-        padding: 0;
-
-        &__chart-container {
-            border-top: 0.5rem solid;
-            border-radius: 0.25rem;
-            width: min(90%, 83.5rem);
-            padding: 4rem 8rem 4rem 8rem;
-
-            &__title {
-                width: max(79%, 20rem);
-                padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+  .guest-main {
+        &__list {
+          @include flex-display(space-between, flex-end, 3rem);
+          flex-direction: column;
+          padding: 0rem;
+          &__card {
+            @include grid-display(1fr 2fr 2fr 1fr, auto, 2rem, center,center,center,start);
+            &__name{
+                @include flex-display(space-between, center, 1rem);
+                flex-direction: row;
             }
+            &__dBirth{
+                @include flex-display(space-between, center, 1rem);
+                flex-direction: row;
+            }
+            &__buttons {
+                flex-direction: row;
+            }
+          }
         }
-    }
+      }
 }
 
 @include media-min(map-get($breakpoints, huge)) {
-    .main {
-        &__container {
-            grid-template-columns: 1.15fr 1fr 1fr 1.15fr;
-            grid-template-areas:
-                'slimCard1 wideCard1 wideCard1 slimCard2'
-                'slimCard1 wideCard2 wideCard2 slimCard2';
-        }
+  .main {
+    &__container {
+      grid-template-columns: 1.15fr 1fr 1fr 1.15fr;
+      grid-template-areas:
+        "slimCard1 wideCard1 wideCard1 slimCard2"
+        "slimCard1 wideCard2 wideCard2 slimCard2";
     }
+  }
 
-    .stats-info {
-        padding: 4rem 5rem 4rem 5rem;
+  .stats-info {
+    padding: 4rem 5rem 4rem 5rem;
 
-        &__container {
-            width: min(90%, 83.5rem);
-            margin-inline: auto;
-            @include grid-display(1fr 1fr 1fr, auto, 2rem, center, center, center, center);
+    &__container {
+      width: min(90%, 83.5rem);
+      margin-inline: auto;
+      @include grid-display(
+        1fr 1fr 1fr,
+        auto,
+        2rem,
+        center,
+        center,
+        center,
+        center
+      );
+      &__card {
+        &--1,
+        &--2,
+        &--3 {
+          padding: 1rem 2rem 1rem 2rem;
         }
+      }
     }
+  }
 
-    .stats-main {
+  .stats-main {
+    &__chart-container {
+      border-top: 0.5rem solid;
+      border-radius: 0.25rem;
+      width: min(90%, 83.5rem);
+      margin-inline: auto;
+      padding: 4rem 8rem 4rem 8rem;
 
-        &__chart-container {
-            border-top: 0.5rem solid;
-            border-radius: 0.25rem;
-            width: min(90%, 83.5rem);
-            margin-inline: auto;
-            padding: 4rem 8rem 4rem 8rem;
-
-            &__title {
-                width: max(79%, 20rem);
-                padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-            }
-        }
+      &__title {
+        width: max(79%, 20rem);
+        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+      }
     }
+  }
 }

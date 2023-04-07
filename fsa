@@ -1,0 +1,53 @@
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{0}: checkout: moving from responsiveGD to master
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{1}: checkout: moving from master to responsiveGD
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{2}: reset: moving to HEAD
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{3}: reset: moving to HEAD
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{4}: checkout: moving from responsiveGD to master
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{5}: checkout: moving from master to responsiveGD
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{6}: checkout: moving from responsiveGD to master
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{7}: checkout: moving from master to responsiveGD
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{8}: checkout: moving from responsiveGD to master
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{9}: checkout: moving from master to responsiveGD
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{10}: merge responsiveGD: Fast-forward
+[33m1184cc0[m HEAD@{11}: checkout: moving from responsiveGD to master
+[33mdc47e80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mresponsiveGD[m[33m)[m HEAD@{12}: commit: fix bugs for responsive stats and make responsive for guetsDetails
+[33m1184cc0[m HEAD@{13}: checkout: moving from master to responsiveGD
+[33m1184cc0[m HEAD@{14}: pull: Fast-forward
+[33m55846b1[m HEAD@{15}: reset: moving to HEAD
+[33m55846b1[m HEAD@{16}: checkout: moving from responsiveGD to master
+[33m55846b1[m HEAD@{17}: checkout: moving from master to responsiveGD
+[33m55846b1[m HEAD@{18}: pull: Fast-forward
+[33m389b9db[m[33m ([m[1;31morigin/responsiveStatistics[m[33m)[m HEAD@{19}: checkout: moving from responsiveStatistics to master
+[33m389b9db[m[33m ([m[1;31morigin/responsiveStatistics[m[33m)[m HEAD@{20}: checkout: moving from master to responsiveStatistics
+[33m389b9db[m[33m ([m[1;31morigin/responsiveStatistics[m[33m)[m HEAD@{21}: checkout: moving from responsiveStats to master
+[33m389b9db[m[33m ([m[1;31morigin/responsiveStatistics[m[33m)[m HEAD@{22}: checkout: moving from master to responsiveStats
+[33m389b9db[m[33m ([m[1;31morigin/responsiveStatistics[m[33m)[m HEAD@{23}: checkout: moving from responsiveStats to master
+[33m389b9db[m[33m ([m[1;31morigin/responsiveStatistics[m[33m)[m HEAD@{24}: checkout: moving from master to responsiveStats
+[33m389b9db[m[33m ([m[1;31morigin/responsiveStatistics[m[33m)[m HEAD@{25}: commit: responsive proprieties to statistics.html & adding at typography media screen large option
+[33mc65af25[m HEAD@{26}: pull: Fast-forward
+[33m736fd1f[m[33m ([m[1;31morigin/guestsDetails[m[33m)[m HEAD@{27}: checkout: moving from guestsDetails to master
+[33m736fd1f[m[33m ([m[1;31morigin/guestsDetails[m[33m)[m HEAD@{28}: checkout: moving from master to guestsDetails
+[33m736fd1f[m[33m ([m[1;31morigin/guestsDetails[m[33m)[m HEAD@{29}: commit (merge): Merge branch 'guestsDetails'
+[33m6c4c90a[m HEAD@{30}: pull: Fast-forward
+[33m516afce[m HEAD@{31}: checkout: moving from guestsDetails to master
+[33me49efe7[m HEAD@{32}: commit: finished guestsDetails design
+[33m516afce[m HEAD@{33}: checkout: moving from master to guestsDetails
+[33m516afce[m HEAD@{34}: checkout: moving from guestsDetails to master
+[33m516afce[m HEAD@{35}: checkout: moving from master to guestsDetails
+[33m516afce[m HEAD@{36}: pull: Fast-forward
+[33me2965ce[m[33m ([m[1;31morigin/guestDetails[m[33m)[m HEAD@{37}: checkout: moving from guestDetails to master
+[33me2965ce[m[33m ([m[1;31morigin/guestDetails[m[33m)[m HEAD@{38}: checkout: moving from master to guestDetails
+[33me2965ce[m[33m ([m[1;31morigin/guestDetails[m[33m)[m HEAD@{39}: merge guestDetails: Fast-forward
+[33mb0bd943[m HEAD@{40}: checkout: moving from guestDetails to master
+[33me2965ce[m[33m ([m[1;31morigin/guestDetails[m[33m)[m HEAD@{41}: commit: starting guetsDetails design
+[33mb0bd943[m HEAD@{42}: checkout: moving from master to guestDetails
+[33mb0bd943[m HEAD@{43}: pull: Fast-forward
+[33m1b89494[m HEAD@{44}: pull: Fast-forward
+[33mbe3c259[m HEAD@{45}: checkout: moving from statistics2 to master
+[33mbe3c259[m HEAD@{46}: checkout: moving from master to statistics2
+[33mbe3c259[m HEAD@{47}: merge statistics: Fast-forward
+[33ma7c5b1e[m HEAD@{48}: checkout: moving from statistics to master
+[33mbe3c259[m HEAD@{49}: commit: finishing statistics design
+[33ma7c5b1e[m HEAD@{50}: checkout: moving from master to statistics
+[33ma7c5b1e[m HEAD@{51}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33m30b7ca0[m HEAD@{52}: clone: from https://github.com/stefanvulpe-dev/Detention-Admin-Web-App.git

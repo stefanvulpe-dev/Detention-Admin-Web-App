@@ -2,34 +2,37 @@
 @use '../base/' as *;
 
 .guest-main {
-    @include grid-display(1fr 3fr, auto, 4rem, normal,center,center,start);
-    padding: 6rem 1.65rem 6rem 1.65rem;
+    @include grid-display(auto, 1fr 3fr, auto, normal,center,center,start);
+    padding: 2rem 1.65rem 2rem 1.65rem;
     width: min(90%, 83.5rem);
     margin-inline: auto;
     min-height: 100vh;
     &__aside {
-        @include flex-display(start,flex-start,3rem);
+        @include flex-display(start,flex-start,1rem);
         flex-direction: column;
-        padding: 0rem 4rem 0rem 0rem;
-        border-right: 0.25rem  solid white;
+        padding: 0rem 0rem 3rem 0rem;
+        border-bottom: 0.25rem solid white;
         border-radius: 0.25rem;
-        height: 100vh;
+        width: 100%
     }
     &__list {
-        @include flex-display(space-between,flex-end,3rem);
+        @include flex-display(space-between,flex-end,2rem);
         flex-direction: column;  
         align-self: start;
+        padding: 2rem 0rem 0rem 0rem;
+        width: 100%;
         &__card {
-            @include flex-display(space-between,center,1rem);
-            flex-direction: row;
+            @include grid-display(2fr 2fr 2fr 1fr, auto, 0.5rem, center,center,center,start);
             width: 100%;
-            min-width: 30rem;
             padding: 1rem;
             border-radius: 0.5rem;
             box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
             &__buttons{
+                @include flex-display(space-between,center,0.5rem);
+                flex-direction: column;
                 :is(&__edit,&__delete) 
                 {
+                    width: 100%;
                     border-style: none;
                     background: none;
                     background-color: white;
