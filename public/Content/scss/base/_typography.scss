@@ -151,6 +151,10 @@ $font-sizes: (
 }
 .stats-main {
   font-size: var(--fs-very-small);
+
+  &__chart-container__title {
+    font-size: var(--fs-very-small);
+  }
 }
 
 .contact {

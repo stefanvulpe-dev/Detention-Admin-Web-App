@@ -15,28 +15,26 @@ body{
     }
 }
 .stats-main {
-    @include flex-display(center, center, 1rem);
+    min-height: 100vh;
+    @include flex-display(start, center, 1rem);
     flex-direction: column;
     padding: 0rem 1.65rem 0rem 1.65rem;
 
     &__chart-container{
-        width: min(90%, 83.5rem);
-        padding: 2rem 2rem 0rem 2rem;
+        width: min(90%, 62.5rem);
+        padding: 1.5rem;
         border-top: 0.25rem solid;
         border-radius: 0.25rem;
-        justify-content: center;
-        align-items: center;
-        
+
         img {
-            justify-content: center;
-            min-width:  min(90%, 83.5rem);
-            width: max(100%,55rem);
-            
+            width: 90%;
+            margin: auto;
         }
 
         &__title {
+            width: 80%;
             text-align: center;
-            width: 90%;
+            margin-inline: auto;
             padding:  0.5rem 0.5rem 2rem 0.5rem;
             margin-bottom: -2rem;
             box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);

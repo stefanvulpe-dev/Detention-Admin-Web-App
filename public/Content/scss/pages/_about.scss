@@ -1,7 +1,10 @@
 @use '../base/' as *;
 @use '../sass-utils/' as *;
 
-.about{
+.about {
+    width: min(65rem, 90%);
+    min-height: 100vh;
+    margin-inline: auto;
 
     &__title{
         transition: padding 1.5s;
@@ -13,13 +16,15 @@
         }
     }
 
-    &__container{
+    &__container {
         &__info{
             @include flex-display(center, center, 2rem);
             flex-direction: column;
         }
 
         &-description{
+            text-align: center;
+            width: 75%;
             transition: font-size 1s;
             margin: 3rem 3rem 1rem 3rem;
             font-size: map-get($font-sizes, medium);
@@ -30,12 +35,13 @@
             flex-direction: column;
             text-align:center;
             font-size: map-get($font-sizes, extra-large);
+            margin-top: 2rem;
         }
 
         &-photo{
             width: 75%;
             max-width: 30rem;
-            margin-bottom: 5rem;
+            margin: auto;
         }
 
         .reverse{

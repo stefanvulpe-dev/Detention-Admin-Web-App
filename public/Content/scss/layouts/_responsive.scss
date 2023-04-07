@@ -60,22 +60,14 @@
         }
       }
     }
-  }
-  .stats-main {
-    padding: 0;
-    &__chart-container {
-      margin-inline: auto;
-      padding: 4rem 8rem 4rem 8rem;
-      width: min(90%, 83.5rem);
-      border-top: 0.35rem solid;
-      border-radius: 0.25rem;
+}
 
-      &__title {
-        width: max(79%, 20rem);
-        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-      }
-    }
+.stats-main {
+  padding: 0;
+  &__chart-container {
+    padding: 4rem 8rem 4rem 8rem;
   }
+}
 
   .contact {
     &__title {
@@ -102,21 +94,9 @@
     }
   }
 .login {
-        height: 80vh;
-
         .container {
-            max-width: min(40rem, 80%);
-            box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
-
-            input[name=email],
-            input[name=password] {
-                width: max(80%, 25rem);
-            }
-
             &__form {
-
                 &-buttons {
-                    @include flex-display(center, center, 8rem);
                     flex-direction: row;
                 }
             }
@@ -147,17 +127,20 @@
                 @include flex-display(center, center, 0.5rem);
                 flex-direction: row;
                 padding: 0 3rem 0 2rem;
+                margin-top: 0;
             }
     
             &__title-right {
                 @include flex-display(center, center, 0.5rem);
                 flex-direction: row-reverse;
                 padding: 0 3rem 0 2rem;
+                margin-top: 0;
             }
     
             &-description {
                 width: 100%;
                 font-size: map-get($font-sizes, large);
+                text-align: left;
             }
     
             &-photo {
@@ -244,50 +227,21 @@
 
   .details {   
     @include flex-display(center,start,auto);
-    width: min(83.5rem, 90%);
     margin-inline: auto;
-    height: 100vh;
-    &__form {  
-        @include flex-display(center,center,2rem);
-        flex-direction: column;              
+    &__form {             
         &__labels {
-          width: min(83.5rem, 100%);
-            @include grid-display(1fr 1fr,auto auto auto auto, 2rem, center, center, center, center);
-            padding: 2rem;
-            border-radius: 0.75rem;
+            grid-template-columns: repeat(2, 1fr);
             &__title{
-              grid-area: 1/1/span 1/ span 2;
+              grid-area: 1 / 1 / span 1 / span 2;
             }
-            &__container {
-                @include flex-display(center, start, 0.5rem);
-                flex-direction: column;
-                max-width: 100%;
-                width: 100%;
-                .form-input{                    
-                    width: 100%;
-                    max-width: 100vh;
-                }
-                .form-textarea{
-                    padding: 0rem 0.5rem 0rem 0.5rem;
-                    width: 100%;
-                    resize: none;
-                }
-            }
-            &__title {
-            padding-bottom: 1.5rem;
-            width: 100%;
-            text-align: center;
-            border-bottom: 0.25rem solid white;
-            border-radius: 0.15rem;
         }
+        &__buttons { 
+          :is(&__back, &__submit) {
+            padding-inline: 3.5rem;
+          }
         }
-        &__buttons {
-          @include flex-display(center, center,auto);
-          width: min(83.5rem, 100%);          
-      }
     }
-}
-
+  }
 }
 
 @include media-min(map-get($breakpoints, large)) {
@@ -303,17 +257,6 @@
   .stats-info {
     padding: 4rem 5rem 4rem 5rem;
     &__container {
-      width: min(90%, 83.5rem);
-      margin-inline: auto;
-      @include grid-display(
-        1fr 1fr 1fr,
-        auto,
-        2rem,
-        center,
-        center,
-        center,
-        center
-      );
       &__card {
         &--1,
         &--2,
@@ -322,21 +265,6 @@
         }
       }
     }    
-  }
-
-  .stats-main {
-    padding: 0;
-    &__chart-container {
-      border-top: 0.5rem solid;
-      border-radius: 0.25rem;
-      width: min(90%, 83.5rem);
-      padding: 4rem 8rem 4rem 8rem;
-
-      &__title {
-        width: max(79%, 20rem);
-        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-      }
-    }
   }
 
   .guest-main {
@@ -374,41 +302,5 @@
 
   .stats-info {
     padding: 4rem 5rem 4rem 5rem;
-
-    &__container {
-      width: min(90%, 83.5rem);
-      margin-inline: auto;
-      @include grid-display(
-        1fr 1fr 1fr,
-        auto,
-        2rem,
-        center,
-        center,
-        center,
-        center
-      );
-      &__card {
-        &--1,
-        &--2,
-        &--3 {
-          padding: 1rem 2rem 1rem 2rem;
-        }
-      }
-    }
-  }
-
-  .stats-main {
-    &__chart-container {
-      border-top: 0.5rem solid;
-      border-radius: 0.25rem;
-      width: min(90%, 83.5rem);
-      margin-inline: auto;
-      padding: 4rem 8rem 4rem 8rem;
-
-      &__title {
-        width: max(79%, 20rem);
-        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-      }
-    }
   }
 }
