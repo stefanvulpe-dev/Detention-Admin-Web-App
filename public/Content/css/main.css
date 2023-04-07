@@ -247,6 +247,9 @@ select {
 .about__container-description {
   font-size: 1.35rem;
 }
+.about-description {
+  font-size: 1.15rem;
+}
 
 .details__form__labels__title {
   font-size: var(--fs-regular);
