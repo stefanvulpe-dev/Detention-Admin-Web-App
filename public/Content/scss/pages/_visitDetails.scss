@@ -1,66 +1,69 @@
 @use '../sass-utils/' as *;
 @use '../base/' as *;
 
-.details {
-    margin: 4rem 8rem 8rem 8rem;
-    min-width: 60rem;
-
-    &__info {
-        @include flex-display(center, center, 0rem);
-        flex-direction: column;
-        padding-bottom: 3rem;
-
-        &__title {
-            text-align: center;
-            padding-top: 3rem;
-        }
-
-        &__line {
-            border-radius: 1rem;
-            border: none;
-            text-align: center;
-        }
-    }
-
-    &__form {
-        margin-bottom: 15rem;
-
+.details {   
+    @include flex-display(center,center,auto);    
+    width: min(45rem, 90%);
+    margin-inline: auto;
+    padding-top: 3rem;
+    min-height: 100vh;
+    &__form {          
+        @include flex-display(center,center,2rem);
+        flex-direction: column;     
         &__labels {
-            @include grid-display(1fr 1fr, 1fr 1fr 1fr, 2rem, center, center, start, center);
-            column-gap: 0;
-            padding: 0 4rem 10rem 4rem;
-
+            width: min(45rem, 100%);
+            @include grid-display(auto,auto auto auto auto auto auto, 2rem, center, center, center, center);
+            padding: 2rem;
+            border-radius: 0.75rem;
             &__container {
                 @include flex-display(center, start, 0.5rem);
                 flex-direction: column;
-
-                .form-input {
-                    padding: 0 0.5rem 0 0.5rem;
+                max-width: 100%;
+                width: 100%;
+                .form-input{
+                    padding: 0rem 0.5rem 0rem 0.5rem;
+                    border-radius: 0.5rem;
+                    width: 100%;
+                    max-width: 100vh;
                 }
-
-
-                .form-textarea {
-                    padding-left: 0.5rem;
+                .form-textarea{
+                    border-radius: 0.5rem;
+                    padding: 0rem 0.5rem 0rem 0.5rem;
+                    width: 100%;
+                    resize: none;
                 }
             }
+            &__title {
+            padding-bottom: 1.5rem;
+            width: 100%;
+            text-align: center;
+            border-bottom: 0.25rem solid white;
+            border-radius: 0.15rem;
+        }
         }
 
-        &__submit {
-            margin-top: 4rem;
-            border: none;
-            border-radius: 0.4rem;
-            padding: 1.25rem 3.25rem 1.25rem 3.25rem;
-            cursor: pointer;
-            float: right;
-            transition: opacity 0.15s;
-        }
-
-        &__submit:hover {
-            opacity: 0.85;
-        }
-
-        &__submit:active {
-            opacity: 0.65;
+        &__buttons {
+            @include flex-display(center, start, 20%);
+            width: 100%;
+            width: min(45rem, 100%);
+            &__submit, &__back{
+                text-align: center;
+                padding: 1rem;
+                border-radius: 0.75rem;
+                width: min(20rem,40%);
+                border: none;
+                transition: all 250ms ease-in-out;
+                &:is(:hover, :focus) {
+                box-shadow: 0 0 3.5rem map-get($colors, accent-red);
+                }
+            }
+            &__submit{
+                align-self: flex-end;
+            }
+            &__back{
+                align-self: flex-start;
+            }
+            
         }
     }
 }

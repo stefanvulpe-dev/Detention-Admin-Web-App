@@ -169,17 +169,6 @@ $colors: (
 
 .details {
     color: map-get($colors, primary-white);
-
-    &__info {
-
-        background-color: map-get($colors, accent-charcoal);
-        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
-
-        &__line {
-            background-color: map-get($colors, primary-white);
-        }
-    }
-
     &__form {
 
         &__labels {
@@ -187,10 +176,13 @@ $colors: (
             box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.6);
         }
 
-        &__submit {
-            background-color: map-get($colors, accent-red);
-            color: map-get($colors, primary-white);
-            box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
+        &__buttons {
+            &__submit, &__back{
+                background-color: map-get($colors, accent-red);
+                color: map-get($colors, primary-white);
+                box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
+            }
+            
         }
     }
 }

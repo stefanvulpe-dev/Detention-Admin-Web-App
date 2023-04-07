@@ -50,12 +50,9 @@
       </header>
 
     <main class="details">
-        <div class="details__info">
-            <h1 class="details__info__title">Introduceti detaliile referitoare la vizita</h1>
-            <hr class="details__info__line">
-        </div>
-        <form action="#" class="details__form">
+        <form action="#" class="details__form">          
             <div class="details__form__labels">
+              <h1 class="details__form__labels__title">Introduceti detaliile referitoare la vizita</h1>
                 <div class="details__form__labels__container">
                     <label class="form-text" for="visit-date">Data realizarii vizitei *</label>
                     <input class="form-input" required id="visit-date" type="date">
@@ -64,17 +61,7 @@
                 <div class="details__form__labels__container">
                     <label class="form-text" for="objects-data">Obiecte date/furnizate de condamnat *</label>
                     <input class="form-input" required id="object-data" type="text">
-                </div>
-
-                <div class="details__form__labels__container">
-                    <label class="form-text" for="visit-nature">Natura vizitei *</label>
-                    <textarea class="form-textarea" required id="visit-nature" type="text"></textarea>
-                </div>
-
-                <div class="details__form__labels__container">
-                    <label class="form-text" for="summary">Rezumatul discutiilor *</label>
-                    <textarea class="form-textarea" required id="visit-nature" type="text"></textarea>
-                </div>
+                </div>               
 
                 <div class="details__form__labels__container">
                     <label class="form-text" for="visit-time">Durata vizitei *</label>
@@ -85,43 +72,56 @@
                     <label class="form-text" for="prisoner-mood">Starea detinutului *</label>
                     <input class="form-input" required id="prisoner-mood" type="text">
                 </div>
+                <div class="details__form__labels__container">
+                    <label class="form-text" for="visit-nature">Natura vizitei *</label>
+                    <textarea class="form-textarea" required id="visit-nature" type="text" maxlength="100"></textarea>
+                </div>
+
+                <div class="details__form__labels__container">
+                    <label class="form-text" for="summary">Rezumatul discutiilor *</label>
+                    <textarea class="form-textarea" required id="summary" type="text" maxlength="200"></textarea>
+                </div>
 
             </div>
-            <button type="submit" class="details__form__submit">Trimite</button>
+            <div class="details__form__buttons">
+              <a href="guestsDetails.html" class="details__form__buttons__back">Inapoi</a>
+              <button type="submit" class="details__form__buttons__submit">Trimite</button>              
+            </div>
+            
 
         </form>
     </main>
 
     <footer class="footer">
-        <div class="footer__container">
-            <p class="footer__copyright">
-                &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
-            </p>
-            <nav class="footer__social-links">
-                <ul class="social-links__list">
-                    <li class="list-item">
-                        <a href="" class="list-item__link">
-                            <img src="../assets/footer/facebook-icon.svg" alt="facebook-logo">
-                        </a>
-                    </li>
-                    <li class="list-item">
-                        <a href="" class="list-item__link">
-                            <img src="../assets/footer/email-icon.svg" alt="email-logo">
-                        </a>
-                    </li>
-                    <li class="list-item">
-                        <a href="" class="list-item__link">
-                            <img src="../assets/footer/whatsapp-icon.svg" alt="whatsapp-logo">
-                        </a>
-                    </li>
-                    <li class="list-item">
-                        <a href="" class="list-item__link">
-                            <img src="../assets/footer/back-to-top.svg" alt="back-to-top logo">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+      <div class="footer__container">
+        <p class="footer__copyright">
+          &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
+        </p>
+        <nav class="footer__social-links">
+          <ul class="social-links__list">
+            <li class="list-item">
+              <a href="" class="list-item__link">
+                <img src="../../public/assets/footer/facebook-icon.svg" alt="facebook-logo">
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="" class="list-item__link">
+                <img src="../../public/assets/footer/email-icon.svg" alt="email-logo">
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="" class="list-item__link">
+                <img src="../../public/assets/footer/whatsapp-icon.svg" alt="whatsapp-logo">
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="" class="list-item__link">
+                <img src="../../public/assets/footer/back-to-top.svg" alt="back-to-top logo">
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </footer>
 
     <script src="../Scripts/navToggle.js"></script>

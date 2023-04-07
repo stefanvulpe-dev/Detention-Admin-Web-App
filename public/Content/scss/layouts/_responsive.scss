@@ -192,6 +192,53 @@
       }
     }
   }
+
+  .details {   
+    @include flex-display(center,start,auto);
+    width: min(83.5rem, 90%);
+    margin-inline: auto;
+    height: 100vh;
+    &__form {  
+        @include flex-display(center,center,2rem);
+        flex-direction: column;              
+        &__labels {
+          width: min(83.5rem, 100%);
+            @include grid-display(1fr 1fr,auto auto auto auto, 2rem, center, center, center, center);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            &__title{
+              grid-area: 1/1/span 1/ span 2;
+            }
+            &__container {
+                @include flex-display(center, start, 0.5rem);
+                flex-direction: column;
+                max-width: 100%;
+                width: 100%;
+                .form-input{                    
+                    width: 100%;
+                    max-width: 100vh;
+                }
+                .form-textarea{
+                    padding: 0rem 0.5rem 0rem 0.5rem;
+                    width: 100%;
+                    resize: none;
+                }
+            }
+            &__title {
+            padding-bottom: 1.5rem;
+            width: 100%;
+            text-align: center;
+            border-bottom: 0.25rem solid white;
+            border-radius: 0.15rem;
+        }
+        }
+        &__buttons {
+          @include flex-display(center, center,auto);
+          width: min(83.5rem, 100%);          
+      }
+    }
+}
+
 }
 
 @include media-min(map-get($breakpoints, large)) {

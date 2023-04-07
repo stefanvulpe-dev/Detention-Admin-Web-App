@@ -275,46 +275,25 @@ $font-sizes: (
   }
 }
 
-.details {
-  &__info {
-    &__title {
-      font-weight: map-get($font-weights, bold);
-    }
-
-    &__line {
-      height: 0.5rem;
-      width: 60rem;
-    }
-  }
-
-  &__form {
-    &__labels {
-      &__container {
-        font-size: map-get($font-sizes, large);
-
-        .form-text {
-          font-size: map-get($font-sizes, regular);
+.details {   
+    &__form {
+      &__labels {
+        &__title {
+          font-size: var(--fs-regular);
+          font-weight: map-get($font-weights, bold);
         }
-
-        .form-input {
-          width: 25rem;
-          height: 3rem;
-        }
-
-        input[type="date"]::-webkit-calendar-picker-indicator,
-        input[type="time"]::-webkit-calendar-picker-indicator {
-          font-size: 1.75rem;
-        }
-
-        .form-textarea {
-          max-width: 25rem;
-          min-width: 25rem;
+        &__container {
+          .form-text {
+            font-size: var(--fs-small);
+          }
+          .form-input, .form-textarea{
+            font-size: var(--fs-small);
+            font-weight: map-get($font-weights, regular);
+          }
         }
       }
-    }
-
-    &__submit {
-      font-size: map-get($font-sizes, extra-large);
-    }
-  }
+      &__buttons {
+        font-size: var(--fs-medium);
+      }
+    }  
 }

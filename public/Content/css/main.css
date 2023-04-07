@@ -249,33 +249,19 @@ select {
   font-size: 1.15rem;
 }
 
-.details__info__title {
+.details__form__labels__title {
+  font-size: var(--fs-regular);
   font-weight: 700;
 }
-.details__info__line {
-  height: 0.5rem;
-  width: 60rem;
-}
-.details__form__labels__container {
-  font-size: 1.35rem;
-}
 .details__form__labels__container .form-text {
-  font-size: 1rem;
+  font-size: var(--fs-small);
 }
-.details__form__labels__container .form-input {
-  width: 25rem;
-  height: 3rem;
+.details__form__labels__container .form-input, .details__form__labels__container .form-textarea {
+  font-size: var(--fs-small);
+  font-weight: 400;
 }
-.details__form__labels__container input[type=date]::-webkit-calendar-picker-indicator,
-.details__form__labels__container input[type=time]::-webkit-calendar-picker-indicator {
-  font-size: 1.75rem;
-}
-.details__form__labels__container .form-textarea {
-  max-width: 25rem;
-  min-width: 25rem;
-}
-.details__form__submit {
-  font-size: 1.75rem;
+.details__form__buttons {
+  font-size: var(--fs-medium);
 }
 
 :is(header, .hero) :is(h1, p, a) {
@@ -384,18 +370,11 @@ select {
 .details {
   color: hsl(0, 0%, 100%);
 }
-.details__info {
-  background-color: hsl(203, 19%, 30%);
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
-}
-.details__info__line {
-  background-color: hsl(0, 0%, 100%);
-}
 .details__form__labels {
   background-color: hsl(203, 19%, 30%);
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.6);
 }
-.details__form__submit {
+.details__form__buttons__submit, .details__form__buttons__back {
   background-color: hsl(0, 97%, 65%);
   color: hsl(0, 0%, 100%);
   box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
@@ -648,40 +627,34 @@ body {
 }
 
 .details {
-  margin: 4rem 8rem 8rem 8rem;
-  min-width: 60rem;
-}
-.details__info {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0rem;
-  flex-direction: column;
-  padding-bottom: 3rem;
-}
-.details__info__title {
-  text-align: center;
+  gap: auto;
+  width: min(45rem, 90%);
+  margin-inline: auto;
   padding-top: 3rem;
-}
-.details__info__line {
-  border-radius: 1rem;
-  border: none;
-  text-align: center;
+  min-height: 100vh;
 }
 .details__form {
-  margin-bottom: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
 }
 .details__form__labels {
+  width: min(45rem, 100%);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto auto auto;
   gap: 2rem;
   justify-items: center;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   align-content: center;
-  column-gap: 0;
-  padding: 0 4rem 10rem 4rem;
+  padding: 2rem;
+  border-radius: 0.75rem;
 }
 .details__form__labels__container {
   display: flex;
@@ -689,27 +662,52 @@ body {
   align-items: start;
   gap: 0.5rem;
   flex-direction: column;
+  max-width: 100%;
+  width: 100%;
 }
 .details__form__labels__container .form-input {
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 100vh;
 }
 .details__form__labels__container .form-textarea {
-  padding-left: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  width: 100%;
+  resize: none;
 }
-.details__form__submit {
-  margin-top: 4rem;
+.details__form__labels__title {
+  padding-bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+  border-bottom: 0.25rem solid white;
+  border-radius: 0.15rem;
+}
+.details__form__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 20%;
+  width: 100%;
+  width: min(45rem, 100%);
+}
+.details__form__buttons__submit, .details__form__buttons__back {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  width: min(20rem, 40%);
   border: none;
-  border-radius: 0.4rem;
-  padding: 1.25rem 3.25rem 1.25rem 3.25rem;
-  cursor: pointer;
-  float: right;
-  transition: opacity 0.15s;
+  transition: all 250ms ease-in-out;
 }
-.details__form__submit:hover {
-  opacity: 0.85;
+.details__form__buttons__submit:is(:hover, :focus), .details__form__buttons__back:is(:hover, :focus) {
+  box-shadow: 0 0 3.5rem hsl(0, 97%, 65%);
 }
-.details__form__submit:active {
-  opacity: 0.65;
+.details__form__buttons__submit {
+  align-self: flex-end;
+}
+.details__form__buttons__back {
+  align-self: flex-start;
 }
 
 .login {
@@ -1399,6 +1397,70 @@ body {
   }
   .guest-main__list__card__buttons {
     flex-direction: column;
+  }
+  .details {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: auto;
+    width: min(83.5rem, 90%);
+    margin-inline: auto;
+    height: 100vh;
+  }
+  .details__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .details__form__labels {
+    width: min(83.5rem, 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 2rem;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 2rem;
+    border-radius: 0.75rem;
+  }
+  .details__form__labels__title {
+    grid-area: 1/1/span 1/span 2;
+  }
+  .details__form__labels__container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5rem;
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+  }
+  .details__form__labels__container .form-input {
+    width: 100%;
+    max-width: 100vh;
+  }
+  .details__form__labels__container .form-textarea {
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    width: 100%;
+    resize: none;
+  }
+  .details__form__labels__title {
+    padding-bottom: 1.5rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 0.25rem solid white;
+    border-radius: 0.15rem;
+  }
+  .details__form__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: auto;
+    width: min(83.5rem, 100%);
   }
 }
 @media screen and (min-width: 1150px) {
