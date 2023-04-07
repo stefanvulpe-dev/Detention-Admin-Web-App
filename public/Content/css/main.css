@@ -1297,6 +1297,24 @@ body {
   .contact__form-button {
     justify-self: end;
   }
+  .login {
+    height: 80vh;
+  }
+  .login .container {
+    max-width: min(40rem, 80%);
+    box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
+  }
+  .login .container input[name=email],
+  .login .container input[name=password] {
+    width: max(80%, 25rem);
+  }
+  .login .container__form-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    flex-direction: row;
+  }
   .header .nav__toggle {
     display: none;
   }
@@ -1324,6 +1342,63 @@ body {
   .footer .social-links__list .list-item {
     max-width: 15%;
     flex-shrink: 0;
+  }
+  .guest-main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto;
+    gap: 4rem;
+    justify-items: normal;
+    justify-content: center;
+    align-items: center;
+    align-content: start;
+    padding: 6rem 1.65rem 3rem 1.65rem;
+  }
+  .guest-main__aside {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 3rem;
+    flex-direction: column;
+    padding: 0rem 6rem 0rem 0rem;
+    border-right: 0.25rem solid white;
+    border-bottom: none;
+    height: 100vh;
+  }
+  .guest-main__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 3rem;
+    flex-direction: column;
+    padding: 0rem;
+  }
+  .guest-main__list__card {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: start;
+  }
+  .guest-main__list__card__name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: row;
+  }
+  .guest-main__list__card__dBirth {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: row;
+  }
+  .guest-main__list__card__buttons {
+    flex-direction: column;
   }
 }
 @media screen and (min-width: 1150px) {
