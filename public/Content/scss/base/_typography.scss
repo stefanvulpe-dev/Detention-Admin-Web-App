@@ -262,7 +262,6 @@ $font-sizes: (
 
         &-text {
             font-weight: map-get($font-weights, regular);
-            font-size: map-get($font-sizes, huge);
         }
 
     }
@@ -276,7 +275,7 @@ $font-sizes: (
         }
 
         &-description {
-            font-size: map-get($font-sizes, medium);
+            font-size: map-get($font-sizes, large);
 
         }
     }
