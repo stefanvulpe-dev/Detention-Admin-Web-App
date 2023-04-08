@@ -3,7 +3,7 @@
 
 .stats-info__container__card {
     &--1,&--2,&--3{
-    border-radius: 0.7rem;
+    border-radius: 0.75rem;
     padding: 1rem 1.65rem 1rem 1.65rem;
     text-align: center;
     @include flex-display(left,auto,0);

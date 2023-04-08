@@ -74,7 +74,7 @@ $font-sizes: (
   }
 }
 
-:is(header, main, section, footer)
+:is(header, main, section, footer, div)
   :is(h1, h2, h3, p, span, a, label, input, legend, textarea, time) {
   font-family: $ff-primary;
 }
