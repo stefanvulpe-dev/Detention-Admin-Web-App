@@ -7,6 +7,7 @@
     }
 
     .nav__toggle {
+        cursor: pointer;
         display: block;
         width: 30px;
         
@@ -40,6 +41,19 @@
 
             &-icon {
                 max-width: 20%;
+            }
+        }
+
+        .list__item:is(:last-child) {
+            @include flex-display(center, center, 1rem);
+            .person-logo {
+                max-width: 2.5rem;
+                border-radius: 100vh;
+            }
+
+            .list__item-icon {
+                max-width: 2rem;
+                cursor: pointer;
             }
         }
     }

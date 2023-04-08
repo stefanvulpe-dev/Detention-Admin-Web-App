@@ -61,11 +61,11 @@
 
             .drop-arrow.extended {
                 .vBar:is(:first-child) {
-                    transform: translate(5px, 2px) rotate(-45deg);
+                    transform: translate(4px, 2px) rotate(-45deg);
                 }
 
                 .vBar:is(:last-child) {
-                    transform: translate(5px, -6px) rotate(45deg);
+                    transform: translate(4px, -7px) rotate(45deg);
                 }
             }
 

@@ -135,11 +135,6 @@ select {
     font-size: var(--fs-very-small);
   }
 }
-:is(.stats-info) :is(p, a) {
-  font-size: var(--fs-very-small);
-  font-weight: 400;
-}
-
 .main .card__title {
   font-size: var(--fs-medium);
 }
@@ -147,6 +142,9 @@ select {
   font-size: var(--fs-small);
 }
 
+.stats-info__container {
+  font-family: "Inter", sans-serif;
+}
 .stats-info__container .highlight {
   font-size: var(--fs-extra-large);
   font-weight: 700;
@@ -632,10 +630,10 @@ body {
   transform: translate(2px, -4px) rotate(45deg);
 }
 .guest-main__list__card .drop-arrow.extended .vBar:is(:first-child) {
-  transform: translate(5px, 2px) rotate(-45deg);
+  transform: translate(4px, 2px) rotate(-45deg);
 }
 .guest-main__list__card .drop-arrow.extended .vBar:is(:last-child) {
-  transform: translate(5px, -6px) rotate(45deg);
+  transform: translate(4px, -7px) rotate(45deg);
 }
 .guest-main__list__card__buttons {
   display: none;
@@ -929,6 +927,7 @@ body {
   flex-basis: min(20%, 5rem);
 }
 .header .nav__toggle {
+  cursor: pointer;
   display: block;
   width: 30px;
 }
@@ -961,6 +960,20 @@ body {
 }
 .header__nav-list .list__item-icon {
   max-width: 20%;
+}
+.header__nav-list .list__item:is(:last-child) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.header__nav-list .list__item:is(:last-child) .person-logo {
+  max-width: 2.5rem;
+  border-radius: 100vh;
+}
+.header__nav-list .list__item:is(:last-child) .list__item-icon {
+  max-width: 2rem;
+  cursor: pointer;
 }
 
 .footer__copyright {
@@ -1393,22 +1406,6 @@ body {
     align-content: center;
     padding: 0 2rem 2rem 2rem;
   }
-  .header .nav__toggle {
-    display: none;
-  }
-  .header__nav {
-    position: static;
-  }
-  .header__nav-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    font-size: var(--fs-medium);
-  }
-  .header__nav-list .list__item {
-    margin-block: 0;
-  }
   .footer__container {
     flex-direction: row;
     justify-content: space-between;
@@ -1484,6 +1481,22 @@ body {
   }
 }
 @media screen and (min-width: 1150px) {
+  .header .nav__toggle {
+    display: none;
+  }
+  .header__nav {
+    position: static;
+  }
+  .header__nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    font-size: var(--fs-medium);
+  }
+  .header__nav-list .list__item {
+    margin-block: 0;
+  }
   .main__container {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "slimCard1 wideCard1 wideCard1" "wideCard2 wideCard2 slimCard2";

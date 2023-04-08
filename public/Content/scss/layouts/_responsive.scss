@@ -94,14 +94,14 @@
     }
   }
 .login {
-        .container {
-            &__form {
-                &-buttons {
-                    flex-direction: row;
-                }
+    .container {
+        &__form {
+            &-buttons {
+                flex-direction: row;
             }
         }
     }
+}
 
     .about {
     
@@ -154,25 +154,6 @@
             }
         }
     }
-
-    .header {
-        .nav__toggle {
-            display: none;
-        }
-
-    &__nav {
-      position: static;
-    }
-
-    &__nav-list {
-      @include flex-display(center, center, 1.5rem);
-      font-size: var(--fs-medium);
-
-      .list__item {
-        margin-block: 0;
-      }
-    }
-  }
 
   .footer {
     &__container {
@@ -244,6 +225,25 @@
 }
 
 @include media-min(map-get($breakpoints, large)) {
+
+  .header {
+    .nav__toggle {
+      display: none;
+    }
+
+    &__nav {
+        position: static;
+    }
+
+    &__nav-list {
+        @include flex-display(center, center, 2.5rem);
+        font-size: var(--fs-medium);
+        .list__item {
+          margin-block: 0;
+        }
+      }
+  }
+
   .main {
     &__container {
       grid-template-columns: repeat(3, 1fr);
