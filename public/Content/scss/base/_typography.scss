@@ -1,8 +1,8 @@
-@use "../sass-utils/" as *;
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lobster&display=swap");
+@use '../sass-utils/' as *;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lobster&display=swap');
 
-$ff-primary: "Inter", sans-serif;
-$ff-secondary: "Lobster", cursive;
+$ff-primary: 'Inter', sans-serif;
+$ff-secondary: 'Lobster', cursive;
 
 $font-weights: (
   regular: 400,
@@ -231,14 +231,14 @@ $font-sizes: (
       font-size: map-get($font-sizes, medium);
     }
 
-    label[for="first-name"],
-    label[for="last-name"],
-    label[for="email"],
-    label[for="suggestions"] {
+    label[for='first-name'],
+    label[for='last-name'],
+    label[for='email'],
+    label[for='suggestions'] {
       font-size: map-get($font-sizes, large);
     }
 
-    textarea[name="suggestions"]::placeholder {
+    textarea[name='suggestions']::placeholder {
       font-weight: map-get($font-weights, regular);
       font-size: map-get($font-sizes, small);
     }
@@ -256,47 +256,47 @@ $font-sizes: (
 }
 
 .about {
-    &__title {
-        &-text {
-            font-weight: map-get($font-weights, regular);
-        }
+  &__title {
+    &-text {
+      font-weight: map-get($font-weights, regular);
     }
-    &__container {
-        .title-text {
-            font-weight: map-get($font-weights, bold);
-            font-size: map-get($font-sizes, large);
-        }
-
-        &-description {
-            font-size: map-get($font-sizes, large);
-
-        }
+  }
+  &__container {
+    .title-text {
+      font-weight: map-get($font-weights, bold);
+      font-size: map-get($font-sizes, large);
     }
 
     &-description {
-      font-size: map-get($font-sizes, medium);
+      font-size: map-get($font-sizes, large);
     }
+  }
+
+  &-description {
+    font-size: map-get($font-sizes, medium);
+  }
 }
 
-.details {   
-    &__form {
-      &__labels {
-        &__title {
-          font-size: var(--fs-regular);
-          font-weight: map-get($font-weights, bold);
+.details {
+  &__form {
+    &__labels {
+      &__title {
+        font-size: var(--fs-regular);
+        font-weight: map-get($font-weights, bold);
+      }
+      &__container {
+        .form-text {
+          font-size: var(--fs-small);
         }
-        &__container {
-          .form-text {
-            font-size: var(--fs-small);
-          }
-          .form-input, .form-textarea{
-            font-size: var(--fs-small);
-            font-weight: map-get($font-weights, regular);
-          }
+        .form-input,
+        .form-textarea {
+          font-size: var(--fs-small);
+          font-weight: map-get($font-weights, regular);
         }
       }
-      &__buttons {
-        font-size: var(--fs-medium);
-      }
-    }  
+    }
+    &__buttons {
+      font-size: var(--fs-medium);
+    }
+  }
 }

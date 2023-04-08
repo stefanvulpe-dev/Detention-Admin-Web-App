@@ -1,102 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/Content/css/main.css">
-    <link rel="icon"  href="../../public/assets/tab-icon.svg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../public/Content/css/main.css" />
+    <link rel="icon" href="../../public/assets/tab-icon.svg" />
     <title>Detalii despre vizita</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="header">
-        <div class="header__container">
-          <a href="../../public/index.html">
-            <img class="header__logo" src="../../public/assets/header/Broken-Dreams.png" alt="Logo">
-          </a>
-          <div class="nav__toggle">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </div>
-          <nav class="header__nav">
-            <ul class="header__nav-list">
-              <li class="list__item">
-                <a href="../../public/index.html" class="nav-link">
-                  <img class="list__item-icon" src="../../public/assets/header/house-icon.svg" alt="home-logo">
-                  <p class="list__item-text">Acasa</p>
-                </a>
-              </li>
-              <li class="list__item">
-                <a href="about.html" class="nav-link">
-                  <img class="list__item-icon" src="../../public/assets/header/info-icon.svg" alt="info-logo">
-                  <p class="list__item-text">Despre</p>
-                </a>
-              </li>
-              <li class="list__item">
-                <a href="statistics.html" class="nav-link">
-                  <img class="list__item-icon" src="../../public/assets/header/statistics-icon.svg" alt="statistics-logo">
-                  <p class="list__item-text">Statistici</p>
-                </a>
-              </li>
-              <li class="list__item">
-                <a href="contact.html" class="nav-link">
-                  <img class="list__item-icon" src="../../public/assets/header/contact-icon.svg" alt="contact-logo">
-                  <p class="list__item-text">Contact</p>
-                </a>
-              </li>
-              <li class="list__item">
-                <img class="person-logo" src="../../public/assets/header/person.jpg" alt="person-logo">
-                <img class="list__item-icon" src="../../public/assets/header/logout.svg" alt="contact-logo">
-              </li>
-            </ul>
-          </nav>
+      <div class="header__container">
+        <a href="../../public/index.html">
+          <img
+            class="header__logo"
+            src="../../public/assets/header/Broken-Dreams.png"
+            alt="Logo"
+          />
+        </a>
+        <div class="nav__toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
-      </header>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li class="list__item">
+              <a href="../../public/index.html" class="nav-link">
+                <img
+                  class="list__item-icon"
+                  src="../../public/assets/header/house-icon.svg"
+                  alt="home-logo"
+                />
+                <p class="list__item-text">Acasa</p>
+              </a>
+            </li>
+            <li class="list__item">
+              <a href="about.html" class="nav-link">
+                <img
+                  class="list__item-icon"
+                  src="../../public/assets/header/info-icon.svg"
+                  alt="info-logo"
+                />
+                <p class="list__item-text">Despre</p>
+              </a>
+            </li>
+            <li class="list__item">
+              <a href="statistics.html" class="nav-link">
+                <img
+                  class="list__item-icon"
+                  src="../../public/assets/header/statistics-icon.svg"
+                  alt="statistics-logo"
+                />
+                <p class="list__item-text">Statistici</p>
+              </a>
+            </li>
+            <li class="list__item">
+              <a href="contact.html" class="nav-link">
+                <img
+                  class="list__item-icon"
+                  src="../../public/assets/header/contact-icon.svg"
+                  alt="contact-logo"
+                />
+                <p class="list__item-text">Contact</p>
+              </a>
+            </li>
+            <li class="list__item">
+              <img
+                class="person-logo"
+                src="../../public/assets/header/person.jpg"
+                alt="person-logo"
+              />
+              <img
+                class="list__item-icon"
+                src="../../public/assets/header/logout.svg"
+                alt="contact-logo"
+              />
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <main class="details">
-        <form action="#" class="details__form">          
-            <div class="details__form__labels">
-              <h1 class="details__form__labels__title">Introduceti detaliile referitoare la vizita</h1>
-                <div class="details__form__labels__container">
-                    <label class="form-text" for="visit-date">Data realizarii vizitei *</label>
-                    <input class="form-input" required id="visit-date" type="date">
-                </div>
+      <form action="#" class="details__form">
+        <div class="details__form__labels">
+          <h1 class="details__form__labels__title">
+            Introduceti detaliile referitoare la vizita
+          </h1>
+          <div class="details__form__labels__container">
+            <label class="form-text" for="visit-date"
+              >Data realizarii vizitei *</label
+            >
+            <input class="form-input" required id="visit-date" type="date" />
+          </div>
 
-                <div class="details__form__labels__container">
-                    <label class="form-text" for="object-data">Obiecte date/furnizate de condamnat *</label>
-                    <input class="form-input" required id="object-data" type="text">
-                </div>               
+          <div class="details__form__labels__container">
+            <label class="form-text" for="object-data"
+              >Obiecte date/furnizate de condamnat *</label
+            >
+            <input class="form-input" required id="object-data" type="text" />
+          </div>
 
-                <div class="details__form__labels__container">
-                    <label class="form-text" for="visit-time">Durata vizitei *</label>
-                    <input class="form-input" required id="visit-time" type="time">
-                </div>
+          <div class="details__form__labels__container">
+            <label class="form-text" for="visit-time">Durata vizitei *</label>
+            <input class="form-input" required id="visit-time" type="time" />
+          </div>
 
-                <div class="details__form__labels__container">
-                    <label class="form-text" for="prisoner-mood">Starea detinutului *</label>
-                    <input class="form-input" required id="prisoner-mood" type="text">
-                </div>
-                <div class="details__form__labels__container">
-                    <label class="form-text" for="visit-nature">Natura vizitei *</label>
-                    <textarea class="form-textarea" required id="visit-nature"  maxlength="100"></textarea>
-                </div>
+          <div class="details__form__labels__container">
+            <label class="form-text" for="prisoner-mood"
+              >Starea detinutului *</label
+            >
+            <input class="form-input" required id="prisoner-mood" type="text" />
+          </div>
+          <div class="details__form__labels__container">
+            <label class="form-text" for="visit-nature">Natura vizitei *</label>
+            <textarea
+              class="form-textarea"
+              required
+              id="visit-nature"
+              maxlength="100"
+            ></textarea>
+          </div>
 
-                <div class="details__form__labels__container">
-                    <label class="form-text" for="summary">Rezumatul discutiilor *</label>
-                    <textarea class="form-textarea" required id="summary" maxlength="200"></textarea>
-                </div>
-
-            </div>
-            <div class="details__form__buttons">
-              <a href="guestsDetails.html" class="details__form__buttons__back">Inapoi</a>
-              <button type="submit" class="details__form__buttons__submit">Trimite</button>              
-            </div>
-            
-
-        </form>
+          <div class="details__form__labels__container">
+            <label class="form-text" for="summary"
+              >Rezumatul discutiilor *</label
+            >
+            <textarea
+              class="form-textarea"
+              required
+              id="summary"
+              maxlength="200"
+            ></textarea>
+          </div>
+        </div>
+        <div class="details__form__buttons">
+          <a href="guestsDetails.html" class="details__form__buttons__back"
+            >Inapoi</a
+          >
+          <button type="submit" class="details__form__buttons__submit">
+            Trimite
+          </button>
+        </div>
+      </form>
     </main>
 
     <footer class="footer">
@@ -108,22 +156,34 @@
           <ul class="social-links__list">
             <li class="list-item">
               <a href="" class="list-item__link">
-                <img src="../../public/assets/footer/facebook-icon.svg" alt="facebook-logo">
+                <img
+                  src="../../public/assets/footer/facebook-icon.svg"
+                  alt="facebook-logo"
+                />
               </a>
             </li>
             <li class="list-item">
               <a href="" class="list-item__link">
-                <img src="../../public/assets/footer/email-icon.svg" alt="email-logo">
+                <img
+                  src="../../public/assets/footer/email-icon.svg"
+                  alt="email-logo"
+                />
               </a>
             </li>
             <li class="list-item">
               <a href="" class="list-item__link">
-                <img src="../../public/assets/footer/whatsapp-icon.svg" alt="whatsapp-logo">
+                <img
+                  src="../../public/assets/footer/whatsapp-icon.svg"
+                  alt="whatsapp-logo"
+                />
               </a>
             </li>
             <li class="list-item">
               <a href="" class="list-item__link">
-                <img src="../../public/assets/footer/back-to-top.svg" alt="back-to-top logo">
+                <img
+                  src="../../public/assets/footer/back-to-top.svg"
+                  alt="back-to-top logo"
+                />
               </a>
             </li>
           </ul>
@@ -132,5 +192,5 @@
     </footer>
 
     <script src="../Scripts/navToggle.js"></script>
-</body>
+  </body>
 </html>

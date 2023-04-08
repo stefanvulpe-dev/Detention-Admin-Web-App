@@ -1,187 +1,178 @@
 $colors: (
-    primary-white: hsl(0, 0%, 100%),
-    primary-dark: hsl(0, 0%, 0%),
-    primary-dark-gray: hsl(169, 26%, 20%),
-    secondary-white: hsl(0, 0%, 80%),
-    secondary-gray: hsl(0, 0%, 35%),
-    secondary-black: hsl(120, 5%, 11%),
-    accent-red: hsl(0, 97%, 65%),
-    accent-charcoal: hsl(203, 19%, 30%),
-    accent-beige: hsl(19, 91%, 78%),
-    accent-maroon: hsl(320, 15%, 19%),
-    accent-green: hsl(148, 30%, 46%),
-    accent-light-green: hsl(90, 18%, 64%),
-    light-black: hsl(0, 0%, 24%),
-    light-gray: hsl(0, 0%, 85%)
+  primary-white: hsl(0, 0%, 100%),
+  primary-dark: hsl(0, 0%, 0%),
+  primary-dark-gray: hsl(169, 26%, 20%),
+  secondary-white: hsl(0, 0%, 80%),
+  secondary-gray: hsl(0, 0%, 35%),
+  secondary-black: hsl(120, 5%, 11%),
+  accent-red: hsl(0, 97%, 65%),
+  accent-charcoal: hsl(203, 19%, 30%),
+  accent-beige: hsl(19, 91%, 78%),
+  accent-maroon: hsl(320, 15%, 19%),
+  accent-green: hsl(148, 30%, 46%),
+  accent-light-green: hsl(90, 18%, 64%),
+  light-black: hsl(0, 0%, 24%),
+  light-gray: hsl(0, 0%, 85%),
 );
 
 :is(header, .hero) :is(h1, p, a) {
-    color: map-get($colors, primary-white);
+  color: map-get($colors, primary-white);
 }
 
 .hero :is(.hero__main-link) {
-    color: map-get($colors, primary-dark)
+  color: map-get($colors, primary-dark);
 }
 
 .main {
-    &__title {
-        color: map-get($colors, primary-white);
-    }
+  &__title {
+    color: map-get($colors, primary-white);
+  }
 }
 
 :is(.card) :is(h2, p) {
-    color: map-get($colors, primary-dark);
+  color: map-get($colors, primary-dark);
 }
 
 .card {
-    .card &__container-date {
-        color: map-get($colors, secondary-gray);
-    }
+  .card &__container-date {
+    color: map-get($colors, secondary-gray);
+  }
 
-    &__container-link {
-        color: map-get($colors, primary-dark);
-    }
+  &__container-link {
+    color: map-get($colors, primary-dark);
+  }
 }
 
 .footer :is(p) {
-    color: map-get($colors, primary-white);
+  color: map-get($colors, primary-white);
 }
 
 .stats-info :is(p, span),
 .stats-main {
-    color: map-get($colors, primary-white);
+  color: map-get($colors, primary-white);
 }
 
 .stats-info__container__card {
-    &--1 {
-        background-color: map-get($colors, accent-maroon);
-    }
+  &--1 {
+    background-color: map-get($colors, accent-maroon);
+  }
 
-    &--2 {
-        background-color: map-get($colors, accent-green);
-    }
+  &--2 {
+    background-color: map-get($colors, accent-green);
+  }
 
-    &--3 {
-        background-color: map-get($colors, accent-light-green);
-    }
+  &--3 {
+    background-color: map-get($colors, accent-light-green);
+  }
 }
 
 .contact :is(h1, label, legend, button) {
-    color: map-get($colors, primary-white);
+  color: map-get($colors, primary-white);
 }
 
-
 .stats-main {
-    &__chart-container {
-        &__title {
-            background-color: map-get($colors, secondary-black);
-        }
+  &__chart-container {
+    &__title {
+      background-color: map-get($colors, secondary-black);
     }
+  }
 }
 
 .contact {
-
-    &__form {
-
-        &-fieldset {
-            border-color: map-get($colors, primary-white);
-        }
-
-        legend {
-            background-color: map-get($colors, secondary-gray);
-        }
-
-        label[for=first-name],
-        label[for=last-name],
-        label[for=email],
-        label[for=suggestions] {
-            color: hsl(0, 0%, 90.2%);
-        }
-
-        input {
-            background-color: hsl(0, 0%, 90.2%);
-        }
-
-        textarea[name=suggestions] {
-            background-color: hsl(0, 0%, 90.2%);
-
-        }
-
-        &-button {
-            border-color: map-get($colors, primary-white);
-            background-color: transparent;
-
-        }
+  &__form {
+    &-fieldset {
+      border-color: map-get($colors, primary-white);
     }
+
+    legend {
+      background-color: map-get($colors, secondary-gray);
+    }
+
+    label[for='first-name'],
+    label[for='last-name'],
+    label[for='email'],
+    label[for='suggestions'] {
+      color: hsl(0, 0%, 90.2%);
+    }
+
+    input {
+      background-color: hsl(0, 0%, 90.2%);
+    }
+
+    textarea[name='suggestions'] {
+      background-color: hsl(0, 0%, 90.2%);
+    }
+
+    &-button {
+      border-color: map-get($colors, primary-white);
+      background-color: transparent;
+    }
+  }
 }
 
 .about {
+  &__title {
+    &-text {
+      color: map-get($colors, primary-white);
+    }
+  }
 
-
-    &__title {
-        &-text {
-            color: map-get($colors, primary-white);
-        }
+  &__container {
+    .title-text {
+      color: map-get($colors, primary-white);
     }
 
-    &__container {
-        .title-text {
-            color: map-get($colors, primary-white);
-        }
-
-
-        .line {
-            background-color: map-get($colors, primary-white);
-        }
-
-        &-description {
-            color: map-get($colors, primary-white);
-        }
+    .line {
+      background-color: map-get($colors, primary-white);
     }
+
+    &-description {
+      color: map-get($colors, primary-white);
+    }
+  }
 }
 
 .stats-info {
-    &__card {
-        background-color: red;
-    }
+  &__card {
+    background-color: red;
+  }
 }
 
 .guest-main {
-    &__aside {
-        &__button {
-            color: map-get($colors, primary-white);
-            background-color: map-get($colors, primary-dark-gray);
-        }
+  &__aside {
+    &__button {
+      color: map-get($colors, primary-white);
+      background-color: map-get($colors, primary-dark-gray);
+    }
+  }
+
+  &__list {
+    &__card {
+      background-color: map-get($colors, secondary-white);
     }
 
-    &__list {
-        &__card {
-            background-color: map-get($colors, secondary-white);
-        }
-
-        &__next-page {
-            color: map-get($colors, primary-white);
-            background-color: map-get($colors, accent-red);
-        }
+    &__next-page {
+      color: map-get($colors, primary-white);
+      background-color: map-get($colors, accent-red);
     }
+  }
 }
 
 .details {
-    color: map-get($colors, primary-white);
-    &__form {
-
-        &__labels {
-            background-color: map-get($colors, accent-charcoal);
-            box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.6);
-        }
-
-        &__buttons {
-            &__submit, &__back{
-                background-color: map-get($colors, accent-red);
-                color: map-get($colors, primary-white);
-                box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
-            }
-            
-        }
+  color: map-get($colors, primary-white);
+  &__form {
+    &__labels {
+      background-color: map-get($colors, accent-charcoal);
+      box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.6);
     }
+
+    &__buttons {
+      &__submit,
+      &__back {
+        background-color: map-get($colors, accent-red);
+        color: map-get($colors, primary-white);
+        box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
 }
