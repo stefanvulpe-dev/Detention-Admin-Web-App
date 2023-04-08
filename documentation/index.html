@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Detantion Admin Documentation</title>
+    <link rel="stylesheet" href="css/documentation.min.css">
+  </head>
+  <body prefix="schema: http://schema.org">
+    <header>
+      <div class="banner">
+        <img src="../public/assets/tab-icon.svg" width="227" height="50" alt="Scholarly HTML logo">
+        <div class="status">Community Draft</div>
+      </div>
+      <h1>Detention Admin</h1>
+    </header>
+    <!--
+      XXX
+      - check refs
+      - the math example has too much maths
+      - bring back some of the old style
+      - make semantics, validation, processing sub-sections of each structural element
+      - have a section before that for general constructs
+        - explain why use RDFa
+        - explain our patterns: RDFa, roles
+      - figure captions need to get set throughout
+      - dedication? see doc-dedication
+      - syntactic constraints (prefix)
+      - needs more sthenurines
+      - examples of everything
+      - some notes on using Semantic CSS
+      - needs more RDFa in the spec itself
+    -->
+    <div role="contentinfo">
+      <dl>
+        <dt>Authors</dt>
+        <dd>
+          Ștefan Vulpe
+          (<a href="https://github.com/stefanvulpe-dev">@stefanvulpe-dev</a>),
+          Octavian Gavril
+          (<a href="https://github.com/octaviangavril">@octaviangavril</a>)
+          &amp;
+          Chichirău Răzvan          
+          (<a href="https://github.com/HardChallenge">@HardChallenge</a>)
+        </dd>
+        <dt>Bugs &amp; Feedback</dt>
+        <dd>
+          <a href="https://github.com/w3c/scholarly-html/issues">Issues and PRs welcome!</a>
+        </dd>
+        <dt>Discussion Group</dt>
+        <dd>
+          The <a href="https://www.w3.org/community/scholarlyhtml/">Scholarly HTML Community
+          Group</a> at <a href="https://w3.org/">W3C</a>
+          (<a href="https://lists.w3.org/Archives/Public/public-scholarlyhtml/">email archives</a>)
+        </dd>
+        <dt>License</dt>
+        <dd>
+          <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>
+        </dd>
+      </dl>
+    </div>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+      <h2>Abstract</h2>
+      <p>
+        DeAd (Detention Admin) is a web app supposed to manage the visits available to a person who is inside a prison.
+        This document describes how DeAd works and how it is encoded.
+      </p>
+    </section>
+    <section id="introduction" role="doc-introduction">
+      <!-- review? -->
+      <h2>Introduction</h2>
+      <p>
+        DeAd (Detention Admin) is a web application designed to manage the visits
+         available to a person who is incarcerated in a prison. It aims to streamline
+          the process of visitation by providing a reliable and efficient system for 
+          recording essential information related to each visit.
+      </p>
+      <p>
+        The app will record information regarding the individual or individuals making the visit, 
+        including their identity, photo, relationship with the convict (relative, legal guardian, 
+        lawyer, friend), and the nature of the visit. It will also record the date of the meeting, 
+        its nature and duration (e.g., consultation regarding the appeal of the trial, friendly visit), 
+        possible objects/data provided to the convict, and other relevant information.
+      </p>
+      <p>
+        The primary objective of DeAd is to provide an accurate and secure record of all visits made 
+        by individuals to a prison. The app will be useful for prison staff, inmates, and visitors, 
+        allowing them to easily manage and access visitation information. It will provide a streamlined 
+        process for booking visits, making changes to existing bookings, and canceling visits, minimizing 
+        the potential for errors or confusion.
+      </p>
+      <p>
+        In this documentation, we will provide a detailed overview of the features and functionalities 
+        of the DeAd web application. We will also outline the system requirements, installation procedures, 
+        and user instructions to ensure that users can easily set up and use the app. We will also cover 
+        the security measures in place to protect sensitive information, ensuring the privacy and 
+        confidentiality of all parties involved.
+      </p>
+      <p>
+        Overall, DeAd will provide a comprehensive and user-friendly system for managing prison visits, 
+        enhancing the efficiency and reliability of the visitation process for all stakeholders.
+      </p>
+    </section>
+    <section id="structure">
+      <!-- review? -->
+      <h2>Structure</h2>
+      <p>
+        The Detention Admin application is composed of seven web pages so that it follows certain 
+        methodologies for the structure of web applications. With a logical and well-designed 
+        architecture, the application offers clear and easy-to-use facilities for any user. 
+        In the following lines, the architecture of each page that makes up Detention Admin will be detailed.
+      </p>
+      <p>
+        The application pages share the same header and footer structured as follows:
+      </p>
+      <section class="Root">
+        <h3>The header</h3>
+        <p>
+          The application header is composed of two areas. The website logo is present on the 
+          left side. On the right side is the navigation bar that allows you to go to one of 
+          the home, about, statistics and contact pages.
+        </p>
+      </section>
+      <section class="Root">
+        <h3>The footer</h3>
+        <p>          
+         The footer of the application is divided into three areas. The first is the copyright 
+         area and in the second part there are links to the social media pages associated with 
+         the site. And besides these, the back to top button is also available.
+        </p>
+      </section>
+      <section id="Root">
+        <!-- review? -->
+        <h3>The <code>index.html</code> page</h3>
+        <p>
+            The main page of the application is divided into two areas, the hero section and 
+            the main area. The main element of the hero section is the button to schedule 
+            a visit. By scrolling, you reach the main area, which contains various articles 
+            and news that could be of interest to website visitors.
+        </p>
+      </section>
+      <section id="Root">
+        <!-- review? -->
+        <h3>The <code>login.html</code> page</h3>
+        <p>
+          If you want to schedule a visit, a user will have to connect to an account in our database. 
+          Thus, we arrive at the "Login" page where we will be greeted by a bordered box in which 
+          there are 2 fields. If the user has an account, then he will enter his email address and 
+          password, pressing the "Log in" button on the right. If the user does not have an account, 
+          then he must enter a valid and unused email address and a password. Finally, he will press 
+          the "Sign up" button on the left to complete the form.
+        </p>
+      </section>
+      <section id="Root">
+        <!-- review? -->
+        <h3>The <code>guestsDetails.html</code> page</h3>
+        <p>            
+         The page for registering the details of each visitor of the same inmate 
+         provides users with two areas of action. The first is the modification 
+         area of ​​the visitors list. Here you can add a new visitor and delete all 
+         visitors. In the second area we find the list of visitors and their information, 
+         being able to delete a visitor or edit the information about him.
+        </p>
+      </section>
+      <section id="Root">
+        <!-- review? -->
+        <h3>The <code>visitDetails.html</code> page</h3>
+        <p>
+          The page intended for information about a user's visit consists of a 
+          form for recording visit information.
+        </p>
+      </section>
+      <section id="Root">
+        <!-- review? -->
+        <h3>The <code>about.html</code> page</h3>
+        <p>
+          If a user, regardless of whether he is connected or not, wants to know 
+          more about the history of this penitentiary, he can access the "About" 
+          section from the page header. When this page opens, the user will be 
+          greeted with information about the penitentiary grouped by years, each 
+          with a picture associated to increase the suggestiveness.
+        </p>
+      </section>
+      <section id="Root">
+        <!-- review? -->
+        <h3>The <code>statistics.html</code> page</h3>
+        <p>            
+        The page dedicated to the statistics related to the administered penitentiary includes two main 
+        areas. The first contains three cards with important information. The second area provides 
+        users with charts with statistics updated in real time with various information relevant to 
+        the penitentiary. For admin users, the download function is also available, in the desired 
+        format (HTML, CSV and JSON), of some reports, regarding the visits made per individual, 
+        the time period, depending on the category of the punishment committed or other criteria.
+        </p>
+      </section>
+      <section id="Root">
+        <!-- review? -->
+        <h3>The <code>contact.html</code> page</h3>
+        <p>
+          If a user, regardless of whether he has an account or not, wants to leave a suggestion to the 
+          administrators or complain about a system problem, he can do it on page title "Contact". 
+          When it opens, the user will be greeted by a bordered box in which the following fields will 
+          be found: first name, last name, email and suggestions. To send the form, each field must be 
+          filled in, and in the "Suggestions" column, the user will have to specify his problem or 
+          suggestion as concisely as possible. Otherwise, the form will not be taken into account by 
+          the administrators of the page. After completing all the fields, he will be able to send 
+          the form by pressing the "Send" button, located at the bottom of the bordered box.
+        </p>
+      </section>
+    </section>
+    <section id="semantics">
+      <!-- review? -->
+      <h2>Actions</h2>
+      <p>
+        The main actors interacting with the web application will be the users and the prison administrator.
+      </p>
+      <p>
+        As a user you will be able to do the following actions:
+      </p>
+      <ul>
+        <li>
+          The user will be able to schedule a visit, but this action will require logging into an existing 
+          account. After logging in, the user will have to enter his own personal data as well as those of 
+          those accompanying him (max. 5). After this step has also taken place, the last step is filling 
+          in the information regarding the visit.
+        </li>
+        <li>
+          Another action a user can take is to view prison statistics on the related web page, 
+          available from the navigation bar.
+        </li>
+        <li>
+          A user will also be able to view the page dedicated to general information about the prison.
+        </li>
+        <li>
+          A last action available to a user actor is to provide feedback or request information available 
+          on the contact page.
+        </li>
+      </ul>
+        <p>
+          The second main actor is represented by the prison administrator. The following actions are available:
+        </p>
+        <ul>
+          <li>
+            All the actions of a user actor are also actions of an administrator actor, with the exception of 
+            the action of scheduling a visit and that of interacting with the contact page.
+          </li>
+          <li>
+            An additional action for the user actor is the option to download reports related to the visits 
+            made per individual, the time period, depending on the category of the punishment committed or 
+            other criteria.
+          </li>
+        </ul>
+        <p>
+          A secondary actor that interacts with the website is the web server. Its actions are vital 
+          for the smooth functioning of the entire application. The server actions are:
+        </p>
+        <ul>
+          <li>
+            The web server is responsible for verifying all data related to form inputs, username and password.
+          </li>
+          <li>
+            If any information is provided incorrectly or raises an error signal, the server will provide 
+            an error message to notify the actors interacting with the website.
+          </li>
+          <li>            
+            The web server will notify each user actor by email after the visit scheduling action has 
+            been successfully carried out
+          </li>
+          <li>            
+            Another action performed by the server is the synchronization of the statistics information 
+            with the database.
+          </li>
+          <li>
+            The web server will generate the reports requested by an administrator actor and make 
+            them available for download in the desired format.
+          </li>
+        </ul>
+      
+    </section>
+    <section id="scholarly-article">
+      <!-- review? -->
+      <h2>Technologies</h2>
+      
+    </section>
+    <section id="acks">
+      <!-- review? -->
+      <h2>References</h2>
+      <ul>
+        <li>
+          <a href="https://victorvlad19.github.io/web/">Laboratory Page</a>
+        </li>
+        <li>
+          <a href="https://profs.info.uaic.ro/~busaco/teach/courses/web/">Course Page</a>
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>
