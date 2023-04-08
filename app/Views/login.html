@@ -1,169 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../public/Content/css/main.css" />
-    <link rel="icon" href="../../public/assets/tab-icon.svg" />
-    <title>Login Page</title>
-  </head>
 
-  <body>
-    <header class="header">
-      <div class="header__container">
-        <a href="../../public/index.html">
-          <img
-            class="header__logo"
-            src="../../public/assets/header/Broken-Dreams.png"
-            alt="Logo"
-          />
-        </a>
-        <div class="nav__toggle">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../public/Content/css/main.css">
+  <link rel="icon" href="../../public/assets/tab-icon.svg">
+  <title>Login Page</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="../../public/index.html">
+        <img class="header__logo" src="../../public/assets/header/Broken-Dreams.png" alt="Logo">
+      </a>
+      <div class="nav__toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="list__item">
+            <a href="../../public/index.html" class="nav-link">
+              <img class="list__item-icon" src="../../public/assets/header/house-icon.svg" alt="home-logo">
+              <p class="list__item-text">Acasa</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="about.html" class="nav-link">
+              <img class="list__item-icon" src="../../public/assets/header/info-icon.svg" alt="info-logo">
+              <p class="list__item-text">Despre</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="statistics.html" class="nav-link">
+              <img class="list__item-icon" src="../../public/assets/header/statistics-icon.svg" alt="statistics-logo">
+              <p class="list__item-text">Statistici</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="contact.html" class="nav-link">
+              <img class="list__item-icon" src="../../public/assets/header/contact-icon.svg" alt="contact-logo">
+              <p class="list__item-text">Contact</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <img class="person-logo" src="../../public/assets/header/person.jpg" alt="person-logo">
+            <img class="list__item-icon" src="../../public/assets/header/logout.svg" alt="contact-logo">
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="login">
+    <div class="container">
+      <h1 class="container__title">Intra in aplicatie</h1>
+      <form action="#" class="container__form">
+        <div class="container__form-field">
+          <label for="email">Email Adress</label>
+          <input id="email" required type="text" name="email" placeholder="Puteti apasa pe login pentru a naviga">
         </div>
-        <nav class="header__nav">
-          <ul class="header__nav-list">
-            <li class="list__item">
-              <a href="../../public/index.html" class="nav-link">
-                <img
-                  class="list__item-icon"
-                  src="../../public/assets/header/house-icon.svg"
-                  alt="home-logo"
-                />
-                <p class="list__item-text">Acasa</p>
-              </a>
-            </li>
-            <li class="list__item">
-              <a href="about.html" class="nav-link">
-                <img
-                  class="list__item-icon"
-                  src="../../public/assets/header/info-icon.svg"
-                  alt="info-logo"
-                />
-                <p class="list__item-text">Despre</p>
-              </a>
-            </li>
-            <li class="list__item">
-              <a href="statistics.html" class="nav-link">
-                <img
-                  class="list__item-icon"
-                  src="../../public/assets/header/statistics-icon.svg"
-                  alt="statistics-logo"
-                />
-                <p class="list__item-text">Statistici</p>
-              </a>
-            </li>
-            <li class="list__item">
-              <a href="contact.html" class="nav-link">
-                <img
-                  class="list__item-icon"
-                  src="../../public/assets/header/contact-icon.svg"
-                  alt="contact-logo"
-                />
-                <p class="list__item-text">Contact</p>
-              </a>
-            </li>
-            <li class="list__item">
-              <img
-                class="person-logo"
-                src="../../public/assets/header/person.jpg"
-                alt="person-logo"
-              />
-              <img
-                class="list__item-icon"
-                src="../../public/assets/header/logout.svg"
-                alt="contact-logo"
-              />
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+        <div class="container__form-field">
+          <label for="password">Password</label>
+          <input id="password" required type="password" name="password" placeholder="pe urmatoarea pagina">
+        </div>
+        <div class="container__form-buttons">
+          <button class="container__form-submit">Sign up</button>
+          <button class="container__form-submit" onclick="location.href = './guestsDetails.html';">
+            Log in
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
 
-    <main class="login">
-      <div class="container">
-        <h1 class="container__title">Intra in aplicatie</h1>
-        <form action="#" class="container__form">
-          <div class="container__form-field">
-            <label for="email">Email Adress</label>
-            <input
-              id="email"
-              required
-              type="text"
-              name="email"
-              placeholder="Puteti apasa pe login pentru a naviga"
-            />
-          </div>
-          <div class="container__form-field">
-            <label for="password">Password</label>
-            <input
-              id="password"
-              required
-              type="password"
-              name="password"
-              placeholder="pe urmatoarea pagina"
-            />
-          </div>
-          <div class="container__form-buttons">
-            <button class="container__form-submit">Sign up</button>
-            <button
-              class="container__form-submit"
-              onclick="location.href = './guestsDetails.html';"
-            >
-              Log in
-            </button>
-          </div>
-        </form>
-      </div>
-    </main>
+  <footer class="footer">
+    <div class="footer__container">
+      <p class="footer__copyright">
+        &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
+      </p>
+      <nav class="footer__social-links">
+        <ul class="social-links__list">
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="../../public/assets/footer/facebook-icon.svg" alt="facebook-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="../../public/assets/footer/email-icon.svg" alt="email-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="../../public/assets/footer/whatsapp-icon.svg" alt="whatsapp-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="../../public/assets/footer/back-to-top.svg" alt="back-to-top logo">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
 
-    <footer class="footer">
-      <div class="footer__container">
-        <p class="footer__copyright">
-          &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
-        </p>
-        <nav class="footer__social-links">
-          <ul class="social-links__list">
-            <li class="list-item">
-              <a href="" class="list-item__link">
-                <img
-                  src="../../public/assets/footer/facebook-icon.svg"
-                  alt="facebook-logo"
-                />
-              </a>
-            </li>
-            <li class="list-item">
-              <a href="" class="list-item__link">
-                <img
-                  src="../../public/assets/footer/email-icon.svg"
-                  alt="email-logo"
-                />
-              </a>
-            </li>
-            <li class="list-item">
-              <a href="" class="list-item__link">
-                <img
-                  src="../../public/assets/footer/whatsapp-icon.svg"
-                  alt="whatsapp-logo"
-                />
-              </a>
-            </li>
-            <li class="list-item">
-              <a href="" class="list-item__link">
-                <img
-                  src="../../public/assets/footer/back-to-top.svg"
-                  alt="back-to-top logo"
-                />
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </footer>
+  <script src="../app/Scripts/navToggle.js"></script>
+</body>
 
-    <script src="../app/Scripts/navToggle.js"></script>
-  </body>
 </html>
