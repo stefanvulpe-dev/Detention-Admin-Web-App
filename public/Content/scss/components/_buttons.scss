@@ -3,7 +3,7 @@
     &__aside__button {
         width: max(100%,10rem);
         padding: 1rem;
-        border-radius: 0.7rem;
+        border-radius: 0.75rem;
         border-style: none;
         box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
         cursor: pointer;
@@ -16,7 +16,7 @@
         text-align: center;
         align-self: flex-end;
         padding: 1rem;
-        border-radius: 0.5rem;
+        border-radius: 0.75rem;
         width: max(10rem,20%);
         transition: all 250ms ease-in-out;
         &:is(:hover, :focus) {
