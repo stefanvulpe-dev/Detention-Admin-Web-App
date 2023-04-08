@@ -479,7 +479,7 @@ select {
   margin-bottom: 1.35rem;
 }
 .contact__form input {
-  padding-block: 0.5rem;
+  padding: 0.5rem;
   width: 100%;
   border: none;
   border-radius: 0.5rem;
