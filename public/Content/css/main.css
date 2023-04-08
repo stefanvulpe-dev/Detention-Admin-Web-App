@@ -66,7 +66,7 @@ select {
   }
 }
 :root {
-  --fs-very-small: 0.65rem;
+  --fs-very-small: 0.75rem;
   --fs-small: 0.875rem;
   --fs-regular: 1rem;
   --fs-medium: 1.15rem;
@@ -193,7 +193,7 @@ select {
   font-weight: 600;
 }
 .guest-main__list__next-page {
-  font-size: var(--fs-huge);
+  font-size: var(--fs-medium);
   font-weight: 600;
 }
 
@@ -367,7 +367,6 @@ select {
   background-color: hsl(0, 0%, 80%);
 }
 .guest-main__list__next-page {
-  font-size: var(--fs-large);
   color: hsl(0, 0%, 100%);
   background-color: hsl(0, 97%, 65%);
 }
@@ -560,15 +559,15 @@ body {
 
 .guest-main {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr 3fr;
-  gap: auto;
+  gap: 1rem;
   justify-items: normal;
   justify-content: center;
   align-items: center;
   align-content: start;
   padding: 2rem 1.65rem 2rem 1.65rem;
-  width: min(90%, 83.5rem);
+  width: min(90%, 30rem);
   margin-inline: auto;
   min-height: 100vh;
 }
@@ -578,7 +577,7 @@ body {
   align-items: flex-start;
   gap: 1rem;
   flex-direction: column;
-  padding: 0rem 0rem 3rem 0rem;
+  padding-bottom: 3rem;
   border-bottom: 0.25rem solid white;
   border-radius: 0.25rem;
   width: 100%;
@@ -590,14 +589,13 @@ body {
   gap: 2rem;
   flex-direction: column;
   align-self: start;
-  padding: 2rem 0rem 0rem 0rem;
   width: 100%;
 }
 .guest-main__list__card {
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
-  gap: 0.5rem;
+  gap: 1rem;
   justify-items: center;
   justify-content: center;
   align-items: center;
@@ -607,15 +605,45 @@ body {
   border-radius: 0.5rem;
   box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
 }
+.guest-main__list__card__dBirth {
+  display: none;
+}
+.guest-main__list__card__photo {
+  max-width: 60%;
+}
+.guest-main__list__card .drop-arrow {
+  cursor: pointer;
+  justify-self: end;
+  width: 40px;
+}
+.guest-main__list__card .drop-arrow .vBar {
+  display: block;
+  width: 20px;
+  background-color: hsl(0, 0%, 0%);
+  height: 3px;
+  margin-bottom: 0.35rem;
+  transition: all 250ms ease-in-out;
+}
+.guest-main__list__card .drop-arrow .vBar:is(:first-child) {
+  transform: translate(15px, 4px) rotate(-45deg);
+}
+.guest-main__list__card .drop-arrow .vBar:is(:last-child) {
+  margin-bottom: 0;
+  transform: translate(2px, -4px) rotate(45deg);
+}
+.guest-main__list__card .drop-arrow.extended .vBar:is(:first-child) {
+  transform: translate(5px, 2px) rotate(-45deg);
+}
+.guest-main__list__card .drop-arrow.extended .vBar:is(:last-child) {
+  transform: translate(5px, -6px) rotate(45deg);
+}
 .guest-main__list__card__buttons {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  flex-direction: column;
+  gap: 1rem;
 }
 :is(.guest-main__list__card__buttons__edit, .guest-main__list__card__buttons__delete) {
-  width: 100%;
   border-style: none;
   background: none;
   background-color: white;
@@ -626,6 +654,20 @@ body {
 }
 :is(.guest-main__list__card__buttons__edit, .guest-main__list__card__buttons__delete):hover {
   background-color: hsl(0, 0%, 80%);
+}
+.guest-main__list__card.extended {
+  grid-template-rows: repeat(2, 1fr);
+}
+.guest-main__list__card.extended .guest-main__list__card__buttons {
+  display: flex;
+  grid-column: 3/4;
+  justify-self: end;
+}
+.guest-main__list__card.extended .guest-main__list__card__dBirth {
+  display: block;
+  grid-column: 1/3;
+  justify-self: start;
+  margin-left: 1.5rem;
 }
 
 .details {
@@ -804,7 +846,7 @@ body {
 }
 .guest-main__list__next-page {
   text-align: center;
-  align-self: flex-end;
+  justify-self: end;
   padding: 1rem;
   border-radius: 0.5rem;
   width: max(10rem, 20%);
@@ -912,7 +954,7 @@ body {
   align-items: center;
   gap: 1rem;
   flex-direction: row;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 .header__nav-list .list__item-text {
   color: hsl(0, 0%, 100%);
@@ -1388,26 +1430,15 @@ body {
     justify-content: center;
     align-items: center;
     align-content: start;
-    padding: 6rem 1.65rem 3rem 1.65rem;
+    padding-block: 4rem;
+    width: min(90%, 82.5rem);
   }
   .guest-main__aside {
-    display: flex;
-    justify-content: start;
-    align-items: flex-start;
     gap: 3rem;
-    flex-direction: column;
-    padding: 0rem 6rem 0rem 0rem;
+    padding-right: 4rem;
     border-right: 0.25rem solid white;
     border-bottom: none;
     height: 100vh;
-  }
-  .guest-main__list {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 3rem;
-    flex-direction: column;
-    padding: 0rem;
   }
   .guest-main__list__card {
     display: grid;
@@ -1426,15 +1457,14 @@ body {
     gap: 1rem;
     flex-direction: row;
   }
-  .guest-main__list__card__dBirth {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-direction: row;
-  }
   .guest-main__list__card__buttons {
-    flex-direction: column;
+    display: flex;
+  }
+  .guest-main__list__card__dBirth {
+    display: block;
+  }
+  .guest-main__list__card .drop-arrow {
+    display: none;
   }
   .details {
     display: flex;

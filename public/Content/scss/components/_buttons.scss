@@ -14,7 +14,7 @@
     }
     &__list__next-page {
         text-align: center;
-        align-self: flex-end;
+        justify-self: end;
         padding: 1rem;
         border-radius: 0.5rem;
         width: max(10rem,20%);

@@ -160,7 +160,6 @@ $colors: (
         }
 
         &__next-page {
-            font-size: var(--fs-large);
             color: map-get($colors, primary-white);
             background-color: map-get($colors, accent-red);
         }
