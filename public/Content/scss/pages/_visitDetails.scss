@@ -2,7 +2,7 @@
 @use '../base/' as *;
 
 .details {
-  @include flex-display(center, center, auto);
+  @include flex-display(center, center, 0rem);
   width: min(62.5rem, 90%);
   margin-inline: auto;
   padding-top: 3rem;

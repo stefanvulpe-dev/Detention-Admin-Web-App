@@ -221,7 +221,7 @@
   }
 
   .details {
-    @include flex-display(center, start, auto);
+    @include flex-display(center, start, 0rem);
     margin-inline: auto;
     &__form {
       &__labels {
