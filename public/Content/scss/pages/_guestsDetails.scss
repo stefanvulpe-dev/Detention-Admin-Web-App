@@ -25,7 +25,7 @@
             @include grid-display(2fr 2fr 2fr 1fr, auto, 0.5rem, center,center,center,start);
             width: 100%;
             padding: 1rem;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
             &__buttons{
                 @include flex-display(space-between,center,0.5rem);
@@ -38,7 +38,7 @@
                     background-color: white;
                     padding: 0.25rem;
                     box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
-                    border-radius: 0.25rem; 
+                    border-radius: 0.5rem; 
                     transition: background-color 0.25s;
                     &:hover{
                         background-color: map-get($colors,secondary-white);                         
