@@ -1,44 +1,51 @@
 @use '../sass-utils/' as *;
 @use '../base/' as *;
 
-body{
-    background-image: url(../../assets/background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+body {
+  background-image: url(../../assets/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .stats-info {
-    padding: 2rem 4rem 2rem 4rem;
-    &__container {
-        width: min(90%, 83.5rem);
-        margin-inline: auto; 
-        @include grid-display(auto,1fr 1fr 1fr,2rem,center,center,center,center);
-    }
+  padding: 2rem 4rem 2rem 4rem;
+  &__container {
+    width: min(90%, 83.5rem);
+    margin-inline: auto;
+    @include grid-display(
+      auto,
+      1fr 1fr 1fr,
+      2rem,
+      center,
+      center,
+      center,
+      center
+    );
+  }
 }
 .stats-main {
-    min-height: 100vh;
-    @include flex-display(start, center, 1rem);
-    flex-direction: column;
-    padding: 0rem 1.65rem 0rem 1.65rem;
+  min-height: 100vh;
+  @include flex-display(start, center, 1rem);
+  flex-direction: column;
+  padding: 0rem 1.65rem 0rem 1.65rem;
 
-    &__chart-container{
-        width: min(90%, 62.5rem);
-        padding: 1.5rem;
-        border-top: 0.25rem solid;
-        border-radius: 0.25rem;
+  &__chart-container {
+    width: min(90%, 62.5rem);
+    padding: 1.5rem;
+    border-top: 0.25rem solid;
+    border-radius: 0.25rem;
 
-        img {
-            width: 90%;
-            margin: auto;
-        }
-
-        &__title {
-            width: 85%;
-            text-align: center;
-            margin-inline: auto;
-            padding:  0.5rem 0.5rem 2rem 0.5rem;
-            margin-bottom: -2rem;
-            box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);
-            border-radius: 0.75rem;
-        }
+    img {
+      width: 90%;
+      margin: auto;
     }
+
+    &__title {
+      width: 80%;
+      text-align: center;
+      margin-inline: auto;
+      padding: 0.5rem 0.5rem 2rem 0.5rem;
+      margin-bottom: -2rem;
+      box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);
+    }
+  }
 }

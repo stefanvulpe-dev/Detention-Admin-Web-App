@@ -1,8 +1,8 @@
-@use "../sass-utils/" as *;
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lobster&display=swap");
+@use '../sass-utils/' as *;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lobster&display=swap');
 
-$ff-primary: "Inter", sans-serif;
-$ff-secondary: "Lobster", cursive;
+$ff-primary: 'Inter', sans-serif;
+$ff-secondary: 'Lobster', cursive;
 
 $font-weights: (
   regular: 400,
@@ -11,7 +11,7 @@ $font-weights: (
 );
 
 $font-sizes: (
-  very-small: 0.65rem,
+  very-small: 0.75rem,
   small: 0.875rem,
   regular: 1rem,
   medium: 1.15rem,
@@ -121,11 +121,6 @@ $font-sizes: (
   }
 }
 
-:is(.stats-info) :is(p, a) {
-  font-size: var(--fs-very-small);
-  font-weight: map-get($font-weights, regular);
-}
-
 .main {
   .card {
     &__title {
@@ -139,6 +134,7 @@ $font-sizes: (
 }
 
 .stats-info__container {
+  font-family: $ff-primary;
   .highlight {
     font-size: var(--fs-extra-large);
     font-weight: map-get($font-weights, bold);
@@ -197,7 +193,7 @@ $font-sizes: (
       }
     }
     &__next-page {
-      font-size: var(--fs-huge);
+      font-size: var(--fs-medium);
       font-weight: map-get($font-weights, semi-bold);
     }
   }
@@ -235,14 +231,14 @@ $font-sizes: (
       font-size: map-get($font-sizes, medium);
     }
 
-    label[for="first-name"],
-    label[for="last-name"],
-    label[for="email"],
-    label[for="suggestions"] {
+    label[for='first-name'],
+    label[for='last-name'],
+    label[for='email'],
+    label[for='suggestions'] {
       font-size: map-get($font-sizes, large);
     }
 
-    textarea[name="suggestions"]::placeholder {
+    textarea[name='suggestions']::placeholder {
       font-weight: map-get($font-weights, regular);
       font-size: map-get($font-sizes, small);
     }
@@ -260,47 +256,47 @@ $font-sizes: (
 }
 
 .about {
-    &__title {
-        &-text {
-            font-weight: map-get($font-weights, regular);
-        }
+  &__title {
+    &-text {
+      font-weight: map-get($font-weights, regular);
     }
-    &__container {
-        .title-text {
-            font-weight: map-get($font-weights, bold);
-            font-size: map-get($font-sizes, large);
-        }
-
-        &-description {
-            font-size: map-get($font-sizes, large);
-
-        }
+  }
+  &__container {
+    .title-text {
+      font-weight: map-get($font-weights, bold);
+      font-size: map-get($font-sizes, large);
     }
 
     &-description {
-      font-size: map-get($font-sizes, medium);
+      font-size: map-get($font-sizes, large);
     }
+  }
+
+  &-description {
+    font-size: map-get($font-sizes, medium);
+  }
 }
 
-.details {   
-    &__form {
-      &__labels {
-        &__title {
-          font-size: var(--fs-regular);
-          font-weight: map-get($font-weights, bold);
+.details {
+  &__form {
+    &__labels {
+      &__title {
+        font-size: var(--fs-regular);
+        font-weight: map-get($font-weights, bold);
+      }
+      &__container {
+        .form-text {
+          font-size: var(--fs-small);
         }
-        &__container {
-          .form-text {
-            font-size: var(--fs-small);
-          }
-          .form-input, .form-textarea{
-            font-size: var(--fs-small);
-            font-weight: map-get($font-weights, regular);
-          }
+        .form-input,
+        .form-textarea {
+          font-size: var(--fs-small);
+          font-weight: map-get($font-weights, regular);
         }
       }
-      &__buttons {
-        font-size: var(--fs-medium);
-      }
-    }  
+    }
+    &__buttons {
+      font-size: var(--fs-medium);
+    }
+  }
 }

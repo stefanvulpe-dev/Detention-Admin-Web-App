@@ -2,14 +2,14 @@
 @use '../base/' as *;
 
 .footer {
-    background-color: map-get($colors, primary-dark);
-    padding-block: 1.5rem;
-    margin-top: 3rem;
+  background-color: map-get($colors, primary-dark);
+  padding-block: 1.5rem;
+  margin-top: 3rem;
 
-    &__container {
-        @include flex-display(center, center, 3rem);
-        flex-direction: column;
-        width: min(90%, 83.5rem);
-        margin-inline: auto;
-    }
+  &__container {
+    @include flex-display(center, center, 3rem);
+    flex-direction: column;
+    width: min(90%, 83.5rem);
+    margin-inline: auto;
+  }
 }

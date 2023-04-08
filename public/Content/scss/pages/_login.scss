@@ -2,81 +2,79 @@
 @use '../sass-utils/' as *;
 
 .login {
-    min-height: 100vh;
-    @include flex-display(start, center, 0);
+  min-height: 100vh;
+  @include flex-display(start, center, 0);
+  flex-direction: column;
+  margin-top: 5rem;
+
+  .container {
+    width: min(90%, 32.5rem);
+    box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
+    @include flex-display(center, center, 2rem);
     flex-direction: column;
-    margin-top: 5rem;
+    background-color: map-get($colors, light-black);
+    padding: 5rem 2rem;
+    border-radius: 2rem;
 
-    .container {
-        width: min(90%, 32.5rem);
-        box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
-        @include flex-display(center, center, 2rem);
-        flex-direction: column;
-        background-color: map-get($colors, light-black);
-        padding: 5rem 2rem;
-        border-radius: 2rem;
-
-        &__title {
-            white-space: nowrap;
-            color: map-get($colors, primary-white);
-            font-size: map-get($font-sizes, extra-large);
-            margin-bottom: 1rem;
-        }
-
-        &__form {
-            width: 100%;
-
-            &-field {
-                @include flex-display(center, flex-start, 1.75rem);
-                flex-direction: column;
-            }
-
-            &-buttons {
-                @include flex-display(center, center, 2rem);
-                flex-direction: column;
-
-                button {
-                    width: 100%;
-                    background-color: map-get($colors, accent-red);
-                    border-radius: 5rem;
-                    border: none;
-                    padding: 0.75rem 2.5rem;
-                    cursor: pointer;
-                    color: map-get($colors, primary-white);
-                    font-size: map-get($font-sizes, medium);
-                    font-weight: map-get($font-weights, regular);
-                    font-family: $ff-primary;
-                    transition: opacity 0.15s;
-                }
-
-                button:hover {
-                    opacity: 0.8;
-                }
-
-                button:active {
-                    opacity: 0.6;
-                }
-            }
-        }
-
-        label[for=email],
-        label[for=password] {
-            font-weight: map-get($font-weights, regular);
-            color: map-get($colors, primary-white);
-        }
-
-        input[name=email],
-        input[name=password] {
-            width: 100%;
-            background-color: map-get($colors, light-gray);
-            border: none;
-            border-radius: 2rem;
-            margin-bottom: 2rem;
-            padding: 0 0.5rem 0 0.5rem;
-            font-weight: map-get($font-weights, bold);
-            padding: 0.65rem 1.5rem;
-        }
+    &__title {
+      white-space: nowrap;
+      color: map-get($colors, primary-white);
+      font-size: map-get($font-sizes, extra-large);
+      margin-bottom: 1rem;
     }
 
+    &__form {
+      width: 100%;
 
+      &-field {
+        @include flex-display(center, flex-start, 1.75rem);
+        flex-direction: column;
+      }
+
+      &-buttons {
+        @include flex-display(center, center, 2rem);
+        flex-direction: column;
+
+        button {
+          width: 100%;
+          background-color: map-get($colors, accent-red);
+          border-radius: 5rem;
+          border: none;
+          padding: 0.75rem 2.5rem;
+          cursor: pointer;
+          color: map-get($colors, primary-white);
+          font-size: map-get($font-sizes, medium);
+          font-weight: map-get($font-weights, regular);
+          font-family: $ff-primary;
+          transition: opacity 0.15s;
+        }
+
+        button:hover {
+          opacity: 0.8;
+        }
+
+        button:active {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    label[for='email'],
+    label[for='password'] {
+      font-weight: map-get($font-weights, regular);
+      color: map-get($colors, primary-white);
+    }
+
+    input[name='email'],
+    input[name='password'] {
+      width: 100%;
+      background-color: map-get($colors, light-gray);
+      border: none;
+      border-radius: 2rem;
+      margin-bottom: 2rem;
+      padding: 0 0.5rem 0 0.5rem;
+      font-weight: map-get($font-weights, bold);
+      padding: 0.65rem 1.5rem;
+    }
+  }
 }

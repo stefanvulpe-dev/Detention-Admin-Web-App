@@ -2,57 +2,57 @@
 @use '../sass-utils/' as *;
 
 .about {
-    width: min(65rem, 90%);
-    min-height: 100vh;
-    margin-inline: auto;
+  width: min(65rem, 90%);
+  min-height: 100vh;
+  margin-inline: auto;
 
-    &__title{
-        transition: padding 1.5s;
-        @include flex-display(center, center, 1rem);
-        padding: 4rem 1.5rem 4rem 1.5rem;
+  &__title {
+    transition: padding 1.5s;
+    @include flex-display(center, center, 1rem);
+    padding: 4rem 1.5rem 4rem 1.5rem;
 
-        &-icon {
-            width: map-get($font-sizes, huge);
-        }
+    &-icon {
+      width: map-get($font-sizes, huge);
+    }
+  }
+
+  &__container {
+    &__info {
+      @include flex-display(center, center, 2rem);
+      flex-direction: column;
     }
 
-    &__container {
-        &__info{
-            @include flex-display(center, center, 2rem);
-            flex-direction: column;
-        }
-
-        &-description{
-            text-align: center;
-            width: 75%;
-            transition: font-size 1s;
-            margin: 3rem 3rem 1rem 3rem;
-            font-size: map-get($font-sizes, medium);
-        }
-
-        :is(&__title-right, &__title-left){
-            @include flex-display(center, center, 0.5rem);
-            flex-direction: column;
-            text-align:center;
-            font-size: map-get($font-sizes, extra-large);
-            margin-top: 2rem;
-        }
-
-        &-photo{
-            width: 75%;
-            max-width: 30rem;
-            margin: auto;
-        }
-
-        .reverse{
-            flex-direction: column-reverse;
-        }
-
-        .line{
-            height: 0.25rem;
-            border-radius: 0.5rem;
-            width: 40%;
-            min-width: 10rem;
-        }
+    &-description {
+      text-align: center;
+      width: 75%;
+      transition: font-size 1s;
+      margin: 3rem 3rem 1rem 3rem;
+      font-size: map-get($font-sizes, medium);
     }
+
+    :is(&__title-right, &__title-left) {
+      @include flex-display(center, center, 0.5rem);
+      flex-direction: column;
+      text-align: center;
+      font-size: map-get($font-sizes, extra-large);
+      margin-top: 2rem;
+    }
+
+    &-photo {
+      width: 75%;
+      max-width: 30rem;
+      margin: auto;
+    }
+
+    .reverse {
+      flex-direction: column-reverse;
+    }
+
+    .line {
+      height: 0.25rem;
+      border-radius: 0.5rem;
+      width: 40%;
+      min-width: 10rem;
+    }
+  }
 }

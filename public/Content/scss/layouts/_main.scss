@@ -2,101 +2,101 @@
 @use '../base/' as *;
 
 .main {
-    width: min(90%, 82.5rem);
-    margin-inline: auto;
+  width: min(90%, 82.5rem);
+  margin-inline: auto;
+  @include grid-display(auto, auto, 3rem, center, center, center, center);
+  margin-top: 3rem;
+
+  &__rule {
+    width: 100%;
+    background-color: map-get($colors, primary-white);
+    height: 5px;
+    border-radius: 5rem;
+  }
+
+  &__container {
+    width: 100%;
     @include grid-display(auto, auto, 3rem, center, center, center, center);
-    margin-top: 3rem;
+    grid-template-areas:
+      'slimCard1'
+      'slimCard2'
+      'wideCard1'
+      'wideCard2';
 
-    &__rule {
-        width: 100%;
-        background-color: map-get($colors, primary-white);
-        height: 5px;
-        border-radius: 5rem;
+    #slimCard1 {
+      grid-area: slimCard1;
     }
 
-    &__container {
-        width: 100%;
-        @include grid-display(auto, auto, 3rem, center, center, center, center);
-        grid-template-areas: 
-            'slimCard1'
-            'slimCard2'
-            'wideCard1'
-            'wideCard2';
-
-        #slimCard1 {
-            grid-area: slimCard1;
-        }
-
-        #slimCard2 {
-            grid-area: slimCard2;
-        }
-
-        #wideCard1 {
-            grid-area: wideCard1;
-            @include grid-display(auto, auto, 1rem, center, center);
-
-            .card__img {
-                aspect-ratio: 16 / 9;
-                border-top-right-radius: 1.5rem;
-                border-top-left-radius: 1.5rem;
-                object-position: 50% 20%;
-                align-self: stretch;
-                object-fit: cover;
-            }
-        }
-
-        #wideCard2 {
-            grid-area: wideCard2;
-
-            @include grid-display(auto, auto, 0.5rem, center, center);
-
-            .card__img {
-                aspect-ratio: 16 / 9;
-                border-top-right-radius: 1.5rem;
-                border-top-left-radius: 1.5rem;
-                align-self: stretch;
-                object-fit: cover;
-                object-position: 50% 20%;
-            }
-        } 
-
-        .card {
-            max-width: 20rem;
-            background-color: map-get($colors, secondary-white);
-            @include grid-display(auto, auto, 1rem, center, center, center, center);
-            border-radius: 1.5rem;
-
-            &__img {
-                border-top-left-radius: 1.5rem;
-                border-top-right-radius: 1.5rem;
-            }
-
-            &__title {
-                text-align: center;
-            }
-
-            &__description {
-                width: 85%;
-                text-align: center;
-            }
-
-            &__title {
-                padding-block: 1.5rem;
-                border-bottom: 3px dashed map-get($colors, secondary-gray);
-            }
-
-            &__container {
-                @include flex-display(space-between, center, 1.5rem);
-                padding: 1rem;
-
-                &-link {
-                    transition: all 250ms ease-in-out;
-                }
-
-                &-link:is(:hover, :focus) {
-                    font-weight: map-get($font-weights, bold);
-                }
-            }
-        }
+    #slimCard2 {
+      grid-area: slimCard2;
     }
+
+    #wideCard1 {
+      grid-area: wideCard1;
+      @include grid-display(auto, auto, 1rem, center, center);
+
+      .card__img {
+        aspect-ratio: 16 / 9;
+        border-top-right-radius: 1.5rem;
+        border-top-left-radius: 1.5rem;
+        object-position: 50% 20%;
+        align-self: stretch;
+        object-fit: cover;
+      }
+    }
+
+    #wideCard2 {
+      grid-area: wideCard2;
+
+      @include grid-display(auto, auto, 0.5rem, center, center);
+
+      .card__img {
+        aspect-ratio: 16 / 9;
+        border-top-right-radius: 1.5rem;
+        border-top-left-radius: 1.5rem;
+        align-self: stretch;
+        object-fit: cover;
+        object-position: 50% 20%;
+      }
+    }
+
+    .card {
+      max-width: 20rem;
+      background-color: map-get($colors, secondary-white);
+      @include grid-display(auto, auto, 1rem, center, center, center, center);
+      border-radius: 1.5rem;
+
+      &__img {
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+      }
+
+      &__title {
+        text-align: center;
+      }
+
+      &__description {
+        width: 85%;
+        text-align: center;
+      }
+
+      &__title {
+        padding-block: 1.5rem;
+        border-bottom: 3px dashed map-get($colors, secondary-gray);
+      }
+
+      &__container {
+        @include flex-display(space-between, center, 1.5rem);
+        padding: 1rem;
+
+        &-link {
+          transition: all 250ms ease-in-out;
+        }
+
+        &-link:is(:hover, :focus) {
+          font-weight: map-get($font-weights, bold);
+        }
+      }
+    }
+  }
 }
