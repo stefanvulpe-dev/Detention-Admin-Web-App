@@ -11,5 +11,16 @@
     flex-direction: column;
     width: min(90%, 83.5rem);
     margin-inline: auto;
+
+    .doc-link {
+      color: map-get($colors, primary-white);
+      cursor: pointer;
+      text-decoration: underline;
+      transition: opacity 250ms ease-in-out;
+    }
+
+    .doc-link:is(:hover, :focus) {
+      opacity: 0.5;
+    }
   }
 }

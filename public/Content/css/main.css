@@ -923,6 +923,15 @@ body {
   width: min(90%, 83.5rem);
   margin-inline: auto;
 }
+.footer__container .doc-link {
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: opacity 250ms ease-in-out;
+}
+.footer__container .doc-link:is(:hover, :focus) {
+  opacity: 0.5;
+}
 
 .header__logo {
   flex-basis: min(20%, 5rem);
