@@ -1,0 +1,33 @@
+{
+  "name": "detention-admin-web-app",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "DeAd (Detention Admin) is a web app supposed to manage the visits available to a person who is inside a prison.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanvulpe-dev/Detention-Admin-Web-App.git"
+  },
+  "author": "Stefan Vulpe, Octavian Gavril, Razvan Chichirau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stefanvulpe-dev/Detention-Admin-Web-App/issues"
+  },
+  "homepage": "https://github.com/stefanvulpe-dev/Detention-Admin-Web-App#readme",
+  "devDependencies": {
+    "compile-sass": "^2.0.0",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "finalhandler": "^1.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.10.0",
+    "sequelize": "^6.31.0",
+    "serve-static": "^1.15.0"
+  }
+}

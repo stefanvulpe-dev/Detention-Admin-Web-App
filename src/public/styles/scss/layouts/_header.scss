@@ -1,0 +1,42 @@
+@use '../sass-utils/' as *;
+@use '../base/' as *;
+
+.header {
+  background-color: map-get($colors, primary-dark);
+  padding: 1.65rem;
+  &__container {
+    width: min(90%, 83.5rem);
+    margin-inline: auto;
+    @include flex-display(space-between, center, 1rem);
+  }
+  &__nav {
+    min-height: 100%;
+    position: absolute;
+    top: 4.85rem;
+    left: -100%;
+    right: 100%;
+    z-index: 2;
+    background: map-get($colors, primary-dark);
+    transition: 500ms ease-in-out;
+  }
+
+  &__nav.active {
+    display: block;
+    left: 0;
+    right: 0;
+  }
+
+  :is(.nav__toggle, .bar) {
+    transition: all 500ms ease-in-out;
+  }
+
+  .nav__toggle.active .bar:is(:nth-child(1)) {
+    transform: translateY(11px) rotate(-45deg);
+  }
+  .nav__toggle.active .bar:is(:nth-child(2)) {
+    opacity: 0;
+  }
+  .nav__toggle.active .bar:is(:nth-child(3)) {
+    transform: translateY(-11px) rotate(45deg);
+  }
+}
