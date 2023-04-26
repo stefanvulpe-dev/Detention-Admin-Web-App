@@ -4,14 +4,13 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import serveStatic from 'serve-static';
-import finalhandler from 'finalhandler';
 import { compileSassAndSave } from 'compile-sass';
 
 dotenv.config();
 
-import { db } from './Models/index.js';
-import { UsersRepository } from './Repositories/UsersRepository.js';
-import * as UserController from './Controllers/userController.js';
+import { db } from './models/index.js';
+import { UsersRepository } from './repositories/UsersRepository.js';
+import * as UserController from './controllers/userController.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'), {
@@ -42,7 +41,7 @@ const server = http.createServer((req, res) => {
   }
 });
 
-db.sync(/*{ force: true }*/)
+db.sync({ force: true })
   .then(() => new UsersRepository().find(1))
   .then(user => {
     if (!user) {

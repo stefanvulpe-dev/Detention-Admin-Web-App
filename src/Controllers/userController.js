@@ -1,4 +1,4 @@
-import { UsersRepository } from '../Repositories/index.js';
+import { UsersRepository } from '../repositories/index.js';
 import * as Utils from './utils.js';
 
 /**
