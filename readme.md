@@ -10,7 +10,7 @@ It will also be recorded: the date of the meeting, its nature and duration (e.g.
 
 ## Links
 
-1. Live site URL: [DeAd Web App](https://stefanvulpe-dev.github.io/Detention-Admin-Web-App/public/index.html)
+1. Live site URL: [DeAd Web App](https://stefanvulpe-dev.github.io/Detention-Admin-Web-App/public/Views/index.html)
 
 ## Authors
 

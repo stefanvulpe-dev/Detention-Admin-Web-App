@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/css/main.css">
+  <link rel="icon" href="/assets/tab-icon.svg">
+  <title>Contact</title>
+</head>
+
+<body>
+  <header class="header" id="page-header">
+    <div class="header__container">
+      <a href="/views/index.html">
+        <img class="header__logo" src="/assets/header/Broken-Dreams.png" alt="Logo">
+      </a>
+      <div class="nav__toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="list__item">
+            <a href="/views/index.html" class="nav-link">
+              <img class="list__item-icon" src="/assets/header/house-icon.svg" alt="home-logo">
+              <p class="list__item-text">Acasa</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="/views/about.html" class="nav-link">
+              <img class="list__item-icon" src="/assets/header/info-icon.svg" alt="info-logo">
+              <p class="list__item-text">Despre</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="/views/statistics.html" class="nav-link">
+              <img class="list__item-icon" src="/assets/header/statistics-icon.svg" alt="statistics-logo">
+              <p class="list__item-text">Statistici</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="/views/contact.html" class="nav-link">
+              <img class="list__item-icon" src="/assets/header/contact-icon.svg" alt="contact-logo">
+              <p class="list__item-text">Contact</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <img class="person-logo" src="/assets/header/person.jpg" alt="person-logo">
+            <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact">
+    <h1 class="contact__title">Contactati-ne mai jos</h1>
+    <form action="#" class="contact__form">
+      <fieldset class="contact__form-fieldset">
+        <legend class="contact__form-legend">Detalii personale</legend>
+        <div class="contact__form-wrapper">
+          <div class="contact__form-field">
+            <label for="first-name">Nume</label>
+            <input id="first-name" type="text" name="first-name">
+          </div>
+          <div class="contact-form-field">
+            <label for="last-name">Prenume</label>
+            <input id="last-name" type="text">
+          </div>
+          <div class="contact__form-field">
+            <label for="email">Email</label>
+            <input id="email" type="email">
+          </div>
+          <div class="contact__form-field">
+            <label for="suggestions">Sugestii</label>
+            <textarea name="suggestions" id="suggestions" cols="30" rows="10"
+              placeholder="Cu ce va putem ajuta?"></textarea>
+          </div>
+          <button class="contact__form-button" type="submit">
+            Trimite &#8594;
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <p class="footer__copyright">
+        &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
+        <a href="/documentation/index.html" class="doc-link">Project documentation &#x21A9;</a>
+      </p>
+      <nav class="footer__social-links">
+        <ul class="social-links__list">
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="/assets/footer/facebook-icon.svg" alt="facebook-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="/assets/footer/email-icon.svg" alt="email-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="/assets/footer/whatsapp-icon.svg" alt="whatsapp-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="#page-header" class="list-item__link">
+              <img src="/assets/footer/back-to-top.svg" alt="back-to-top logo">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <script src="/scripts/navToggle.js"></script>
+</body>
+
+</html>
