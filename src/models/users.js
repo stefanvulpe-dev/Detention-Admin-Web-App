@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 import { db } from './db/connection.js';
 import bcrypt from 'bcrypt';
 
-export const User = db.define(
+export const Users = db.define(
   'Users',
   {
     id: {
@@ -40,12 +40,12 @@ export const User = db.define(
   { timestamps: true }
 );
 
-User.beforeCreate(async user => {
+Users.beforeCreate(async user => {
   const salt = await bcrypt.genSalt();
   user.password = await bcrypt.hash(user.password, salt);
 });
 
-User.login = async function (email, password) {
+Users.login = async function (email, password) {
   const user = await this.findOne({ where: { email: email } });
   if (user) {
     const auth = await bcrypt.compare(password, user.password);
