@@ -38,10 +38,6 @@ export const Guests = db.define('Guests', {
       },
     },
   },
-  prisoner_relation: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   portrait_photo: {
     type: DataTypes.BLOB,
     allowNull: false,

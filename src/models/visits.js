@@ -30,5 +30,8 @@ export const Visits = db.define('Visits', {
   },
 });
 
-Details.hasOne(Visits, { foreignKey: idVisit });
-Prisoners.hasOne(Visits, { foreignKey: idPrisoner });
+Details.hasOne(Visits, { foreignKey: idVisit }); // one-to-one relationship -> a visit can have only one set of details
+Visits.belongsTo(Details, { foreignKey: idVisit });
+
+Prisoners.hasMany(Visits, { foreignKey: idPrisoner }); // one-to-many relationship -> a prisoner can have many visits
+Visits.belongsTo(Prisoners, { foreignKey: idPrisoner });
