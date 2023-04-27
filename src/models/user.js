@@ -36,6 +36,10 @@ export const Users = db.define(
         len: { args: [6], msg: 'Minimum password length in 6 characters' },
       },
     },
+    photo: {
+      type: DataTypes.BLOB,
+      allowNull: false,
+    },
   },
   { timestamps: true }
 );

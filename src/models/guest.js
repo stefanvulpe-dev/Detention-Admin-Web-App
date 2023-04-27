@@ -30,22 +30,9 @@ export const Guests = db.define('Guests', {
     type: DataTypes.BIGINT,
     allowNull: false,
     unique: true,
-    validate: {
-      haveExactDigits(number) {
-        const stringValue = number.toString();
-        if (stringValue.length != 13)
-          throw Error('CNP-ul trebuie sa aiba 13 cifre.');
-      },
-    },
   },
-  portrait_photo: {
+  photo: {
     type: DataTypes.BLOB,
     allowNull: false,
-    validate: {
-      isSmallerThan5MB(value) {
-        if (value.length > 5 * 1024 * 1024)
-          throw Error('Fotografia nu trebuie sa fie mai mare decat 5MB!');
-      },
-    },
   },
 });

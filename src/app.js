@@ -50,6 +50,7 @@ db.sync({ force: true })
         last_name: 'Doe',
         email: 'johndoe@gmail.com',
         password: 'johndoe',
+        photo: '',
       };
       return new UsersRepository().create(newUser);
     }

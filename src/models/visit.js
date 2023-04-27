@@ -1,26 +1,34 @@
 import { DataTypes } from 'sequelize';
 import { db } from './db/connection.js';
 
-export const Prisoners = db.define('Prisoners', {
+export const Visits = db.define('Visits', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  first_name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  last_name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  started_at: {
+  date: {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
-  detention_period: {
-    type: DataTypes.DATEONLY,
+  time: {
+    type: DataTypes.TIME,
+    allowNull: false,
+  },
+  nature: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  objects: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  mood: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  summary: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });
