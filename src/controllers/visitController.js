@@ -7,15 +7,19 @@ import * as Utils from './utils.js';
 export const getVisitDetails = async (req, res) => {
   let visitId;
   const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
-  console.log(params);
   for (const [key, value] of params) {
     if (key === 'visitId') {
         visitId = value;
     }
   }
-  const visit = await new VisitsRepository().find(visitId);
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify(visit));
+  try {
+    const visit = await new VisitsRepository().find(visitId);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(visit));
+    } catch(err) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: err.message }));
+      }
 };
 
 /**
