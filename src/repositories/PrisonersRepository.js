@@ -30,7 +30,7 @@ export class PrisonersRepository {
     }
   }
 
-  async getRemainigPeriod(id) {
+  async getRemainingPeriod(id) {
     const prisoner = PrisonersRepository.find(id);
     const currentDate = new Date(),
       started_at = new Date(prisoner.started_at);

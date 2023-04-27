@@ -8,14 +8,14 @@ export const Relationships = db.define('Relationships', {
     type: DataTypes.INTEGER,
     references: {
       model: Guests,
-      key: id,
+      key: 'id',
     },
   },
   idPrisoner: {
     type: DataTypes.INTEGER,
     references: {
       model: Prisoners,
-      key: id,
+      key: 'id',
     },
   },
   prisoner_relation: {

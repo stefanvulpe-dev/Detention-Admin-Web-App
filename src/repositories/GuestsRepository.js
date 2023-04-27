@@ -4,9 +4,10 @@ export class GuestsRepository {
   async create(guest) {
     try {
       const newGuest = await Guests.create(guest);
+      //
       return newGuest;
     } catch (error) {
-      throw Error(error.message);
+      throw new Error(error.message);
     }
   }
 

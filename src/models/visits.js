@@ -18,20 +18,20 @@ export const Visits = db.define('Visits', {
     type: DataTypes.INTEGER,
     references: {
       model: Details,
-      key: id,
+      key: 'id',
     },
   },
   idPrisoner: {
     type: DataTypes.INTEGER,
     references: {
       model: Prisoners,
-      key: id,
+      key: 'id',
     },
   },
 });
 
-Details.hasOne(Visits, { foreignKey: idVisit }); // one-to-one relationship -> a visit can have only one set of details
-Visits.belongsTo(Details, { foreignKey: idVisit });
+Details.hasOne(Visits, { foreignKey: 'idVisit' }); // one-to-one relationship -> a visit can have only one set of details
+Visits.belongsTo(Details, { foreignKey: 'idVisit' });
 
-Prisoners.hasMany(Visits, { foreignKey: idPrisoner }); // one-to-many relationship -> a prisoner can have many visits
-Visits.belongsTo(Prisoners, { foreignKey: idPrisoner });
+Prisoners.hasMany(Visits, { foreignKey: 'idPrisoner' }); // one-to-many relationship -> a prisoner can have many visits
+Visits.belongsTo(Prisoners, { foreignKey: 'idPrisoner' });
