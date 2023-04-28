@@ -1,4 +1,4 @@
-import { Details, Visits } from '../models/index.js';
+import { Visits } from '../models/index.js';
 
 export class VisitsRepository {
   async create(visitDetails) {
