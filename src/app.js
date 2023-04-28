@@ -10,7 +10,6 @@ dotenv.config();
 import * as UserController from './controllers/userController.js';
 import { db } from './models/index.js';
 import { UsersRepository } from './repositories/UsersRepository.js';
-import * as UserController from './controllers/userController.js';
 import * as PrisonerController from './controllers/prisonerController.js';
 import * as GuestController from './controllers/guestController.js';
 import * as VisitController from './controllers/visitController.js';
@@ -34,27 +33,22 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET') {
     if (url.match(/\/users\?userId=([1-9][0-9]*)/)) {
       UserController.getUserDetails(req, res);
-    }
-    else if (url.match(/\/prisoners\?prisonerId=([1-9][0-9]*)/)) {
+    } else if (url.match(/\/prisoners\?prisonerId=([1-9][0-9]*)/)) {
       PrisonerController.getPrisonerDetails(req, res);
-    }
-    else if (url.match(/\/guests\?guestId=([1-9][0-9]*)/)) {
-      GuestController.getGuestDetails(req,res);
-    }
-    else if (url.match(/\/visits\?visitId=([1-9][0-9]*)/)) {
-      VisitController.getVisitDetails(req,res);
+    } else if (url.match(/\/guests\?guestId=([1-9][0-9]*)/)) {
+      GuestController.getGuestDetails(req, res);
+    } else if (url.match(/\/visits\?visitId=([1-9][0-9]*)/)) {
+      VisitController.getVisitDetails(req, res);
     }
   }
 
   if (req.method === 'POST') {
     if (url.match(/\/users\/add-user/)) {
       UserController.postAddUser(req, res);
-    }
-    else if (url.match(/\/guests\/add-guest/)) {
-      GuestController.postAddGuest(req,res);
-    }
-    else if (url.match(/\/visits\/add-visit/)) {
-      VisitController.postAddVisit(req,res);
+    } else if (url.match(/\/guests\/add-guest/)) {
+      GuestController.postAddGuest(req, res);
+    } else if (url.match(/\/visits\/add-visit/)) {
+      VisitController.postAddVisit(req, res);
     }
   }
 });
