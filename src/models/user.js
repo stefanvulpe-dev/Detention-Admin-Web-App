@@ -1,8 +1,8 @@
+import bcrypt from 'bcrypt';
 import { DataTypes } from 'sequelize';
 import { db } from './db/connection.js';
-import bcrypt from 'bcrypt';
 
-export const User = db.define(
+export const Users = db.define(
   'Users',
   {
     id: {
@@ -10,11 +10,11 @@ export const User = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    first_name: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    last_name: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -36,16 +36,20 @@ export const User = db.define(
         len: { args: [6], msg: 'Minimum password length in 6 characters' },
       },
     },
+    photo: {
+      type: DataTypes.BLOB,
+      allowNull: false,
+    },
   },
   { timestamps: true }
 );
 
-User.beforeCreate(async user => {
+Users.beforeCreate(async user => {
   const salt = await bcrypt.genSalt();
   user.password = await bcrypt.hash(user.password, salt);
 });
 
-User.login = async function (email, password) {
+Users.login = async function (email, password) {
   const user = await this.findOne({ where: { email: email } });
   if (user) {
     const auth = await bcrypt.compare(password, user.password);
