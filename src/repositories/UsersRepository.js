@@ -17,11 +17,4 @@ export class UsersRepository {
       throw new Error(err.message);
     }
   }
-  //   async getVisitsHistory() {
-  //     try {
-
-  //     } catch(err) {
-  //         throw new Error(err.message);
-  //     }
-  //   }
 }

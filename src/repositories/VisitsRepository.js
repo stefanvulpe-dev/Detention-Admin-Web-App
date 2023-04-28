@@ -4,13 +4,7 @@ export class VisitsRepository {
   async create(visitDetails) {
     try {
       // visitsDetails = VisitDetails + idGuests + idPrisoner (idGuests trebuie sa existe!)
-      const { idGuests, idPrisoner, ...rest } = visitDetails;
-      const newVisitDetails = await Details.create(rest);
-      const newVisit = await Visits.create({
-        idGuests: idGuests,
-        idVisit: newVisitDetails.id,
-        idPrisoner: idPrisoner,
-      });
+      const newVisit = await Visits.create({ visitDetails });
       return newVisit;
     } catch (error) {
       throw new Error(error.message);

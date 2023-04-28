@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { db } from './db/connection.js';
+import { Guests, GuestVisits } from './index.js';
 
 export const Visits = db.define('Visits', {
   id: {

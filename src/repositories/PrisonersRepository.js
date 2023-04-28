@@ -20,18 +20,10 @@ export class PrisonersRepository {
     }
   }
 
-  async getVisitsHistory(id) {
-    // returns Visits[]
-    try {
-      const visits = await Visits.findAll({ where: { idPrisoner: +id } });
-      return visits;
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }
+  async getVisitsHistory(id) {}
 
   async getRemainingPeriod(id) {
-    const prisoner = PrisonersRepository.find(id);
+    const prisoner = await find(id);
     const currentDate = new Date(),
       started_at = new Date(prisoner.started_at);
     return (

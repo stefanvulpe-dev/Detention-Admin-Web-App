@@ -1,6 +1,6 @@
+import bcrypt from 'bcrypt';
 import { DataTypes } from 'sequelize';
 import { db } from './db/connection.js';
-import bcrypt from 'bcrypt';
 
 export const Users = db.define(
   'Users',
@@ -10,11 +10,11 @@ export const Users = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    first_name: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    last_name: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false,
     },

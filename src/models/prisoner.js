@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { db } from './db/connection.js';
-import { PrisonerVisits, Visits } from './index.js';
+import { Visits } from './index.js';
 
 export const Prisoners = db.define('Prisoners', {
   id: {
@@ -8,22 +8,22 @@ export const Prisoners = db.define('Prisoners', {
     primaryKey: true,
     autoIncrement: true,
   },
-  first_name: {
+  firstName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  last_name: {
+  lastName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  detention_started_at: {
+  detentionStartedAt: {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
-  detention_period: {
+  detentionPeriod: {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
 });
 
-Prisoners.belongsToMany(Visits, { through: PrisonerVisits });
+Prisoners.belongsToMany(Visits, { through: 'PrisonerVisits' });

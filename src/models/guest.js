@@ -7,11 +7,11 @@ export const Guests = db.define('Guests', {
     primaryKey: true,
     autoIncrement: true,
   },
-  first_name: {
+  firstName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  last_name: {
+  lastName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -26,7 +26,7 @@ export const Guests = db.define('Guests', {
       },
     },
   },
-  cnp: {
+  nationalId: {
     type: DataTypes.BIGINT,
     allowNull: false,
     unique: true,

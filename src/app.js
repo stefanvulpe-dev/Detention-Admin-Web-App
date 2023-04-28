@@ -1,16 +1,15 @@
-import * as http from 'http';
-import dotenv from 'dotenv';
-import path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import serveStatic from 'serve-static';
 import { compileSassAndSave } from 'compile-sass';
+import dotenv from 'dotenv';
+import * as http from 'http';
+import path, { dirname } from 'path';
+import serveStatic from 'serve-static';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
+import * as UserController from './controllers/userController.js';
 import { db } from './models/index.js';
 import { UsersRepository } from './repositories/UsersRepository.js';
-import * as UserController from './controllers/userController.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'), {
@@ -46,8 +45,8 @@ db.sync({ force: true })
   .then(user => {
     if (!user) {
       const newUser = {
-        first_name: 'John',
-        last_name: 'Doe',
+        firstName: 'John',
+        lastName: 'Doe',
         email: 'johndoe@gmail.com',
         password: 'johndoe',
         photo: '',
@@ -63,3 +62,9 @@ db.sync({ force: true })
   .catch(err => {
     console.log(err.message);
   });
+
+process.on('SIGINT', function () {
+  db.close();
+  server.close();
+  process.exit();
+});
