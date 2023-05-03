@@ -7,12 +7,15 @@ import { fileURLToPath } from 'url';
 
 dotenv.config();
 
-import * as UserController from './controllers/userController.js';
 import { db } from './models/index.js';
 import { UsersRepository } from './repositories/UsersRepository.js';
-import * as PrisonerController from './controllers/prisonerController.js';
-import * as GuestController from './controllers/guestController.js';
-import * as VisitController from './controllers/visitController.js';
+import {
+  AuthController,
+  UserController,
+  GuestController,
+  PrisonerController,
+  VisitController,
+} from './controllers/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'), {
@@ -43,8 +46,8 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'POST') {
-    if (url.match(/\/users\/add-user/)) {
-      UserController.postAddUser(req, res);
+    if (url.match(/^\/register$/)) {
+      AuthController.register(req, res);
     } else if (url.match(/\/guests\/add-guest/)) {
       GuestController.postAddGuest(req, res);
     } else if (url.match(/\/visits\/add-visit/)) {
@@ -69,7 +72,6 @@ db.sync({ force: true })
     return Promise.resolve(user);
   })
   .then(result => {
-    console.log(result);
     server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
   })
   .catch(err => {
