@@ -2,11 +2,55 @@
 @use '../base/' as *;
 
 .guest-main {
-  @include grid-display(1fr, 1fr 3fr, 1rem, normal, center, center, start);
-  padding: 2rem 1.65rem 2rem 1.65rem;
+  @include grid-display(
+    1fr,
+    1fr 1.5fr 2fr,
+    1.5rem,
+    normal,
+    center,
+    start,
+    start
+  );
+  padding: 2.5rem 1.65rem;
   width: min(90%, 30rem);
   margin-inline: auto;
   min-height: 100vh;
+
+  .searchbar {
+    @include flex-display(center, stretch, 0rem);
+    input {
+      font-size: var(--fs-medium);
+      display: block;
+      width: 100%;
+      padding-inline: 1.5rem;
+      background-color: map-get($colors, secondary-white);
+      border: none;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+    button {
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      padding: 1rem;
+      background-color: map-get($colors, accent-red);
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      transition: opacity 350ms ease-in-out;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    button:is(:hover, :focus) {
+      opacity: 0.75;
+    }
+  }
+
+  .result-list {
+    display: none;
+  }
+
   &__aside {
     @include flex-display(start, flex-start, 1rem);
     flex-direction: column;
