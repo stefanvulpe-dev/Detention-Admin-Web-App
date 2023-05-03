@@ -56,7 +56,7 @@ Users.login = async function (email, password) {
     if (auth) {
       return user;
     }
-    throw Error('Incorrect password');
+    throw new Error('Incorrect password');
   }
-  throw Error('Incorrect email');
+  throw new Error('Incorrect email');
 };

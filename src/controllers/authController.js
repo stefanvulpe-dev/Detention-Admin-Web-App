@@ -40,3 +40,46 @@ export const register = async (req, res) => {
     res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
+
+/**
+ *
+ * @Path /login
+ */
+export const login = async (req,res) => {
+  const body = await getReqData(req);
+  const credentials = JSON.parse(body);
+  const { error } = Joi
+    .object({
+      email: Joi.string().min(13).max(50).required(),
+      password: Joi
+        .string()
+        .pattern(new RegExp('^[a-zA-Z0-9]{5,30}$'))
+        .required(),
+    })
+    .validate(credentials);
+
+  if (error) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: error.message }));
+  }
+
+  try {
+    const user = await Users.login(credentials.email,credentials.password);
+    const payload = { email: user.email, password: user.password };
+    const authToken = sign(payload, process.env.ACCESS_SECRET_KEY, {
+      expiresIn: '7d',
+    });
+    const secret = await new Tokens().secret();
+    const csrfToken = new Tokens().create(secret);
+    
+    if (!user) {
+      throw new Error(`User ${credentials.email} has not been found`);
+    }
+    res.writeHead(200, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: false, authToken, csrfToken }));
+  } catch (err) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
+

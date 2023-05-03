@@ -46,6 +46,8 @@ const server = http.createServer((req, res) => {
   if (req.method === 'POST') {
     if (url.match(/^\/register$/)) {
       AuthController.register(req, res);
+    } else if (url.match(/^\/login$/)) {
+      AuthController.login(req, res);
     } else if (url.match(/\/guests\/add-guest/)) {
       GuestController.postAddGuest(req, res);
     } else if (url.match(/\/visits\/add-visit/)) {
