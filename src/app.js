@@ -1,11 +1,9 @@
 import { compileSassAndSave } from 'compile-sass';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import * as http from 'http';
 import path, { dirname } from 'path';
 import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
-
-dotenv.config();
 
 import { db } from './models/index.js';
 import { UsersRepository } from './repositories/UsersRepository.js';
