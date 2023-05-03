@@ -16,7 +16,7 @@ import * as VisitController from './controllers/visitController.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'), {
-  index: ['/Views/index.html'],
+  index: ['/views/index.html'],
 });
 const PORT = process.env.PORT || 8080;
 

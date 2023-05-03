@@ -3,7 +3,6 @@ import { Visits } from '../models/index.js';
 export class VisitsRepository {
   async create(visitDetails) {
     try {
-      // visitsDetails = VisitDetails + idGuests + idPrisoner (idGuests trebuie sa existe!)
       const newVisit = await Visits.create({ visitDetails });
       return newVisit;
     } catch (error) {

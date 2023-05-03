@@ -12,11 +12,11 @@ export const getUserDetails = async (req, res) => {
       userId = value;
     }
   }
-  try { 
+  try {
     const user = await new UsersRepository().find(userId);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(user));
-  } catch(err) {
+  } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: err.message }));
   }
