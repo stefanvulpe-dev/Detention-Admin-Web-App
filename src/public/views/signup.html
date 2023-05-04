@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/css/main.css">
   <link rel="icon" href="/assets/tab-icon.svg">
-  <title>Login Page</title>
+  <title>Sign Up Page</title>
 </head>
 
 <body>
@@ -58,19 +58,31 @@
 
   <main class="login">
     <div class="container">
-      <h1 class="container__title">Intra in aplicatie</h1>
-      <form action="#" class="container__form">
+      <h1 class="container__title">Inregistreaza-te</h1>
+      <form action="#" class="container__form" enctype="multipart/form-data">
+        <div class="container__form-field">
+          <label for="first_name">First name</label>
+          <input id="first_name" required type="text" name="first_name">
+        </div>
+        <div class="container__form-field">
+          <label for="last_name">Last name</label>
+          <input id="last_name" required type="text" name="last_name">
+        </div>
         <div class="container__form-field">
           <label for="email">Email Adress</label>
-          <input id="email" required type="text" name="email" placeholder="Puteti apasa pe login pentru a naviga">
+          <input id="email" required type="text" name="email">
         </div>
         <div class="container__form-field">
           <label for="password">Password</label>
-          <input id="password" required type="password" name="password" placeholder="pe urmatoarea pagina">
+          <input id="password" required type="password" name="password">
+        </div>
+        <div class="container__form-field">
+          <label for="photo">Photo</label>
+          <input id="photo" required type="file" name="photo">
         </div>
         <div class="container__form-buttons">
-          <button class="container__form-submit" onclick="location.href = './signup.html';">Sign up</button>
-          <button class="container__form-submit" onclick="location.href = './guestsDetails.html';">
+          <button class="container__form-submit">Sign up</button>
+          <button class="container__form-submit" onclick="location.href = './login.html';">
             Log in
           </button>
         </div>

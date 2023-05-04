@@ -814,21 +814,21 @@ body {
 .login .container__form-buttons button:active {
   opacity: 0.6;
 }
-.login .container label[for=email],
-.login .container label[for=password] {
+.login .container label {
   font-weight: 400;
   color: hsl(0, 0%, 100%);
 }
-.login .container input[name=email],
-.login .container input[name=password] {
+.login .container input:not([id=photo]) {
   width: 100%;
   background-color: hsl(0, 0%, 85%);
   border: none;
   border-radius: 2rem;
   margin-bottom: 2rem;
-  padding: 0 0.5rem 0 0.5rem;
   font-weight: 700;
   padding: 0.65rem 1.5rem;
+}
+.login .container input[id=photo] {
+  background-color: red;
 }
 
 .guest-main__aside__button {

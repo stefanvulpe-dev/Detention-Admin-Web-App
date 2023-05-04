@@ -59,22 +59,24 @@
       }
     }
 
-    label[for='email'],
-    label[for='password'] {
+    label {
       font-weight: map-get($font-weights, regular);
       color: map-get($colors, primary-white);
     }
 
-    input[name='email'],
-    input[name='password'] {
+    input:not([id='photo']) {
       width: 100%;
       background-color: map-get($colors, light-gray);
       border: none;
       border-radius: 2rem;
       margin-bottom: 2rem;
-      padding: 0 0.5rem 0 0.5rem;
       font-weight: map-get($font-weights, bold);
       padding: 0.65rem 1.5rem;
+    }
+
+    input[id='photo'] {
+      background-color: red;
+      // TODO: stilizarea butonului
     }
   }
 }
