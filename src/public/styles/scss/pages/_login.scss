@@ -59,12 +59,13 @@
       }
     }
 
-    label {
+    label,
+    span[id='photo'] {
       font-weight: map-get($font-weights, regular);
       color: map-get($colors, primary-white);
     }
 
-    input:not([id='photo']) {
+    input:not([id='file-upload']) {
       width: 100%;
       background-color: map-get($colors, light-gray);
       border: none;
@@ -74,9 +75,25 @@
       padding: 0.65rem 1.5rem;
     }
 
-    input[id='photo'] {
-      background-color: red;
-      // TODO: stilizarea butonului
+    input[type='file']::file-selector-button {
+      padding: 0.65rem 1.5rem;
+      border: none;
+      border-radius: 2rem;
+      margin-bottom: 2rem;
+      background-color: map-get($colors, accent-red);
+      color: map-get($colors, primary-dark);
+      font-weight: map-get($font-weights, semi-bold);
+      cursor: pointer;
+      transition: color 0.15s, background-color 0.15s, opacity 0.15s;
+    }
+
+    input[type='file']::file-selector-button:hover {
+      background-color: map-get($colors, primary-dark);
+      color: map-get($colors, accent-red);
+    }
+
+    input[type='file']::file-selector-button:active {
+      opacity: 0.8;
     }
   }
 }
