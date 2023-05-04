@@ -27,8 +27,11 @@ const umzug = new Umzug({
   storage: new SequelizeStorage({ sequelize: db }),
   logger: console,
 });
+
 const migrations = await umzug.pending();
 console.log(migrations);
+
+await umzug.up();
 
 await compileSassAndSave(
   path.join(__dirname, 'public/styles/scss/main.scss'),
