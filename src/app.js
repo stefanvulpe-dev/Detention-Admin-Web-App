@@ -56,6 +56,12 @@ const server = http.createServer((req, res) => {
       VisitController.postAddVisit(req, res);
     }
   }
+
+  if (req.method === 'DELETE') {
+    if (req.url.match(/^\/logout$/)) {
+      AuthController.logout(req,res);
+    }
+  }
 });
 
 db.sync({ force: true })

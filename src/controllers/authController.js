@@ -110,3 +110,26 @@ export const checkAuth = async (req, res, next) => {
     return res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
+
+export const logout = async (req, res, next) => {
+  const authToken = req.headers['authorization']?.split(' ')[1];
+  const csrfToken = req.headers['csrftoken'];
+
+  if (!authToken || !csrfToken) {
+    res.writeHead(401, { 'Content-type': 'application/json' });
+    return res.end(
+      JSON.stringify({ error: true, message: 'Missing authorization tokens.' })
+    );
+  }
+
+  try {
+    const payload = verify(authToken, process.env.ACCESS_SECRET_KEY);
+    await new SessionsRepository().deleteSession(payload.id, csrfToken);
+
+    res.writeHead(204, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: false }));
+  } catch (err) {
+    res.writeHead(401, { 'Content-type': 'application/json' });
+    return res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
