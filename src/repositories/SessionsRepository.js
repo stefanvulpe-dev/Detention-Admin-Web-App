@@ -8,7 +8,7 @@ export class SessionsRepository {
       });
       if (!result) {
         throw new Error(
-          `A session for the user ${userId} and csrfToken ${csrfToken} has not been found`
+          `User ${userId}, csrfToken ${csrfToken} is not logged in.`
         );
       }
       return true;

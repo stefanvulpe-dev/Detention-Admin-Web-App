@@ -59,7 +59,7 @@ const server = http.createServer((req, res) => {
 
   if (req.method === 'DELETE') {
     if (req.url.match(/^\/logout$/)) {
-      AuthController.logout(req,res);
+      AuthController.checkAuth(req, res, () => AuthController.logout(req, res));
     }
   }
 });

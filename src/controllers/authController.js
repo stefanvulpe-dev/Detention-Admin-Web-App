@@ -6,7 +6,9 @@ import { SessionsRepository, UsersRepository } from '../repositories/index.js';
 const { sign, verify } = jwt;
 
 /**
- * @Path /register
+ *
+ * @path /register
+ * @method POST
  */
 export const register = async (req, res) => {
   const body = await getReqData(req);
@@ -49,7 +51,8 @@ export const register = async (req, res) => {
 
 /**
  *
- * @Path /login
+ * @path /login
+ * @method POST
  */
 export const login = async (req, res) => {
   const body = await getReqData(req);
@@ -89,6 +92,30 @@ export const login = async (req, res) => {
   }
 };
 
+/**
+ *
+ * @path /logout
+ * @method DELETE
+ */
+export const logout = async (req, res) => {
+  const csrfToken = req.headers['csrftoken'];
+
+  try {
+    await new SessionsRepository().deleteSession(req.userId, csrfToken);
+
+    res.writeHead(200, { 'Content-type': 'application/json' });
+    res.end(
+      JSON.stringify({
+        error: false,
+        message: `User ${req.userId} logged out successfully.`,
+      })
+    );
+  } catch (err) {
+    res.writeHead(401, { 'Content-type': 'application/json' });
+    return res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
+
 export const checkAuth = async (req, res, next) => {
   const authToken = req.headers['authorization']?.split(' ')[1];
   const csrfToken = req.headers['csrftoken'];
@@ -105,29 +132,6 @@ export const checkAuth = async (req, res, next) => {
     await new SessionsRepository().verifySession(payload.id, csrfToken);
     req.userId = payload.id;
     next();
-  } catch (err) {
-    res.writeHead(401, { 'Content-type': 'application/json' });
-    return res.end(JSON.stringify({ error: true, message: err.message }));
-  }
-};
-
-export const logout = async (req, res, next) => {
-  const authToken = req.headers['authorization']?.split(' ')[1];
-  const csrfToken = req.headers['csrftoken'];
-
-  if (!authToken || !csrfToken) {
-    res.writeHead(401, { 'Content-type': 'application/json' });
-    return res.end(
-      JSON.stringify({ error: true, message: 'Missing authorization tokens.' })
-    );
-  }
-
-  try {
-    const payload = verify(authToken, process.env.ACCESS_SECRET_KEY);
-    await new SessionsRepository().deleteSession(payload.id, csrfToken);
-
-    res.writeHead(204, { 'Content-type': 'application/json' });
-    res.end(JSON.stringify({ error: false }));
   } catch (err) {
     res.writeHead(401, { 'Content-type': 'application/json' });
     return res.end(JSON.stringify({ error: true, message: err.message }));
