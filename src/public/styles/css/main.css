@@ -444,7 +444,7 @@ select {
   transition: ease all 1s;
 }
 .contact__form {
-  width: min(45rem, 90%);
+  width: min(42.5rem, 90%);
   margin-inline: auto;
 }
 .contact__form-wrapper {
@@ -477,7 +477,7 @@ select {
   margin-bottom: 1.35rem;
 }
 .contact__form input {
-  padding-block: 0.5rem;
+  padding: 0.5rem 1rem;
   width: 100%;
   border: none;
   border-radius: 0.5rem;
@@ -1392,6 +1392,9 @@ body {
   }
   .contact__form-button {
     justify-self: end;
+  }
+  .login .container__form {
+    width: 85%;
   }
   .login .container__form-buttons {
     flex-direction: row;

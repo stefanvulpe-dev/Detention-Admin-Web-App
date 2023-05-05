@@ -96,6 +96,7 @@
   .login {
     .container {
       &__form {
+        width: 85%;
         &-buttons {
           flex-direction: row;
         }
