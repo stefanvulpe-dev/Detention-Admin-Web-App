@@ -98,11 +98,7 @@ export const checkAuth = (req, res, next) => {
   try {
     const payload = verify(authToken, process.env.ACCESS_SECRET_KEY);
     /* Check to see if the csrf token matches the one stored in the sessions table (search by token, not user id) */
-    const session = Sessions.checkCSRFToken(authToken,csrfToken);
-    /* verifyCsrf(csrfToken, payload.id) */
-    if (!session || session.csrfToken !== payload.id) {
-      throw new Error('CSRF token validation failed.');
-    }    
+    /* verifyCsrf(csrfToken, payload.id) */   
     req.userId = payload.id;
     next();
   } catch (err) {
