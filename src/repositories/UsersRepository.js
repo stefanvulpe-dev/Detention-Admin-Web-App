@@ -17,4 +17,12 @@ export class UsersRepository {
       throw new Error(err.message);
     }
   }
+  async login(email, password) {
+    try {
+      const user = await Users.login(email, password);
+      return user;
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
 }
