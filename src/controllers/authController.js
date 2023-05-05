@@ -29,7 +29,11 @@ export const register = async (req, res) => {
 
   try {
     const result = await Users.create(user);
-    const authToken = sign(result.dataValues, process.env.ACCESS_SECRET_KEY, {
+    const { password, ...payload } = {
+      password: result.dataValues.password,
+      ...result.dataValues,
+    };
+    const authToken = sign(payload, process.env.ACCESS_SECRET_KEY, {
       expiresIn: '7d',
     });
     const csrfToken = new Tokens().create(process.env.CSRF_SECRET_KEY);
@@ -45,18 +49,15 @@ export const register = async (req, res) => {
  *
  * @Path /login
  */
-export const login = async (req,res) => {
+export const login = async (req, res) => {
   const body = await getReqData(req);
   const credentials = JSON.parse(body);
-  const { error } = Joi
-    .object({
-      email: Joi.string().min(13).max(50).required(),
-      password: Joi
-        .string()
-        .pattern(new RegExp('^[a-zA-Z0-9]{5,30}$'))
-        .required(),
-    })
-    .validate(credentials);
+  const { error } = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string()
+      .pattern(new RegExp('^[a-zA-Z0-9]{5,30}$'))
+      .required(),
+  }).validate(credentials);
 
   if (error) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
@@ -64,22 +65,24 @@ export const login = async (req,res) => {
   }
 
   try {
-    const user = await Users.login(credentials.email,credentials.password);
-    const payload = { email: user.email, password: user.password };
+    const user = await Users.login(credentials.email, credentials.password);
+    const { password, ...payload } = {
+      password: user.dataValues.password,
+      ...user.dataValues,
+    };
     const authToken = sign(payload, process.env.ACCESS_SECRET_KEY, {
       expiresIn: '7d',
     });
-    const secret = await new Tokens().secret();
-    const csrfToken = new Tokens().create(secret);
-    
+    const csrfToken = new Tokens().create(process.env.CSRF_SECRET_KEY);
+
     if (!user) {
       throw new Error(`User ${credentials.email} has not been found`);
     }
     res.writeHead(200, { 'Content-type': 'application/json' });
     res.end(JSON.stringify({ error: false, authToken, csrfToken }));
   } catch (err) {
-      res.writeHead(400, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ error: true, message: err.message }));
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
 
