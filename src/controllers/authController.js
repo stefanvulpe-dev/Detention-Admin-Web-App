@@ -1,6 +1,7 @@
 import Joi from 'joi';
 import { getReqData } from './utils.js';
 import { Users } from '../models/user.js';
+import { Sessions } from '../models/session.js';
 import jwt from 'jsonwebtoken';
 import Tokens from 'csrf';
 const { sign, verify } = jwt;
@@ -97,7 +98,11 @@ export const checkAuth = (req, res, next) => {
   try {
     const payload = verify(authToken, process.env.ACCESS_SECRET_KEY);
     /* Check to see if the csrf token matches the one stored in the sessions table (search by token, not user id) */
+    const session = Sessions.checkCSRFToken(authToken,csrfToken);
     /* verifyCsrf(csrfToken, payload.id) */
+    if (!session || session.csrfToken !== payload.id) {
+      throw new Error('CSRF token validation failed.');
+    }    
     req.userId = payload.id;
     next();
   } catch (err) {
