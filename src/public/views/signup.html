@@ -59,7 +59,7 @@
   <main class="login">
     <div class="container">
       <h1 class="container__title">Inregistreaza-te</h1>
-      <form action="#" class="container__form" enctype="multipart/form-data">
+      <form action="#" id="sign_up_form" class="container__form" enctype="multipart/form-data">
         <div class="container__form-field">
           <label for="first_name">First name</label>
           <input id="first_name" required type="text" name="first_name">
@@ -78,7 +78,7 @@
         </div>
         <div class="container__form-field">
           <span id="photo">Photo</span>
-          <input id="file-upload" required type="file" accept="image/png, image/jpeg">
+          <input id="file-upload" required type="file" accept="image/png, image/jpeg" name="photo">
         </div>
         <div class="container__form-buttons">
           <button class="container__form-submit">Sign up</button>
@@ -124,6 +124,7 @@
   </footer>
 
   <script src="/scripts/navToggle.js"></script>
+  <script src="../scripts/signUpListener.js"></script>
 </body>
 
 </html>

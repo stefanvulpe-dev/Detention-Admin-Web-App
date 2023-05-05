@@ -1,5 +1,6 @@
 import { UsersRepository } from '../repositories/index.js';
 import * as Utils from './utils.js';
+import joi from 'joi';
 
 /**
  * @Path '/users?userId=?'
@@ -12,11 +13,11 @@ export const getUserDetails = async (req, res) => {
       userId = value;
     }
   }
-  try { 
+  try {
     const user = await new UsersRepository().find(userId);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(user));
-  } catch(err) {
+  } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: err.message }));
   }
@@ -35,5 +36,36 @@ export const postAddUser = async (req, res) => {
   } catch (err) {
     res.writeHead(400, { 'Content-type': 'application/json' });
     res.end(JSON.stringify({ message: err.message }));
+  }
+};
+
+/**
+ * @Path '/register/
+ */
+
+export const register = async (req, res) => {
+  try {
+    const schema = joi.object({
+      firstName: joi.string().required().pattern(new RegExp('[a-zA-Z]{3,20}')),
+      lastName: joi.string().required().pattern(new RegExp('[a-zA-Z]{3,20}')),
+      email: joi.string().email().required(),
+      password: joi
+        .string()
+        .required()
+        .pattern(new RegExp('[a-zA-Z0-9!@#$]{6,30}')),
+    });
+
+    const body = await Utils.getReqData(req);
+    const data = JSON.parse(body);
+    const { error } = schema.validate(data);
+    if (error) throw new Error(error);
+
+    await new UsersRepository().create({ photo: '', ...data });
+
+    res.writeHead(201, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify('Data is valid.'));
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: err.message }));
   }
 };
