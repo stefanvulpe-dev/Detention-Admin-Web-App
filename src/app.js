@@ -32,8 +32,10 @@ const server = http.createServer((req, res) => {
   serve(req, res, () => {});
 
   if (req.method === 'GET') {
-    if (url.match(/\/users\?userId=([1-9][0-9]*)/)) {
-      UserController.getUserDetails(req, res);
+    if (url.match(/\/users\/\?userId=([1-9][0-9]*)/)) {
+      AuthController.checkAuth(req, res, () =>
+        UserController.getUserDetails(req, res)
+      );
     } else if (url.match(/\/prisoners\?prisonerId=([1-9][0-9]*)/)) {
       PrisonerController.getPrisonerDetails(req, res);
     } else if (url.match(/\/guests\?guestId=([1-9][0-9]*)/)) {
