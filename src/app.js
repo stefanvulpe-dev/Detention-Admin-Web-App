@@ -54,6 +54,20 @@ const server = http.createServer((req, res) => {
       GuestController.postAddGuest(req, res);
     } else if (url.match(/\/visits\/add-visit/)) {
       VisitController.postAddVisit(req, res);
+    } else if (url.match(/\/register/)) {
+      UserController.register(req, res);
+    }
+  }
+
+  if (req.method === 'DELETE') {
+    if (req.url.match(/^\/logout$/)) {
+      AuthController.checkAuth(req, res, () => AuthController.logout(req, res));
+    }
+  }
+
+  if (req.method === 'DELETE') {
+    if (req.url.match(/^\/logout$/)) {
+      AuthController.checkAuth(req, res, () => AuthController.logout(req, res));
     }
   }
 

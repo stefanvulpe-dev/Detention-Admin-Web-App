@@ -13,7 +13,7 @@
     @include flex-display(center, center, 2rem);
     flex-direction: column;
     background-color: map-get($colors, light-black);
-    padding: 5rem 2rem;
+    padding: 3rem 2rem;
     border-radius: 2rem;
 
     &__title {
@@ -31,10 +31,16 @@
         flex-direction: column;
       }
 
+      &-field:nth-of-type(5) {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
       &-buttons {
         @include flex-display(center, center, 2rem);
         flex-direction: column;
-
+        margin-top: 2rem;
         button {
           width: 100%;
           background-color: map-get($colors, accent-red);
@@ -59,22 +65,34 @@
       }
     }
 
-    label[for='email'],
-    label[for='password'] {
+    label,
+    .photo-upload {
       font-weight: map-get($font-weights, regular);
       color: map-get($colors, primary-white);
     }
 
-    input[name='email'],
-    input[name='password'] {
+    input:not([id='photo']) {
       width: 100%;
       background-color: map-get($colors, light-gray);
       border: none;
       border-radius: 2rem;
       margin-bottom: 2rem;
-      padding: 0 0.5rem 0 0.5rem;
-      font-weight: map-get($font-weights, bold);
       padding: 0.65rem 1.5rem;
+      font-size: var(--fs-very-small);
+    }
+
+    input[type='file'] {
+      cursor: pointer;
+      display: none;
+      transition: all 350ms ease-in-out;
+    }
+
+    label[for='photo'] {
+      cursor: pointer;
+      background-color: map-get($colors, secondary-gray);
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
     }
   }
 }

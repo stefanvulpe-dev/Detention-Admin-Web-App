@@ -18,10 +18,4 @@ export class VisitsRepository {
       throw new Error(error.message);
     }
   }
-
-  validateDetails(visitDetails) {
-    // here we will validate visitDetails, time and date
-    const current_date = new Date(),
-      visitDate = new Date(visitDetails.date);
-  }
 }

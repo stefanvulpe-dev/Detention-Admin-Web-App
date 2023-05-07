@@ -28,7 +28,7 @@
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.10.0",
-    "sequelize": "^6.31.0",
+    "sequelize": "^6.31.1",
     "serve-static": "^1.15.0"
   }
 }
