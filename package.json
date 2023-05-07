@@ -20,14 +20,13 @@
   "devDependencies": {
     "compile-sass": "^2.0.0",
     "dotenv": "^16.0.3",
-    "sequelize-cli": "^6.6.0"
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "csrf": "^3.1.0",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
-    "nodemon": "^2.0.22",
     "pg": "^8.10.0",
     "sequelize": "^6.31.1",
     "serve-static": "^1.15.0"

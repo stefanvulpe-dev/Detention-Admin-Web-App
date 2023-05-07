@@ -867,8 +867,8 @@ body {
   border: none;
   border-radius: 2rem;
   margin-bottom: 2rem;
-  font-weight: 700;
   padding: 0.65rem 1.5rem;
+  font-size: var(--fs-very-small);
 }
 .login .container input[type=file] {
   cursor: pointer;
