@@ -805,7 +805,7 @@ body {
   gap: 2rem;
   flex-direction: column;
   background-color: hsl(0, 0%, 24%);
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
   border-radius: 2rem;
 }
 .login .container__title {
@@ -828,7 +828,6 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 2.5rem;
 }
 .login .container__form-buttons {
   display: flex;
@@ -836,6 +835,7 @@ body {
   align-items: center;
   gap: 2rem;
   flex-direction: column;
+  margin-top: 2rem;
 }
 .login .container__form-buttons button {
   width: 100%;

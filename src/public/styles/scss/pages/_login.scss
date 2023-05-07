@@ -13,7 +13,7 @@
     @include flex-display(center, center, 2rem);
     flex-direction: column;
     background-color: map-get($colors, light-black);
-    padding: 5rem 2rem;
+    padding: 3rem 2rem;
     border-radius: 2rem;
 
     &__title {
@@ -35,13 +35,12 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        margin-bottom: 2.5rem;
       }
 
       &-buttons {
         @include flex-display(center, center, 2rem);
         flex-direction: column;
-
+        margin-top: 2rem;
         button {
           width: 100%;
           background-color: map-get($colors, accent-red);

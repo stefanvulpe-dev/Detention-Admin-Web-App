@@ -5,10 +5,7 @@
   "description": "DeAd (Detention Admin) is a web app supposed to manage the visits available to a person who is inside a prison.",
   "main": "src/app.js",
   "scripts": {
-    "start": "nodemon src/app.js",
-    "migrate:up": "npx sequelize-cli db:migrate",
-    "migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "migrate:make": "npx sequelize-cli migration:generate --name"
+    "start": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
