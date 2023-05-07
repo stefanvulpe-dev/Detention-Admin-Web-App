@@ -788,6 +788,12 @@ body {
   gap: 1.75rem;
   flex-direction: column;
 }
+.login .container__form-field:nth-of-type(5) {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
 .login .container__form-buttons {
   display: flex;
   justify-content: center;
@@ -815,11 +821,11 @@ body {
   opacity: 0.6;
 }
 .login .container label,
-.login .container span[id=photo] {
+.login .container .photo-upload {
   font-weight: 400;
   color: hsl(0, 0%, 100%);
 }
-.login .container input:not([id=file-upload]) {
+.login .container input:not([id=photo]) {
   width: 100%;
   background-color: hsl(0, 0%, 85%);
   border: none;
@@ -828,23 +834,17 @@ body {
   font-weight: 700;
   padding: 0.65rem 1.5rem;
 }
-.login .container input[type=file]::file-selector-button {
-  padding: 0.65rem 1.5rem;
-  border: none;
-  border-radius: 2rem;
-  margin-bottom: 2rem;
-  background-color: hsl(0, 97%, 65%);
-  color: hsl(0, 0%, 0%);
-  font-weight: 600;
+.login .container input[type=file] {
   cursor: pointer;
-  transition: color 0.15s, background-color 0.15s, opacity 0.15s;
+  display: none;
+  transition: all 350ms ease-in-out;
 }
-.login .container input[type=file]::file-selector-button:hover {
-  background-color: hsl(0, 0%, 0%);
-  color: hsl(0, 97%, 65%);
-}
-.login .container input[type=file]::file-selector-button:active {
-  opacity: 0.8;
+.login .container label[for=photo] {
+  cursor: pointer;
+  background-color: hsl(0, 0%, 35%);
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
 }
 
 .guest-main__aside__button {
@@ -1195,7 +1195,7 @@ body {
 .guest-dialog {
   font-family: "Inter", sans-serif;
   display: none;
-  width: min(37.5rem, 90%);
+  width: min(35.5rem, 100% - 2rem);
   position: absolute;
   top: 6rem;
   left: 50%;
@@ -1207,11 +1207,13 @@ body {
   color: hsl(0, 0%, 100%);
 }
 .guest-dialog .header-wrapper {
+  width: min(100% - 2rem, 27.5rem);
+  margin-inline: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0rem;
-  padding: 2rem 2.5rem;
+  padding-block: 2rem;
 }
 .guest-dialog .header-wrapper .form-title {
   font-size: var(--fs-large);
@@ -1236,6 +1238,8 @@ body {
   transform: translateY(-6px) rotate(45deg);
 }
 .guest-dialog .dialog__form {
+  width: min(100% - 2rem, 27.5rem);
+  margin-inline: auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
@@ -1244,7 +1248,7 @@ body {
   justify-content: center;
   align-items: center;
   align-content: center;
-  padding: 0 2.5rem 2rem 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .guest-dialog .dialog__form .field-wrapper {
   width: 100%;
@@ -1260,8 +1264,9 @@ body {
   font-size: var(--fs-small);
 }
 .guest-dialog .dialog__form .field-wrapper input {
+  border: none;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
 }
 .guest-dialog .dialog__form .form-submit {
   justify-self: end;

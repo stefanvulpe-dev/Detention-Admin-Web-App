@@ -4,9 +4,6 @@ import * as http from 'http';
 import path, { dirname } from 'path';
 import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
-import { Umzug, SequelizeStorage } from 'umzug';
-
-dotenv.config();
 
 import * as UserController from './controllers/userController.js';
 import { db } from './models/index.js';
@@ -20,18 +17,6 @@ let serve = serveStatic(path.join(__dirname, 'public'), {
   index: ['/Views/index.html'],
 });
 const PORT = process.env.PORT || 8080;
-
-const umzug = new Umzug({
-  migrations: { glob: path.join(__dirname, '/repositories/migrations/*.js') },
-  context: db.getQueryInterface(),
-  storage: new SequelizeStorage({ sequelize: db }),
-  logger: console,
-});
-
-const migrations = await umzug.pending();
-console.log(migrations);
-
-//await umzug.up();
 
 await compileSassAndSave(
   path.join(__dirname, 'public/styles/scss/main.scss'),

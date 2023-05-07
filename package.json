@@ -32,7 +32,6 @@
     "nodemon": "^2.0.22",
     "pg": "^8.10.0",
     "sequelize": "^6.31.1",
-    "serve-static": "^1.15.0",
-    "umzug": "^3.2.1"
+    "serve-static": "^1.15.0"
   }
 }

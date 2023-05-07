@@ -31,6 +31,13 @@
         flex-direction: column;
       }
 
+      &-field:nth-of-type(5) {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 2.5rem;
+      }
+
       &-buttons {
         @include flex-display(center, center, 2rem);
         flex-direction: column;
@@ -60,12 +67,12 @@
     }
 
     label,
-    span[id='photo'] {
+    .photo-upload {
       font-weight: map-get($font-weights, regular);
       color: map-get($colors, primary-white);
     }
 
-    input:not([id='file-upload']) {
+    input:not([id='photo']) {
       width: 100%;
       background-color: map-get($colors, light-gray);
       border: none;
@@ -75,25 +82,18 @@
       padding: 0.65rem 1.5rem;
     }
 
-    input[type='file']::file-selector-button {
-      padding: 0.65rem 1.5rem;
-      border: none;
-      border-radius: 2rem;
-      margin-bottom: 2rem;
-      background-color: map-get($colors, accent-red);
-      color: map-get($colors, primary-dark);
-      font-weight: map-get($font-weights, semi-bold);
+    input[type='file'] {
       cursor: pointer;
-      transition: color 0.15s, background-color 0.15s, opacity 0.15s;
+      display: none;
+      transition: all 350ms ease-in-out;
     }
 
-    input[type='file']::file-selector-button:hover {
-      background-color: map-get($colors, primary-dark);
-      color: map-get($colors, accent-red);
-    }
-
-    input[type='file']::file-selector-button:active {
-      opacity: 0.8;
+    label[for='photo'] {
+      cursor: pointer;
+      background-color: map-get($colors, secondary-gray);
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
     }
   }
 }
