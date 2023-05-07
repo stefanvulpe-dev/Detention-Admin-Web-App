@@ -9,7 +9,7 @@
   }
 
   &__form {
-    width: min(45rem, 90%);
+    width: min(42.5rem, 90%);
     margin-inline: auto;
 
     &-wrapper {
@@ -39,7 +39,7 @@
     }
 
     input {
-      padding-block: 0.5rem;
+      padding: 0.5rem 1rem;
       width: 100%;
       border: none;
       border-radius: 0.5rem;
