@@ -18,9 +18,9 @@ export const register = async (req, res) => {
     firstName: Joi.string().pattern(new RegExp('^[A-Z][a-z]+$')),
     lastName: Joi.string().pattern(new RegExp('^[A-Z][a-z]+$')),
     email: Joi.string().email(),
-    password: Joi.string().pattern(
-      new RegExp('^(?=.*?[A-Z])(?=.*?[a-z]).{5,30}$')
-    ),
+    password: Joi.string()
+      .pattern(new RegExp('^[a-zA-Z0-9]{5,30}$'))
+      .required(),
     photo: Joi.string().empty(''),
   }).validate(credentials);
 

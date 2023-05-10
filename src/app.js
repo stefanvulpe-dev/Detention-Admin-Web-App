@@ -19,6 +19,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'), {
   index: ['/views/index.html'],
 });
+const PRIVATE_VIEWS_PATH = path.join(__dirname, '/views');
 const PORT = process.env.PORT || 8080;
 
 await compileSassAndSave(
@@ -64,18 +65,6 @@ const server = http.createServer((req, res) => {
       AuthController.checkAuth(req, res, () => AuthController.logout(req, res));
     }
   }
-
-  if (req.method === 'DELETE') {
-    if (req.url.match(/^\/logout$/)) {
-      AuthController.checkAuth(req, res, () => AuthController.logout(req, res));
-    }
-  }
-
-  if (req.method === 'DELETE') {
-    if (req.url.match(/^\/logout$/)) {
-      AuthController.checkAuth(req, res, () => AuthController.logout(req, res));
-    }
-  }
 });
 
 db.sync({ force: true })
@@ -86,7 +75,7 @@ db.sync({ force: true })
         firstName: 'John',
         lastName: 'Doe',
         email: 'johndoe@gmail.com',
-        password: 'johndoe',
+        password: 'johnDoe123',
         photo: '',
       };
       return new UsersRepository().create(newUser);

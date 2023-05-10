@@ -52,9 +52,16 @@
         border-radius: 100vh;
       }
 
+      button {
+        cursor: pointer;
+        border: 0;
+        text-decoration: none;
+        background: transparent;
+        width: 2rem;
+      }
+
       .list__item-icon {
         max-width: 2rem;
-        cursor: pointer;
       }
     }
   }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/css/main.css">
   <link rel="icon" href="/assets/tab-icon.svg">
-  <title>Detalii despre vizita</title>
+  <title>404</title>
 </head>
 
 <body>
@@ -49,62 +49,24 @@
           </li>
           <li class="list__item">
             <img class="person-logo" src="/assets/header/person.jpg" alt="person-logo">
-            <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
+            <button id="logout-button">
+              <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
+            </button>
           </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="details">
-    <form action="#" class="details__form">
-      <div class="details__form__labels">
-        <h1 class="details__form__labels__title">
-          Introduceti detaliile referitoare la vizita
-        </h1>
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-date">Data realizarii vizitei *</label>
-          <input class="form-input" required id="visit-date" type="date">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="object-data">Obiecte date/furnizate de condamnat *</label>
-          <input class="form-input" required id="object-data" type="text">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-time">Durata vizitei *</label>
-          <input class="form-input" required id="visit-time" type="time">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="prisoner-mood">Starea detinutului *</label>
-          <input class="form-input" required id="prisoner-mood" type="text">
-        </div>
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-nature">Natura vizitei *</label>
-          <textarea class="form-textarea" required id="visit-nature" maxlength="100"></textarea>
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="summary">Rezumatul discutiilor *</label>
-          <textarea class="form-textarea" required id="summary" maxlength="200"></textarea>
-        </div>
-      </div>
-      <div class="details__form__buttons">
-        <a href="/views/guestsDetails.html" class="details__form__buttons__back">Inapoi</a>
-        <button type="submit" class="details__form__buttons__submit">
-          Trimite
-        </button>
-      </div>
-    </form>
+  <main>
+    <h1>Error 404. Page not found.</h1>
   </main>
 
   <footer class="footer">
     <div class="footer__container">
       <p class="footer__copyright">
         &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
-        <a href="../../documentation/index.html" class="doc-link">Project documentation &#x21A9;</a>
+        <a href="/documentation/index.html" class="doc-link">Project documentation &#x21A9;</a>
       </p>
       <nav class="footer__social-links">
         <ul class="social-links__list">
@@ -132,7 +94,6 @@
       </nav>
     </div>
   </footer>
-
   <script src="/scripts/utils.js"></script>
 </body>
 
