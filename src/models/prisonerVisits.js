@@ -1,9 +1,9 @@
 import { pool } from './db/pool.js';
 
-export const dropGuestsVisitsTable = async () => {
+export const dropPrisonersVisitsTable = async () => {
   const client = await pool.connect();
   try {
-    await client.query(`drop table if exists guests_visits cascade`);
+    await client.query(`drop table if exists prisoners_visits cascade`);
   } catch (err) {
     console.log(err);
   } finally {
@@ -11,21 +11,20 @@ export const dropGuestsVisitsTable = async () => {
   }
 };
 
-export const createGuestsVisitsTable = async () => {
+export const createPrisonersVisitsTable = async () => {
   const client = await pool.connect();
   try {
     await client.query(
-      `create table guests_visits
-      (
-        id                 serial primary key,
-        "prisonerRelation" varchar(255)             not null,
-        "visitId"          integer                  not null,
-        "guestId"          integer                  not null,
+      `create table prisoners_visits
+     (
+        id           serial primary key,
+        "prisonerId" integer                  not null,
+        "visitId"    integer                  not null,
         "createdAt" timestamp with time zone not null default now(),
         "updatedAt" timestamp with time zone not null default now(),
-        constraint fk_guest foreign key("guestId") references guests(id), 
+        constraint fk_prisoner foreign key("prisonerId") references prisoners(id), 
         constraint fk_visit foreign key("visitId") references visits(id)
-      );`
+     );`
     );
   } catch (err) {
     console.log(err);

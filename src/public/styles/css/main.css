@@ -1033,9 +1033,15 @@ body {
   max-width: 2.5rem;
   border-radius: 100vh;
 }
+.header__nav-list .list__item:is(:last-child) button {
+  cursor: pointer;
+  border: 0;
+  text-decoration: none;
+  background: transparent;
+  width: 2rem;
+}
 .header__nav-list .list__item:is(:last-child) .list__item-icon {
   max-width: 2rem;
-  cursor: pointer;
 }
 
 .footer__copyright {

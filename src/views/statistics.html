@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/css/main.css">
   <link rel="icon" href="/assets/tab-icon.svg">
-  <title>Detalii despre vizita</title>
+  <title>Statistici</title>
 </head>
 
 <body>
   <header class="header" id="page-header">
     <div class="header__container">
-      <a href="/views/index.html">
+      <a href="/">
         <img class="header__logo" src="/assets/header/page_logo.svg" alt="Logo">
       </a>
       <div class="nav__toggle">
@@ -24,7 +24,7 @@
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li class="list__item">
-            <a href="/views/index.html" class="nav-link">
+            <a href="/" class="nav-link">
               <img class="list__item-icon" src="/assets/header/house-icon.svg" alt="home-logo">
               <p class="list__item-text">Acasa</p>
             </a>
@@ -49,62 +49,58 @@
           </li>
           <li class="list__item">
             <img class="person-logo" src="/assets/header/person.jpg" alt="person-logo">
-            <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
+            <button id="logout-button">
+              <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
+            </button>
           </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="details">
-    <form action="#" class="details__form">
-      <div class="details__form__labels">
-        <h1 class="details__form__labels__title">
-          Introduceti detaliile referitoare la vizita
-        </h1>
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-date">Data realizarii vizitei *</label>
-          <input class="form-input" required id="visit-date" type="date">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="object-data">Obiecte date/furnizate de condamnat *</label>
-          <input class="form-input" required id="object-data" type="text">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-time">Durata vizitei *</label>
-          <input class="form-input" required id="visit-time" type="time">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="prisoner-mood">Starea detinutului *</label>
-          <input class="form-input" required id="prisoner-mood" type="text">
-        </div>
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-nature">Natura vizitei *</label>
-          <textarea class="form-textarea" required id="visit-nature" maxlength="100"></textarea>
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="summary">Rezumatul discutiilor *</label>
-          <textarea class="form-textarea" required id="summary" maxlength="200"></textarea>
-        </div>
+  <div class="stats-info">
+    <div class="stats-info__container">
+      <div class="stats-info__container__card--1">
+        <p class="stats-info__container__description">
+          <span class="highlight">110</span>
+          de noi detinuți în 2023 până în prezent
+        </p>
       </div>
-      <div class="details__form__buttons">
-        <a href="/views/guestsDetails.html" class="details__form__buttons__back">Inapoi</a>
-        <button type="submit" class="details__form__buttons__submit">
-          Trimite
-        </button>
+      <div class="stats-info__container__card--2">
+        <p class="stats-info__container__description">
+          <span class="highlight">37</span>
+          de detinuți eliberați în 2023 până în prezent
+        </p>
       </div>
-    </form>
+      <div class="stats-info__container__card--3">
+        <p class="stats-info__container__description">
+          <span class="highlight">1/5</span>
+          deținuți sunt eliberați înainte de termenul inițial
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <main class="stats-main">
+    <div class="stats-main__chart-container">
+      <div class="stats-main__chart-container__title">
+        <h2>Evoluția numărului deținuților în ultimii 8 ani</h2>
+      </div>
+      <img src="/assets/statistici/grafic1.svg" alt="statistics-chart">
+    </div>
+    <div class="stats-main__chart-container">
+      <div class="stats-main__chart-container__title">
+        <h2>Media duratei pedepselor deținuților în ultimii 8 ani</h2>
+      </div>
+      <img src="/assets/statistici/grafic1.svg" alt="statistics-chart">
+    </div>
   </main>
 
   <footer class="footer">
     <div class="footer__container">
       <p class="footer__copyright">
         &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
-        <a href="../../documentation/index.html" class="doc-link">Project documentation &#x21A9;</a>
+        <a href="/documentation/index.html" class="doc-link">Project documentation &#x21A9;</a>
       </p>
       <nav class="footer__social-links">
         <ul class="social-links__list">
@@ -132,8 +128,7 @@
       </nav>
     </div>
   </footer>
-
-  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/main.js"></script>
 </body>
 
 </html>

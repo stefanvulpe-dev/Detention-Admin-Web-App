@@ -13,7 +13,7 @@
 <body>
   <header class="header" id="page-header">
     <div class="header__container">
-      <a href="/views/index.html">
+      <a href="/">
         <img class="header__logo" src="/assets/header/page_logo.svg" alt="Logo">
       </a>
       <div class="nav__toggle">
@@ -24,7 +24,7 @@
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li class="list__item">
-            <a href="/views/index.html" class="nav-link">
+            <a href="/" class="nav-link">
               <img class="list__item-icon" src="/assets/header/house-icon.svg" alt="home-logo">
               <p class="list__item-text">Acasa</p>
             </a>
@@ -49,7 +49,9 @@
           </li>
           <li class="list__item">
             <img class="person-logo" src="/assets/header/person.jpg" alt="person-logo">
-            <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
+            <button id="logout-button">
+              <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
+            </button>
           </li>
         </ul>
       </nav>
@@ -119,7 +121,7 @@
       </nav>
     </div>
   </footer>
-  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/main.js"></script>
 </body>
 
 </html>

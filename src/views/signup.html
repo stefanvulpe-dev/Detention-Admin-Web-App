@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/css/main.css">
   <link rel="icon" href="/assets/tab-icon.svg">
-  <title>Detalii despre vizitatori</title>
+  <title>Sign Up Page</title>
 </head>
 
 <body>
-  <header class="header" id="page-header">
+  <header class="header">
     <div class="header__container">
-      <a href="/views/index.html">
+      <a href="/">
         <img class="header__logo" src="/assets/header/page_logo.svg" alt="Logo">
       </a>
       <div class="nav__toggle">
@@ -24,7 +24,7 @@
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li class="list__item">
-            <a href="/views/index.html" class="nav-link">
+            <a href="/" class="nav-link">
               <img class="list__item-icon" src="/assets/header/house-icon.svg" alt="home-logo">
               <p class="list__item-text">Acasa</p>
             </a>
@@ -56,54 +56,39 @@
     </div>
   </header>
 
-  <main class="guest-main">
-    <form class="searchbar">
-      <input type="text" name="searchPrisoner" id="searchPrisoner" placeholder="Caută un deținut">
-      <button type="submit">
-        <img src="/assets/guest-details/search.svg" alt="search bar">
-      </button>
-    </form>
-    <ul class="result-list"></ul>
-    <section class="guest-main__aside">
-      <button id="add-visitor" class="guest-main__aside__button">
-        Adauga vizitator
-      </button>
-      <button class="guest-main__aside__button">
-        Șterge toți vizitatorii
-      </button>
-    </section>
-    <ul class="guest-main__list">
-      <li class="guest-main__list__card">
-        <img src="/assets/guest-details/photo1.png" alt="guest photo" class="guest-main__list__card__photo">
-        <div class="guest-main__list__card__name">
-          <p class="guest-main__list__card__label">
-            Nume:
-            <span class="guest-main__list__card__info">Popescu Ion</span>
-          </p>
+  <main class="login">
+    <div class="container">
+      <h1 class="container__title">Inregistreaza-te</h1>
+      <form action="#" id="signup-form" class="container__form" enctype="multipart/form-data">
+        <div class="container__form-field">
+          <label for="first_name">First name</label>
+          <input id="first_name" required type="text" name="first_name" placeholder="Enter your first name">
         </div>
-        <div class="drop-arrow">
-          <span class="vBar"></span>
-          <span class="vBar"></span>
+        <div class="container__form-field">
+          <label for="last_name">Last name</label>
+          <input id="last_name" required type="text" name="last_name" placeholder="Enter your last name">
         </div>
-        <div class="guest-main__list__card__dBirth">
-          <p class="guest-main__list__card__label">
-            Data nasterii:
-            <time class="guest-main__list__card__info" datetime="1973-09-23">24.09.1973</time>
-          </p>
+        <div class="container__form-field">
+          <label for="email">Email Adress</label>
+          <input id="email" required type="email" name="email" placeholder="Enter your email">
         </div>
-        <div class="guest-main__list__card__buttons">
-          <button class="guest-main__list__card__buttons__delete">
-            <img src="/assets/guest-details/trash.svg" alt="delete button">
-          </button>
-          <button class="guest-main__list__card__buttons__edit">
-            <img src="/assets/guest-details/pen.svg" alt="edit button">
+        <div class="container__form-field">
+          <label for="password">Password</label>
+          <input id="password" required type="password" name="password" placeholder="Enter your password">
+        </div>
+        <div class="container__form-field">
+          <span class="photo-upload">Photo</span>
+          <label for="photo" id="photo-label">Incarca o poza 📁</label>
+          <input id="photo" required type="file" accept="image/png, image/jpeg" name="photo">
+        </div>
+        <div class="container__form-buttons">
+          <button type="submit" class="container__form-submit">Sign up</button>
+          <button type="button" class="container__form-submit" onclick="window.location.assign('/views/login.html');">
+            Log in
           </button>
         </div>
-      </li>
-      <li>
-        <a href="/views/visitDetails.html" class="guest-main__list__next-page">Continua</a>
-      </li>
-    </ul>
+      </form>
+    </div>
   </main>
 
   <footer class="footer">
@@ -130,7 +115,7 @@
             </a>
           </li>
           <li class="list-item">
-            <a href="#page-header" class="list-item__link">
+            <a href="" class="list-item__link">
               <img src="/assets/footer/back-to-top.svg" alt="back-to-top logo">
             </a>
           </li>
@@ -139,8 +124,8 @@
     </div>
   </footer>
 
-  <script src="/scripts/detailsModal.js"></script>
-  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/authUtils.js"></script>
 </body>
 
 </html>
