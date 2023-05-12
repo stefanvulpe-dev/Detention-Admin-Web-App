@@ -1,62 +1,35 @@
-import bcrypt from 'bcrypt';
-import { DataTypes } from 'sequelize';
-import { db } from './db/connection.js';
+import { pool } from './db/pool.js';
 
-export const Users = db.define(
-  'Users',
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: {
-          args: true,
-          msg: 'Please enter a valid email',
-        },
-      },
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: { args: [6], msg: 'Minimum password length in 6 characters' },
-      },
-    },
-    photo: {
-      type: DataTypes.BLOB,
-      allowNull: false,
-    },
-  },
-  { timestamps: true }
-);
-
-Users.beforeCreate(async user => {
-  const salt = await bcrypt.genSalt();
-  user.password = await bcrypt.hash(user.password, salt);
-});
-
-Users.login = async function (email, password) {
-  const user = await this.findOne({ where: { email: email } });
-  if (user) {
-    const auth = await bcrypt.compare(password, user.password);
-    if (auth) {
-      return user;
-    }
-    throw new Error('Incorrect password');
+export const dropUsersTable = async () => {
+  const client = await pool.connect();
+  try {
+    await client.query(`drop table if exists users cascade`);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    client.release();
   }
-  throw new Error('Incorrect email');
+};
+
+export const createUsersTable = async () => {
+  const client = await pool.connect();
+  try {
+    await client.query(
+      `create table users
+      (
+        id          serial primary key,
+        "firstName" varchar(255)             not null,
+        "lastName"  varchar(255)             not null,
+        email       varchar(255)             not null unique,
+        password    varchar(255)             not null,
+        photo       varchar(255)             not null,
+        "createdAt" timestamp with time zone not null default now(),
+        "updatedAt" timestamp with time zone not null default now()
+      );`
+    );
+  } catch (err) {
+    console.log(err);
+  } finally {
+    client.release();
+  }
 };

@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/css/main.css">
   <link rel="icon" href="/assets/tab-icon.svg">
-  <title>Statistici</title>
+  <title>Sign Up Page</title>
 </head>
 
 <body>
-  <header class="header" id="page-header">
+  <header class="header">
     <div class="header__container">
-      <a href="/views/index.html">
+      <a href="/">
         <img class="header__logo" src="/assets/header/page_logo.svg" alt="Logo">
       </a>
       <div class="nav__toggle">
@@ -24,7 +24,7 @@
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li class="list__item">
-            <a href="/views/index.html" class="nav-link">
+            <a href="/" class="nav-link">
               <img class="list__item-icon" src="/assets/header/house-icon.svg" alt="home-logo">
               <p class="list__item-text">Acasa</p>
             </a>
@@ -49,50 +49,45 @@
           </li>
           <li class="list__item">
             <img class="person-logo" src="/assets/header/person.jpg" alt="person-logo">
-            <button id="logout-button">
-              <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
-            </button>
+            <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
           </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <div class="stats-info">
-    <div class="stats-info__container">
-      <div class="stats-info__container__card--1">
-        <p class="stats-info__container__description">
-          <span class="highlight">110</span>
-          de noi detinuți în 2023 până în prezent
-        </p>
-      </div>
-      <div class="stats-info__container__card--2">
-        <p class="stats-info__container__description">
-          <span class="highlight">37</span>
-          de detinuți eliberați în 2023 până în prezent
-        </p>
-      </div>
-      <div class="stats-info__container__card--3">
-        <p class="stats-info__container__description">
-          <span class="highlight">1/5</span>
-          deținuți sunt eliberați înainte de termenul inițial
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <main class="stats-main">
-    <div class="stats-main__chart-container">
-      <div class="stats-main__chart-container__title">
-        <h2>Evoluția numărului deținuților în ultimii 8 ani</h2>
-      </div>
-      <img src="/assets/statistici/grafic1.svg" alt="statistics-chart">
-    </div>
-    <div class="stats-main__chart-container">
-      <div class="stats-main__chart-container__title">
-        <h2>Media duratei pedepselor deținuților în ultimii 8 ani</h2>
-      </div>
-      <img src="/assets/statistici/grafic1.svg" alt="statistics-chart">
+  <main class="login">
+    <div class="container">
+      <h1 class="container__title">Inregistreaza-te</h1>
+      <form action="#" id="signup-form" class="container__form" enctype="multipart/form-data">
+        <div class="container__form-field">
+          <label for="first_name">First name</label>
+          <input id="first_name" required type="text" name="first_name" placeholder="Enter your first name">
+        </div>
+        <div class="container__form-field">
+          <label for="last_name">Last name</label>
+          <input id="last_name" required type="text" name="last_name" placeholder="Enter your last name">
+        </div>
+        <div class="container__form-field">
+          <label for="email">Email Adress</label>
+          <input id="email" required type="email" name="email" placeholder="Enter your email">
+        </div>
+        <div class="container__form-field">
+          <label for="password">Password</label>
+          <input id="password" required type="password" name="password" placeholder="Enter your password">
+        </div>
+        <div class="container__form-field">
+          <span class="photo-upload">Photo</span>
+          <label for="photo" id="photo-label">Incarca o poza 📁</label>
+          <input id="photo" required type="file" accept="image/png, image/jpeg" name="photo">
+        </div>
+        <div class="container__form-buttons">
+          <button type="submit" class="container__form-submit">Sign up</button>
+          <button type="button" class="container__form-submit" onclick="window.location.assign('/views/login.html');">
+            Log in
+          </button>
+        </div>
+      </form>
     </div>
   </main>
 
@@ -120,7 +115,7 @@
             </a>
           </li>
           <li class="list-item">
-            <a href="#page-header" class="list-item__link">
+            <a href="" class="list-item__link">
               <img src="/assets/footer/back-to-top.svg" alt="back-to-top logo">
             </a>
           </li>
@@ -128,7 +123,9 @@
       </nav>
     </div>
   </footer>
-  <script src="/scripts/utils.js"></script>
+
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/authUtils.js"></script>
 </body>
 
 </html>

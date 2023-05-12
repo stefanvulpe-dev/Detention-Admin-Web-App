@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/css/main.css">
   <link rel="icon" href="/assets/tab-icon.svg">
-  <title>Contact</title>
+  <title>Statistici</title>
 </head>
 
 <body>
   <header class="header" id="page-header">
     <div class="header__container">
-      <a href="/views/index.html">
+      <a href="/">
         <img class="header__logo" src="/assets/header/page_logo.svg" alt="Logo">
       </a>
       <div class="nav__toggle">
@@ -24,7 +24,7 @@
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li class="list__item">
-            <a href="/views/index.html" class="nav-link">
+            <a href="/" class="nav-link">
               <img class="list__item-icon" src="/assets/header/house-icon.svg" alt="home-logo">
               <p class="list__item-text">Acasa</p>
             </a>
@@ -58,35 +58,42 @@
     </div>
   </header>
 
-  <main class="contact">
-    <h1 class="contact__title">Contactati-ne mai jos</h1>
-    <form action="#" class="contact__form">
-      <fieldset class="contact__form-fieldset">
-        <legend class="contact__form-legend">Detalii personale</legend>
-        <div class="contact__form-wrapper">
-          <div class="contact__form-field">
-            <label for="first-name">Nume</label>
-            <input id="first-name" type="text" name="first-name">
-          </div>
-          <div class="contact-form-field">
-            <label for="last-name">Prenume</label>
-            <input id="last-name" type="text">
-          </div>
-          <div class="contact__form-field">
-            <label for="email">Email</label>
-            <input id="email" type="email">
-          </div>
-          <div class="contact__form-field">
-            <label for="suggestions">Sugestii</label>
-            <textarea name="suggestions" id="suggestions" cols="30" rows="10"
-              placeholder="Cu ce va putem ajuta?"></textarea>
-          </div>
-          <button class="contact__form-button" type="submit">
-            Trimite &#8594;
-          </button>
-        </div>
-      </fieldset>
-    </form>
+  <div class="stats-info">
+    <div class="stats-info__container">
+      <div class="stats-info__container__card--1">
+        <p class="stats-info__container__description">
+          <span class="highlight">110</span>
+          de noi detinuți în 2023 până în prezent
+        </p>
+      </div>
+      <div class="stats-info__container__card--2">
+        <p class="stats-info__container__description">
+          <span class="highlight">37</span>
+          de detinuți eliberați în 2023 până în prezent
+        </p>
+      </div>
+      <div class="stats-info__container__card--3">
+        <p class="stats-info__container__description">
+          <span class="highlight">1/5</span>
+          deținuți sunt eliberați înainte de termenul inițial
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <main class="stats-main">
+    <div class="stats-main__chart-container">
+      <div class="stats-main__chart-container__title">
+        <h2>Evoluția numărului deținuților în ultimii 8 ani</h2>
+      </div>
+      <img src="/assets/statistici/grafic1.svg" alt="statistics-chart">
+    </div>
+    <div class="stats-main__chart-container">
+      <div class="stats-main__chart-container__title">
+        <h2>Media duratei pedepselor deținuților în ultimii 8 ani</h2>
+      </div>
+      <img src="/assets/statistici/grafic1.svg" alt="statistics-chart">
+    </div>
   </main>
 
   <footer class="footer">
@@ -121,7 +128,7 @@
       </nav>
     </div>
   </footer>
-  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/main.js"></script>
 </body>
 
 </html>
