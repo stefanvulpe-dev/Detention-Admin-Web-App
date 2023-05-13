@@ -251,6 +251,30 @@
       }
     }
   }
+
+  .profile {
+    &__container {
+      flex-direction: row;
+      gap: max(3rem, 5%);
+
+      &-card {
+        margin: 5rem min(5rem, 2%) 5rem min(5rem, 2%);
+        padding: 1rem min(3rem, 50%) 1rem min(3rem, 50%);
+      }
+
+      &-history {
+        @include flex-display(center, center, 0);
+        flex-direction: column;
+        white-space: nowrap;
+        padding-right: min(5rem, 10%);
+
+        &__title {
+          content: flex-start;
+          margin-right: auto;
+        }
+      }
+    }
+  }
 }
 
 @include media-min(map-get($breakpoints, large)) {

@@ -883,6 +883,85 @@ body {
   text-align: center;
 }
 
+.profile {
+  min-height: 100vh;
+}
+.profile__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-direction: column;
+}
+.profile__container-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  flex-direction: column;
+  margin: 2rem max(10%, 2rem) 2rem max(10%, 2rem);
+  padding: 3rem max(10%, 2rem) 3rem max(10%, 2rem);
+  border-radius: 2rem;
+  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
+  background-image: linear-gradient(to bottom, hsl(0, 97%, 65%) 0%, hsl(0, 100%, 50%) 28%, hsl(0, 0%, 35%) 28%, hsl(0, 0%, 35%) 100%);
+}
+:is(.profile__container-card__pic, .profile__container-card__photo) {
+  border-radius: 50%;
+  border: none;
+  width: auto;
+  height: 10rem;
+  cursor: pointer;
+}
+.profile__container-card__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+}
+:is(.profile__container-card__info__name, .profile__container-card__info__email) {
+  font-weight: 700;
+}
+.profile__container-card__info__name {
+  font-size: 1.75rem;
+}
+.profile__container-card__info__email {
+  font-size: 1.35rem;
+}
+.profile__container-card__edit {
+  background-color: hsl(0, 97%, 65%);
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem 1rem 2rem;
+  color: hsl(0, 0%, 0%);
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  transition: opacity 0.15s;
+}
+.profile__container-card__edit:hover {
+  opacity: 0.8;
+}
+.profile__container-card__edit:active {
+  opacity: 0.6;
+}
+.profile__container-history {
+  background-color: rgb(255, 230, 208);
+  padding: 1rem 20% 2rem 1rem;
+  border-radius: 2rem;
+  margin: 0 1rem 0 1rem;
+}
+.profile__container-history__title {
+  margin-bottom: 2rem;
+}
+.profile__container-history summary.__summary {
+  font-size: 1.35rem;
+}
+.profile__container-history p.__info {
+  font-size: 1.15rem;
+}
+
 .guest-main__aside__button {
   width: max(100%, 10rem);
   padding: 1rem;
@@ -1568,6 +1647,27 @@ body {
   }
   :is(.details__form__buttons__back, .details__form__buttons__submit) {
     padding-inline: 3.5rem;
+  }
+  .profile__container {
+    flex-direction: row;
+    gap: max(3rem, 5%);
+  }
+  .profile__container-card {
+    margin: 5rem min(5rem, 2%) 5rem min(5rem, 2%);
+    padding: 1rem min(3rem, 50%) 1rem min(3rem, 50%);
+  }
+  .profile__container-history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    flex-direction: column;
+    white-space: nowrap;
+    padding-right: min(5rem, 10%);
+  }
+  .profile__container-history__title {
+    content: flex-start;
+    margin-right: auto;
   }
 }
 @media screen and (min-width: 1150px) {

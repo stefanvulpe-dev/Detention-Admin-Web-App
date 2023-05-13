@@ -12,6 +12,7 @@ import {
   GuestController,
   VisitController,
 } from './controllers/index.js';
+import { pool } from './models/db/pool.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'));
@@ -73,6 +74,11 @@ const server = http.createServer((req, res) => {
       const readStream = fs.createReadStream(`${VIEWS_PATH}/signup.html`);
       res.writeHead(200, { 'Content-type': 'text/html' });
       readStream.pipe(res);
+    } else if (url.match(/^\/views\/userProfile.html$/)) {
+      // verificare autentificare
+      const readStream = fs.createReadStream(`${VIEWS_PATH}/userProfile.html`);
+      res.writeHead(200, { 'Content-type': 'text/html' });
+      readStream.pipe(res);
     }
   }
 
@@ -129,8 +135,8 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => console.log(`Listenting on port ${PORT}`));
 
-process.on('SIGINT', function () {
-  db.close();
+process.on('SIGINT', async function () {
+  await pool.end();
   server.close();
   process.exit();
 });

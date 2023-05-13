@@ -1,0 +1,93 @@
+@use '../base/' as *;
+@use '../sass-utils/' as *;
+
+.profile {
+  min-height: 100vh;
+
+  &__container {
+    @include flex-display(center, center, 3rem);
+    flex-direction: column;
+
+    &-card {
+      @include flex-display(center, center, 5rem);
+      flex-direction: column;
+      margin: 2rem max(10%, 2rem) 2rem max(10%, 2rem);
+      padding: 3rem max(10%, 2rem) 3rem max(10%, 2rem);
+      border-radius: 2rem;
+      box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
+
+      background-image: linear-gradient(
+        to bottom,
+        map-get($colors, accent-red) 0%,
+        map-get($colors, primary-red) 28%,
+        map-get($colors, secondary-gray) 28%,
+        map-get($colors, secondary-gray) 100%
+      );
+
+      :is(&__pic, &__photo) {
+        border-radius: 50%;
+        border: none;
+        width: auto;
+        height: 10rem;
+        cursor: pointer;
+      }
+
+      &__info {
+        @include flex-display(center, center, 1rem);
+        flex-direction: column;
+
+        :is(&__name, &__email) {
+          color: map-get($colors, primary-black);
+          font-weight: map-get($font-weights, bold);
+        }
+
+        &__name {
+          font-size: map-get($font-sizes, extra-large);
+        }
+
+        &__email {
+          font-size: map-get($font-sizes, large);
+        }
+      }
+      &__edit {
+        background-color: map-get($colors, accent-red);
+        border: none;
+        border-radius: 2rem;
+        padding: 1rem 2rem 1rem 2rem;
+        color: map-get($colors, primary-dark);
+        font-size: map-get($font-sizes, medium);
+        font-weight: map-get($font-weights, semi-bold);
+        cursor: pointer;
+        font-family: $ff-primary;
+        transition: opacity 0.15s;
+      }
+
+      &__edit:hover {
+        opacity: 0.8;
+      }
+
+      &__edit:active {
+        opacity: 0.6;
+      }
+    }
+
+    &-history {
+      background-color: rgb(255, 230, 208);
+      padding: 1rem 20% 2rem 1rem;
+      border-radius: 2rem;
+      margin: 0 1rem 0 1rem;
+
+      &__title {
+        margin-bottom: 2rem;
+      }
+
+      summary.__summary {
+        font-size: map-get($font-sizes, large);
+      }
+
+      p.__info {
+        font-size: map-get($font-sizes, medium);
+      }
+    }
+  }
+}
