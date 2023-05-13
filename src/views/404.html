@@ -58,8 +58,16 @@
     </div>
   </header>
 
-  <main>
-    <h1>Error 404. Page not found.</h1>
+  <main class="error">
+    <div class="error__container">
+      <img class="error__container-image" src="/assets/404/sadface.png" alt="Sad face">
+      <h1 class="error__container-title">Oops! Pagina nu a putut fi gasita</h1>
+      <p class="error__container-info">Pagina pe care ati dorit sa o accesati nu exista, a fost stearsa, numele sau a
+        fost schimbat sau este temporar indisponibila.
+      </p>
+      <button class="error__container-button" onclick="window.location.replace('/')" type="button">Navigati pe pagina
+        principala</button>
+    </div>
   </main>
 
   <footer class="footer">

@@ -883,6 +883,47 @@ body {
   text-align: center;
 }
 
+.error__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+}
+.error__container-image {
+  max-width: min(20rem, 50%);
+  margin: 2rem 2rem 4rem 2rem;
+}
+:is(.error__container-title, .error__container-info) {
+  padding: 0 2rem 0 2rem;
+  white-space: normal;
+}
+.error__container-info {
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+.error__container-button {
+  border: none;
+  background-color: hsl(0, 97%, 65%);
+  color: hsl(0, 0%, 0%);
+  padding: 1rem 2rem 1rem 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border-radius: 2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, opacity 0.15s ease-in-out;
+}
+.error__container-button:hover {
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(0, 97%, 65%);
+}
+.error__container-button:active {
+  opacity: 0.8;
+}
+
 .guest-main__aside__button {
   width: max(100%, 10rem);
   padding: 1rem;

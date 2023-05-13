@@ -73,6 +73,10 @@ const server = http.createServer((req, res) => {
       const readStream = fs.createReadStream(`${VIEWS_PATH}/signup.html`);
       res.writeHead(200, { 'Content-type': 'text/html' });
       readStream.pipe(res);
+    } else if (url.match(/^\/views\/404.html$/)) {
+      const readStream = fs.createReadStream(`${VIEWS_PATH}/404.html`);
+      res.writeHead(200, { 'Content-type': 'text/html' });
+      readStream.pipe(res);
     }
   }
 
