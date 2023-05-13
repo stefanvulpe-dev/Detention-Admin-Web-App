@@ -1,0 +1,75 @@
+@use '../sass-utils/' as *;
+@use '../base/' as *;
+
+.help{
+    min-height: 100vh;
+    padding: 2rem 1.5rem 2rem 1.5rem;
+    width: min(90%, 83.5rem);
+    margin-inline: auto;
+    @include flex-display(auto,center,2rem);
+    flex-direction: column;
+    &__title{
+        width: 100%;
+        text-align: center;
+        border-bottom: 0.25rem solid;
+        border-radius: 0.25rem;
+        padding: 1.5rem 2rem 1.5rem 2rem;
+    }
+    &__qa{
+        width: 100%;
+        @include flex-display(center,center,1rem);
+        flex-direction: column;
+        padding: 1.5rem 0rem 1.5rem 0rem;
+        border-radius: 0.5rem;
+        transition: all 400ms ease;
+        cursor: pointer;
+        &__question{
+            @include flex-display(center,center,0rem);
+            flex-direction: row;
+            padding-inline: 1rem 1.5rem;
+            &__arrow{
+                width: 0;
+                height: 0;
+                border-top: 0.5rem solid transparent;
+                border-bottom: 0.5rem solid transparent;
+                transition: 400ms linear all;
+                margin:auto 0 auto 0;
+            }
+            
+            &__text{
+                margin: auto;
+                text-align: center;
+            }
+        }  
+        &__question::marker{
+            content: none;
+        }    
+        &__steps{           
+            list-style-type: decimal;
+            @include flex-display(center,center,1rem);
+            flex-direction: column;
+            margin-inline: auto;
+            padding:1rem 2rem;
+            text-align: left;
+            &__step {
+                text-indent: 1rem;
+                padding-top: 2rem;
+                width: min(100% - 2rem, 50ch);
+                margin-inline: auto;
+                img{
+                    width: 100%;
+                    margin-top: 1rem;
+                    border-radius: 0.5rem;
+                }
+            }
+        }
+    }
+    &__qa[open]{
+        .help__qa__question__arrow{            
+                -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
+                transition: 400ms linear all;
+            
+        }
+    }
+}
