@@ -2,18 +2,21 @@
 @use '../sass-utils/' as *;
 
 .error {
+  min-height: 100vh;
+  @include flex-display(center, center, 0rem);
   &__container {
     @include flex-display(center, center, 1rem);
     flex-direction: column;
 
     &-image {
-      max-width: min(20rem, 50%);
+      max-width: min(15rem, 30%);
       margin: 2rem 2rem 4rem 2rem;
     }
 
     :is(&-title, &-info) {
       padding: 0 2rem 0 2rem;
       white-space: normal;
+      color: map-get($colors, primary-white);
     }
 
     &-info {

@@ -883,6 +883,13 @@ body {
   text-align: center;
 }
 
+.error {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+}
 .error__container {
   display: flex;
   justify-content: center;
@@ -891,12 +898,13 @@ body {
   flex-direction: column;
 }
 .error__container-image {
-  max-width: min(20rem, 50%);
+  max-width: min(15rem, 30%);
   margin: 2rem 2rem 4rem 2rem;
 }
 :is(.error__container-title, .error__container-info) {
   padding: 0 2rem 0 2rem;
   white-space: normal;
+  color: hsl(0, 0%, 100%);
 }
 .error__container-info {
   margin-bottom: 2rem;
