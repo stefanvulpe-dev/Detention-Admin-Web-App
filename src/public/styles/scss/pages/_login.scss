@@ -10,7 +10,7 @@
   .container {
     width: min(90%, 32.5rem);
     box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
-    @include flex-display(center, center, 2rem);
+    @include flex-display(center, center, 0rem);
     flex-direction: column;
     background-color: map-get($colors, light-black);
     padding: 3rem 2rem;
@@ -27,8 +27,9 @@
       width: 100%;
 
       &-field {
-        @include flex-display(center, flex-start, 1.75rem);
+        @include flex-display(center, flex-start, 0rem);
         flex-direction: column;
+        margin-top: 2rem;
       }
 
       &-field:nth-of-type(5) {
@@ -74,9 +75,8 @@
     input:not([id='photo']) {
       width: 100%;
       background-color: map-get($colors, light-gray);
-      border: none;
+      margin-top: 1.75rem;
       border-radius: 2rem;
-      margin-bottom: 2rem;
       padding: 0.65rem 1.5rem;
       font-size: var(--fs-very-small);
     }
@@ -94,5 +94,19 @@
       border-radius: 0.75rem;
       text-align: center;
     }
+    
   }
+}
+.error{
+  display: none;  
+}
+.error.display-error{
+  display: block;
+  margin-top: 0.5rem;
+}
+.container__form-field input{
+  border: 0.2rem solid transparent;
+}
+.container__form-field.success input{
+  border-color: transparent;
 }
