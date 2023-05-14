@@ -994,7 +994,6 @@ body {
   text-align: left;
 }
 .help__qa__steps__step {
-  text-indent: 1rem;
   padding-top: 2rem;
   width: min(100% - 2rem, 50ch);
   margin-inline: auto;
