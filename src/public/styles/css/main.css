@@ -885,6 +885,10 @@ body {
 
 .profile {
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
 }
 .profile__container {
   display: flex;
@@ -897,19 +901,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 3rem;
   flex-direction: column;
-  margin: 2rem max(10%, 2rem) 2rem max(10%, 2rem);
-  padding: 3rem max(10%, 2rem) 3rem max(10%, 2rem);
+  margin: 2rem max(15%, 2rem) 2rem max(15%, 2rem);
+  padding: 3rem max(13%, 2.5rem) 3rem max(13%, 2.5rem);
   border-radius: 2rem;
   box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
-  background-image: linear-gradient(to bottom, hsl(0, 97%, 65%) 0%, hsl(0, 100%, 50%) 28%, hsl(0, 0%, 35%) 28%, hsl(0, 0%, 35%) 100%);
+  background-image: linear-gradient(to bottom, hsl(0, 97%, 65%) 0%, hsl(0, 100%, 50%) 28%, hsl(0, 0%, 80%) 28%, hsl(0, 0%, 80%) 100%);
 }
 :is(.profile__container-card__pic, .profile__container-card__photo) {
   border-radius: 50%;
   border: none;
   width: auto;
-  height: 10rem;
+  height: 8rem;
   cursor: pointer;
 }
 .profile__container-card__info {
@@ -946,20 +950,55 @@ body {
 .profile__container-card__edit:active {
   opacity: 0.6;
 }
-.profile__container-history {
-  background-color: rgb(255, 230, 208);
-  padding: 1rem 20% 2rem 1rem;
+.profile__container-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: column;
+}
+:is(.profile__container-details__welcome, .profile__container-details__line) {
+  display: none;
+}
+.profile__container-details-history {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+  background-color: hsl(0, 0%, 85%);
+  padding: 1rem min(3rem, 5%) 2rem 1rem;
   border-radius: 2rem;
   margin: 0 1rem 0 1rem;
 }
-.profile__container-history__title {
+.profile__container-details-history__title {
+  font-size: 2rem;
   margin-bottom: 2rem;
 }
-.profile__container-history summary.__summary {
-  font-size: 1.35rem;
+.profile__container-details-history__text {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+  flex-direction: column;
 }
-.profile__container-history p.__info {
+.profile__container-details-history__text-details {
+  border: 0.075rem solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  max-width: 35rem;
+}
+.profile__container-details-history__text-details__summary {
+  font-size: 1.35rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+.profile__container-details-history__text-details__info {
   font-size: 1.15rem;
+  white-space: pre-line;
+}
+.profile__container-details-history-details[open] {
+  padding: 10rem;
 }
 
 .guest-main__aside__button {
@@ -1653,10 +1692,29 @@ body {
     gap: max(3rem, 5%);
   }
   .profile__container-card {
-    margin: 5rem min(5rem, 2%) 5rem min(5rem, 2%);
-    padding: 1rem min(3rem, 50%) 1rem min(3rem, 50%);
+    margin: 2rem min(15%, 2rem) 2rem min(15%, 2rem);
+    padding: 3rem min(13%, 3.5rem) 3rem min(13%, 3.5rem);
   }
-  .profile__container-history {
+  .profile__container-details {
+    gap: 1rem;
+  }
+  .profile__container-details__welcome {
+    display: contents;
+    white-space: nowrap;
+    color: hsl(0, 0%, 100%);
+    font-weight: 400;
+  }
+  .profile__container-details__line {
+    display: block;
+    width: 95%;
+    margin-bottom: 6rem;
+    margin-top: 1.5rem;
+    height: 0.4rem;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 3rem;
+    border: none;
+  }
+  .profile__container-details-history {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1664,8 +1722,9 @@ body {
     flex-direction: column;
     white-space: nowrap;
     padding-right: min(5rem, 10%);
+    padding-left: 1rem;
   }
-  .profile__container-history__title {
+  .profile__container-details-history__title {
     content: flex-start;
     margin-right: auto;
   }

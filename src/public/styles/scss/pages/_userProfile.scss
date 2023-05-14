@@ -3,16 +3,17 @@
 
 .profile {
   min-height: 100vh;
+  @include flex-display(center, center, 0);
 
   &__container {
     @include flex-display(center, center, 3rem);
     flex-direction: column;
 
     &-card {
-      @include flex-display(center, center, 5rem);
+      @include flex-display(center, center, 3rem);
       flex-direction: column;
-      margin: 2rem max(10%, 2rem) 2rem max(10%, 2rem);
-      padding: 3rem max(10%, 2rem) 3rem max(10%, 2rem);
+      margin: 2rem max(15%, 2rem) 2rem max(15%, 2rem);
+      padding: 3rem max(13%, 2.5rem) 3rem max(13%, 2.5rem);
       border-radius: 2rem;
       box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
 
@@ -20,15 +21,15 @@
         to bottom,
         map-get($colors, accent-red) 0%,
         map-get($colors, primary-red) 28%,
-        map-get($colors, secondary-gray) 28%,
-        map-get($colors, secondary-gray) 100%
+        map-get($colors, secondary-white) 28%,
+        map-get($colors, secondary-white) 100%
       );
 
       :is(&__pic, &__photo) {
         border-radius: 50%;
         border: none;
         width: auto;
-        height: 10rem;
+        height: 8rem;
         cursor: pointer;
       }
 
@@ -71,22 +72,50 @@
       }
     }
 
-    &-history {
-      background-color: rgb(255, 230, 208);
-      padding: 1rem 20% 2rem 1rem;
-      border-radius: 2rem;
-      margin: 0 1rem 0 1rem;
-
-      &__title {
-        margin-bottom: 2rem;
+    &-details {
+      @include flex-display(center, center, 0);
+      flex-direction: column;
+      :is(&__welcome, &__line) {
+        display: none;
       }
+      &-history {
+        @include flex-display(start, center, 1rem);
+        flex-direction: column;
+        background-color: map-get($colors, light-gray);
+        padding: 1rem min(3rem, 5%) 2rem 1rem;
+        border-radius: 2rem;
+        margin: 0 1rem 0 1rem;
 
-      summary.__summary {
-        font-size: map-get($font-sizes, large);
-      }
+        &__title {
+          font-size: map-get($font-sizes, huge);
+          margin-bottom: 2rem;
+        }
 
-      p.__info {
-        font-size: map-get($font-sizes, medium);
+        &__text {
+          @include flex-display(start, start, 1rem);
+          flex-direction: column;
+
+          &-details {
+            border: 0.075rem solid map-get($colors, primary-black);
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            max-width: 35rem;
+            &__summary {
+              font-size: map-get($font-sizes, large);
+              font-family: $ff-primary;
+              font-weight: map-get($font-weights, semi-bold);
+            }
+
+            &__info {
+              font-size: map-get($font-sizes, medium);
+              white-space: pre-line;
+            }
+          }
+        }
+
+        &-details[open] {
+          padding: 10rem;
+        }
       }
     }
   }

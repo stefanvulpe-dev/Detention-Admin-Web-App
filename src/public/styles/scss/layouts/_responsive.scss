@@ -258,19 +258,41 @@
       gap: max(3rem, 5%);
 
       &-card {
-        margin: 5rem min(5rem, 2%) 5rem min(5rem, 2%);
-        padding: 1rem min(3rem, 50%) 1rem min(3rem, 50%);
+        margin: 2rem min(15%, 2rem) 2rem min(15%, 2rem);
+        padding: 3rem min(13%, 3.5rem) 3rem min(13%, 3.5rem);
       }
 
-      &-history {
-        @include flex-display(center, center, 0);
-        flex-direction: column;
-        white-space: nowrap;
-        padding-right: min(5rem, 10%);
+      &-details {
+        gap: 1rem;
+        &__welcome {
+          display: contents;
+          white-space: nowrap;
+          color: map-get($colors, primary-white);
+          font-weight: map-get($font-weights, regular);
+        }
 
-        &__title {
-          content: flex-start;
-          margin-right: auto;
+        &__line {
+          display: block;
+          width: 95%;
+          margin-bottom: 6rem;
+          margin-top: 1.5rem;
+          height: 0.4rem;
+          background-color: map-get($colors, primary-white);
+          border-radius: 3rem;
+          border: none;
+        }
+
+        &-history {
+          @include flex-display(center, center, 0);
+          flex-direction: column;
+          white-space: nowrap;
+          padding-right: min(5rem, 10%);
+          padding-left: 1rem;
+
+          &__title {
+            content: flex-start;
+            margin-right: auto;
+          }
         }
       }
     }
