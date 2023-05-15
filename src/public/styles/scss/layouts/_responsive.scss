@@ -252,48 +252,10 @@
     }
   }
 
-  .profile {
-    &__container {
-      flex-direction: row;
-      gap: max(3rem, 5%);
-
-      &-card {
-        margin: 2rem min(15%, 2rem) 2rem min(15%, 2rem);
-        padding: 3rem min(13%, 3.5rem) 3rem min(13%, 3.5rem);
-      }
-
-      &-details {
-        gap: 1rem;
-        &__welcome {
-          display: contents;
-          white-space: nowrap;
-          color: map-get($colors, primary-white);
-          font-weight: map-get($font-weights, regular);
-        }
-
-        &__line {
-          display: block;
-          width: 95%;
-          margin-bottom: 6rem;
-          margin-top: 1.5rem;
-          height: 0.4rem;
-          background-color: map-get($colors, primary-white);
-          border-radius: 3rem;
-          border: none;
-        }
-
-        &-history {
-          @include flex-display(center, center, 0);
-          flex-direction: column;
-          white-space: nowrap;
-          padding-right: min(5rem, 10%);
-          padding-left: 1rem;
-
-          &__title {
-            content: flex-start;
-            margin-right: auto;
-          }
-        }
+  .help {
+    &__qa {
+      &__question {
+        padding-inline: 2rem 2.5rem;
       }
     }
   }
@@ -369,6 +331,13 @@
       }
     }
   }
+  .help {
+    &__qa {
+      &__question {
+        padding-inline: 3rem 3.5rem;
+      }
+    }
+  }
 }
 
 @include media-min(map-get($breakpoints, huge)) {
@@ -383,5 +352,12 @@
 
   .stats-info {
     padding: 4rem 5rem 4rem 5rem;
+  }
+  .help {
+    &__qa {
+      &__question {
+        padding-inline: 4rem 4.5rem;
+      }
+    }
   }
 }

@@ -300,3 +300,34 @@ $font-sizes: (
     }
   }
 }
+
+.help{
+  font-family: $ff-primary;
+  &__title{
+    font-size: var(--fs-extra-large);
+    font-weight: map-get($font-weights, bold);
+  }
+  &__qa{
+    &__question{
+      &__text{
+        font-size: var(--fs-large);
+        font-weight: map-get($font-weights, bold);
+      }      
+    }
+    &__steps{
+      &__step{
+        font-size: var(--fs-regular);
+        font-weight: map-get($font-weights, semi-bold);
+        &__highlight{          
+          font-weight: map-get($font-weights, bold);         
+      }
+      }
+    }
+  }
+}
+
+.error{
+  font-family: $ff-primary;
+  font-size: var(--fs-very-small);
+  font-weight: map-get($font-weights, regular);
+}

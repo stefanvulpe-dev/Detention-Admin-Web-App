@@ -5,6 +5,9 @@ import path, { dirname } from 'path';
 import * as fs from 'fs';
 import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
+import { dropTables } from './models/sync.js';
+import { createTables } from './models/sync.js';
+import { UsersRepository } from './repositories/UsersRepository.js';
 
 import {
   AuthController,
@@ -74,6 +77,14 @@ const server = http.createServer((req, res) => {
       const readStream = fs.createReadStream(`${VIEWS_PATH}/signup.html`);
       res.writeHead(200, { 'Content-type': 'text/html' });
       readStream.pipe(res);
+    } else if (url.match(/^\/views\/404.html$/)) {
+      const readStream = fs.createReadStream(`${VIEWS_PATH}/404.html`);
+      res.writeHead(200, { 'Content-type': 'text/html' });
+      readStream.pipe(res);
+    } else if (url.match(/^\/views\/help.html$/)) {
+      const readStream = fs.createReadStream(`${VIEWS_PATH}/help.html`);
+      res.writeHead(200, { 'Content-type': 'text/html' });
+      readStream.pipe(res);
     } else if (url.match(/^\/views\/userProfile.html$/)) {
       // verificare autentificare
       const readStream = fs.createReadStream(`${VIEWS_PATH}/userProfile.html`);
@@ -105,33 +116,32 @@ const server = http.createServer((req, res) => {
   }
 });
 
-// dropTables().then(result => {
-//   console.log('Finished dropping tables...');
+dropTables().then(result => {
+  console.log('Finished dropping tables...');
 
-//   createTables().then(result => {
-//     console.log('Tables created.');
-//     console.log('Searching for John Doe...');
+  createTables().then(result => {
+    console.log('Tables created.');
+    console.log('Searching for John Doe...');
 
-//     new UsersRepository()
-//       .findById(1)
-//       .then(user => {
-//         if (!user) {
-//           return new UsersRepository().create({
-//             firstName: 'John',
-//             lastName: 'Doe',
-//             email: 'johndoe@gmail.com',
-//             password: 'johnDoe123',
-//             photo: '',
-//           });
-//         }
-//         return Promise.resolve(user);
-//       })
-//       .then(user => {
-//         console.log(`John Doe is here`);
-//         server.listen(PORT, () => console.log(`Listenting on port ${PORT}`));
-//       });
-//   });
-// });
+    new UsersRepository()
+      .findById(1)
+      .then(user => {
+        if (!user) {
+          return new UsersRepository().create({
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'johndoe@gmail.com',
+            password: 'johnDoe123',
+            photo: '',
+          });
+        }
+        return Promise.resolve(user);
+      })
+      .then(user => {
+        console.log(`John Doe is here`);
+      });
+  });
+});
 
 server.listen(PORT, () => console.log(`Listenting on port ${PORT}`));
 
