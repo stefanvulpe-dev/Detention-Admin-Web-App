@@ -497,6 +497,19 @@ select {
   width: 40%;
   min-width: 10rem;
 }
+.about .project-documentation {
+  cursor: pointer;
+  display: block;
+  font-style: italic;
+  font-size: var(--fs-medium);
+  text-align: center;
+  text-decoration: underline;
+  color: hsl(0, 0%, 100%);
+  transition: all 350ms ease-in-out;
+}
+.about .project-documentation:is(:hover, :focus) {
+  opacity: 0.8;
+}
 
 .contact__title {
   margin-block: 3rem;
@@ -889,6 +902,7 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  gap: 1rem;
 }
 .login .container__form-buttons {
   display: flex;
@@ -930,6 +944,9 @@ body {
   padding: 0.65rem 1.5rem;
   font-size: var(--fs-very-small);
 }
+.login .container :is(textarea, input):is(:focus) {
+  outline: none;
+}
 .login .container input[type=file] {
   cursor: pointer;
   display: none;
@@ -962,120 +979,97 @@ body {
 
 .profile {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-}
-.profile__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: min(100% - 4rem, 30rem);
+  margin-inline: auto;
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   gap: 3rem;
-  flex-direction: column;
-}
-.profile__container-card {
-  display: flex;
+  justify-items: center;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
-  flex-direction: column;
-  margin: 2rem max(15%, 2rem) 2rem max(15%, 2rem);
-  padding: 3rem max(13%, 2.5rem) 3rem max(13%, 2.5rem);
+  align-content: start;
+}
+.profile__title {
+  justify-self: stretch;
+  color: hsl(0, 0%, 100%);
+  font-weight: 600;
+  font-size: var(--fs-large);
+  text-align: center;
+  border-bottom: 3px solid hsl(0, 0%, 100%);
+  padding-bottom: 1rem;
+}
+.profile__data {
+  justify-self: stretch;
+  color: hsl(0, 0%, 100%);
+}
+.profile__data .help__qa__question__text {
+  font-weight: 600;
+}
+.profile__data .help__qa {
+  margin-top: 3rem;
+}
+.profile__card {
+  min-width: 17.5rem;
+  grid-row: 1/2;
+  background-color: hsl(0, 0%, 80%);
   border-radius: 2rem;
-  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
-  background-image: linear-gradient(to bottom, hsl(0, 97%, 65%) 0%, hsl(0, 100%, 50%) 28%, hsl(0, 0%, 80%) 28%, hsl(0, 0%, 80%) 100%);
-}
-:is(.profile__container-card__pic, .profile__container-card__photo) {
-  border-radius: 50%;
-  border: none;
-  width: auto;
-  height: 8rem;
-  cursor: pointer;
-}
-.profile__container-card__info {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1.75rem;
+  justify-items: center;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  flex-direction: column;
+  align-content: center;
 }
-:is(.profile__container-card__info__name, .profile__container-card__info__email) {
-  font-weight: 700;
+.profile__card-photo {
+  position: absolute;
+  width: 4.5rem;
+  margin-inline: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.profile__container-card__info__name {
-  font-size: 1.75rem;
-}
-.profile__container-card__info__email {
-  font-size: 1.35rem;
-}
-.profile__container-card__edit {
-  background-color: hsl(0, 97%, 65%);
-  border: none;
-  border-radius: 2rem;
-  padding: 1rem 2rem 1rem 2rem;
+.profile__card-details {
   color: hsl(0, 0%, 0%);
-  font-size: 1.15rem;
+  text-align: center;
+  line-height: 2.5;
+}
+.profile__card-details .user-name {
+  font-size: var(--fs-medium);
+  font-weight: 600;
+  padding-inline: 1rem;
+  margin-bottom: 1rem;
+}
+.profile__card-details .user-email {
+  font-size: var(--fs-very-small);
+}
+.profile__card-button {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-small);
   font-weight: 600;
   cursor: pointer;
-  font-family: "Inter", sans-serif;
-  transition: opacity 0.15s;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 2rem;
+  background-color: hsl(0, 97%, 65%);
+  padding: 1rem 1.75rem;
+  margin-bottom: 2.5rem;
+  transition: all 350ms ease-in-out;
 }
-.profile__container-card__edit:hover {
+.profile__card-button:is(:hover, :focus) {
   opacity: 0.8;
 }
-.profile__container-card__edit:active {
-  opacity: 0.6;
-}
-.profile__container-details {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-  flex-direction: column;
-}
-:is(.profile__container-details__welcome, .profile__container-details__line) {
-  display: none;
-}
-.profile__container-details-history {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 1rem;
-  flex-direction: column;
-  background-color: hsl(0, 0%, 85%);
-  padding: 1rem min(3rem, 5%) 2rem 1rem;
-  border-radius: 2rem;
-  margin: 0 1rem 0 1rem;
-}
-.profile__container-details-history__title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-.profile__container-details-history__text {
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  gap: 1rem;
-  flex-direction: column;
-}
-.profile__container-details-history__text-details {
-  border: 0.075rem solid;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  max-width: 35rem;
-}
-.profile__container-details-history__text-details__summary {
-  font-size: 1.35rem;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-}
-.profile__container-details-history__text-details__info {
-  font-size: 1.15rem;
-  white-space: pre-line;
-}
-.profile__container-details-history-details[open] {
-  padding: 10rem;
+.profile__card-banner {
+  position: relative;
+  width: 100%;
+  padding-block: 4rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  background-color: hsl(0, 97%, 65%);
 }
 
 .error {
@@ -1176,6 +1170,7 @@ body {
 .help__qa__question__text {
   margin: auto;
   text-align: center;
+  font-size: var(--fs-medium);
 }
 .help__qa__question::marker {
   content: none;
@@ -1896,6 +1891,20 @@ body {
   .help__qa__question {
     padding-inline: 2rem 2.5rem;
   }
+  .profile {
+    grid-template-columns: 1fr 2fr;
+    width: min(100% - 4rem, 50rem);
+  }
+  .profile__title {
+    align-self: start;
+  }
+  .profile__data {
+    grid-column: 2/3;
+    align-self: start;
+  }
+  .profile__card-button {
+    font-size: var(--fs-very-small);
+  }
 }
 @media screen and (min-width: 1150px) {
   .header .nav__toggle {
@@ -1961,6 +1970,9 @@ body {
   }
   .help__qa__question {
     padding-inline: 3rem 3.5rem;
+  }
+  .profile {
+    width: min(100% - 4rem, 57.5rem);
   }
 }
 @media screen and (min-width: 1470px) {

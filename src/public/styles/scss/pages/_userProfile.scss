@@ -3,120 +3,94 @@
 
 .profile {
   min-height: 100vh;
-  @include flex-display(center, center, 0);
+  width: min(100% - 4rem, 30rem);
+  margin-inline: auto;
+  margin-top: 4rem;
 
-  &__container {
-    @include flex-display(center, center, 3rem);
-    flex-direction: column;
+  @include grid-display(1fr, auto, 3rem, center, center, center, start);
 
-    &-card {
-      @include flex-display(center, center, 3rem);
-      flex-direction: column;
-      margin: 2rem max(15%, 2rem) 2rem max(15%, 2rem);
-      padding: 3rem max(13%, 2.5rem) 3rem max(13%, 2.5rem);
-      border-radius: 2rem;
-      box-shadow: 0 0 2rem rgba(255, 255, 255, 0.1);
+  &__title {
+    justify-self: stretch;
+    color: map-get($colors, primary-white);
+    font-weight: map-get($font-weights, semi-bold);
+    font-size: var(--fs-large);
+    text-align: center;
+    border-bottom: 3px solid map-get($colors, primary-white);
+    padding-bottom: 1rem;
+  }
 
-      background-image: linear-gradient(
-        to bottom,
-        map-get($colors, accent-red) 0%,
-        map-get($colors, primary-red) 28%,
-        map-get($colors, secondary-white) 28%,
-        map-get($colors, secondary-white) 100%
-      );
+  &__data {
+    justify-self: stretch;
+    color: map-get($colors, primary-white);
 
-      :is(&__pic, &__photo) {
-        border-radius: 50%;
-        border: none;
-        width: auto;
-        height: 8rem;
-        cursor: pointer;
-      }
+    .help__qa__question__text {
+      font-weight: map-get($font-weights, semi-bold);
+    }
 
-      &__info {
-        @include flex-display(center, center, 1rem);
-        flex-direction: column;
+    .help__qa {
+      margin-top: 3rem;
+    }
+  }
 
-        :is(&__name, &__email) {
-          color: map-get($colors, primary-black);
-          font-weight: map-get($font-weights, bold);
-        }
+  &__card {
+    min-width: 17.5rem;
+    grid-row: 1 / 2;
+    background-color: map-get($colors, secondary-white);
+    border-radius: 2rem;
+    @include grid-display(1fr, auto, 1.75rem, center, center);
 
-        &__name {
-          font-size: map-get($font-sizes, extra-large);
-        }
-
-        &__email {
-          font-size: map-get($font-sizes, large);
-        }
-      }
-      &__edit {
-        background-color: map-get($colors, accent-red);
-        border: none;
-        border-radius: 2rem;
-        padding: 1rem 2rem 1rem 2rem;
-        color: map-get($colors, primary-dark);
-        font-size: map-get($font-sizes, medium);
-        font-weight: map-get($font-weights, semi-bold);
-        cursor: pointer;
-        font-family: $ff-primary;
-        transition: opacity 0.15s;
-      }
-
-      &__edit:hover {
-        opacity: 0.8;
-      }
-
-      &__edit:active {
-        opacity: 0.6;
-      }
+    &-photo {
+      position: absolute;
+      width: 4.5rem;
+      margin-inline: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     &-details {
-      @include flex-display(center, center, 0);
-      flex-direction: column;
-      :is(&__welcome, &__line) {
-        display: none;
+      color: map-get($colors, primary-dark);
+      text-align: center;
+      line-height: 2.5;
+
+      .user-name {
+        font-size: var(--fs-medium);
+        font-weight: map-get($font-weights, semi-bold);
+        padding-inline: 1rem;
+        margin-bottom: 1rem;
       }
-      &-history {
-        @include flex-display(start, center, 1rem);
-        flex-direction: column;
-        background-color: map-get($colors, light-gray);
-        padding: 1rem min(3rem, 5%) 2rem 1rem;
-        border-radius: 2rem;
-        margin: 0 1rem 0 1rem;
 
-        &__title {
-          font-size: map-get($font-sizes, huge);
-          margin-bottom: 2rem;
-        }
-
-        &__text {
-          @include flex-display(start, start, 1rem);
-          flex-direction: column;
-
-          &-details {
-            border: 0.075rem solid map-get($colors, primary-black);
-            border-radius: 0.5rem;
-            padding: 0.5rem 1rem 0.5rem 1rem;
-            max-width: 35rem;
-            &__summary {
-              font-size: map-get($font-sizes, large);
-              font-family: $ff-primary;
-              font-weight: map-get($font-weights, semi-bold);
-            }
-
-            &__info {
-              font-size: map-get($font-sizes, medium);
-              white-space: pre-line;
-            }
-          }
-        }
-
-        &-details[open] {
-          padding: 10rem;
-        }
+      .user-email {
+        font-size: var(--fs-very-small);
       }
+    }
+
+    &-button {
+      font-family: $ff-primary;
+      font-size: var(--fs-small);
+      font-weight: map-get($font-weights, semi-bold);
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 2rem;
+      background-color: map-get($colors, accent-red);
+      padding: 1rem 1.75rem;
+      margin-bottom: 2.5rem;
+      transition: all 350ms ease-in-out;
+    }
+
+    &-button:is(:hover, :focus) {
+      opacity: 0.8;
+    }
+
+    &-banner {
+      position: relative;
+      width: 100%;
+      padding-block: 4rem;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+      background-color: map-get($colors, accent-red);
     }
   }
 }

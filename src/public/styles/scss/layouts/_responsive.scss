@@ -259,6 +259,26 @@
       }
     }
   }
+
+  .profile {
+    grid-template-columns: 1fr 2fr;
+    width: min(100% - 4rem, 50rem);
+
+    &__title {
+      align-self: start;
+    }
+
+    &__data {
+      grid-column: 2 / 3;
+      align-self: start;
+    }
+
+    &__card {
+      &-button {
+        font-size: var(--fs-very-small);
+      }
+    }
+  }
 }
 
 @include media-min(map-get($breakpoints, large)) {
@@ -337,6 +357,10 @@
         padding-inline: 3rem 3.5rem;
       }
     }
+  }
+
+  .profile {
+    width: min(100% - 4rem, 57.5rem);
   }
 }
 

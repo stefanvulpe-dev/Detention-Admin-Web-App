@@ -60,44 +60,26 @@
   </header>
 
   <main class="profile">
-    <div class="profile__container">
-      <div class="profile__container-card">
-        <button class="profile__container-card__pic" type="button">
-          <img class="profile__container-card__photo" src="/assets/guest-details/photo1.png" alt="Profile Photo">
-        </button>
-        <div class="profile__container-card__info">
-          <span class="profile__container-card__info__name">John Doe</span>
-          <span class="profile__container-card__info__email">johndoe@gmail.com</span>
-        </div>
-        <button class="profile__container-card__edit" type="button">Edit your profile</button>
+    <div class="profile__card">
+      <div class="profile__card-banner">
+        <img src="/assets/header/person.jpg" alt="profile-picture" class="profile__card-photo">
       </div>
-      <div class="profile__container-details">
-        <h1 class="profile__container-details__welcome">Hi, John Doe! Welcome to your profile.</h1>
-        <hr class="profile__container-details__line">
-
-        <div class="profile__container-details-history">
-          <h2 class="profile__container-details-history__title">Visits History</h2>
-          <ul class="profile__container-details-history__text">
-            <li>
-              <details class="profile__container-details-history__text-details">
-                <summary class="profile__container-details-history__text-details__summary">John Doe is a cop.</summary>
-                <p class="profile__container-details-history__text-details__info">Unbelievable, isn't it?Unbelievable,
-                  isn't
-                  it?Unbelievable, isn't it?Unbelievable, isn't it?Unbelievable, isn't it?</p>
-              </details>
-            </li>
-            <li>
-              <details class="profile__container-details-history__text-details">
-                <summary class="profile__container-details-history__text-details__summary">John Doe is fired 2 days
-                  after his
-                  hiring.
-                </summary>
-                <p class="profile__container-details-history__text-details__info">Unbelievable, isn't it?</p>
-              </details>
-            </li>
-          </ul>
-        </div>
+      <div class="profile__card-details">
+        <p class="user-name">John Doe</p>
+        <p class="user-email">johndoe@gmail.com</p>
       </div>
+      <button type="button" class="profile__card-button">Edit your profile</button>
+    </div>
+    <div class="profile__data">
+      <h1 class="profile__title">Hi, John Doe! Welcome to your profile</h1>
+      <details class="help__qa">
+        <summary class="help__qa__question">
+          <div class="help__qa__question__arrow"></div>
+          <h2 class="help__qa__question__text">Vizita 29.06.2021</h2>
+        </summary>
+        <p class="help__qa__steps">Vizita efectuata la detinutul Lorem Ipsum. Obiecte furnizate... Persoanele cu care
+          s-a efectuat vizita: ...</p>
+      </details>
     </div>
   </main>
 
@@ -105,7 +87,6 @@
     <div class="footer__container">
       <p class="footer__copyright">
         &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
-        <a href="/documentation/index.html" class="doc-link">Project documentation &#x21A9;</a>
       </p>
       <nav class="footer__social-links">
         <ul class="social-links__list">
