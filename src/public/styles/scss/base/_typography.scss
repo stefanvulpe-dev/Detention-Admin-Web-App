@@ -325,3 +325,9 @@ $font-sizes: (
     }
   }
 }
+
+.error{
+  font-family: $ff-primary;
+  font-size: var(--fs-very-small);
+  font-weight: map-get($font-weights, regular);
+}

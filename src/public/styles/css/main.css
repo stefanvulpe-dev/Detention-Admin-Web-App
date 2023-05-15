@@ -288,6 +288,12 @@ select {
   font-weight: 700;
 }
 
+.error {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-very-small);
+  font-weight: 400;
+}
+
 :is(header, .hero) :is(h1, p, a) {
   color: hsl(0, 0%, 100%);
 }
@@ -429,6 +435,14 @@ select {
 }
 .help__qa[open] .help__qa__question__arrow {
   border-left: 0.7rem solid hsl(0, 97%, 65%);
+}
+
+.validation-error {
+  color: hsl(0, 97%, 65%);
+}
+
+.container__form-field.input-error input {
+  border-color: hsl(0, 97%, 65%);
 }
 
 .about {
@@ -858,7 +872,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 0rem;
   flex-direction: column;
   background-color: hsl(0, 0%, 24%);
   padding: 3rem 2rem;
@@ -877,8 +891,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 1.75rem;
+  gap: 0rem;
   flex-direction: column;
+  margin-top: 2rem;
 }
 .login .container__form-field:nth-of-type(5) {
   flex-direction: row;
@@ -920,9 +935,8 @@ body {
 .login .container input:not([id='photo']) {
   width: 100%;
   background-color: hsl(0, 0%, 85%);
-  border: none;
+  margin-top: 1.75rem;
   border-radius: 2rem;
-  margin-bottom: 2rem;
   padding: 0.65rem 1.5rem;
   font-size: var(--fs-very-small);
 }
@@ -937,6 +951,23 @@ body {
   padding: 1rem 1.5rem;
   border-radius: 0.75rem;
   text-align: center;
+}
+
+.validation-error {
+  display: none;
+}
+
+.validation-error.display-error {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.container__form-field input {
+  border: 0.2rem solid transparent;
+}
+
+.container__form-field.success input {
+  border-color: transparent;
 }
 
 .help {

@@ -208,3 +208,11 @@ $colors: (
        
   }
 }
+.validation-error{
+  color: map-get($colors, accent-red);
+}
+.container__form-field.input-error input{
+  border-color: map-get($colors, accent-red);
+}
+
+
