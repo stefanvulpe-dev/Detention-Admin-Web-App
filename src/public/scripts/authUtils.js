@@ -12,7 +12,7 @@ function setSuccess(inputId){
 }
 
 function clearError(){
-  let errors = document.querySelectorAll(".error");
+  let errors = document.querySelectorAll(".validation-error");
   for(let error of errors){
     error.classList.remove("display-error");
   }
@@ -91,7 +91,7 @@ console.log(result.message);
       setSuccess("email");
     }
     if(result.message.includes('password')){
-      showError("password","password-error","Parola gresita!");
+      showError("password","password-error","Parola trebuie sa contina doar cifre si litere!");
     }else{
       setSuccess("password");
     }

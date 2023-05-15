@@ -435,7 +435,7 @@ select {
   border-left: 0.7rem solid hsl(0, 97%, 65%);
 }
 
-.error {
+.validation-error {
   color: hsl(0, 97%, 65%);
 }
 
@@ -943,11 +943,11 @@ body {
   text-align: center;
 }
 
-.error {
+.validation-error {
   display: none;
 }
 
-.error.display-error {
+.validation-error.display-error {
   display: block;
   margin-top: 0.5rem;
 }
