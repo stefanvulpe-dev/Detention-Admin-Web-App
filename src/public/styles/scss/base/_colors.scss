@@ -176,3 +176,35 @@ $colors: (
     }
   }
 }
+
+.help{
+  color: map-get($colors, primary-white );
+  &__qa{
+    background-color: map-get($colors, accent-red );
+    transition: all 400ms ease;    
+    &__steps{
+      color: map-get($colors, primary-dark );
+      &__step{
+        &__highlight{          
+            color: map-get($colors, accent-red );          
+        } 
+        img{
+          box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+    &__question{
+      &__arrow{
+        border-left: 0.7rem solid map-get($colors, primary-white );
+      }
+    }
+  }
+  &__qa[open]{
+    color: map-get($colors, accent-red);
+    background-color: map-get($colors, primary-white ); 
+    .help__qa__question__arrow{
+      border-left: 0.7rem solid map-get($colors, accent-red );
+    }
+       
+  }
+}

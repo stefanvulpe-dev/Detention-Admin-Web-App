@@ -251,6 +251,14 @@
       }
     }
   }
+
+  .help{
+    &__qa{
+      &__question{
+        padding-inline: 2rem 2.5rem;
+      }     
+    }
+  }
 }
 
 @include media-min(map-get($breakpoints, large)) {
@@ -323,6 +331,13 @@
       }
     }
   }
+  .help{
+    &__qa{
+      &__question{
+        padding-inline: 3rem 3.5rem;
+      }     
+    }
+  }
 }
 
 @include media-min(map-get($breakpoints, huge)) {
@@ -337,5 +352,12 @@
 
   .stats-info {
     padding: 4rem 5rem 4rem 5rem;
+  }
+  .help{
+    &__qa{
+      &__question{
+        padding-inline: 4rem 4.5rem;
+      }     
+    }
   }
 }

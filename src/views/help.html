@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/css/main.css">
+  <link rel="icon" href="/assets/tab-icon.svg">
+  <title>Help</title>
+</head>
+
+<body>
+  <header class="header" id="page-header">
+    <div class="header__container">
+      <a href="/">
+        <img class="header__logo" src="/assets/header/page_logo.svg" alt="Logo">
+      </a>
+      <div class="nav__toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="list__item">
+            <a href="/" class="nav-link">
+              <img class="list__item-icon" src="/assets/header/house-icon.svg" alt="home-logo">
+              <p class="list__item-text">Acasa</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="/views/about.html" class="nav-link">
+              <img class="list__item-icon" src="/assets/header/info-icon.svg" alt="info-logo">
+              <p class="list__item-text">Despre</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="/views/statistics.html" class="nav-link">
+              <img class="list__item-icon" src="/assets/header/statistics-icon.svg" alt="statistics-logo">
+              <p class="list__item-text">Statistici</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="/views/contact.html" class="nav-link">
+              <img class="list__item-icon" src="/assets/header/contact-icon.svg" alt="contact-logo">
+              <p class="list__item-text">Contact</p>
+            </a>
+          </li>
+          <li class="list__item">
+            <img class="person-logo" src="/assets/header/person.jpg" alt="person-logo">
+            <button id="logout-button">
+              <img class="list__item-icon" src="/assets/header/logout.svg" alt="contact-logo">
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="help">
+    <h1 class="help__title">Centrul de ajutor</h1>
+    <details class="help__qa">
+      <summary class="help__qa__question">
+        <div class="help__qa__question__arrow"></div>
+        <h2 class="help__qa__question__text">"Cum sa ma conectez cu un cont deja existent?"</h2>
+      </summary>
+      <ol class="help__qa__steps">
+        <li class="help__qa__steps__step">
+          <p>In dreapta ecranului cauta iconita de profil si apasa click pe ea.</p>
+          <img src="/assets/help/q1s1.png" alt="question1/step1">
+        </li>
+        <li class="help__qa__steps__step">
+          <p>Veti ajunge pe pagina de login. Aici va trebui sa completati formularul cu adresa de email asociata contului si cu parola setata la crearea contului.
+            Apasati pe butonul <span class="help__qa__steps__step__highlight">Log In</span>.
+          </p>
+          <img src="/assets/help/q1s2.png" alt="question1/step2">
+        </li>
+        <p class="help__qa__steps__step"><span class="help__qa__steps__step__highlight">Felicitari!</span> V-ati conectat cu succes.</p>
+      </ol>
+    </details>
+    <details class="help__qa">
+      <summary class="help__qa__question">
+        <div class="help__qa__question__arrow"></div>
+        <h2 class="help__qa__question__text">"Cum imi pot crea un cont?"</h2>
+      </summary>
+      <ul class="help__qa__steps">
+        <li class="help__qa__steps__step">
+          <p>In dreapta ecranului cauta iconita de profil si apasa click pe ea.</p>
+          <img src="/assets/help/q1s1.png" alt="question2/step1">
+        </li>
+        <li class="help__qa__steps__step">
+          <p>Veti ajunge pe pagina de login. Aici va trebui sa apasati butonul <span class="help__qa__steps__step__highlight">Sign Up</span>.</p>
+          <img src="/assets/help/q2s2.png" alt="question2/step2">
+        </li>
+        <li class="help__qa__steps__step">
+          <p>Veti ajunge pe pagina de sign up. Aici va trebui sa completati formularul cu prenumele si numele dvs., o adresa de email valida, 
+            o parola ce va fi asociata contului si va trebui sa incarcati o poza de profil. Dupa toate acestea, apasati butonul 
+            <span class="help__qa__steps__step__highlight">Sign Up</span>.</p>
+          <img src="/assets/help/q2s3.png" alt="question2/step3">
+        </li>
+        <p class="help__qa__steps__step"><span class="help__qa__steps__step__highlight">Felicitari!</span> V-ati creat un cont cu succes. Odata cu inregistrarea contului veti fi conectat cu acesta.</p>
+      </ul>
+    </details>
+    <details class="help__qa">
+      <summary class="help__qa__question">
+        <div class="help__qa__question__arrow"></div>
+        <h2 class="help__qa__question__text">"Cum pot programa o vizita?"</h2>
+      </summary>
+      <ul class="help__qa__steps">
+        <li class="help__qa__steps__step">
+          <p>Pe pagina principala, apasati butonul <span class="help__qa__steps__step__highlight">Programeaza o vizita</span>.</p>
+          <img src="/assets/help/q3s1.png" alt="question3/step1">
+        </li>
+        <li class="help__qa__steps__step">
+          <p>Veti ajunge pe pagina de inregistrare a informatiilor legate de vizitatori. Aici va trebui sa cautati prisonierul pe care doriti sa-l vizitati folosind bara de cautare.</p>
+          <img src="/assets/help/q3s2.png" alt="question3/step2">
+        </li>
+        <li class="help__qa__steps__step">
+          <p>Ultimul pas consta in completarea informatiilor referitoare la vizita.</p>
+          <img src="/assets/help/q3s3.png" alt="question2/step3">
+        </li>
+        <p class="help__qa__steps__step"><span class="help__qa__steps__step__highlight">Felicitari!</span> V-ati creat un cont cu succes. Odata cu inregistrarea contului veti fi conectat cu acesta.</p>
+      </ul>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <p class="footer__copyright">
+        &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
+        <a href="/documentation/index.html" class="doc-link">Project documentation &#x21A9;</a>
+        <a href="/views/help.html" class="doc-link">Help &#x21A9;</a>
+      </p>
+      <nav class="footer__social-links">
+        <ul class="social-links__list">
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="/assets/footer/facebook-icon.svg" alt="facebook-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="/assets/footer/email-icon.svg" alt="email-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="" class="list-item__link">
+              <img src="/assets/footer/whatsapp-icon.svg" alt="whatsapp-logo">
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="#page-header" class="list-item__link">
+              <img src="/assets/footer/back-to-top.svg" alt="back-to-top logo">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <script src="/scripts/main.js"></script>
+</body>
+
+</html>
