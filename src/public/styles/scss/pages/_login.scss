@@ -36,6 +36,7 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
+        gap: 1rem;
       }
 
       &-buttons {
@@ -81,6 +82,10 @@
       font-size: var(--fs-very-small);
     }
 
+    :is(textarea, input):is(:focus) {
+      outline: none;
+    }
+
     input[type='file'] {
       cursor: pointer;
       display: none;
@@ -94,19 +99,18 @@
       border-radius: 0.75rem;
       text-align: center;
     }
-    
   }
 }
-.validation-error{
-  display: none;  
+.validation-error {
+  display: none;
 }
-.validation-error.display-error{
+.validation-error.display-error {
   display: block;
   margin-top: 0.5rem;
 }
-.container__form-field input{
+.container__form-field input {
   border: 0.2rem solid transparent;
 }
-.container__form-field.success input{
+.container__form-field.success input {
   border-color: transparent;
 }

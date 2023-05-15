@@ -55,4 +55,19 @@
       min-width: 10rem;
     }
   }
+
+  .project-documentation {
+    cursor: pointer;
+    display: block;
+    font-style: italic;
+    font-size: var(--fs-medium);
+    text-align: center;
+    text-decoration: underline;
+    color: map-get($colors, primary-white);
+    transition: all 350ms ease-in-out;
+  }
+
+  .project-documentation:is(:hover, :focus) {
+    opacity: 0.8;
+  }
 }

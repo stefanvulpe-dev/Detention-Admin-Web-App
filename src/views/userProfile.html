@@ -7,10 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/css/main.css">
   <link rel="icon" href="/assets/tab-icon.svg">
-  <title>Detalii despre vizita</title>
+  <title>User Profile</title>
 </head>
 
 <body>
+
   <header class="header" id="page-header">
     <div class="header__container">
       <a href="/">
@@ -58,55 +59,34 @@
     </div>
   </header>
 
-  <main class="details">
-    <form action="#" class="details__form">
-      <div class="details__form__labels">
-        <h1 class="details__form__labels__title">
-          Introduceti detaliile referitoare la vizita
-        </h1>
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-date">Data realizarii vizitei *</label>
-          <input class="form-input" required id="visit-date" type="date">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="object-data">Obiecte date/furnizate de condamnat *</label>
-          <input class="form-input" required id="object-data" type="text">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-time">Durata vizitei *</label>
-          <input class="form-input" required id="visit-time" type="time">
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="prisoner-mood">Starea detinutului *</label>
-          <input class="form-input" required id="prisoner-mood" type="text">
-        </div>
-        <div class="details__form__labels__container">
-          <label class="form-text" for="visit-nature">Natura vizitei *</label>
-          <textarea class="form-textarea" required id="visit-nature" maxlength="100"></textarea>
-        </div>
-
-        <div class="details__form__labels__container">
-          <label class="form-text" for="summary">Rezumatul discutiilor *</label>
-          <textarea class="form-textarea" required id="summary" maxlength="200"></textarea>
-        </div>
+  <main class="profile">
+    <div class="profile__card">
+      <div class="profile__card-banner">
+        <img src="/assets/header/person.jpg" alt="profile-picture" class="profile__card-photo">
       </div>
-      <div class="details__form__buttons">
-        <a href="/views/guestsDetails.html" class="details__form__buttons__back">Inapoi</a>
-        <button type="submit" class="details__form__buttons__submit">
-          Trimite
-        </button>
+      <div class="profile__card-details">
+        <p class="user-name">John Doe</p>
+        <p class="user-email">johndoe@gmail.com</p>
       </div>
-    </form>
+      <button type="button" class="profile__card-button">Edit your profile</button>
+    </div>
+    <div class="profile__data">
+      <h1 class="profile__title">Hi, John Doe! Welcome to your profile</h1>
+      <details class="help__qa">
+        <summary class="help__qa__question">
+          <div class="help__qa__question__arrow"></div>
+          <h2 class="help__qa__question__text">Vizita 29.06.2021</h2>
+        </summary>
+        <p class="help__qa__steps">Vizita efectuata la detinutul Lorem Ipsum. Obiecte furnizate... Persoanele cu care
+          s-a efectuat vizita: ...</p>
+      </details>
+    </div>
   </main>
 
   <footer class="footer">
     <div class="footer__container">
       <p class="footer__copyright">
         &copy; Copyright Broken Dreams 2023. Toate drepturile rezervate.
-        <a href="/views/help.html" class="doc-link">Help &#x21A9;</a>
       </p>
       <nav class="footer__social-links">
         <ul class="social-links__list">
@@ -135,7 +115,6 @@
     </div>
   </footer>
 
-  <script src="/scripts/main.js"></script>
 </body>
 
 </html>

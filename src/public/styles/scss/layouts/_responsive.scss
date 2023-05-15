@@ -252,11 +252,31 @@
     }
   }
 
-  .help{
-    &__qa{
-      &__question{
+  .help {
+    &__qa {
+      &__question {
         padding-inline: 2rem 2.5rem;
-      }     
+      }
+    }
+  }
+
+  .profile {
+    grid-template-columns: 1fr 2fr;
+    width: min(100% - 4rem, 50rem);
+
+    &__title {
+      align-self: start;
+    }
+
+    &__data {
+      grid-column: 2 / 3;
+      align-self: start;
+    }
+
+    &__card {
+      &-button {
+        font-size: var(--fs-very-small);
+      }
     }
   }
 }
@@ -331,12 +351,16 @@
       }
     }
   }
-  .help{
-    &__qa{
-      &__question{
+  .help {
+    &__qa {
+      &__question {
         padding-inline: 3rem 3.5rem;
-      }     
+      }
     }
+  }
+
+  .profile {
+    width: min(100% - 4rem, 57.5rem);
   }
 }
 
@@ -353,11 +377,11 @@
   .stats-info {
     padding: 4rem 5rem 4rem 5rem;
   }
-  .help{
-    &__qa{
-      &__question{
+  .help {
+    &__qa {
+      &__question {
         padding-inline: 4rem 4.5rem;
-      }     
+      }
     }
   }
 }
