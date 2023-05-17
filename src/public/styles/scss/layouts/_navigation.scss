@@ -48,16 +48,55 @@
     .list__item:is(:last-child) {
       @include flex-display(center, center, 1rem);
       .person-logo {
+        aspect-ratio: 1 / 1;
         max-width: 2.5rem;
         border-radius: 100vh;
       }
 
+      .profile-link {
+        position: relative;
+      }
+
+      .profile-link:hover::before {
+        content: 'Profile ↩';
+        text-align: center;
+        font-family: $ff-primary;
+        font-size: 13px;
+        font-weight: map-get($font-weights, regular);
+        position: absolute;
+        top: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        padding: 0.5rem;
+        border-radius: 5px;
+        color: white;
+        background-color: map-get($colors, secondary-gray);
+      }
+
       button {
+        position: relative;
         cursor: pointer;
         border: 0;
         text-decoration: none;
         background: transparent;
         width: 2rem;
+      }
+
+      button:hover::before {
+        content: 'Logout ↩';
+        font-family: $ff-primary;
+        font-size: 13px;
+        font-weight: map-get($font-weights, regular);
+        position: absolute;
+        top: 150%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        padding: 0.5rem;
+        border-radius: 5px;
+        color: white;
+        background-color: map-get($colors, accent-red);
       }
 
       .list__item-icon {

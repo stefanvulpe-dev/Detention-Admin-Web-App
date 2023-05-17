@@ -86,16 +86,27 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-type': 'text/html' });
       readStream.pipe(res);
     } else if (url.match(/^\/views\/userProfile.html$/)) {
-      // verificare autentificare
-      const readStream = fs.createReadStream(`${VIEWS_PATH}/userProfile.html`);
-      res.writeHead(200, { 'Content-type': 'text/html' });
-      readStream.pipe(res);
+      AuthController.checkAuth(req, res, () => {
+        const readStream = fs.createReadStream(
+          `${VIEWS_PATH}/userProfile.html`
+        );
+        res.writeHead(200, { 'Content-type': 'text/html' });
+        readStream.pipe(res);
+      });
+    } else if (url.match(/^\/users\/get-profile-picture$/)) {
+      AuthController.getPhotoFromCloud(req, res);
+    } else if (url.match(/^\/users\/get-profile$/)) {
+      AuthController.requireAuth(req, res, () => {
+        UserController.getUserDetails(req, res);
+      });
     }
   }
 
   if (req.method === 'POST') {
     if (url.match(/^\/register$/)) {
-      AuthController.register(req, res);
+      AuthController.uploadPhotoToCloud(req, res, () =>
+        AuthController.register(req, res)
+      );
     } else if (url.match(/^\/login$/)) {
       AuthController.login(req, res);
     } else if (url.match(/\/guests\/add-guest/)) {
@@ -116,32 +127,32 @@ const server = http.createServer((req, res) => {
   }
 });
 
-dropTables().then(result => {
-  console.log('Finished dropping tables...');
+// dropTables().then(result => {
+//   console.log('Finished dropping tables...');
 
-  createTables().then(result => {
-    console.log('Tables created.');
-    console.log('Searching for John Doe...');
+//   createTables().then(result => {
+//     console.log('Tables created.');
+//     console.log('Searching for John Doe...');
 
-    new UsersRepository()
-      .findById(1)
-      .then(user => {
-        if (!user) {
-          return new UsersRepository().create({
-            firstName: 'John',
-            lastName: 'Doe',
-            email: 'johndoe@gmail.com',
-            password: 'johnDoe123',
-            photo: '',
-          });
-        }
-        return Promise.resolve(user);
-      })
-      .then(user => {
-        console.log(`John Doe is here`);
-      });
-  });
-});
+//     new UsersRepository()
+//       .findById(1)
+//       .then(user => {
+//         if (!user) {
+//           return new UsersRepository().create({
+//             firstName: 'John',
+//             lastName: 'Doe',
+//             email: 'johndoe@gmail.com',
+//             password: 'johnDoe123',
+//             photo: 'johndoe.jpg',
+//           });
+//         }
+//         return Promise.resolve(user);
+//       })
+//       .then(user => {
+//         console.log(`John Doe is here`);
+//       });
+//   });
+// });
 
 server.listen(PORT, () => console.log(`Listenting on port ${PORT}`));
 

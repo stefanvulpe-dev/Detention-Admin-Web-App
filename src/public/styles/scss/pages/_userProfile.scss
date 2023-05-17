@@ -41,11 +41,14 @@
 
     &-photo {
       position: absolute;
-      width: 4.5rem;
+      width: 6rem;
       margin-inline: auto;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      aspect-ratio: 1 / 1;
+      border-radius: 100vh;
+      border: 4px solid map-get($colors, light-black);
     }
 
     &-details {
@@ -56,8 +59,9 @@
       .user-name {
         font-size: var(--fs-medium);
         font-weight: map-get($font-weights, semi-bold);
-        padding-inline: 1rem;
+        padding: 0 1rem 0.5rem 1rem;
         margin-bottom: 1rem;
+        border-bottom: 2px dashed black;
       }
 
       .user-email {
