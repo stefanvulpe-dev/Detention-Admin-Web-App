@@ -23,12 +23,16 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.332.0",
+    "@aws-sdk/s3-request-presigner": "^3.332.0",
     "bcrypt": "^5.1.0",
     "csrf": "^3.1.0",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
     "pg": "^8.10.0",
     "pg-pool": "^3.6.0",
-    "serve-static": "^1.15.0"
+    "serve-static": "^1.15.0",
+    "sharp": "^0.32.1"
   }
 }

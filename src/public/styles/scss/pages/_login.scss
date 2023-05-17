@@ -68,9 +68,17 @@
     }
 
     label,
-    .photo-upload {
+    .photo-upload,
+    .photo-details {
       font-weight: map-get($font-weights, regular);
       color: map-get($colors, primary-white);
+    }
+
+    .photo-details {
+      line-height: 1.5em;
+      height: 1.5em;
+      width: 7em;
+      overflow: hidden;
     }
 
     input:not([id='photo']) {

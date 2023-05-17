@@ -6,17 +6,11 @@ import joi from 'joi';
  * @Path '/users?userId=?'
  */
 export const getUserDetails = async (req, res) => {
-  let userId;
-  const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
-  for (const [key, value] of params) {
-    if (key === 'userId') {
-      userId = value;
-    }
-  }
   try {
-    const user = await new UsersRepository().find(userId);
+    const [id, firstName, lastName, email, password] =
+      await new UsersRepository().findById(req.userId);
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(user));
+    res.end(JSON.stringify({ firstName, lastName, email }));
   } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: err.message }));

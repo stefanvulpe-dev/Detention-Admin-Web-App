@@ -4,6 +4,10 @@ import jwt from 'jsonwebtoken';
 import Tokens from 'csrf';
 import { SessionsRepository, UsersRepository } from '../repositories/index.js';
 const { sign, verify } = jwt;
+import multer from 'multer';
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+import { getFile, uploadFile } from '../libs/s3Client.js';
 
 /**
  *
@@ -11,9 +15,6 @@ const { sign, verify } = jwt;
  * @method POST
  */
 export const register = async (req, res) => {
-  const body = await getReqData(req);
-  const credentials = JSON.parse(body);
-
   const { error } = Joi.object({
     firstName: Joi.string().pattern(new RegExp('^[A-Z][a-z]+$')),
     lastName: Joi.string().pattern(new RegExp('^[A-Z][a-z]+$')),
@@ -21,8 +22,8 @@ export const register = async (req, res) => {
     password: Joi.string()
       .pattern(new RegExp('^[a-zA-Z0-9]{5,30}$'))
       .required(),
-    photo: Joi.string().empty(''),
-  }).validate(credentials);
+    photo: Joi.string().required(),
+  }).validate(req.body);
 
   if (error) {
     res.writeHead(400, { 'Content-type': 'application/json' });
@@ -30,7 +31,7 @@ export const register = async (req, res) => {
   }
 
   try {
-    const user = await new UsersRepository().create(credentials);
+    const user = await new UsersRepository().create(req.body);
     const { password, ...payload } = {
       password: user.password,
       ...user,
@@ -174,6 +175,56 @@ export const requireAuth = async (req, res, next) => {
     await new SessionsRepository().verifySession(payload.id, csrfToken);
     req.userId = payload.id;
     next();
+  } catch (err) {
+    res.writeHead(401, { 'Content-type': 'application/json' });
+    return res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
+
+export const uploadPhotoToCloud = (req, res, next) => {
+  upload.single('photo')(req, res, async err => {
+    if (err instanceof multer.MulterError) {
+      // A Multer error occurred during the upload
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: true, message: err.message }));
+    } else if (err) {
+      // An unknown error occurred during the upload
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(
+        JSON.stringify({ error: true, message: 'Error uploading file.' })
+      );
+    } else {
+      // File upload successful
+      const uploadedFile = req.file;
+      // Do something with the uploaded file
+      const imageName = await uploadFile(uploadedFile);
+      req.body.photo = imageName;
+      next();
+    }
+  });
+};
+
+export const getPhotoFromCloud = async (req, res) => {
+  const { authToken } = parseCookies(req);
+  const csrfToken = req.headers['csrftoken'];
+
+  if (!authToken || !csrfToken) {
+    res.writeHead(401, { 'Content-type': 'application/json' });
+    return res.end(
+      JSON.stringify({
+        error: true,
+        message: 'Missing one or both of the authorization tokens.',
+      })
+    );
+  }
+
+  try {
+    const payload = verify(authToken, process.env.ACCESS_SECRET_KEY);
+    const user = await new UsersRepository().findById(payload.id);
+    const imageName = user[5];
+    const url = await getFile(imageName);
+    res.writeHead(200, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: false, url }));
   } catch (err) {
     res.writeHead(401, { 'Content-type': 'application/json' });
     return res.end(JSON.stringify({ error: true, message: err.message }));
