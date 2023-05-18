@@ -127,32 +127,32 @@ const server = http.createServer((req, res) => {
   }
 });
 
-// dropTables().then(result => {
-//   console.log('Finished dropping tables...');
+dropTables().then(result => {
+  console.log('Finished dropping tables...');
 
-//   createTables().then(result => {
-//     console.log('Tables created.');
-//     console.log('Searching for John Doe...');
+  createTables().then(result => {
+    console.log('Tables created.');
+    console.log('Searching for John Doe...');
 
-//     new UsersRepository()
-//       .findById(1)
-//       .then(user => {
-//         if (!user) {
-//           return new UsersRepository().create({
-//             firstName: 'John',
-//             lastName: 'Doe',
-//             email: 'johndoe@gmail.com',
-//             password: 'johnDoe123',
-//             photo: 'johndoe.jpg',
-//           });
-//         }
-//         return Promise.resolve(user);
-//       })
-//       .then(user => {
-//         console.log(`John Doe is here`);
-//       });
-//   });
-// });
+    new UsersRepository()
+      .findById(1)
+      .then(user => {
+        if (!user) {
+          return new UsersRepository().create({
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'johndoe@gmail.com',
+            password: 'johnDoe123',
+            photo: 'johndoe.jpg',
+          });
+        }
+        return Promise.resolve(user);
+      })
+      .then(user => {
+        console.log(`John Doe is here`);
+      });
+  });
+});
 
 server.listen(PORT, () => console.log(`Listenting on port ${PORT}`));
 

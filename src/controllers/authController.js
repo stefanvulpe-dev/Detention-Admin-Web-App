@@ -3,11 +3,11 @@ import { getReqData, parseCookies } from './utils.js';
 import jwt from 'jsonwebtoken';
 import Tokens from 'csrf';
 import { SessionsRepository, UsersRepository } from '../repositories/index.js';
-const { sign, verify } = jwt;
 import multer from 'multer';
+import { getFile, uploadFile } from '../libs/s3Client.js';
+const { sign, verify } = jwt;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-import { getFile, uploadFile } from '../libs/s3Client.js';
 
 /**
  *
@@ -70,6 +70,7 @@ export const login = async (req, res) => {
       .required(),
   }).validate(credentials);
 
+  console.log('am trecut pe aici');
   if (error) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
     return res.end(JSON.stringify({ error: true, message: error.message }));
@@ -98,6 +99,7 @@ export const login = async (req, res) => {
     });
     res.end(JSON.stringify({ error: false, csrfToken }));
   } catch (err) {
+    console.log('este eroare' + err.message);
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: true, message: err.message }));
   }

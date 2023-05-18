@@ -61,33 +61,33 @@
   </header>
 
   <main class="details">
-    <form action="#" class="details__form">
+    <form action="#" class="details__form" id="visitForm">
       <div class="details__form__labels">
         <h1 class="details__form__labels__title">
           Introduceti detaliile referitoare la vizita
         </h1>
         <div class="details__form__labels__container">
-          <label class="form-text" for="visit-date">Data realizarii vizitei *</label>
-          <input class="form-input" required id="visit-date" type="date">
+          <label class="form-text" for="visitDate">Data realizarii vizitei *</label>
+          <input class="form-input" required id="visitDate" type="date">
         </div>
 
         <div class="details__form__labels__container">
-          <label class="form-text" for="object-data">Obiecte date/furnizate de condamnat *</label>
-          <input class="form-input" required id="object-data" type="text">
+          <label class="form-text" for="objectData">Obiecte date/furnizate de condamnat *</label>
+          <input class="form-input" required id="objectData" type="text">
         </div>
 
         <div class="details__form__labels__container">
-          <label class="form-text" for="visit-time">Durata vizitei *</label>
-          <input class="form-input" required id="visit-time" type="time">
+          <label class="form-text" for="visitTime">Durata vizitei *</label>
+          <input class="form-input" required id="visitTime" type="time">
         </div>
 
         <div class="details__form__labels__container">
-          <label class="form-text" for="prisoner-mood">Starea detinutului *</label>
-          <input class="form-input" required id="prisoner-mood" type="text">
+          <label class="form-text" for="prisonerMood">Starea detinutului *</label>
+          <input class="form-input" required id="prisonerMood" type="text">
         </div>
         <div class="details__form__labels__container">
-          <label class="form-text" for="visit-nature">Natura vizitei *</label>
-          <textarea class="form-textarea" required id="visit-nature" maxlength="100"></textarea>
+          <label class="form-text" for="visitNature">Natura vizitei *</label>
+          <textarea class="form-textarea" required id="visitNature" maxlength="100"></textarea>
         </div>
 
         <div class="details__form__labels__container">
@@ -138,6 +138,7 @@
   </footer>
 
   <script src="/scripts/main.js"></script>
+  <script src="/scripts/visitDetailsValidation.js"></script>
 </body>
 
 </html>
