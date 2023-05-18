@@ -9,7 +9,10 @@ visitDetailsForm.addEventListener('submit', async event => {
     // ^^^^^^^^^ (sa nu includa cifrele 0->6 din event.target.elements)
   }
 
-  console.log(JSON.stringify(reqBody));
+  reqBody['guests'] = JSON.parse(localStorage.getItem('guests'));
+  reqBody['prisoner'] = JSON.parse(localStorage.getItem('prisoner'));
+
+  console.log(`Req body: ${JSON.stringify(reqBody)}`);
 
   const request = await fetch('/visits/add-visit', {
     method: 'POST',
@@ -21,11 +24,9 @@ visitDetailsForm.addEventListener('submit', async event => {
 
   const response = await request.json();
 
-  console.log(`response: ${response}`);
-
-  //   if (response.error) {
-  //     alert(`Error: ${response.message}`);
-  //   } else {
-  //     alert('Detaliile sunt bune');
-  //   }
+  if (response.error) {
+    alert(`Error: ${response.message}`);
+  } else {
+    alert('Detaliile sunt bune');
+  }
 });

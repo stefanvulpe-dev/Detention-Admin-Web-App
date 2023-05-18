@@ -24,9 +24,53 @@ export class VisitsRepository {
   }
 
   async findById(id) {
+    const client = await pool.connect();
     try {
+      const result = await client.query(
+        'select * from visits where "id" = $1',
+        [+id]
+      );
+      return result.rows[0];
     } catch (error) {
       throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async recordGuestVisits(guestsData, visitId) {
+    // insert into guests_vists
+    const client = await pool.connect();
+    const dataInserted = [];
+    try {
+      for (const packet of guestsData) {
+        const result = await client.query(
+          'insert into guests_visits (id, "prisonerRelation", "visitId", "guestId") values (default, $1, $2, $3) returning *',
+          [packet['relation'], visitId, packet['id']]
+        );
+        dataInserted.push(result);
+      }
+      return dataInserted;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async recordPrisonerVisits(prisonerId, visitId) {
+    // insert into guests_vists
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        'insert into prisoners_visits (id, "prisonerId", "visitId") values (default, $1, $2) returning *',
+        [prisonerId, visitId]
+      );
+      return result;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
     }
   }
 }

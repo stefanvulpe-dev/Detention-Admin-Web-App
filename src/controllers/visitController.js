@@ -1,4 +1,8 @@
-import { VisitsRepository } from '../repositories/index.js';
+import {
+  VisitsRepository,
+  PrisonersRepository,
+  GuestsRepository,
+} from '../repositories/index.js';
 import * as Utils from './utils.js';
 import baseJoi from 'joi';
 import dateExtension from '@hapi/joi-date';
@@ -30,7 +34,7 @@ export const getVisitDetails = async (req, res) => {
 export const postAddVisit = async (req, res) => {
   try {
     const body = await Utils.getReqData(req);
-    const newVisit = JSON.parse(body);
+    const { guests, prisoner, ...newVisit } = JSON.parse(body);
     const { error } = joi
       .object({
         visitDate: joi.date().format('YYYY-MM-DD').min('now').required(),
@@ -64,9 +68,58 @@ export const postAddVisit = async (req, res) => {
       throw new Error(error.message);
     }
 
-    await new VisitsRepository().create(newVisit);
+    // creating visit details
+    const visitsRepository = new VisitsRepository();
+    const visitId = (await visitsRepository.create(newVisit))['id'];
 
-    res.writeHead(201, { 'Content-type': 'application/json' });
+    // DUMMY
+    await new PrisonersRepository().create({
+      firstName: 'Gheorghe',
+      lastName: 'Becali',
+      detentionStartedAt: '2002-12-12',
+      detentionPeriod: '2025-05-05',
+    });
+    // --------
+
+    //getting prisoner id (asserting it exists)
+    const [firstName, lastName] = prisoner.split(' ');
+
+    const prisonerId = (
+      await new PrisonersRepository().findByName(firstName, lastName)
+    )['id'];
+    // -------------
+
+    //creating guests
+    const guestRepository = new GuestsRepository();
+    const guestsData = [];
+
+    const fetchGuest = async obj => {
+      let guest = await guestRepository.findById(obj['nationalId']);
+      if (!guest) guest = await guestRepository.create(obj);
+      return guest;
+    };
+
+    const processGuests = async () => {
+      for (const obj of guests) {
+        let guest = await fetchGuest(obj);
+        const dataObj = { id: guest['id'], relation: obj['relation'] };
+        guestsData.push(dataObj);
+      }
+    };
+
+    processGuests();
+    // --------
+
+    //populating intermediate tables
+    // -- guests_visits
+    visitsRepository.recordGuestVisits(guestsData, visitId);
+
+    // -- prisoners_visits
+    visitsRepository.recordPrisonerVisits(prisonerId, visitId);
+
+    res.writeHead(201, {
+      'Content-type': 'application/json',
+    });
     res.end(JSON.stringify('Visit successfully created!'));
   } catch (err) {
     res.writeHead(400, { 'Content-type': 'application/json' });
