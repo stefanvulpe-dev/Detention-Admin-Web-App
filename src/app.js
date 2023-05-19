@@ -5,9 +5,8 @@ import path, { dirname } from 'path';
 import * as fs from 'fs';
 import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
-import { dropTables } from './models/sync.js';
-import { createTables } from './models/sync.js';
-import { UsersRepository } from './repositories/UsersRepository.js';
+import { createTables, dropTables } from './models/sync.js';
+import { UsersRepository } from './repositories/index.js';
 
 import {
   AuthController,
@@ -104,9 +103,7 @@ const server = http.createServer((req, res) => {
 
   if (req.method === 'POST') {
     if (url.match(/^\/register$/)) {
-      AuthController.uploadPhotoToCloud(req, res, () =>
-        AuthController.register(req, res)
-      );
+      AuthController.register(req, res);
     } else if (url.match(/^\/login$/)) {
       AuthController.login(req, res);
     } else if (url.match(/\/guests\/add-guest/)) {

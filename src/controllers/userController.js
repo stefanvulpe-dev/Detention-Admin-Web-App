@@ -3,14 +3,14 @@ import * as Utils from './utils.js';
 import joi from 'joi';
 
 /**
- * @Path '/users?userId=?'
+ * @Path '/users/get-profile
  */
 export const getUserDetails = async (req, res) => {
   try {
-    const [id, firstName, lastName, email, password] =
+    const { password, photo, ...userDetails } =
       await new UsersRepository().findById(req.userId);
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ firstName, lastName, email }));
+    res.end(JSON.stringify(userDetails));
   } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: err.message }));
@@ -34,7 +34,7 @@ export const postAddUser = async (req, res) => {
 };
 
 /**
- * @Path '/register/
+ * @Path '/register
  */
 
 export const register = async (req, res) => {
