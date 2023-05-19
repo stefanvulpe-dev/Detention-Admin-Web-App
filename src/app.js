@@ -7,13 +7,14 @@ import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
 import { dropTables } from './models/sync.js';
 import { createTables } from './models/sync.js';
-import { UsersRepository } from './repositories/UsersRepository.js';
+import { UsersRepository, PrisonersRepository } from './repositories/index.js';
 
 import {
   AuthController,
   UserController,
   GuestController,
   VisitController,
+  PrisonerController,
 } from './controllers/index.js';
 import { pool } from './models/db/pool.js';
 
@@ -115,6 +116,8 @@ const server = http.createServer((req, res) => {
       VisitController.postAddVisit(req, res);
     } else if (url.match(/\/register/)) {
       UserController.register(req, res);
+    } else if (url.match(/\/prisoners\/search-prisoner/)) {
+      PrisonerController.getAllPrisonersNames(req, res);
     }
   }
 
@@ -127,32 +130,62 @@ const server = http.createServer((req, res) => {
   }
 });
 
-// dropTables().then(result => {
-//   console.log('Finished dropping tables...');
+dropTables().then(result => {
+  console.log('Finished dropping tables...');
 
-//   createTables().then(result => {
-//     console.log('Tables created.');
-//     console.log('Searching for John Doe...');
+  createTables().then(result => {
+    console.log('Tables created.');
+    console.log('Searching for John Doe...');
 
-//     new UsersRepository()
-//       .findById(1)
-//       .then(user => {
-//         if (!user) {
-//           return new UsersRepository().create({
-//             firstName: 'John',
-//             lastName: 'Doe',
-//             email: 'johndoe@gmail.com',
-//             password: 'johnDoe123',
-//             photo: 'johndoe.jpg',
-//           });
-//         }
-//         return Promise.resolve(user);
-//       })
-//       .then(user => {
-//         console.log(`John Doe is here`);
-//       });
-//   });
-// });
+    new UsersRepository()
+      .findById(1)
+      .then(user => {
+        if (!user) {
+          return new UsersRepository().create({
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'johndoe@gmail.com',
+            password: 'johnDoe123',
+            photo: 'johndoe.jpg',
+          });
+        }
+        return Promise.resolve(user);
+      })
+      .then(user => {
+        console.log(`John Doe is here`);
+      });
+
+    console.log('Adding Popescu Ion to jail...');
+
+    new PrisonersRepository()
+      .findById(1)
+      .then(prisoner => {
+        if (!prisoner) {
+          return new PrisonersRepository().create({
+            firstName: 'Popescu',
+            lastName: 'Ion',
+            detentionStartedAt: '2009-09-15',
+            detentionPeriod: '2023-10-14',
+          });
+        }
+        return Promise.resolve(prisoner);
+      })
+      .then(prisoner => {
+        console.log(`Popescu Ion is in jail`); 
+        console.log('Adding Popescu Marian to jail...');
+      }).then(() => {
+            return new PrisonersRepository().create({
+              firstName: 'Popescu',
+              lastName: 'Marian',
+              detentionStartedAt: '2009-09-15',
+              detentionPeriod: '2023-10-14',
+            });
+        })
+        .then(prisoner => {
+          console.log(`Popescu Marian is in jail`);
+        });
+  });
+});
 
 server.listen(PORT, () => console.log(`Listenting on port ${PORT}`));
 
