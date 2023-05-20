@@ -68,9 +68,8 @@ export const postAddVisit = async (req, res) => {
       throw new Error(error.message);
     }
 
-    // creating visit details
     const visitsRepository = new VisitsRepository();
-    const visitId = (await visitsRepository.create(newVisit))['id'];
+    const visitId = (await visitsRepository.create(newVisit)).id;
 
     // DUMMY
     await new PrisonersRepository().create({
@@ -81,40 +80,17 @@ export const postAddVisit = async (req, res) => {
     });
     // --------
 
-    //getting prisoner id (asserting it exists)
-    const [firstName, lastName] = prisoner.split(' ');
+    const firstName = prisoner.firstName,
+      lastName = prisoner.lastName;
 
     const prisonerId = (
       await new PrisonersRepository().findByName(firstName, lastName)
-    )['id'];
-    // -------------
+    ).id;
 
-    //creating guests
     const guestRepository = new GuestsRepository();
-    const guestsData = [];
+    const guestsData = await guestRepository.processGuests(guests);
 
-    const fetchGuest = async obj => {
-      let guest = await guestRepository.findById(obj['nationalId']);
-      if (!guest) guest = await guestRepository.create(obj);
-      return guest;
-    };
-
-    const processGuests = async () => {
-      for (const obj of guests) {
-        let guest = await fetchGuest(obj);
-        const dataObj = { id: guest['id'], relation: obj['relation'] };
-        guestsData.push(dataObj);
-      }
-    };
-
-    processGuests();
-    // --------
-
-    //populating intermediate tables
-    // -- guests_visits
     visitsRepository.recordGuestVisits(guestsData, visitId);
-
-    // -- prisoners_visits
     visitsRepository.recordPrisonerVisits(prisonerId, visitId);
 
     res.writeHead(201, {

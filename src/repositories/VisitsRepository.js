@@ -7,12 +7,12 @@ export class VisitsRepository {
       const result = await client.query(
         'insert into visits (id, "date", "time", "nature", "objects", "mood", "summary") values (default, $1, $2, $3, $4, $5, $6) returning *',
         [
-          visitDetails['visitDate'],
-          visitDetails['visitTime'],
-          visitDetails['visitNature'],
-          visitDetails['objectData'],
-          visitDetails['prisonerMood'],
-          visitDetails['summary'],
+          visitDetails.visitDate,
+          visitDetails.visitTime,
+          visitDetails.visitNature,
+          visitDetails.objectData,
+          visitDetails.prisonerMood,
+          visitDetails.summary,
         ]
       );
       return result.rows[0];
@@ -39,16 +39,15 @@ export class VisitsRepository {
   }
 
   async recordGuestVisits(guestsData, visitId) {
-    // insert into guests_vists
     const client = await pool.connect();
     const dataInserted = [];
     try {
       for (const packet of guestsData) {
         const result = await client.query(
           'insert into guests_visits (id, "prisonerRelation", "visitId", "guestId") values (default, $1, $2, $3) returning *',
-          [packet['relation'], visitId, packet['id']]
+          [packet.relation, visitId, packet.id]
         );
-        dataInserted.push(result);
+        dataInserted.push(result.rows[0]);
       }
       return dataInserted;
     } catch (error) {
@@ -59,7 +58,6 @@ export class VisitsRepository {
   }
 
   async recordPrisonerVisits(prisonerId, visitId) {
-    // insert into guests_vists
     const client = await pool.connect();
     try {
       const result = await client.query(

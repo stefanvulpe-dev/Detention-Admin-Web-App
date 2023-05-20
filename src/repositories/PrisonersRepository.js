@@ -7,10 +7,10 @@ export class PrisonersRepository {
       const result = await client.query(
         'insert into prisoners(id, "firstName", "lastName", "detentionStartedAt", "detentionPeriod") values (default, $1, $2, $3, $4) returning *',
         [
-          prisoner['firstName'],
-          prisoner['lastName'],
-          prisoner['detentionStartedAt'],
-          prisoner['detentionPeriod'],
+          prisoner.firstName,
+          prisoner.lastName,
+          prisoner.detentionStartedAt,
+          prisoner.detentionPeriod,
         ]
       );
       return result.rows[0];
