@@ -64,7 +64,7 @@ export class VisitsRepository {
         'insert into prisoners_visits (id, "prisonerId", "visitId") values (default, $1, $2) returning *',
         [prisonerId, visitId]
       );
-      return result;
+      return result.rows[0];
     } catch (error) {
       throw new Error(error.message);
     } finally {

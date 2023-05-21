@@ -28,6 +28,8 @@ visitDetailsForm.addEventListener('submit', async event => {
   if (response.error) {
     alert(`Error: ${response.message}`);
   } else {
-    alert('Vizita programata cu succes!');
+    localStorage.removeItem('prisoner');
+    localStorage.removeItem('guests');
+    window.location.replace('/');
   }
 });
