@@ -70,7 +70,6 @@ export const login = async (req, res) => {
       .required(),
   }).validate(credentials);
 
-  console.log('am trecut pe aici');
   if (error) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
     return res.end(JSON.stringify({ error: true, message: error.message }));
@@ -99,7 +98,6 @@ export const login = async (req, res) => {
     });
     res.end(JSON.stringify({ error: false, csrfToken }));
   } catch (err) {
-    console.log('este eroare' + err.message);
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: true, message: err.message }));
   }

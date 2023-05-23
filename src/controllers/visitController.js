@@ -71,15 +71,6 @@ export const postAddVisit = async (req, res) => {
     const visitsRepository = new VisitsRepository();
     const visitId = (await visitsRepository.create(newVisit)).id;
 
-    // DUMMY
-    await new PrisonersRepository().create({
-      firstName: 'Gheorghe',
-      lastName: 'Becali',
-      detentionStartedAt: '2002-12-12',
-      detentionPeriod: '2025-05-05',
-    });
-    // --------
-
     const firstName = prisoner.firstName,
       lastName = prisoner.lastName;
 

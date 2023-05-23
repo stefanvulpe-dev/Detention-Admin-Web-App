@@ -31,5 +31,6 @@ visitDetailsForm.addEventListener('submit', async event => {
     localStorage.removeItem('prisoner');
     localStorage.removeItem('guests');
     window.location.replace('/');
+    alert('Vizita a fost programata cu succes.');
   }
 });
