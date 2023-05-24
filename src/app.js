@@ -130,10 +130,10 @@ const server = http.createServer((req, res) => {
   }
 });
 
-dropTables().then(result => {
+dropTables().then(() => {
   console.log('Finished dropping tables...');
 
-  createTables().then(result => {
+  createTables().then(() => {
     console.log('Tables created.');
     console.log('Searching for John Doe...');
 
