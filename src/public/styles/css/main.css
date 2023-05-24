@@ -968,7 +968,8 @@ body {
 }
 .details__form__labels__container .form-textarea {
   border-radius: 0.5rem;
-  padding: 2rem 0.5rem;
+  padding: 1rem;
+  min-height: 10rem;
   width: 100%;
   resize: none;
 }
