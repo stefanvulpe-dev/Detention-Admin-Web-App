@@ -61,16 +61,30 @@
   </header>
 
   <main class="guest-main">
-    <form class="searchbar">
+    <form class="search-bar list-off">
       <input type="text" name="searchPrisoner" id="searchPrisoner" placeholder="Caută un deținut">
       <button type="submit">
         <img src="/assets/guest-details/search.svg" alt="search bar">
       </button>
+      <ul class="result-list hidden"></ul>
     </form>
-    <ul class="result-list"></ul>
+
     <section class="guest-main__aside">
+      <div class="prisoner__card hidden">
+        <div class="prisoner__card-banner">
+          <div class="delete-card">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+          </div>
+          <img src="/assets/guest-details/prisoner.png" alt="orisoner-picture" class="prisoner__card-photo">
+          <h1 class="prisoner__card-title">Deținut</h1>
+        </div>
+        <div class="prisoner__card-details">
+          <p class="prisoner-name"></p>
+        </div>
+      </div>
       <button id="add-visitor" class="guest-main__aside__button">
-        Adauga vizitator
+        Adaugă vizitator
       </button>
       <button class="guest-main__aside__button">
         Șterge toți vizitatorii
@@ -91,7 +105,7 @@
         </div>
         <div class="guest-main__list__card__dBirth">
           <p class="guest-main__list__card__label">
-            Data nasterii:
+            Data nașterii:
             <time class="guest-main__list__card__info" datetime="1973-09-23">24.09.1973</time>
           </p>
         </div>
@@ -106,7 +120,7 @@
       </li>
 
       <li>
-        <a href="/views/visitDetails.html" class="guest-main__list__next-page">Continua</a>
+        <a href="/views/visitDetails.html" class="guest-main__list__next-page">Continuă</a>
       </li>
     </ul>
   </main>
@@ -145,6 +159,7 @@
   </footer>
   <script src="/scripts/main.js"></script>
   <script src="/scripts/detailsModal.js"></script>
+  <script src="/scripts/guestDetails.js"></script>
 </body>
 
 </html>

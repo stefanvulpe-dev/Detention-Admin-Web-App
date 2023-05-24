@@ -10,14 +10,14 @@
       csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
     },
   });
-  let response = await request.json();
 
+  let response = await request.json();
   if (response.error) {
-    console.log(response.message);
+    window.location.assign('/views/login.html');
     return;
   }
 
-  const { firstName, lastName, email, photo } = response;
+  const { firstName, lastName, email } = response;
   userName.textContent = firstName + ' ' + lastName;
   userEmail.textContent = email;
   profileTitle.textContent =

@@ -5,15 +5,14 @@ import path, { dirname } from 'path';
 import * as fs from 'fs';
 import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
-import { dropTables } from './models/sync.js';
-import { createTables } from './models/sync.js';
-import { UsersRepository } from './repositories/UsersRepository.js';
-
+import { dropTables, createTables } from './models/sync.js';
+import { UsersRepository, PrisonersRepository } from './repositories/index.js';
 import {
   AuthController,
   UserController,
   GuestController,
   VisitController,
+  PrisonerController,
 } from './controllers/index.js';
 import { pool } from './models/db/pool.js';
 
@@ -94,7 +93,9 @@ const server = http.createServer((req, res) => {
         readStream.pipe(res);
       });
     } else if (url.match(/^\/users\/get-profile-picture$/)) {
-      AuthController.getPhotoFromCloud(req, res);
+      AuthController.requireAuth(req, res, () => {
+        AuthController.getPhotoFromCloud(req, res);
+      });
     } else if (url.match(/^\/users\/get-profile$/)) {
       AuthController.requireAuth(req, res, () => {
         UserController.getUserDetails(req, res);
@@ -104,9 +105,7 @@ const server = http.createServer((req, res) => {
 
   if (req.method === 'POST') {
     if (url.match(/^\/register$/)) {
-      AuthController.uploadPhotoToCloud(req, res, () =>
-        AuthController.register(req, res)
-      );
+      AuthController.register(req, res);
     } else if (url.match(/^\/login$/)) {
       AuthController.login(req, res);
     } else if (url.match(/\/guests\/add-guest/)) {
@@ -117,6 +116,8 @@ const server = http.createServer((req, res) => {
       );
     } else if (url.match(/\/register/)) {
       UserController.register(req, res);
+    } else if (url.match(/\/prisoners\/search-prisoner/)) {
+      PrisonerController.getAllPrisonersNames(req, res);
     }
   }
 
@@ -152,6 +153,35 @@ dropTables().then(result => {
       })
       .then(user => {
         console.log(`John Doe is here`);
+      });
+
+    console.log('Adding Popescu Ion to jail...');
+
+    new PrisonersRepository()
+      .findById(1)
+      .then(prisoner => {
+        if (!prisoner) {
+          return new PrisonersRepository().create({
+            firstName: 'Popescu',
+            lastName: 'Ion',
+            detentionStartedAt: '2009-09-15',
+            detentionPeriod: '2023-10-14',
+          });
+        }
+        return Promise.resolve(prisoner);
+      })
+      .then(() => {
+        console.log(`Popescu Ion is in jail`);
+        console.log('Adding Popescu Marian to jail...');
+        return new PrisonersRepository().create({
+          firstName: 'Popescu',
+          lastName: 'Marian',
+          detentionStartedAt: '2009-09-15',
+          detentionPeriod: '2023-10-14',
+        });
+      })
+      .then(() => {
+        console.log(`Popescu Marian is in jail`);
       });
   });
 });

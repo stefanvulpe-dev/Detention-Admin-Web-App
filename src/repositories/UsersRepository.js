@@ -23,6 +23,7 @@ export class UsersRepository {
       client.release();
     }
   }
+
   async findById(id) {
     const client = await pool.connect();
     try {
@@ -30,7 +31,6 @@ export class UsersRepository {
         name: 'find-user',
         text: 'select * from users where id = $1',
         values: [+id],
-        rowMode: 'array',
       };
       const result = await client.query(query);
       return result.rows[0];
@@ -40,6 +40,24 @@ export class UsersRepository {
       client.release();
     }
   }
+
+  async findByEmail(email) {
+    const client = await pool.connect();
+    try {
+      const query = {
+        name: 'find-user-by-email',
+        text: 'select * from users where email = $1',
+        values: [email],
+      };
+      const result = await client.query(query);
+      return result.rows[0];
+    } catch (err) {
+      throw new Error(err.message);
+    } finally {
+      client.release();
+    }
+  }
+
   async login(email, password) {
     const client = await pool.connect();
     try {
