@@ -10,10 +10,10 @@
       csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
     },
   });
-  let response = await request.json();
 
+  let response = await request.json();
   if (response.error) {
-    console.log(response.message);
+    window.location.assign('/views/login.html');
     return;
   }
 
