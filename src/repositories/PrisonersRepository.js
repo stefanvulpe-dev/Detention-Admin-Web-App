@@ -28,7 +28,6 @@ export class PrisonersRepository {
         name: 'find-prisoner',
         text: 'select * from prisoners where id = $1',
         values: [+id],
-        rowMode: 'array',
       };
       const result = await client.query(query);
       return result.rows[0];
@@ -48,26 +47,16 @@ export class PrisonersRepository {
           name: 'find-prisoner-one-name',
           text: 'select "firstName", "lastName" from prisoners where "firstName" = $1 or "lastName" = $1',
           values: [firstName],
-          rowMode: 'array',
         };
       } else {
         query = {
           name: 'find-prisoner-full-name',
           text: 'select "firstName", "lastName" from prisoners where "firstName" = $1 and "lastName" = $2',
           values: [firstName, lastName],
-          rowMode: 'array',
         };
       }
       const result = await client.query(query);
-      const prisonerNames = [];
-
-      result.rows.map(row => {
-        prisonerNames.push({
-          firstName: row[0],
-          lastName: row[1],
-        });
-      });
-      return prisonerNames;
+      return result.rows;
     } catch (err) {
       throw Error(err.message);
     } finally {

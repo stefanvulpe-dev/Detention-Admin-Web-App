@@ -5,10 +5,8 @@ import path, { dirname } from 'path';
 import * as fs from 'fs';
 import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
-import { dropTables } from './models/sync.js';
-import { createTables } from './models/sync.js';
+import { dropTables, createTables } from './models/sync.js';
 import { UsersRepository, PrisonersRepository } from './repositories/index.js';
-
 import {
   AuthController,
   UserController,
@@ -95,7 +93,9 @@ const server = http.createServer((req, res) => {
         readStream.pipe(res);
       });
     } else if (url.match(/^\/users\/get-profile-picture$/)) {
-      AuthController.getPhotoFromCloud(req, res);
+      AuthController.requireAuth(req, res, () => {
+        AuthController.getPhotoFromCloud(req, res);
+      });
     } else if (url.match(/^\/users\/get-profile$/)) {
       AuthController.requireAuth(req, res, () => {
         UserController.getUserDetails(req, res);
@@ -170,20 +170,19 @@ dropTables().then(result => {
         }
         return Promise.resolve(prisoner);
       })
-      .then(prisoner => {
-        console.log(`Popescu Ion is in jail`); 
+      .then(() => {
+        console.log(`Popescu Ion is in jail`);
         console.log('Adding Popescu Marian to jail...');
-      }).then(() => {
-            return new PrisonersRepository().create({
-              firstName: 'Popescu',
-              lastName: 'Marian',
-              detentionStartedAt: '2009-09-15',
-              detentionPeriod: '2023-10-14',
-            });
-        })
-        .then(prisoner => {
-          console.log(`Popescu Marian is in jail`);
+        return new PrisonersRepository().create({
+          firstName: 'Popescu',
+          lastName: 'Marian',
+          detentionStartedAt: '2009-09-15',
+          detentionPeriod: '2023-10-14',
         });
+      })
+      .then(() => {
+        console.log(`Popescu Marian is in jail`);
+      });
   });
 });
 

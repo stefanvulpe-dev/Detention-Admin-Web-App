@@ -30,7 +30,7 @@ if (logoutButton) {
     if (result.error) {
       console.log(result.message);
     } else {
-      localStorage.removeItem('csrfToken');
+      localStorage.clear();
       window.location.replace('/');
       alert('User logged out successfully.');
     }
@@ -41,9 +41,15 @@ const heroMainLink = document.querySelector('.hero__main-link');
 heroMainLink?.addEventListener('click', async event => {
   event.preventDefault();
 
-  const response = await fetch('/views/guestsDetails.html', { method: 'GET' });
+  const request = await fetch('/users/get-profile', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
 
-  if (!response.ok) {
+  const response = await request.json();
+  if (response.error) {
     window.location.assign('/views/login.html');
   } else {
     window.location.assign('/views/guestsDetails.html');
@@ -151,7 +157,6 @@ anchorLinks.forEach(function (link) {
 const fileInput = document.querySelector(`input[type='file']`);
 fileInput?.addEventListener('change', () => {
   const file = fileInput.files[0];
-  console.log(file);
   const fileUploadDetails = document.querySelector('.photo-details');
   fileUploadDetails.textContent = file.name;
 });
@@ -159,8 +164,15 @@ fileInput?.addEventListener('change', () => {
 const profileLink = document.querySelector('a.profile-link');
 profileLink?.addEventListener('click', async event => {
   event.preventDefault();
-  const request = await fetch('/views/userProfile.html', { method: 'GET' });
-  if (request.status === 401) {
+  const request = await fetch('/users/get-profile', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
+
+  const response = await request.json();
+  if (response.error) {
     window.location.assign('/views/login.html');
   } else {
     window.location.assign('/views/userProfile.html');

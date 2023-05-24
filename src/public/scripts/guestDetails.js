@@ -102,6 +102,6 @@ deletePrisonerCardButton.addEventListener('click', () => {
 });
 
 const prisoner = JSON.parse(localStorage.getItem('prisoner'));
-if(prisoner){
-    renderPrisonerCard(prisoner.firstName,prisoner.lastName);
+if (prisoner) {
+  renderPrisonerCard(prisoner.firstName, prisoner.lastName);
 }
