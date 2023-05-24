@@ -17,7 +17,7 @@
     return;
   }
 
-  const { firstName, lastName, email, photo } = response;
+  const { firstName, lastName, email } = response;
   userName.textContent = firstName + ' ' + lastName;
   userEmail.textContent = email;
   profileTitle.textContent =
