@@ -1,28 +1,28 @@
 const detailsInput = [
   {
-    id: 'first-name',
-    name: 'first-name',
+    id: 'lastName',
+    name: 'lastName',
     type: 'text',
     label: 'Nume',
     required: true,
   },
   {
-    id: 'last-name',
-    name: 'laste-name',
+    id: 'firstName',
+    name: 'firstName',
     type: 'text',
     label: 'Prenume',
     required: true,
   },
   {
-    id: 'cnp',
-    name: 'cnp',
+    id: 'nationalId',
+    name: 'nationalId',
     type: 'number',
     label: 'CNP',
     required: true,
   },
   {
-    id: 'series-number',
-    name: 'series-number',
+    id: 'passportNumber',
+    name: 'passportNumber',
     type: 'text',
     label: 'Serie si numar C.I. / Pasaport',
     required: true,
@@ -42,20 +42,6 @@ const detailsInput = [
     required: true,
   },
 ];
-
-const createOverlay = () => {
-  const overlayElement = document.createElement('div');
-  overlayElement.classList.add('overlay');
-  overlayElement.classList.add('visible');
-  document.body.append(overlayElement);
-};
-
-const toggleElement = id => {
-  const element = document.querySelector(`#${id}`);
-  element.classList.toggle('visible');
-  const overlay = document.querySelector('.overlay');
-  overlay.classList.toggle('visible');
-};
 
 const renderDialogModal = (id, title, onClose) => {
   const detailsForm = document.createElement('form');
@@ -113,12 +99,7 @@ const renderDialogModal = (id, title, onClose) => {
   fragment.append(formFooter);
   detailsForm.append(fragment);
 
-  detailsForm.addEventListener('submit', e => {
-    e.preventDefault();
-    onSubmit(e.target.elements);
-    e.target.reset();
-    onClose(id);
-  });
+  detailsForm.addEventListener('submit', submitGuestDetails);
 
   const headerWrapper = document.createElement('div');
   headerWrapper.classList.add('header-wrapper');
@@ -144,33 +125,31 @@ const renderDialogModal = (id, title, onClose) => {
 
   dialogWindow.append(headerWrapper, detailsForm);
   dialogWindow.id = id;
-  dialogWindow.classList.add('visible');
 
   document.body.append(dialogWindow);
 };
 
 const showDialogModal = (id, title) => {
-  const overlay = document.querySelector('.overlay');
-  const isOverlayCreated = !!overlay;
-
-  if (!isOverlayCreated) {
-    createOverlay();
-  }
-
   const isDialogCreated = !!document.querySelector(`#${id}`);
 
   if (!isDialogCreated) {
-    renderDialogModal(id, title, () => toggleElement(id));
-  } else {
-    toggleElement(id);
+    renderDialogModal(id, title, () => closeDialog(id));
   }
+
+  const fileInput = document.querySelector(`#addGuests input[type='file']`);
+  fileInput?.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    const fileUploadDetails = document.querySelector(`label[for='photo']`);
+    fileUploadDetails.textContent = `${file.name} 📁`;
+  });
+
+  const dialog = document.querySelector(`#${id}`);
+  dialog.showModal();
 };
 
 (function () {
   const addButton = document.querySelector('#add-visitor');
-  if (addButton) {
-    addButton.addEventListener('click', () =>
-      showDialogModal('addGuests', 'Introduceti datele personale')
-    );
-  }
+  addButton.addEventListener('click', () =>
+    showDialogModal('addGuests', 'Introduceti datele personale')
+  );
 })();

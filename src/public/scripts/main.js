@@ -1,13 +1,3 @@
-const arrow = document.querySelector('.drop-arrow');
-const card = document.querySelector('.guest-main__list__card');
-
-if (arrow) {
-  arrow.addEventListener('click', () => {
-    arrow.classList.toggle('extended');
-    card.classList.toggle('extended');
-  });
-}
-
 const navToggleButton = document.querySelector('.nav__toggle');
 const navBar = document.querySelector('.header__nav');
 
