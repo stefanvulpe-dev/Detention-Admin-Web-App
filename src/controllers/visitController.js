@@ -87,9 +87,11 @@ export const postAddVisit = async (req, res) => {
     res.writeHead(201, {
       'Content-type': 'application/json',
     });
-    res.end(JSON.stringify('Visit successfully created!'));
+    res.end(
+      JSON.stringify({ error: false, message: 'Visit sucessfully created' })
+    );
   } catch (err) {
     res.writeHead(400, { 'Content-type': 'application/json' });
-    res.end(JSON.stringify({ message: err.message }));
+    res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };

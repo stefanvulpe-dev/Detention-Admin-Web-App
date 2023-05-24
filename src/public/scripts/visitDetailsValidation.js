@@ -19,6 +19,7 @@ visitDetailsForm.addEventListener('submit', async event => {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
     },
     body: JSON.stringify(reqBody),
   });

@@ -112,7 +112,9 @@ const server = http.createServer((req, res) => {
     } else if (url.match(/\/guests\/add-guest/)) {
       GuestController.postAddGuest(req, res);
     } else if (url.match(/\/visits\/add-visit/)) {
-      VisitController.postAddVisit(req, res);
+      AuthController.requireAuth(req, res, () =>
+        VisitController.postAddVisit(req, res)
+      );
     } else if (url.match(/\/register/)) {
       UserController.register(req, res);
     }
