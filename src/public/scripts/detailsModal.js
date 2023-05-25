@@ -16,7 +16,7 @@ const detailsInput = [
   {
     id: 'nationalId',
     name: 'nationalId',
-    type: 'number',
+    type: 'text',
     label: 'CNP',
     required: true,
   },
@@ -30,7 +30,7 @@ const detailsInput = [
   {
     id: 'email',
     name: 'email',
-    type: 'email',
+    type: 'text',
     label: 'Email',
     required: true,
   },
@@ -43,7 +43,7 @@ const detailsInput = [
   },
 ];
 
-const renderDialogModal = (id, title, onClose) => {
+const renderDialogModal = (id, title, onSubmit, onClose) => {
   const detailsForm = document.createElement('form');
   detailsForm.classList.add('dialog__form');
 
@@ -65,7 +65,12 @@ const renderDialogModal = (id, title, onClose) => {
         input[prop] = element[prop];
       }
     }
-    fieldWrapper.append(inputLabel, input);
+
+    const errorParagraph = document.createElement('p');
+    errorParagraph.classList.add('error-message');
+    errorParagraph.setAttribute('data-error', input.id);
+
+    fieldWrapper.append(inputLabel, input, errorParagraph);
     fragment.append(fieldWrapper);
   });
 
@@ -76,10 +81,12 @@ const renderDialogModal = (id, title, onClose) => {
   input.id = 'photo';
   input.name = 'photo';
   input.type = 'file';
-  input.required = true;
+  input.setAttribute('data-parent', id);
+  input.accept = 'image/jpg, image/jpeg, image/png';
 
   inputLabel.textContent = 'Incarca o poza \u{1F4C1}';
   inputLabel.htmlFor = 'photo';
+  inputLabel.setAttribute('data-parent', id);
 
   const submitButton = document.createElement('button');
   submitButton.classList.add('form-submit');
@@ -99,7 +106,10 @@ const renderDialogModal = (id, title, onClose) => {
   fragment.append(formFooter);
   detailsForm.append(fragment);
 
-  detailsForm.addEventListener('submit', submitGuestDetails);
+  detailsForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    await onSubmit();
+  });
 
   const headerWrapper = document.createElement('div');
   headerWrapper.classList.add('header-wrapper');
@@ -129,17 +139,15 @@ const renderDialogModal = (id, title, onClose) => {
   document.body.append(dialogWindow);
 };
 
-const showDialogModal = (id, title) => {
-  const isDialogCreated = !!document.querySelector(`#${id}`);
+const showDialogModal = (id, title, onSubmit) => {
+  renderDialogModal(id, title, onSubmit, () => closeDialog(id));
 
-  if (!isDialogCreated) {
-    renderDialogModal(id, title, () => closeDialog(id));
-  }
-
-  const fileInput = document.querySelector(`#addGuests input[type='file']`);
-  fileInput?.addEventListener('change', () => {
+  const fileInput = document.querySelector(`input[data-parent='${id}']`);
+  fileInput.addEventListener('change', () => {
     const file = fileInput.files[0];
-    const fileUploadDetails = document.querySelector(`label[for='photo']`);
+    const fileUploadDetails = document.querySelector(
+      `label[data-parent='${id}']`
+    );
     fileUploadDetails.textContent = `${file.name} 📁`;
   });
 
@@ -150,6 +158,10 @@ const showDialogModal = (id, title) => {
 (function () {
   const addButton = document.querySelector('#add-visitor');
   addButton.addEventListener('click', () =>
-    showDialogModal('addGuests', 'Introduceti datele personale')
+    showDialogModal(
+      'addGuests',
+      'Introduceti datele personale',
+      submitGuestDetails
+    )
   );
 })();

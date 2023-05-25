@@ -2,7 +2,6 @@ import Joi from 'joi';
 import multer from 'multer';
 import { deleteFile, getFile, uploadFile } from '../libs/s3Client.js';
 import { GuestsRepository } from '../repositories/index.js';
-import * as Utils from './utils.js';
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -28,11 +27,11 @@ export const getGuestDetails = async (req, res) => {
 };
 
 /**
- * Used for form validation on submit from addGuest dialog
+ * Used for form validation on submit from addGuests and editGuests dialogs
  * @path '/guests/add-guest'
  * @method POST
  */
-export const postAddGuest = async (req, res) => {
+export const validateGuest = async (req, res) => {
   upload.single('photo')(req, res, async err => {
     if (err instanceof multer.MulterError) {
       // A Multer error occurred during the upload
@@ -65,24 +64,8 @@ export const postAddGuest = async (req, res) => {
         const imageName = await uploadFile(uploadedFile);
 
         req.body.photo = imageName;
-        const { relationship, ...guestData } = req.body;
-
-        let guest, payload;
-        guest = await new GuestsRepository().findByNationalId(
-          req.body.nationalId
-        );
-        if (!guest) {
-          payload = await new GuestsRepository().create(guestData);
-        } else {
-          await deleteFile(guest.photo);
-          payload = await new GuestsRepository().updatePhoto(
-            guest.nationalId,
-            imageName
-          );
-        }
-        const { createdAt, updatedAt, ...tmpGuest } = payload;
-        guest = { relationship, ...tmpGuest };
-        res.end(JSON.stringify({ error: false, guest }));
+        res.writeHead(200, { 'Content-type': 'application/json' });
+        res.end(JSON.stringify({ error: false, guest: req.body }));
       } catch (err) {
         res.writeHead(400, { 'Content-type': 'application/json' });
         res.end(JSON.stringify({ error: true, message: err.message }));
@@ -93,28 +76,27 @@ export const postAddGuest = async (req, res) => {
 
 /**
  *
- * @path '/guests/get-photo?guestId=1'
+ * @path '/guests/get-photo?photo=Da31VB34CCa'
  * @method GET
  */
 export const getGuestPhoto = async (req, res) => {
-  let guestId;
+  let photo;
   const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
   for (const [key, value] of params) {
-    if (key === 'guestId') {
-      guestId = value;
+    if (key === 'photo') {
+      photo = value;
     }
   }
 
-  if (!guestId) {
+  if (!photo) {
     res.writeHead(400, { 'Content-type': 'application/json' });
     return res.end(
-      JSON.stringify({ error: true, message: 'Missing guest id.' })
+      JSON.stringify({ error: true, message: 'Missing photo parameter.' })
     );
   }
 
   try {
-    const guest = await new GuestsRepository().findById(guestId);
-    const url = await getFile(guest.photo);
+    const url = await getFile(photo);
     res.writeHead(200, { 'Content-type': 'application/json' });
     res.end(JSON.stringify({ error: false, url }));
   } catch (err) {
@@ -125,21 +107,33 @@ export const getGuestPhoto = async (req, res) => {
 
 /**
  *
- * @path '/guests/delete-guest'
+ * @path '/guests/delete-photo?photo=aSJ5732JMFCS'
  * @method DELETE
  */
-export const deleteGuest = async (req, res) => {
+export const deletePhoto = async (req, res) => {
+  let photo;
+  const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
+  for (const [key, value] of params) {
+    if (key === 'photo') {
+      photo = value;
+    }
+  }
+
+  if (!photo) {
+    res.writeHead(400, { 'Content-type': 'application/json' });
+    return res.end(
+      JSON.stringify({ error: true, message: 'Missing photo parameter.' })
+    );
+  }
+
   try {
-    const body = await Utils.getReqData(req);
-    const guest = JSON.parse(body);
-    await deleteFile(guest.photo);
-    await new GuestsRepository().deleteById(guest.id);
+    await deleteFile(photo);
     res.writeHead(200, { 'Content-type': 'application/json' });
     res.end(
-      JSON.stringify({ error: false, message: 'Guest deleted successfully.' })
+      JSON.stringify({ error: false, message: 'Photo deleted successfully.' })
     );
   } catch (err) {
-    res.writeHead(400, { 'Content-type': 'application/json' });
-    res.end(JSON.stringify({ error: true, message: err.message }));
+    res.writeHead(401, { 'Content-type': 'application/json' });
+    return res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };

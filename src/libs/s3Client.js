@@ -42,7 +42,7 @@ export async function uploadFile(file) {
     await s3.send(new PutObjectCommand(input));
     return imageName;
   } catch (err) {
-    console.log(err);
+    throw new Error(err);
   }
 }
 
@@ -56,7 +56,7 @@ export async function getFile(imageName) {
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
     return url;
   } catch (err) {
-    console.log(err);
+    throw new Error(err);
   }
 }
 
@@ -69,6 +69,6 @@ export async function deleteFile(imageName) {
   try {
     await s3.send(command);
   } catch (err) {
-    console.log(err);
+    throw new Error(err);
   }
 }

@@ -915,7 +915,7 @@ body {
 .guest-main.prisoner-selected {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr 2fr 2fr;
+  grid-template-rows: 0.5fr 1.5fr 2fr;
   gap: 1.5rem;
   justify-items: normal;
   justify-content: center;
@@ -1818,6 +1818,20 @@ body {
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
 }
+.guest-dialog .dialog__form .field-wrapper .error-message {
+  display: none;
+  color: hsl(0, 97%, 65%);
+  font-size: var(--fs-very-small);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+.guest-dialog .dialog__form .field-wrapper .error-message.visible {
+  display: block;
+}
+.guest-dialog .dialog__form .field-wrapper .error-outline {
+  outline: 3px solid hsl(0, 97%, 65%);
+  border-radius: 0.5rem;
+}
 .guest-dialog .dialog__form .form-submit {
   justify-self: end;
   background-color: hsl(0, 97%, 65%);
@@ -1848,6 +1862,15 @@ body {
   border-radius: 0.75rem;
   text-align: center;
   cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 80%);
+  border-radius: 10px;
 }
 
 .visible {

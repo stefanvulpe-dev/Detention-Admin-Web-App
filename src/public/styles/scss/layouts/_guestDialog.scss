@@ -71,6 +71,23 @@
         border-radius: 0.5rem;
         padding: 0.5rem 0.75rem;
       }
+
+      .error-message {
+        display: none;
+        color: map-get($colors, accent-red);
+        font-size: var(--fs-very-small);
+        font-weight: map-get($font-weights, semi-bold);
+        margin-top: 0.5rem;
+      }
+
+      .error-message.visible {
+        display: block;
+      }
+
+      .error-outline {
+        outline: 3px solid map-get($colors, accent-red);
+        border-radius: 0.5rem;
+      }
     }
 
     .form-submit {
@@ -108,6 +125,15 @@
       }
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: map-get($colors, secondary-white);
+  border-radius: 10px;
 }
 
 .visible {

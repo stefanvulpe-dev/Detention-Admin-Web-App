@@ -74,12 +74,33 @@ export class GuestsRepository {
   async deleteById(id) {
     const client = await pool.connect();
     try {
-      const result = await client.query(
+      await client.query(
         `delete from guests 
          where id = $1`,
         [+id]
       );
       return true;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async processGuests(guests) {
+    const client = await pool.connect();
+    const guestsData = [];
+    const guestRepository = new GuestsRepository();
+    try {
+      for (const obj of guests) {
+        let guest = await guestRepository.findByNationalId(obj.nationalId);
+        if (!guest) {
+          guest = await guestRepository.create(obj);
+        }
+        const dataObj = { id: guest.id, relation: obj.relationship };
+        guestsData.push(dataObj);
+      }
+      return guestsData;
     } catch (error) {
       throw new Error(error.message);
     } finally {
