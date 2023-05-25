@@ -204,22 +204,8 @@ export const requireAuth = async (req, res, next) => {
 };
 
 export const getPhotoFromCloud = async (req, res) => {
-  const { authToken } = parseCookies(req);
-  const csrfToken = req.headers['csrftoken'];
-
-  if (!authToken || !csrfToken) {
-    res.writeHead(401, { 'Content-type': 'application/json' });
-    return res.end(
-      JSON.stringify({
-        error: true,
-        message: 'Missing one or both of the authorization tokens.',
-      })
-    );
-  }
-
   try {
-    const payload = verify(authToken, process.env.ACCESS_SECRET_KEY);
-    const user = await new UsersRepository().findById(payload.id);
+    const user = await new UsersRepository().findById(req.userId);
     const url = await getFile(user.photo);
     res.writeHead(200, { 'Content-type': 'application/json' });
     res.end(JSON.stringify({ error: false, url }));

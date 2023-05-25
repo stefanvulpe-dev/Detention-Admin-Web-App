@@ -186,6 +186,7 @@ select {
   font-size: var(--fs-very-small);
 }
 .guest-main__list__card__label {
+  text-align: center;
   font-weight: 700;
 }
 .guest-main__list__card__info {
@@ -769,6 +770,8 @@ body {
 }
 .guest-main__list__card__photo {
   max-width: 60%;
+  border-radius: 100vh;
+  border: 4px solid hsl(0, 0%, 0%);
 }
 .guest-main__list__card .drop-arrow {
   cursor: pointer;
@@ -826,8 +829,7 @@ body {
 .guest-main__list__card.extended .guest-main__list__card__dBirth {
   display: block;
   grid-column: 1/3;
-  justify-self: start;
-  margin-left: 1.5rem;
+  justify-self: center;
 }
 .guest-main .prisoner__card {
   margin-bottom: 0rem;
@@ -913,7 +915,7 @@ body {
 .guest-main.prisoner-selected {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr 2fr 2fr;
+  grid-template-rows: 0.5fr 1.5fr 2fr;
   gap: 1.5rem;
   justify-items: normal;
   justify-content: center;
@@ -1370,11 +1372,11 @@ body {
   box-shadow: 0 0 3.5rem hsl(203, 19%, 30%);
 }
 .guest-main__list__next-page {
+  display: none;
   text-align: center;
   justify-self: end;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  width: max(10rem, 20%);
   transition: all 250ms ease-in-out;
 }
 .guest-main__list__next-page:is(:hover, :focus) {
@@ -1746,20 +1748,15 @@ body {
 
 .guest-dialog {
   font-family: "Inter", sans-serif;
-  display: none;
   width: min(35.5rem, 100% - 2rem);
-  position: absolute;
-  top: 6rem;
-  left: 50%;
-  z-index: 4;
-  transform: translateX(-50%);
+  margin: auto;
   border: 0;
   border-radius: 1rem;
   background-color: hsl(203, 19%, 30%);
   color: hsl(0, 0%, 100%);
 }
 .guest-dialog .header-wrapper {
-  width: min(100% - 2rem, 27.5rem);
+  width: min(100% - 4rem, 27.5rem);
   margin-inline: auto;
   display: flex;
   justify-content: space-between;
@@ -1768,7 +1765,7 @@ body {
   padding-block: 2rem;
 }
 .guest-dialog .header-wrapper .form-title {
-  font-size: var(--fs-large);
+  font-size: var(--fs-medium);
 }
 .guest-dialog .header-wrapper .form-toggle {
   width: 35px;
@@ -1790,7 +1787,7 @@ body {
   transform: translateY(-6px) rotate(45deg);
 }
 .guest-dialog .dialog__form {
-  width: min(100% - 2rem, 27.5rem);
+  width: min(100% - 4rem, 27.5rem);
   margin-inline: auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -1817,8 +1814,23 @@ body {
 }
 .guest-dialog .dialog__form .field-wrapper input {
   border: none;
+  outline: 0;
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
+}
+.guest-dialog .dialog__form .field-wrapper .error-message {
+  display: none;
+  color: hsl(0, 97%, 65%);
+  font-size: var(--fs-very-small);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+.guest-dialog .dialog__form .field-wrapper .error-message.visible {
+  display: block;
+}
+.guest-dialog .dialog__form .field-wrapper .error-outline {
+  outline: 3px solid hsl(0, 97%, 65%);
+  border-radius: 0.5rem;
 }
 .guest-dialog .dialog__form .form-submit {
   justify-self: end;
@@ -1852,12 +1864,13 @@ body {
   cursor: pointer;
 }
 
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 3;
-  backdrop-filter: blur(10px);
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 80%);
+  border-radius: 10px;
 }
 
 .visible {

@@ -2,6 +2,7 @@ import {
   S3Client,
   PutObjectCommand,
   GetObjectCommand,
+  DeleteObjectCommand,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import crypto from 'crypto';
@@ -31,30 +32,43 @@ export async function uploadFile(file) {
 
   const imageName = randomImageName();
 
-  const params = {
+  const input = {
     Bucket: bucketName,
     Key: imageName,
     Body: buffer,
     ContentType: file.mimetype,
   };
   try {
-    await s3.send(new PutObjectCommand(params));
+    await s3.send(new PutObjectCommand(input));
     return imageName;
   } catch (err) {
-    console.log(err);
+    throw new Error(err);
   }
 }
 
 export async function getFile(imageName) {
-  const getObjectParams = {
+  const input = {
     Bucket: bucketName,
     Key: imageName,
   };
-  const command = new GetObjectCommand(getObjectParams);
+  const command = new GetObjectCommand(input);
   try {
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
     return url;
   } catch (err) {
-    console.log(err);
+    throw new Error(err);
+  }
+}
+
+export async function deleteFile(imageName) {
+  const input = {
+    Bucket: bucketName,
+    Key: imageName,
+  };
+  const command = new DeleteObjectCommand(input);
+  try {
+    await s3.send(command);
+  } catch (err) {
+    throw new Error(err);
   }
 }

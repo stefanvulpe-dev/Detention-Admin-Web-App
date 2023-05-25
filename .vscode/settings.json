@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.removeUnusedImports": true
+    "source.organizeImports": true
   },
   "[html]": {
     "editor.tabSize": 2,

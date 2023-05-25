@@ -18,9 +18,9 @@ export const createGuestsVisitsTable = async () => {
       `create table guests_visits
       (
         id                 serial primary key,
-        "prisonerRelation" varchar(255)             not null,
         "visitId"          integer                  not null,
         "guestId"          integer                  not null,
+        "prisonerRelation" varchar(255)             not null,
         "createdAt" timestamp with time zone not null default now(),
         "updatedAt" timestamp with time zone not null default now(),
         constraint fk_guest foreign key("guestId") references guests(id), 

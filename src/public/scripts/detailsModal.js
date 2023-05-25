@@ -1,28 +1,28 @@
 const detailsInput = [
   {
-    id: 'first-name',
-    name: 'first-name',
+    id: 'lastName',
+    name: 'lastName',
     type: 'text',
     label: 'Nume',
     required: true,
   },
   {
-    id: 'last-name',
-    name: 'laste-name',
+    id: 'firstName',
+    name: 'firstName',
     type: 'text',
     label: 'Prenume',
     required: true,
   },
   {
-    id: 'cnp',
-    name: 'cnp',
-    type: 'number',
+    id: 'nationalId',
+    name: 'nationalId',
+    type: 'text',
     label: 'CNP',
     required: true,
   },
   {
-    id: 'series-number',
-    name: 'series-number',
+    id: 'passportNumber',
+    name: 'passportNumber',
     type: 'text',
     label: 'Serie si numar C.I. / Pasaport',
     required: true,
@@ -30,7 +30,7 @@ const detailsInput = [
   {
     id: 'email',
     name: 'email',
-    type: 'email',
+    type: 'text',
     label: 'Email',
     required: true,
   },
@@ -43,21 +43,7 @@ const detailsInput = [
   },
 ];
 
-const createOverlay = () => {
-  const overlayElement = document.createElement('div');
-  overlayElement.classList.add('overlay');
-  overlayElement.classList.add('visible');
-  document.body.append(overlayElement);
-};
-
-const toggleElement = id => {
-  const element = document.querySelector(`#${id}`);
-  element.classList.toggle('visible');
-  const overlay = document.querySelector('.overlay');
-  overlay.classList.toggle('visible');
-};
-
-const renderDialogModal = (id, title, onClose) => {
+const renderDialogModal = (id, title, onSubmit, onClose) => {
   const detailsForm = document.createElement('form');
   detailsForm.classList.add('dialog__form');
 
@@ -79,7 +65,12 @@ const renderDialogModal = (id, title, onClose) => {
         input[prop] = element[prop];
       }
     }
-    fieldWrapper.append(inputLabel, input);
+
+    const errorParagraph = document.createElement('p');
+    errorParagraph.classList.add('error-message');
+    errorParagraph.setAttribute('data-error', input.id);
+
+    fieldWrapper.append(inputLabel, input, errorParagraph);
     fragment.append(fieldWrapper);
   });
 
@@ -90,10 +81,12 @@ const renderDialogModal = (id, title, onClose) => {
   input.id = 'photo';
   input.name = 'photo';
   input.type = 'file';
-  input.required = true;
+  input.setAttribute('data-parent', id);
+  input.accept = 'image/jpg, image/jpeg, image/png';
 
   inputLabel.textContent = 'Incarca o poza \u{1F4C1}';
   inputLabel.htmlFor = 'photo';
+  inputLabel.setAttribute('data-parent', id);
 
   const submitButton = document.createElement('button');
   submitButton.classList.add('form-submit');
@@ -113,11 +106,9 @@ const renderDialogModal = (id, title, onClose) => {
   fragment.append(formFooter);
   detailsForm.append(fragment);
 
-  detailsForm.addEventListener('submit', e => {
-    e.preventDefault();
-    onSubmit(e.target.elements);
-    e.target.reset();
-    onClose(id);
+  detailsForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    await onSubmit();
   });
 
   const headerWrapper = document.createElement('div');
@@ -144,33 +135,33 @@ const renderDialogModal = (id, title, onClose) => {
 
   dialogWindow.append(headerWrapper, detailsForm);
   dialogWindow.id = id;
-  dialogWindow.classList.add('visible');
 
   document.body.append(dialogWindow);
 };
 
-const showDialogModal = (id, title) => {
-  const overlay = document.querySelector('.overlay');
-  const isOverlayCreated = !!overlay;
+const showDialogModal = (id, title, onSubmit) => {
+  renderDialogModal(id, title, onSubmit, () => closeDialog(id));
 
-  if (!isOverlayCreated) {
-    createOverlay();
-  }
+  const fileInput = document.querySelector(`input[data-parent='${id}']`);
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    const fileUploadDetails = document.querySelector(
+      `label[data-parent='${id}']`
+    );
+    fileUploadDetails.textContent = `${file.name} 📁`;
+  });
 
-  const isDialogCreated = !!document.querySelector(`#${id}`);
-
-  if (!isDialogCreated) {
-    renderDialogModal(id, title, () => toggleElement(id));
-  } else {
-    toggleElement(id);
-  }
+  const dialog = document.querySelector(`#${id}`);
+  dialog.showModal();
 };
 
 (function () {
   const addButton = document.querySelector('#add-visitor');
-  if (addButton) {
-    addButton.addEventListener('click', () =>
-      showDialogModal('addGuests', 'Introduceti datele personale')
-    );
-  }
+  addButton.addEventListener('click', () =>
+    showDialogModal(
+      'addGuests',
+      'Introduceti datele personale',
+      submitGuestDetails
+    )
+  );
 })();

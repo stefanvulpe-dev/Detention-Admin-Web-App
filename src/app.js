@@ -1,20 +1,20 @@
 import { compileSassAndSave } from 'compile-sass';
 import 'dotenv/config';
+import * as fs from 'fs';
 import * as http from 'http';
 import path, { dirname } from 'path';
-import * as fs from 'fs';
 import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
-import { dropTables, createTables } from './models/sync.js';
-import { UsersRepository, PrisonersRepository } from './repositories/index.js';
 import {
   AuthController,
-  UserController,
   GuestController,
-  VisitController,
   PrisonerController,
+  UserController,
+  VisitController,
 } from './controllers/index.js';
 import { pool } from './models/db/pool.js';
+import { createTables, dropTables } from './models/sync.js';
+import { PrisonersRepository, UsersRepository } from './repositories/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'));
@@ -100,6 +100,10 @@ const server = http.createServer((req, res) => {
       AuthController.requireAuth(req, res, () => {
         UserController.getUserDetails(req, res);
       });
+    } else if (url.match(/^\/guests\/get-photo\?photo=[a-zA-Z0-9]*$/)) {
+      AuthController.requireAuth(req, res, () =>
+        GuestController.getGuestPhoto(req, res)
+      );
     }
   }
 
@@ -109,7 +113,9 @@ const server = http.createServer((req, res) => {
     } else if (url.match(/^\/login$/)) {
       AuthController.login(req, res);
     } else if (url.match(/\/guests\/add-guest/)) {
-      GuestController.postAddGuest(req, res);
+      AuthController.requireAuth(req, res, () =>
+        GuestController.validateGuest(req, res)
+      );
     } else if (url.match(/\/visits\/add-visit/)) {
       AuthController.requireAuth(req, res, () =>
         VisitController.postAddVisit(req, res)
@@ -118,6 +124,7 @@ const server = http.createServer((req, res) => {
       UserController.register(req, res);
     } else if (url.match(/\/prisoners\/search-prisoner/)) {
       PrisonerController.getAllPrisonersNames(req, res);
+    } else if (url.match(/^\/guests\/add-guest$/)) {
     }
   }
 
@@ -125,6 +132,18 @@ const server = http.createServer((req, res) => {
     if (req.url.match(/^\/logout$/)) {
       AuthController.requireAuth(req, res, () =>
         AuthController.logout(req, res)
+      );
+    } else if (url.match(/^\/guests\/delete-photo\?photo=[a-zA-Z0-9]*$/)) {
+      AuthController.requireAuth(req, res, () => {
+        GuestController.deletePhoto(req, res);
+      });
+    }
+  }
+
+  if (req.method === 'PUT') {
+    if (req.url.match(/^\/guests\/edit-guest$/)) {
+      AuthController.requireAuth(req, res, () =>
+        GuestController.validateGuest(req, res)
       );
     }
   }

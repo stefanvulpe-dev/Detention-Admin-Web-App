@@ -20,8 +20,9 @@ export const createGuestsTable = async () => {
         id           serial primary key,
         "firstName"  varchar(255)             not null,
         "lastName"   varchar(255)             not null,
-        email        varchar(255)             not null unique,
+        email        varchar(255)             not null,
         "nationalId" bigint                   not null unique,
+        "passportNumber" varchar(255)         not null unique,
         photo        varchar(255)             not null,
         "createdAt" timestamp with time zone not null default now(),
         "updatedAt" timestamp with time zone not null default now()

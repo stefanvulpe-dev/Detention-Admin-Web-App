@@ -14,6 +14,7 @@ export class SessionsRepository {
       client.release();
     }
   }
+
   async verifySession(userId, csrfToken) {
     const client = await pool.connect();
     try {
@@ -33,6 +34,7 @@ export class SessionsRepository {
       client.release();
     }
   }
+
   async deleteSession(userId, csrfToken) {
     const client = await pool.connect();
     try {

@@ -3,26 +3,21 @@
 
 .guest-dialog {
   font-family: $ff-primary;
-  display: none;
   width: min(35.5rem, 100% - 2rem);
-  position: absolute;
-  top: 6rem;
-  left: 50%;
-  z-index: 4;
-  transform: translateX(-50%);
+  margin: auto;
   border: 0;
   border-radius: 1rem;
   background-color: map-get($colors, accent-charcoal);
   color: map-get($colors, primary-white);
 
   .header-wrapper {
-    width: min(100% - 2rem, 27.5rem);
+    width: min(100% - 4rem, 27.5rem);
     margin-inline: auto;
     @include flex-display(space-between, center, 0rem);
     padding-block: 2rem;
 
     .form-title {
-      font-size: var(--fs-large);
+      font-size: var(--fs-medium);
     }
 
     .form-toggle {
@@ -50,7 +45,7 @@
   }
 
   .dialog__form {
-    width: min(100% - 2rem, 27.5rem);
+    width: min(100% - 4rem, 27.5rem);
     margin-inline: auto;
     @include grid-display(1fr, auto, 1.5rem, start, center, center, center);
     padding-bottom: 2.5rem;
@@ -72,8 +67,26 @@
 
       input {
         border: none;
+        outline: 0;
         border-radius: 0.5rem;
         padding: 0.5rem 0.75rem;
+      }
+
+      .error-message {
+        display: none;
+        color: map-get($colors, accent-red);
+        font-size: var(--fs-very-small);
+        font-weight: map-get($font-weights, semi-bold);
+        margin-top: 0.5rem;
+      }
+
+      .error-message.visible {
+        display: block;
+      }
+
+      .error-outline {
+        outline: 3px solid map-get($colors, accent-red);
+        border-radius: 0.5rem;
       }
     }
 
@@ -114,12 +127,13 @@
   }
 }
 
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 3;
-  backdrop-filter: blur(10px);
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: map-get($colors, secondary-white);
+  border-radius: 10px;
 }
 
 .visible {

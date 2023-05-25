@@ -1,11 +1,11 @@
+import dateExtension from '@hapi/joi-date';
+import baseJoi from 'joi';
 import {
-  VisitsRepository,
-  PrisonersRepository,
   GuestsRepository,
+  PrisonersRepository,
+  VisitsRepository,
 } from '../repositories/index.js';
 import * as Utils from './utils.js';
-import baseJoi from 'joi';
-import dateExtension from '@hapi/joi-date';
 const joi = baseJoi.extend(dateExtension);
 /**
  * @Path '/visits?visitId=?'
@@ -40,7 +40,7 @@ export const postAddVisit = async (req, res) => {
         visitDate: joi.date().format('YYYY-MM-DD').min('now').required(),
         visitTime: joi
           .string()
-          .pattern(/^([01]\d|2[0-3]):([0-5]\d)$/)
+          .pattern(/^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/)
           .required(),
         visitNature: joi
           .string()
@@ -71,8 +71,7 @@ export const postAddVisit = async (req, res) => {
     const visitsRepository = new VisitsRepository();
     const visitId = (await visitsRepository.create(newVisit)).id;
 
-    const firstName = prisoner.firstName,
-      lastName = prisoner.lastName;
+    const { firstName, lastName } = prisoner;
 
     const prisonerId = (
       await new PrisonersRepository().findByName(firstName, lastName)
@@ -88,7 +87,7 @@ export const postAddVisit = async (req, res) => {
       'Content-type': 'application/json',
     });
     res.end(
-      JSON.stringify({ error: false, message: 'Visit sucessfully created' })
+      JSON.stringify({ error: false, message: 'Visit sucessfully created.' })
     );
   } catch (err) {
     res.writeHead(400, { 'Content-type': 'application/json' });

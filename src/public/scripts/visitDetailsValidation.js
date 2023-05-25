@@ -9,7 +9,12 @@ visitDetailsForm.addEventListener('submit', async event => {
   );
   inputs.forEach(input => {
     const name = input.getAttribute('id');
-    reqBody[name] = input.value;
+    if (name === 'visitTime') {
+      const time = moment(input.value, 'HH:mm');
+      reqBody[name] = time.format('HH:mm:ss');
+    } else {
+      reqBody[name] = input.value;
+    }
   });
 
   reqBody['guests'] = JSON.parse(localStorage.getItem('guests'));
