@@ -111,7 +111,7 @@ async function renderGuestCard(guest) {
   listItem.id = `guest${guest.id}`;
 
   const request = await fetch(
-    '/guests/get-photo?' +
+    '/photos/get-photo?' +
       new URLSearchParams({
         photo: guest.photo,
       }),
@@ -197,7 +197,9 @@ async function deleteGuest(guestString) {
   const guest = JSON.parse(decodeURIComponent(guestString));
   let text = `Vizitatorul ${guest.firstName} ${guest.lastName} urmeaza sa fie sters.`;
   if (confirm(text)) {
-    await removePhoto(guest.photo);
+    if (!guest.userId) {
+      await removePhoto(guest.photo);
+    }
     const guestCard = document.querySelector(`#guest${guest.id}`);
     guestCard.remove();
     const guests = JSON.parse(localStorage.getItem('guests'));
@@ -211,7 +213,7 @@ async function deleteGuest(guestString) {
 
 async function removePhoto(photo) {
   const request = await fetch(
-    '/guests/delete-photo?' + new URLSearchParams({ photo }),
+    '/photos/delete-photo?' + new URLSearchParams({ photo }),
     {
       method: 'DELETE',
       headers: {
@@ -228,17 +230,24 @@ async function removePhoto(photo) {
 
 async function editGuest(guestString) {
   const guest = JSON.parse(decodeURIComponent(guestString));
-  showDialogModal('editGuests', 'Introduceti datele personale', () =>
-    submitNewGuestDetails(guest)
+  showDialogModal(
+    'editGuests',
+    'Introduceti datele personale',
+    detailsInputs,
+    () => submitNewGuestDetails(guest)
   );
   const dialog = document.querySelector('#editGuests');
-  const inputs = dialog.querySelectorAll(`.dialog__form input[type='text']`);
+  const inputs = dialog.querySelectorAll(
+    `.dialog__form input[type='text'], .dialog__form select`
+  );
   inputs.forEach(input => (input.value = guest[input.name]));
 }
 
 async function submitGuestDetails() {
   clearErrors();
-  const inputs = document.querySelectorAll(`#addGuests .dialog__form input`);
+  const inputs = document.querySelectorAll(
+    `#addGuests .dialog__form input, #addGuests .dialog__form select`
+  );
 
   const formData = new FormData();
   inputs.forEach(({ name, value }) => {
@@ -278,7 +287,9 @@ async function submitGuestDetails() {
 
 async function submitNewGuestDetails(guest) {
   clearErrors();
-  const inputs = document.querySelectorAll(`#editGuests .dialog__form input`);
+  const inputs = document.querySelectorAll(
+    `#editGuests .dialog__form input, #editGuests .dialog__form select`
+  );
 
   const formData = new FormData();
   inputs.forEach(({ name, value }) => {
@@ -303,13 +314,17 @@ async function submitNewGuestDetails(guest) {
   if (response.error) {
     handleError(response.message);
   } else {
-    await removePhoto(guest.photo);
+    if (!guest.userId) {
+      await removePhoto(guest.photo);
+    } else {
+      response.guest.userId = guest.userId;
+    }
     const guestCard = document.querySelector(`#guest${guest.id}`);
     guestCard.remove();
     response.guest.id = guest.id;
     const newGuestCard = await renderGuestCard(response.guest);
     guestList.insertBefore(newGuestCard, guestList.children[0]);
-    addDropdownEffect(guestCard);
+    addDropdownEffect(newGuestCard);
     let guests = JSON.parse(localStorage.getItem('guests'));
     const index = guests.findIndex(element => element.id === guest.id);
     guests[index] = response.guest;
@@ -345,6 +360,10 @@ function handleError(message) {
     input = document.querySelector(`input[id='email']`);
     paragraph = document.querySelector(`p[data-error='email']`);
     paragraph.textContent = 'Email invalid';
+  } else if (message.includes('relationship')) {
+    input = document.querySelector(`select[id='relationship']`);
+    paragraph = document.querySelector(`p[data-error='relationship']`);
+    paragraph.textContent = 'Relatie invalida';
   }
   input?.classList.add('error-outline');
   paragraph?.classList.add('visible');
@@ -354,6 +373,8 @@ function clearErrors() {
   const inputs = document.querySelectorAll(`.dialog__form input`);
   const paragraphs = document.querySelectorAll(`.dialog__form p`);
   const photoLabel = document.querySelector(`label[for='photo']`);
+  const select = document.querySelector(`select[id='relationship']`);
+
   inputs.forEach(input => {
     input.classList.remove('error-outline');
   });
@@ -361,6 +382,7 @@ function clearErrors() {
     paragraph.classList.remove('visible');
   });
   photoLabel?.classList.remove('error-outline');
+  select?.classList.remove('error-outline');
 }
 
 function closeDialog(id) {
@@ -368,22 +390,105 @@ function closeDialog(id) {
   dialog.remove();
 }
 
+async function getUserProfile() {
+  const request = await fetch('/users/get-profile', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
+
+  const response = await request.json();
+
+  if (response.error) {
+    console.log(response.message);
+    return;
+  }
+
+  return response.user;
+}
+
+async function submitUserDetails(user) {
+  clearErrors();
+  const inputs = document.querySelectorAll(
+    `#addUser .dialog__form input, #addUser .dialog__form select`
+  );
+
+  const formData = new FormData();
+  inputs.forEach(({ name, value }) => {
+    formData.append(name, value);
+  });
+
+  for (const key of Object.keys(user)) {
+    if (key !== 'photo' && key !== 'id') {
+      formData.append(key, user[key]);
+    }
+  }
+
+  const request = await fetch('/guests/add-guest', {
+    method: 'POST',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+    body: formData,
+  });
+
+  const response = await request.json();
+
+  if (response.error) {
+    handleError(response.message);
+  } else {
+    let guests = JSON.parse(localStorage.getItem('guests')) ?? [];
+    response.guest.id = guests.length;
+    response.guest.photo = user.photo;
+    response.guest.userId = user.id;
+    const guestCard = await renderGuestCard(response.guest);
+    guestList.insertBefore(guestCard, guestList.children[0]);
+    addDropdownEffect(guestCard);
+    guests.push(response.guest);
+    localStorage.setItem('guests', JSON.stringify(guests));
+    closeDialog('addUser');
+    clearErrors();
+    showElement(nextPageButton);
+  }
+}
+
+const addUserButton = document.querySelector('#add-user');
+addUserButton.addEventListener('click', async () => {
+  const user = await getUserProfile();
+  const guests = JSON.parse(localStorage.getItem('guests')) ?? [];
+  const index = guests.findIndex(guest => guest.userId);
+
+  if (index !== -1) {
+    alert('Esti deja adaugat ca vizitator!');
+    return;
+  }
+
+  showDialogModal('addUser', 'Adaugă-te ca vizitator', userDetailsInputs, () =>
+    submitUserDetails(user)
+  );
+});
+
 (async function () {
   const prisoner = JSON.parse(localStorage.getItem('prisoner'));
   if (prisoner) {
     renderPrisonerCard(prisoner.firstName, prisoner.lastName);
   }
+
   const guests = JSON.parse(localStorage.getItem('guests'));
   if (guests) {
     await renderGuests(guests);
   }
+
   const deleteButton = document.querySelector('#deleteButton');
   deleteButton.addEventListener('click', async () => {
     let text = 'Sunteti sigur ca doriti sa stergeti toti vizitatorii?';
     if (confirm(text)) {
       const guestsArr = JSON.parse(localStorage.getItem('guests'));
       for (const guest of guestsArr) {
-        await removePhoto(guest.photo);
+        if (!guest.userId) {
+          await removePhoto(guest.photo);
+        }
         const guestCard = document.querySelector(`#guest${guest.id}`);
         guestCard.remove();
       }
@@ -391,6 +496,7 @@ function closeDialog(id) {
       nextPageButton.classList.remove('visible');
     }
   });
+
   nextPageButton.addEventListener('click', event => {
     event.preventDefault();
     const prisoner = JSON.parse(localStorage.getItem('prisoner'));

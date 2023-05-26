@@ -171,17 +171,26 @@ profileLink?.addEventListener('click', async event => {
 
 (async function () {
   const profilePicture = document.querySelector('img.person-logo');
-  const request = await fetch('/users/get-profile-picture', {
+  let request = await fetch('/users/get-profile', {
     method: 'GET',
     headers: {
       csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
     },
   });
-  const response = await request.json();
+  let response = await request.json();
 
   if (response.error) {
     profilePicture.src = '/assets/header/person.jpg';
   } else {
+    request = await fetch(
+      '/photos/get-photo?' +
+        new URLSearchParams({ photo: response.user.photo }),
+      {
+        method: 'GET',
+        headers: { csrfToken: JSON.parse(localStorage.getItem('csrfToken')) },
+      }
+    );
+    response = await request.json();
     profilePicture.src = response.url;
   }
 })();

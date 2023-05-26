@@ -17,13 +17,13 @@
     return;
   }
 
-  const { firstName, lastName, email } = response;
+  const { id, firstName, lastName, email, photo } = response.user;
   userName.textContent = firstName + ' ' + lastName;
   userEmail.textContent = email;
   profileTitle.textContent =
     'Hi, ' + firstName + ' ' + lastName + '. Welcome to your profile!';
 
-  request = await fetch('/users/get-profile-picture', {
+  request = await fetch('/photos/get-photo?' + new URLSearchParams({ photo }), {
     method: 'GET',
     headers: {
       csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
@@ -36,4 +36,21 @@
   } else {
     profilePicture.src = response.url;
   }
+
+  request = await fetch(
+    '/visits/get-history?' + new URLSearchParams({ userId: id }),
+    {
+      method: 'GET',
+      headers: { csrfToken: JSON.parse(localStorage.getItem('csrfToken')) },
+    }
+  );
+
+  response = await request.json();
+  if (response.error) {
+    console.log(response.message);
+  } else {
+    renderHistory(response.history);
+  }
 })();
+
+function renderHistory(history) {}

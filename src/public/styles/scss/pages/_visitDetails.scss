@@ -25,6 +25,8 @@
           border-radius: 0.5rem;
           width: 100%;
           max-width: 100vh;
+          outline: none;
+          border: none;
         }
         .form-textarea {
           border-radius: 0.5rem;
@@ -32,6 +34,8 @@
           min-height: 10rem;
           width: 100%;
           resize: none;
+          outline: none;
+          border: none;
         }
       }
       &__title {

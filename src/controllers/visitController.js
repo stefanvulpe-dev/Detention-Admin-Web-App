@@ -1,5 +1,6 @@
 import dateExtension from '@hapi/joi-date';
 import baseJoi from 'joi';
+import moment from 'moment';
 import {
   GuestsRepository,
   PrisonersRepository,
@@ -7,6 +8,7 @@ import {
 } from '../repositories/index.js';
 import * as Utils from './utils.js';
 const joi = baseJoi.extend(dateExtension);
+
 /**
  * @Path '/visits?visitId=?'
  */
@@ -29,7 +31,9 @@ export const getVisitDetails = async (req, res) => {
 };
 
 /**
- * @Path '/visits/add-visit'
+ *
+ * @path '/visits/add-visit'
+ * @method POST
  */
 export const postAddVisit = async (req, res) => {
   try {
@@ -40,7 +44,7 @@ export const postAddVisit = async (req, res) => {
         visitDate: joi.date().format('YYYY-MM-DD').min('now').required(),
         visitTime: joi
           .string()
-          .pattern(/^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/)
+          .pattern(/^([01]\d|2[0-3])h:([0-5]\d)m$/)
           .required(),
         visitNature: joi
           .string()
@@ -67,6 +71,9 @@ export const postAddVisit = async (req, res) => {
     if (error) {
       throw new Error(error.message);
     }
+
+    const time = moment(newVisit.visitTime, 'HH:mm').format('HH:mm:ss');
+    newVisit.visitTime = time;
 
     const visitsRepository = new VisitsRepository();
     const visitId = (await visitsRepository.create(newVisit)).id;
