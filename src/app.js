@@ -7,6 +7,7 @@ import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
 import {
   AuthController,
+  ContactController,
   GuestController,
   PrisonerController,
   UserController,
@@ -104,6 +105,11 @@ const server = http.createServer((req, res) => {
       AuthController.requireAuth(req, res, () =>
         GuestController.getGuestPhoto(req, res)
       );
+    } else if (url.match(/^\/views\/email.html$/)) {
+      console.log('am intrat aici');
+      const readStream = fs.createReadStream(`${VIEWS_PATH}/email.html`);
+      res.writeHead(200, { 'Content-type': 'text/html' });
+      readStream.pipe(res);
     }
   }
 
@@ -125,6 +131,8 @@ const server = http.createServer((req, res) => {
     } else if (url.match(/\/prisoners\/search-prisoner/)) {
       PrisonerController.getAllPrisonersNames(req, res);
     } else if (url.match(/^\/guests\/add-guest$/)) {
+    } else if (url.match(/^\/contact\/send/)) {
+      ContactController.sendReview(req, res);
     }
   }
 

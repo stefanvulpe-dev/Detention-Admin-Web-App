@@ -62,21 +62,21 @@
 
   <main class="contact">
     <h1 class="contact__title">Contactati-ne mai jos</h1>
-    <form action="#" class="contact__form">
+    <form action="#" class="contact__form" id="review_form">
       <fieldset class="contact__form-fieldset">
         <legend class="contact__form-legend">Detalii personale</legend>
         <div class="contact__form-wrapper">
           <div class="contact__form-field">
             <label for="first-name">Nume</label>
-            <input id="first-name" type="text" name="first-name">
+            <input id="first-name" type="text" name="firstName">
           </div>
           <div class="contact-form-field">
             <label for="last-name">Prenume</label>
-            <input id="last-name" type="text">
+            <input id="last-name" type="text" name="lastName">
           </div>
           <div class="contact__form-field">
             <label for="email">Email</label>
-            <input id="email" type="email">
+            <input id="email" type="email" name="email">
           </div>
           <div class="contact__form-field">
             <label for="suggestions">Sugestii</label>
@@ -124,6 +124,7 @@
     </div>
   </footer>
   <script src="/scripts/main.js"></script>
+  <script src="/scripts/sendEmail.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,4 @@
 import { UsersRepository } from '../repositories/index.js';
-import * as Utils from './utils.js';
-import joi from 'joi';
 
 /**
  * @Path '/users/get-profile
