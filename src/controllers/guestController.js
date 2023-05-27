@@ -6,23 +6,25 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 /**
- * @Path '/guests?guestId=?'
+ *
+ * @path '/guests?guestId=?'
+ * @method GET
  */
 export const getGuestDetails = async (req, res) => {
-  let guestId;
-  const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
-  for (const [key, value] of params) {
-    if (key === 'guestId') {
-      guestId = value;
-    }
-  }
   try {
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const guestId = params.get('guestId');
+
+    if (!guestId) {
+      throw new Error('Missing guestId parameter.');
+    }
+
     const guest = await new GuestsRepository().find(guestId);
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(guest));
+    res.end(JSON.stringify({ error: false, guest }));
   } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: err.message }));
+    res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
 
@@ -74,4 +76,28 @@ export const validateGuest = async (req, res) => {
       }
     }
   });
+};
+
+/**
+ *
+ * @path '/guests/get-guests?visitId=?'
+ * @method GET
+ */
+export const getGuests = async (req, res) => {
+  try {
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const visitId = params.get('visitId');
+
+    if (!visitId) {
+      throw new Error('Missing visitId parameter.');
+    }
+
+    const guests = await new GuestsRepository().findByVisitId(visitId);
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: false, guests }));
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
 };

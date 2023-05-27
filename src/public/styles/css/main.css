@@ -441,7 +441,7 @@ select {
   color: hsl(0, 97%, 65%);
 }
 
-.container__form-field.input-error input {
+.container__form-field.input-error :is(input, #photo-label) {
   border-color: hsl(0, 97%, 65%);
 }
 
@@ -1053,10 +1053,10 @@ body {
   margin-top: 2rem;
 }
 .login .container__form-field:nth-of-type(5) {
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
   gap: 1rem;
+}
+.login .container__form-field:nth-of-type(5) #photo-label {
+  width: 100%;
 }
 .login .container__form-buttons {
   display: flex;
@@ -1086,16 +1086,9 @@ body {
   opacity: 0.6;
 }
 .login .container label,
-.login .container .photo-upload,
-.login .container .photo-details {
+.login .container .photo-upload {
   font-weight: 400;
   color: hsl(0, 0%, 100%);
-}
-.login .container .photo-details {
-  line-height: 1.5em;
-  height: 1.5em;
-  width: 7em;
-  overflow: hidden;
 }
 .login .container input:not([id=photo]) {
   width: 100%;
@@ -1130,11 +1123,11 @@ body {
   margin-top: 0.5rem;
 }
 
-.container__form-field input {
+.container__form-field :is(input, #photo-label) {
   border: 0.2rem solid transparent;
 }
 
-.container__form-field.success input {
+.container__form-field.success :is(input, #photo-label) {
   border-color: transparent;
 }
 
@@ -1171,7 +1164,13 @@ body {
 .profile__data .help__qa {
   margin-top: 3rem;
 }
+.profile__data .help__qa__steps {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed hsl(0, 0%, 0%);
+}
 .profile__data .help__qa__steps__step {
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-small);
   font-weight: 400;
   padding-top: 0;

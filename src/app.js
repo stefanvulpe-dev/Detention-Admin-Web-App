@@ -13,6 +13,8 @@ import {
   VisitController,
   s3Controller,
 } from './controllers/index.js';
+import { dropTables, createTables } from './models/sync.js';
+import { UsersRepository, PrisonersRepository } from './repositories/index.js';
 import { pool } from './models/db/pool.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -99,6 +101,26 @@ const server = http.createServer((req, res) => {
       AuthController.requireAuth(req, res, () =>
         s3Controller.getPhoto(req, res)
       );
+    } else if (
+      url.match(
+        /^\/visits\/get-history\?firstName=[a-zA-Z]+&lastName=[a-zA-Z]+$/
+      )
+    ) {
+      AuthController.requireAuth(req, res, () =>
+        VisitController.getVisitsHistory(req, res)
+      );
+    } else if (url.match(/^\/visits\/get-visit\?visitId=[1-9][0-9]*$/)) {
+      AuthController.requireAuth(req, res, () =>
+        VisitController.getVisitDetails(req, res)
+      );
+    } else if (url.match(/^\/prisoners\/get-prisoner\?visitId=[1-9][0-9]*$/)) {
+      AuthController.requireAuth(req, res, () =>
+        PrisonerController.getPrisonerDetails(req, res)
+      );
+    } else if (url.match(/^\/guests\/get-guests\?visitId=[1-9][0-9]*$/)) {
+      AuthController.requireAuth(req, res, () =>
+        GuestController.getGuests(req, res)
+      );
     }
   }
 
@@ -118,8 +140,9 @@ const server = http.createServer((req, res) => {
     } else if (url.match(/\/register/)) {
       UserController.register(req, res);
     } else if (url.match(/\/prisoners\/search-prisoner/)) {
-      PrisonerController.getAllPrisonersNames(req, res);
-    } else if (url.match(/^\/guests\/add-guest$/)) {
+      AuthController.requireAuth(req, res, () =>
+        PrisonerController.getAllPrisonersNames(req, res)
+      );
     }
   }
 
@@ -144,61 +167,61 @@ const server = http.createServer((req, res) => {
   }
 });
 
-// dropTables().then(() => {
-//   console.log('Finished dropping tables...');
+dropTables().then(() => {
+  console.log('Finished dropping tables...');
 
-//   createTables().then(() => {
-//     console.log('Tables created.');
-//     console.log('Searching for John Doe...');
+  createTables().then(() => {
+    console.log('Tables created.');
+    console.log('Searching for John Doe...');
 
-//     new UsersRepository()
-//       .findById(1)
-//       .then(user => {
-//         if (!user) {
-//           return new UsersRepository().create({
-//             firstName: 'John',
-//             lastName: 'Doe',
-//             email: 'johndoe@gmail.com',
-//             password: 'johnDoe123',
-//             photo: 'johndoe.jpg',
-//           });
-//         }
-//         return Promise.resolve(user);
-//       })
-//       .then(user => {
-//         console.log(`John Doe is here`);
-//       });
+    new UsersRepository()
+      .findById(1)
+      .then(user => {
+        if (!user) {
+          return new UsersRepository().create({
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'johndoe@gmail.com',
+            password: 'johnDoe123',
+            photo: 'johndoe.jpg',
+          });
+        }
+        return Promise.resolve(user);
+      })
+      .then(user => {
+        console.log(`John Doe is here`);
+      });
 
-//     console.log('Adding Popescu Ion to jail...');
+    console.log('Adding Popescu Ion to jail...');
 
-//     new PrisonersRepository()
-//       .findById(1)
-//       .then(prisoner => {
-//         if (!prisoner) {
-//           return new PrisonersRepository().create({
-//             firstName: 'Popescu',
-//             lastName: 'Ion',
-//             detentionStartedAt: '2009-09-15',
-//             detentionPeriod: '2023-10-14',
-//           });
-//         }
-//         return Promise.resolve(prisoner);
-//       })
-//       .then(() => {
-//         console.log(`Popescu Ion is in jail`);
-//         console.log('Adding Popescu Marian to jail...');
-//         return new PrisonersRepository().create({
-//           firstName: 'Popescu',
-//           lastName: 'Marian',
-//           detentionStartedAt: '2009-09-15',
-//           detentionPeriod: '2023-10-14',
-//         });
-//       })
-//       .then(() => {
-//         console.log(`Popescu Marian is in jail`);
-//       });
-//   });
-// });
+    new PrisonersRepository()
+      .findById(1)
+      .then(prisoner => {
+        if (!prisoner) {
+          return new PrisonersRepository().create({
+            firstName: 'Popescu',
+            lastName: 'Ion',
+            detentionStartedAt: '2009-09-15',
+            detentionPeriod: '2023-10-14',
+          });
+        }
+        return Promise.resolve(prisoner);
+      })
+      .then(() => {
+        console.log(`Popescu Ion is in jail`);
+        console.log('Adding Popescu Marian to jail...');
+        return new PrisonersRepository().create({
+          firstName: 'Popescu',
+          lastName: 'Marian',
+          detentionStartedAt: '2009-09-15',
+          detentionPeriod: '2023-10-14',
+        });
+      })
+      .then(() => {
+        console.log(`Popescu Marian is in jail`);
+      });
+  });
+});
 
 server.listen(PORT, () => console.log(`Listenting on port ${PORT}`));
 

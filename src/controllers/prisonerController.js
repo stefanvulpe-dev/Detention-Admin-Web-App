@@ -2,23 +2,25 @@ import { PrisonersRepository } from '../repositories/index.js';
 import * as Utils from './utils.js';
 
 /**
- * @Path '/prisoners?prisonerId=?'
+ *
+ * @path '/prisoners/get-prisoner?visitId=?'
+ * @method GET
  */
 export const getPrisonerDetails = async (req, res) => {
-  let prisonerId;
-  const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
-  for (const [key, value] of params) {
-    if (key === 'prisonerId') {
-      prisonerId = value;
-    }
-  }
   try {
-    const prisoner = await new PrisonersRepository().find(prisonerId);
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const visitId = params.get('visitId');
+
+    if (!visitId) {
+      throw new Error('Missing visitId parameter.');
+    }
+
+    const prisoner = await new PrisonersRepository().findByVisitId(visitId);
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(prisoner));
+    res.end(JSON.stringify({ error: false, prisoner }));
   } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: err.message }));
+    res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
 
@@ -38,7 +40,7 @@ export const getAllPrisonersNames = async (req, res) => {
       );
 
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(prisoners));
+    res.end(JSON.stringify({ error: false, prisoners }));
   } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: true, message: err.message }));

@@ -73,7 +73,7 @@ searchBar.addEventListener('submit', async event => {
     alert(response.message);
   } else {
     event.target.reset();
-    renderResultList(response);
+    renderResultList(response.prisoners);
   }
 });
 

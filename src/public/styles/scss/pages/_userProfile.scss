@@ -32,10 +32,14 @@
 
       &__steps {
         &__step {
+          font-family: $ff-primary;
           font-size: var(--fs-small);
           font-weight: map-get($font-weights, regular);
           padding-top: 0;
         }
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px dashed map-get($colors, primary-dark);
       }
     }
   }

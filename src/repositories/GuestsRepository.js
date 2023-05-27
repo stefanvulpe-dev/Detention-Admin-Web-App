@@ -53,17 +53,16 @@ export class GuestsRepository {
     }
   }
 
-  async updatePhoto(nationalId, photo) {
+  async findByVisitId(visitId) {
     const client = await pool.connect();
     try {
       const result = await client.query(
-        `update guests 
-         set photo = $2, 
-         "updatedAt" = now() 
-         where "nationalId" = $1 returning *`,
-        [+nationalId, photo]
+        `select g."firstName", g."lastName"
+         from guests g
+         join guests_visits gv on g.id = gv."guestId" and gv."visitId" = $1;`,
+        [+visitId]
       );
-      return result.rows[0];
+      return result.rows;
     } catch (error) {
       throw new Error(error.message);
     } finally {
@@ -87,6 +86,24 @@ export class GuestsRepository {
     }
   }
 
+  async updatePhoto(nationalId, photo) {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `update guests 
+         set photo = $2, 
+         "updatedAt" = now() 
+         where "nationalId" = $1 returning *`,
+        [+nationalId, photo]
+      );
+      return result.rows[0];
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
   async processGuests(guests) {
     const client = await pool.connect();
     const guestsData = [];
@@ -96,6 +113,8 @@ export class GuestsRepository {
         let guest = await guestRepository.findByNationalId(obj.nationalId);
         if (!guest) {
           guest = await guestRepository.create(obj);
+        } else {
+          guest = await guestRepository.updatePhoto(obj.nationalId, obj.photo);
         }
         const dataObj = { id: guest.id, relation: obj.relationship };
         guestsData.push(dataObj);
