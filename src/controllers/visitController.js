@@ -1,5 +1,6 @@
 import dateExtension from '@hapi/joi-date';
 import baseJoi from 'joi';
+import moment from 'moment';
 import {
   GuestsRepository,
   PrisonersRepository,
@@ -7,29 +8,35 @@ import {
 } from '../repositories/index.js';
 import * as Utils from './utils.js';
 const joi = baseJoi.extend(dateExtension);
+
 /**
- * @Path '/visits?visitId=?'
+ *
+ * @path '/visits/get-visit?visitId=?'
+ * @method GET
  */
 export const getVisitDetails = async (req, res) => {
-  let visitId;
-  const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
-  for (const [key, value] of params) {
-    if (key === 'visitId') {
-      visitId = value;
-    }
-  }
   try {
-    const visit = await new VisitsRepository().find(visitId);
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const visitId = params.get('visitId');
+
+    if (!visitId) {
+      throw new Error('Missing visitId parameter.');
+    }
+
+    const visit = await new VisitsRepository().findById(visitId);
+
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(visit));
+    res.end(JSON.stringify({ error: false, visit }));
   } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: err.message }));
+    res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
 
 /**
- * @Path '/visits/add-visit'
+ *
+ * @path '/visits/add-visit'
+ * @method POST
  */
 export const postAddVisit = async (req, res) => {
   try {
@@ -40,7 +47,7 @@ export const postAddVisit = async (req, res) => {
         visitDate: joi.date().format('YYYY-MM-DD').min('now').required(),
         visitTime: joi
           .string()
-          .pattern(/^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/)
+          .pattern(/^([01]\d|2[0-3])h:([0-5]\d)m$/)
           .required(),
         visitNature: joi
           .string()
@@ -68,6 +75,9 @@ export const postAddVisit = async (req, res) => {
       throw new Error(error.message);
     }
 
+    const time = moment(newVisit.visitTime, 'HH:mm').format('HH:mm:ss');
+    newVisit.visitTime = time;
+
     const visitsRepository = new VisitsRepository();
     const visitId = (await visitsRepository.create(newVisit)).id;
 
@@ -89,6 +99,34 @@ export const postAddVisit = async (req, res) => {
     res.end(
       JSON.stringify({ error: false, message: 'Visit sucessfully created.' })
     );
+  } catch (err) {
+    res.writeHead(400, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
+
+/**
+ *
+ * @method GET
+ * @path '/visits/get-history?firstName=?&lastName=?'
+ */
+export const getVisitsHistory = async (req, res) => {
+  try {
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const firstName = params.get('firstName');
+    const lastName = params.get('lastName');
+
+    if (!firstName || !lastName) {
+      throw new Error('Invalid query params.');
+    }
+
+    const visitsIds = await new VisitsRepository().findVisit(
+      firstName,
+      lastName
+    );
+
+    res.writeHead(200, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: false, visitsIds }));
   } catch (err) {
     res.writeHead(400, { 'Content-type': 'application/json' });
     res.end(JSON.stringify({ error: true, message: err.message }));

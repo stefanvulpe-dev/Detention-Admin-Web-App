@@ -88,10 +88,53 @@
         outline: 3px solid map-get($colors, accent-red);
         border-radius: 0.5rem;
       }
+
+      .select-wrapper {
+        display: block;
+        width: 100%;
+        position: relative;
+        background-color: map-get($colors, primary-white);
+        border-radius: 0.5rem;
+        font-size: var(--fs-small);
+      }
+
+      .select-wrapper:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: map-get($colors, primary-dark) transparent transparent
+          transparent;
+        z-index: 5;
+        pointer-events: none;
+      }
+
+      select {
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        position: relative;
+        cursor: pointer;
+        z-index: 10;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: 0;
+        border-radius: 0.5rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      option {
+        background-color: map-get($colors, primary-white);
+      }
     }
 
     .form-submit {
-      justify-self: end;
       background-color: map-get($colors, accent-red);
       border: 0;
       cursor: pointer;
@@ -123,6 +166,14 @@
           cursor: pointer;
         }
       }
+    }
+  }
+}
+
+#addUser {
+  .dialog__form {
+    .form-footer {
+      justify-content: flex-end;
     }
   }
 }

@@ -64,14 +64,29 @@ export class PrisonersRepository {
     }
   }
 
-  async getVisitsHistory(id) {}
-
   async findByName(firstName, lastName) {
     const client = await pool.connect();
     try {
       const result = await client.query(
         'select * from prisoners where "firstName" = $1 and "lastName" = $2',
         [firstName, lastName]
+      );
+      return result.rows[0];
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async findByVisitId(visitId) {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select "firstName", "lastName"
+          from prisoners p 
+          join prisoners_visits pv on p.id = pv."prisonerId" and pv."visitId" = $1;`,
+        [visitId]
       );
       return result.rows[0];
     } catch (error) {

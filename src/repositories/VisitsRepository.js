@@ -71,4 +71,24 @@ export class VisitsRepository {
       client.release();
     }
   }
+
+  async findVisit(firstName, lastName) {
+    const client = await pool.connect();
+    try {
+      const query = {
+        name: 'find-visit',
+        text: `select v.id
+                from visits v
+                join guests_visits gv on v.id = gv."visitId"
+                join guests g on gv."guestId" = g.id and g."firstName" = $1 and g."lastName" = $2`,
+        values: [firstName, lastName],
+      };
+      const result = await client.query(query);
+      return result.rows;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
 }

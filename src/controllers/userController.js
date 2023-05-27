@@ -1,16 +1,15 @@
 import { UsersRepository } from '../repositories/index.js';
-import * as Utils from './utils.js';
-import joi from 'joi';
 
 /**
- * @Path '/users/get-profile
+ * @path '/users/get-profile'
+ * @method GET
  */
 export const getUserDetails = async (req, res) => {
   try {
-    const { password, photo, ...userDetails } =
+    const { password, createdAt, updatedAt, ...user } =
       await new UsersRepository().findById(req.userId);
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(userDetails));
+    res.end(JSON.stringify({ error: false, user }));
   } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: err.message }));
