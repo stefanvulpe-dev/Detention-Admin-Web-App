@@ -2,14 +2,14 @@
 
 <head>
   <style>
-    td {
-      font-family: arial, sans-serif;
-      border-bottom-style: solid;
-      border-color: #dddddd;
-      border-bottom-width: 1px;
-      text-align: left;
-      padding-top: 13px;
-      padding-right: 14px;
+    table {
+      border-collapse: separate;
+      border-spacing: 10px;
+    }
+
+    hr {
+      border-top: 1px solid #e2e1e1;
+      border-left: 0px;
     }
 
     p {
@@ -33,19 +33,19 @@
       padding: 20px;
     }
 
-    hr {
-      border-top: 1px solid #e2e1e1;
-      border-left: 0px;
-    }
-
     content {
       margin: 0 auto;
-      width: fit-content;
+      width: 80%;
     }
 
     .field-title {
       font-family: arial, sans-serif;
       font-weight: bolder;
+      font-size: larger;
+    }
+
+    .field-text {
+      font-family: arial, sans-serif;
     }
   </style>
 </head>
@@ -59,15 +59,25 @@
     <br>
     <br>
     <br>
-    <table width="293">
+    <table>
       <tr>
-        <td><span class="field-title">First name: </span> {{firstName}}</td>
+        <td>
+          <span class="field-title">First name: </span> <span class="field-text">{{firstName}}</span>
+          <hr>
+        </td>
       </tr>
       <tr>
-        <td><span class="field-title">Last Name: </span> {{lastName}}</td>
+        <td>
+          <span class="field-title">Last Name: </span> <span class="field-text">{{lastName}}</span>
+          <hr>
+        </td>
+
       </tr>
       <tr>
-        <td><span class="field-title">Suggestions: </span> {{suggestions}}</td>
+        <td>
+          <span class="field-title">Suggestions: </span> <span class="field-text">{{suggestions}}</span>
+          <hr>
+        </td>
       </tr>
     </table>
     <br>
@@ -77,9 +87,10 @@
   <br>
   <br>
   <hr>
-  <div class="footer content" style="margin: 0 auto;width: fit-content;">
+  <div class="footer content">
     <p>
-      Copyright &#169; Broken Dreams 2023</p>
+      Copyright &#169; Broken Dreams 2023
+    </p>
   </div>
 
 </body>

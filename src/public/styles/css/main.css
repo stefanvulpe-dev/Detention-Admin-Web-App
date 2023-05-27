@@ -581,6 +581,18 @@ select {
   opacity: 0.5;
 }
 
+.error-border {
+  border: solid !important;
+  border-color: hsl(0, 97%, 65%) !important;
+  border-width: 0.2rem !important;
+}
+
+:is(.firstName-error, .lastName-error, .email-error, .suggestions-error) {
+  color: hsl(0, 97%, 65%);
+  padding-top: 0.5rem;
+  display: none;
+}
+
 body {
   background-image: url("/assets/background.png");
   background-size: cover;

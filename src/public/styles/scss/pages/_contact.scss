@@ -73,3 +73,15 @@
     }
   }
 }
+
+.error-border {
+  border: solid !important;
+  border-color: map-get($colors, accent-red) !important;
+  border-width: 0.2rem !important;
+}
+
+:is(.firstName-error, .lastName-error, .email-error, .suggestions-error) {
+  color: map-get($colors, accent-red);
+  padding-top: 0.5rem;
+  display: none;
+}

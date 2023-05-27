@@ -105,11 +105,6 @@ const server = http.createServer((req, res) => {
       AuthController.requireAuth(req, res, () =>
         GuestController.getGuestPhoto(req, res)
       );
-    } else if (url.match(/^\/views\/email.html$/)) {
-      console.log('am intrat aici');
-      const readStream = fs.createReadStream(`${VIEWS_PATH}/email.html`);
-      res.writeHead(200, { 'Content-type': 'text/html' });
-      readStream.pipe(res);
     }
   }
 

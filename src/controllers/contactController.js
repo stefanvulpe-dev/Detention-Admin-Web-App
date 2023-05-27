@@ -1,12 +1,7 @@
-import * as fs from 'fs';
-import handlebars from 'handlebars';
 import joi from 'joi';
 import nodemailer from 'nodemailer';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { generateHtml } from './emailController.js';
 import * as Utils from './utils.js';
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 /**
  * @path /contact/send
  * @method POST
@@ -69,17 +64,4 @@ export const sendReview = async (req, res) => {
     res.writeHead(400, { 'Content-type': 'application/json' });
     res.end(JSON.stringify({ error: true, message: error.message }));
   }
-};
-
-const generateHtml = review => {
-  const filePath = path.join(__dirname, '../views/email.html');
-  const source = fs.readFileSync(filePath, 'utf-8').toString();
-  const template = handlebars.compile(source);
-  const replacements = {
-    firstName: review.firstName,
-    lastName: review.lastName,
-    suggestions: review.suggestions,
-  };
-  const modifiedHTML = template(replacements);
-  return modifiedHTML;
 };
