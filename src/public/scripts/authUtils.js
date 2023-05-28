@@ -82,7 +82,11 @@ const submitSignupForm = async event => {
 
   const response = await request.json();
   if (response.error) {
-    console.log(response.message);
+    if (response.message.includes('photo')) {
+      showError('photo-label', 'photo-error', 'Incarcati o poza!');
+    } else {
+      setSuccess('photo-label');
+    }
     if (response.message.includes('email')) {
       showError('email', 'email-error', 'Adresa de email gresita!');
     } else {

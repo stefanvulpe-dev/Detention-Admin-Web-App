@@ -12,10 +12,11 @@ import {
   PrisonerController,
   UserController,
   VisitController,
+  s3Controller,
 } from './controllers/index.js';
+import { dropTables, createTables } from './models/sync.js';
+import { UsersRepository, PrisonersRepository } from './repositories/index.js';
 import { pool } from './models/db/pool.js';
-import { createTables, dropTables } from './models/sync.js';
-import { PrisonersRepository, UsersRepository } from './repositories/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'));
@@ -93,17 +94,33 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, { 'Content-type': 'text/html' });
         readStream.pipe(res);
       });
-    } else if (url.match(/^\/users\/get-profile-picture$/)) {
-      AuthController.requireAuth(req, res, () => {
-        AuthController.getPhotoFromCloud(req, res);
-      });
     } else if (url.match(/^\/users\/get-profile$/)) {
       AuthController.requireAuth(req, res, () => {
         UserController.getUserDetails(req, res);
       });
-    } else if (url.match(/^\/guests\/get-photo\?photo=[a-zA-Z0-9]*$/)) {
+    } else if (url.match(/^\/photos\/get-photo\?photo=[a-zA-Z0-9.]*$/)) {
       AuthController.requireAuth(req, res, () =>
-        GuestController.getGuestPhoto(req, res)
+        s3Controller.getPhoto(req, res)
+      );
+    } else if (
+      url.match(
+        /^\/visits\/get-history\?firstName=[a-zA-Z]+&lastName=[a-zA-Z]+$/
+      )
+    ) {
+      AuthController.requireAuth(req, res, () =>
+        VisitController.getVisitsHistory(req, res)
+      );
+    } else if (url.match(/^\/visits\/get-visit\?visitId=[1-9][0-9]*$/)) {
+      AuthController.requireAuth(req, res, () =>
+        VisitController.getVisitDetails(req, res)
+      );
+    } else if (url.match(/^\/prisoners\/get-prisoner\?visitId=[1-9][0-9]*$/)) {
+      AuthController.requireAuth(req, res, () =>
+        PrisonerController.getPrisonerDetails(req, res)
+      );
+    } else if (url.match(/^\/guests\/get-guests\?visitId=[1-9][0-9]*$/)) {
+      AuthController.requireAuth(req, res, () =>
+        GuestController.getGuests(req, res)
       );
     }
   }
@@ -124,8 +141,9 @@ const server = http.createServer((req, res) => {
     } else if (url.match(/\/register/)) {
       UserController.register(req, res);
     } else if (url.match(/\/prisoners\/search-prisoner/)) {
-      PrisonerController.getAllPrisonersNames(req, res);
-    } else if (url.match(/^\/guests\/add-guest$/)) {
+      AuthController.requireAuth(req, res, () =>
+        PrisonerController.getAllPrisonersNames(req, res)
+      );
     } else if (url.match(/^\/contact\/send/)) {
       ContactController.sendReview(req, res);
     }
@@ -136,9 +154,9 @@ const server = http.createServer((req, res) => {
       AuthController.requireAuth(req, res, () =>
         AuthController.logout(req, res)
       );
-    } else if (url.match(/^\/guests\/delete-photo\?photo=[a-zA-Z0-9]*$/)) {
+    } else if (url.match(/^\/photos\/delete-photo\?photo=[a-zA-Z0-9]*$/)) {
       AuthController.requireAuth(req, res, () => {
-        GuestController.deletePhoto(req, res);
+        s3Controller.deletePhoto(req, res);
       });
     }
   }

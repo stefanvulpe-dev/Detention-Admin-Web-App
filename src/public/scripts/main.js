@@ -21,7 +21,7 @@ if (logoutButton) {
       console.log(result.message);
     } else {
       localStorage.clear();
-      window.location.replace('/');
+      window.location.replace('/views/login.html');
       alert('User logged out successfully.');
     }
   });
@@ -147,8 +147,8 @@ anchorLinks.forEach(function (link) {
 const fileInput = document.querySelector(`input[type='file']`);
 fileInput?.addEventListener('change', () => {
   const file = fileInput.files[0];
-  const fileUploadDetails = document.querySelector('.photo-details');
-  fileUploadDetails.textContent = file.name;
+  const fileUploadDetails = document.querySelector('#photo-label');
+  fileUploadDetails.textContent = `${file.name} 📁`;
 });
 
 const profileLink = document.querySelector('a.profile-link');
@@ -171,17 +171,26 @@ profileLink?.addEventListener('click', async event => {
 
 (async function () {
   const profilePicture = document.querySelector('img.person-logo');
-  const request = await fetch('/users/get-profile-picture', {
+  let request = await fetch('/users/get-profile', {
     method: 'GET',
     headers: {
       csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
     },
   });
-  const response = await request.json();
+  let response = await request.json();
 
   if (response.error) {
     profilePicture.src = '/assets/header/person.jpg';
   } else {
+    request = await fetch(
+      '/photos/get-photo?' +
+        new URLSearchParams({ photo: response.user.photo }),
+      {
+        method: 'GET',
+        headers: { csrfToken: JSON.parse(localStorage.getItem('csrfToken')) },
+      }
+    );
+    response = await request.json();
     profilePicture.src = response.url;
   }
 })();

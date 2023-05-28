@@ -33,10 +33,10 @@
       }
 
       &-field:nth-of-type(5) {
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
         gap: 1rem;
+        #photo-label {
+          width: 100%;
+        }
       }
 
       &-buttons {
@@ -68,17 +68,9 @@
     }
 
     label,
-    .photo-upload,
-    .photo-details {
+    .photo-upload {
       font-weight: map-get($font-weights, regular);
       color: map-get($colors, primary-white);
-    }
-
-    .photo-details {
-      line-height: 1.5em;
-      height: 1.5em;
-      width: 7em;
-      overflow: hidden;
     }
 
     input:not([id='photo']) {
@@ -116,9 +108,9 @@
   display: block;
   margin-top: 0.5rem;
 }
-.container__form-field input {
+.container__form-field :is(input, #photo-label) {
   border: 0.2rem solid transparent;
 }
-.container__form-field.success input {
+.container__form-field.success :is(input, #photo-label) {
   border-color: transparent;
 }

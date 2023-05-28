@@ -1,28 +1,30 @@
 import Joi from 'joi';
 import multer from 'multer';
-import { deleteFile, getFile, uploadFile } from '../libs/s3Client.js';
 import { GuestsRepository } from '../repositories/index.js';
+import { uploadFile } from '../services/s3Client.js';
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 /**
- * @Path '/guests?guestId=?'
+ *
+ * @path '/guests?guestId=?'
+ * @method GET
  */
 export const getGuestDetails = async (req, res) => {
-  let guestId;
-  const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
-  for (const [key, value] of params) {
-    if (key === 'guestId') {
-      guestId = value;
-    }
-  }
   try {
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const guestId = params.get('guestId');
+
+    if (!guestId) {
+      throw new Error('Missing guestId parameter.');
+    }
+
     const guest = await new GuestsRepository().find(guestId);
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(guest));
+    res.end(JSON.stringify({ error: false, guest }));
   } catch (err) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: err.message }));
+    res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
 
@@ -60,10 +62,12 @@ export const validateGuest = async (req, res) => {
       }
 
       try {
-        const uploadedFile = req.file;
-        const imageName = await uploadFile(uploadedFile);
+        if (req.file) {
+          const uploadedFile = req.file;
+          const imageName = await uploadFile(uploadedFile);
+          req.body.photo = imageName;
+        }
 
-        req.body.photo = imageName;
         res.writeHead(200, { 'Content-type': 'application/json' });
         res.end(JSON.stringify({ error: false, guest: req.body }));
       } catch (err) {
@@ -76,64 +80,24 @@ export const validateGuest = async (req, res) => {
 
 /**
  *
- * @path '/guests/get-photo?photo=Da31VB34CCa'
+ * @path '/guests/get-guests?visitId=?'
  * @method GET
  */
-export const getGuestPhoto = async (req, res) => {
-  let photo;
-  const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
-  for (const [key, value] of params) {
-    if (key === 'photo') {
-      photo = value;
-    }
-  }
-
-  if (!photo) {
-    res.writeHead(400, { 'Content-type': 'application/json' });
-    return res.end(
-      JSON.stringify({ error: true, message: 'Missing photo parameter.' })
-    );
-  }
-
+export const getGuests = async (req, res) => {
   try {
-    const url = await getFile(photo);
-    res.writeHead(200, { 'Content-type': 'application/json' });
-    res.end(JSON.stringify({ error: false, url }));
-  } catch (err) {
-    res.writeHead(401, { 'Content-type': 'application/json' });
-    return res.end(JSON.stringify({ error: true, message: err.message }));
-  }
-};
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const visitId = params.get('visitId');
 
-/**
- *
- * @path '/guests/delete-photo?photo=aSJ5732JMFCS'
- * @method DELETE
- */
-export const deletePhoto = async (req, res) => {
-  let photo;
-  const params = new URLSearchParams(req.url.split('/').join('').split('?')[1]);
-  for (const [key, value] of params) {
-    if (key === 'photo') {
-      photo = value;
+    if (!visitId) {
+      throw new Error('Missing visitId parameter.');
     }
-  }
 
-  if (!photo) {
-    res.writeHead(400, { 'Content-type': 'application/json' });
-    return res.end(
-      JSON.stringify({ error: true, message: 'Missing photo parameter.' })
-    );
-  }
+    const guests = await new GuestsRepository().findByVisitId(visitId);
 
-  try {
-    await deleteFile(photo);
-    res.writeHead(200, { 'Content-type': 'application/json' });
-    res.end(
-      JSON.stringify({ error: false, message: 'Photo deleted successfully.' })
-    );
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: false, guests }));
   } catch (err) {
-    res.writeHead(401, { 'Content-type': 'application/json' });
-    return res.end(JSON.stringify({ error: true, message: err.message }));
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };

@@ -29,12 +29,25 @@
 
     .help__qa {
       margin-top: 3rem;
+
+      &__steps {
+        &__step {
+          font-family: $ff-primary;
+          font-size: var(--fs-small);
+          font-weight: map-get($font-weights, regular);
+          padding-top: 0;
+        }
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px dashed map-get($colors, primary-dark);
+      }
     }
   }
 
   &__card {
     min-width: 17.5rem;
     grid-row: 1 / 2;
+    align-self: start;
     background-color: map-get($colors, secondary-white);
     border-radius: 2rem;
     @include grid-display(1fr, auto, 1.75rem, center, center);

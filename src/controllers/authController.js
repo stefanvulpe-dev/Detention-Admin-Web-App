@@ -1,10 +1,10 @@
-import Joi from 'joi';
-import { getReqData, parseCookies } from './utils.js';
-import jwt from 'jsonwebtoken';
 import Tokens from 'csrf';
-import { SessionsRepository, UsersRepository } from '../repositories/index.js';
+import Joi from 'joi';
+import jwt from 'jsonwebtoken';
 import multer from 'multer';
-import { getFile, uploadFile } from '../libs/s3Client.js';
+import { SessionsRepository, UsersRepository } from '../repositories/index.js';
+import { uploadFile } from '../services/s3Client.js';
+import { getReqData, parseCookies } from './utils.js';
 const { sign, verify } = jwt;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -197,18 +197,6 @@ export const requireAuth = async (req, res, next) => {
     await new SessionsRepository().verifySession(payload.id, csrfToken);
     req.userId = payload.id;
     next();
-  } catch (err) {
-    res.writeHead(401, { 'Content-type': 'application/json' });
-    return res.end(JSON.stringify({ error: true, message: err.message }));
-  }
-};
-
-export const getPhotoFromCloud = async (req, res) => {
-  try {
-    const user = await new UsersRepository().findById(req.userId);
-    const url = await getFile(user.photo);
-    res.writeHead(200, { 'Content-type': 'application/json' });
-    res.end(JSON.stringify({ error: false, url }));
   } catch (err) {
     res.writeHead(401, { 'Content-type': 'application/json' });
     return res.end(JSON.stringify({ error: true, message: err.message }));
