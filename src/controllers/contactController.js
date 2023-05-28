@@ -1,7 +1,7 @@
 import joi from 'joi';
 import nodemailer from 'nodemailer';
-import { generateHtml } from './emailController.js';
 import * as Utils from './utils.js';
+import { generateHtml } from './utils.js';
 /**
  * @path /contact/send
  * @method POST

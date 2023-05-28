@@ -49,8 +49,8 @@ function handleError(message) {
     paragraph = document.querySelector('.suggestions-error');
     errorMessage = 'Formatul sugestiilor este invalid.';
   }
-  input === null
-    ? alert('Eroare la introducerea de date')
+  input === undefined
+    ? alert('Eroare la introducerea de date.')
     : showError(input, paragraph, errorMessage);
 }
 
