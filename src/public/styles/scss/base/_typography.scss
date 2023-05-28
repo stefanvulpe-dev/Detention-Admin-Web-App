@@ -162,7 +162,12 @@ $font-sizes: (
 
   &__form-fieldset {
     font-size: var(--fs-regular);
-    font-weight: map-get($font-weights, semi-bold);
+    font-weight: map-get($font-weights, regular);
+  }
+
+  &__form :is(input, textarea) {
+    font-size: var(--fs-small);
+    font-weight: map-get($font-weights, regular);
   }
 
   :is(&__form-legend, &__form-button) {
