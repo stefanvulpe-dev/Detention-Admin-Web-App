@@ -138,6 +138,7 @@ select {
 }
 .main .card__title {
   font-size: var(--fs-medium);
+  font-weight: 600;
 }
 .main .card__container {
   font-size: var(--fs-small);
