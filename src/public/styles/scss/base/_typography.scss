@@ -125,6 +125,7 @@ $font-sizes: (
   .card {
     &__title {
       font-size: var(--fs-medium);
+      font-weight: map-get($font-weights, semi-bold);
     }
 
     &__container {
