@@ -29,6 +29,8 @@ body {
   padding: 0rem 1.65rem 0rem 1.65rem;
 
   &__chart-container {
+    @include flex-display(center, center, 0rem);
+    flex-direction: column;
     width: min(90%, 62.5rem);
     padding: 1.5rem;
     border-top: 0.25rem solid;
@@ -39,8 +41,18 @@ body {
       margin: auto;
     }
 
+    .charts{
+      margin-top: 0.65rem;
+      padding: 0.75rem;
+      width: 80% !important;
+      height: 80% !important;
+      background-color: map-get($colors, accent-maroon);
+      border-radius: 0.5rem;
+      box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);
+    }
+
     &__title {
-      width: 80%;
+      width: 75%;
       text-align: center;
       margin-inline: auto;
       padding: 0.5rem 0.5rem 2rem 0.5rem;

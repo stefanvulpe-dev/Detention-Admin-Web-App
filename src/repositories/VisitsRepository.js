@@ -91,4 +91,23 @@ export class VisitsRepository {
       client.release();
     }
   }
+
+  async getNumberOfVisitsPerMonth(month) {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select count(*)
+        from visits
+        where date >= now() - INTERVAL '1 year'
+        and extract(month from date) = $1
+        and date <= now();`,
+        [month]
+      );
+      return result.rows[0].count;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
 }

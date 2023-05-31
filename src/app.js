@@ -121,6 +121,12 @@ const server = http.createServer((req, res) => {
       AuthController.requireAuth(req, res, () =>
         GuestController.getGuests(req, res)
       );
+    } else if (url.match(/^\/prisoners\/get-count\?year=[1-9][0-9]*$/)) {
+        PrisonerController.getNumberOfPrisonersPerYear(req, res)        
+    } else if (url.match(/^\/prisoners\/get-sentence-count\?min=[0-9]&max=[1-9][0-9]*$/)) {
+      PrisonerController.getNumberOfPrisonersPerSentence(req, res)        
+    } else if (url.match(/^\/visits\/get-month-count\?month=[0-1][0-9]$/)) {
+      VisitController.getNumberOfVisitsPerMonth(req, res)        
     }
   }
 

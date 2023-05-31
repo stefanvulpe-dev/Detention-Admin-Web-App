@@ -67,7 +67,7 @@ select {
   }
 }
 :root {
-  --fs-very-small: 0.75rem;
+  --fs-very-small: 0.55rem;
   --fs-small: 0.875rem;
   --fs-regular: 1rem;
   --fs-medium: 1.15rem;
@@ -329,7 +329,7 @@ select {
 }
 
 .stats-info__container__card--1 {
-  background-color: hsl(320, 15%, 19%);
+  background-color: hsl(169, 26%, 20%);
 }
 .stats-info__container__card--2 {
   background-color: hsl(148, 30%, 46%);
@@ -380,10 +380,6 @@ select {
 }
 .about__container-description {
   color: hsl(0, 0%, 100%);
-}
-
-.stats-info__card {
-  background-color: red;
 }
 
 .guest-main__aside__button {
@@ -614,6 +610,11 @@ body {
   padding: 0rem 1.65rem 0rem 1.65rem;
 }
 .stats-main__chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+  flex-direction: column;
   width: min(90%, 62.5rem);
   padding: 1.5rem;
   border-top: 0.25rem solid;
@@ -623,8 +624,17 @@ body {
   width: 90%;
   margin: auto;
 }
+.stats-main__chart-container .charts {
+  margin-top: 0.65rem;
+  padding: 0.75rem;
+  width: 80% !important;
+  height: 80% !important;
+  background-color: hsl(320, 15%, 19%);
+  border-radius: 0.5rem;
+  box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);
+}
 .stats-main__chart-container__title {
-  width: 80%;
+  width: 75%;
   text-align: center;
   margin-inline: auto;
   padding: 0.5rem 0.5rem 2rem 0.5rem;
@@ -1982,6 +1992,9 @@ body {
   .stats-main__chart-container {
     padding: 4rem 8rem 4rem 8rem;
   }
+  .stats-main__chart-container .charts {
+    padding: 1.5rem;
+  }
   .contact__title {
     font-size: 2rem;
     transition: ease all 1s;
@@ -2134,6 +2147,9 @@ body {
   }
   .stats-info__container__card--1, .stats-info__container__card--2, .stats-info__container__card--3 {
     padding: 1rem;
+  }
+  .stats-main .charts {
+    padding: 2.5rem;
   }
   .guest-main {
     grid-template-columns: 1.25fr 3fr;

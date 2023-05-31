@@ -46,3 +46,53 @@ export const getAllPrisonersNames = async (req, res) => {
     res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
+
+/**
+ *
+ * @path '/prisoners/get-count?year=?'
+ * @method GET
+ */
+export const getNumberOfPrisonersPerYear = async (req, res) => {
+  try {
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const year = params.get('year');
+
+    if (!year) {
+      throw new Error('Missing year parameter.');
+    }
+
+    const numberOfPrisoners =
+      await new PrisonersRepository().getNumberOfPrisonersLastYear(year);
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: false, numberOfPrisoners }));
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
+
+/**
+ *
+ * @path '/prisoners/get-sentence-count?max=?'
+ * @method GET
+ */
+export const getNumberOfPrisonersPerSentence = async (req, res) => {
+  try {
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const min = params.get('min');
+    const max = params.get('max');
+
+    if (!min && !max) {
+      throw new Error('Missing min and max parameter.');
+    }
+    const numberOfPrisoners =
+      await new PrisonersRepository().getNumberOfPrisonersPerSentence(min, max);
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: false, numberOfPrisoners }));
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};

@@ -132,3 +132,28 @@ export const getVisitsHistory = async (req, res) => {
     res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
+
+/**
+ *
+ * @path '/visits/get-month-count?month=?'
+ * @method GET
+ */
+export const getNumberOfVisitsPerMonth = async (req, res) => {
+  try {
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const month = params.get('month');
+
+    if (!month) {
+      throw new Error('Invalid query params.');
+    }
+
+    const numberOfVisits =
+      await new VisitsRepository().getNumberOfVisitsPerMonth(month);
+
+    res.writeHead(200, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: false, numberOfVisits }));
+  } catch (err) {
+    res.writeHead(400, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};

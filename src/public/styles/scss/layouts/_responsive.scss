@@ -66,6 +66,9 @@
     padding: 0;
     &__chart-container {
       padding: 4rem 8rem 4rem 8rem;
+      .charts {
+        padding: 1.5rem;
+      }
     }
   }
 
@@ -268,6 +271,12 @@
         }
       }
     }
+  }
+
+  .stats-main {
+    .charts {
+        padding: 2.5rem;
+      }
   }
 
   .guest-main {

@@ -21,7 +21,7 @@ export const createPrisonersTable = async () => {
         "firstName"          varchar(255)             not null,
         "lastName"           varchar(255)             not null,
         "detentionStartedAt" date                     not null,
-        "detentionPeriod"    date                     not null,
+        "detentionEndedAt"    date                     not null,
         "createdAt" timestamp with time zone not null default now(),
         "updatedAt" timestamp with time zone not null default now()
       )`

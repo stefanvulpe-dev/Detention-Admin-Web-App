@@ -84,17 +84,23 @@
   </div>
 
   <main class="stats-main">
-    <div class="stats-main__chart-container">
+    <div class="stats-main__chart-container" id="chart-container1">
       <div class="stats-main__chart-container__title">
         <h2>Evoluția numărului deținuților în ultimii 8 ani</h2>
       </div>
-      <img src="/assets/statistici/grafic1.svg" alt="statistics-chart">
+      <canvas class="charts" id="chart1"></canvas>
     </div>
-    <div class="stats-main__chart-container">
+    <div class="stats-main__chart-container" id="chart-container2">
       <div class="stats-main__chart-container__title">
-        <h2>Media duratei pedepselor deținuților în ultimii 8 ani</h2>
+        <h2>Numărul deținuților din fiecare categorie de pedeapsă</h2>
       </div>
-      <img src="/assets/statistici/grafic1.svg" alt="statistics-chart">
+      <canvas class="charts" id="chart2"></canvas>
+    </div>
+    <div class="stats-main__chart-container" id="chart-container3">
+      <div class="stats-main__chart-container__title">
+        <h2>Frecvența vizitelor pe parcursul ultimului an</h2>
+      </div>
+      <canvas class="charts" id="chart3"></canvas>
     </div>
   </main>
 
@@ -131,6 +137,8 @@
     </div>
   </footer>
   <script src="/scripts/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/scripts/statistics.js"></script>
 </body>
 
 </html>
