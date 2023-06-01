@@ -5,7 +5,7 @@ export class PrisonersRepository {
     const client = await pool.connect();
     try {
       const result = await client.query(
-        'insert into prisoners(id, "firstName", "lastName", "detentionStartedAt", "detentionPeriod") values (default, $1, $2, $3, $4) returning *',
+        'insert into prisoners(id, "firstName", "lastName", "detentionStartedAt", "detentionEndedAt") values (default, $1, $2, $3, $4) returning *',
         [
           prisoner.firstName,
           prisoner.lastName,
@@ -89,6 +89,76 @@ export class PrisonersRepository {
         [visitId]
       );
       return result.rows[0];
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async getNumberOfPrisonersLastYear(year) {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select count(*)
+          from prisoners
+          where extract(year from "detentionStartedAt") <= $1 
+          and extract(year from "detentionEndedAt") >= $1;`,
+        [year]
+      );
+      return result.rows[0].count;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async getNumberOfPrisonersPerSentence(min, max) {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select count(*)
+        from prisoners
+        where extract(year from "detentionEndedAt") - extract(year from "detentionStartedAt") >= $1 
+        and extract(year from "detentionEndedAt") - extract(year from "detentionStartedAt") < $2;`,
+        [min, max]
+      );
+      return result.rows[0].count;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async getNumberOfPrisonersThisYear() {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select count(*)
+        from prisoners
+        where extract(year from "detentionStartedAt") 
+        = extract(year from now());`
+      );
+      return result.rows[0].count;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async getNumberOfPrisonersFreeThisYear() {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select count(*)
+        from prisoners
+        where extract(year from "detentionEndedAt") = extract(year from now())
+         and now() >= "detentionEndedAt";`
+      );
+      return result.rows[0].count;
     } catch (error) {
       throw new Error(error.message);
     } finally {

@@ -55,7 +55,7 @@ $colors: (
 
 .stats-info__container__card {
   &--1 {
-    background-color: map-get($colors, accent-maroon);
+    background-color: map-get($colors, primary-dark-gray);
   }
 
   &--2 {
@@ -130,12 +130,6 @@ $colors: (
     &-description {
       color: map-get($colors, primary-white);
     }
-  }
-}
-
-.stats-info {
-  &__card {
-    background-color: red;
   }
 }
 

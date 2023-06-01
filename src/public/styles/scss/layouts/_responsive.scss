@@ -38,11 +38,8 @@
   }
 
   .stats-info {
-    padding: 4rem 5rem 4rem 5rem;
-    width: min(90%, 65rem);
-    margin-inline: auto;
-
     &__container {
+      margin-block: 4rem;
       @include grid-display(
         1fr 1fr 1fr,
         auto,
@@ -64,9 +61,6 @@
 
   .stats-main {
     padding: 0;
-    &__chart-container {
-      padding: 4rem 8rem 4rem 8rem;
-    }
   }
 
   .contact {
@@ -258,7 +252,6 @@
   }
 
   .stats-info {
-    padding: 4rem 5rem 4rem 5rem;
     &__container {
       &__card {
         &--1,
@@ -267,6 +260,12 @@
           padding: 1rem;
         }
       }
+    }
+  }
+
+  .stats-main {
+    .charts {
+      padding: 2.5rem;
     }
   }
 
@@ -359,9 +358,6 @@
     }
   }
 
-  .stats-info {
-    padding: 4rem 5rem 4rem 5rem;
-  }
   .help {
     &__qa {
       &__question {

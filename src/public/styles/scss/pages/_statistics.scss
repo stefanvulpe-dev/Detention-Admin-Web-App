@@ -7,10 +7,10 @@ body {
   background-repeat: no-repeat;
 }
 .stats-info {
-  padding: 2rem 4rem 2rem 4rem;
+  width: min(100% - 4rem, 42.5rem);
+  margin-inline: auto;
+  margin-block: 2rem;
   &__container {
-    width: min(90%, 83.5rem);
-    margin-inline: auto;
     @include grid-display(
       auto,
       1fr 1fr 1fr,
@@ -26,11 +26,13 @@ body {
   min-height: 100vh;
   @include flex-display(start, center, 1rem);
   flex-direction: column;
-  padding: 0rem 1.65rem 0rem 1.65rem;
+  padding-inline: 1rem;
 
   &__chart-container {
-    width: min(90%, 62.5rem);
-    padding: 1.5rem;
+    @include flex-display(center, center, 0rem);
+    flex-direction: column;
+    width: min(100% - 4rem, 42.5rem);
+    padding-block: 1.5rem;
     border-top: 0.25rem solid;
     border-radius: 0.25rem;
 
@@ -39,8 +41,18 @@ body {
       margin: auto;
     }
 
+    .charts {
+      margin-top: 0.65rem;
+      padding: 0.75rem;
+      width: 95% !important;
+      height: 95% !important;
+      background-color: map-get($colors, accent-maroon);
+      border-radius: 0.5rem;
+      box-shadow: 0.4rem -0.4rem 0.8rem 0rem hsla(0, 0%, 0%, 0.39);
+    }
+
     &__title {
-      width: 80%;
+      width: 75%;
       text-align: center;
       margin-inline: auto;
       padding: 0.5rem 0.5rem 2rem 0.5rem;

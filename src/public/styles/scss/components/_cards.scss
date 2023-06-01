@@ -8,9 +8,9 @@
     border-radius: 0.7rem;
     padding: 1rem 1.65rem 1rem 1.65rem;
     text-align: center;
-    @include flex-display(left, normal, 0);
+    @include flex-display(center, center, 0);
     height: 100%;
-    width: 100%;
+    max-width: 20rem;
     box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
   }
 }

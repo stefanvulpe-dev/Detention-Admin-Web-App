@@ -13,9 +13,9 @@ import {
   VisitController,
   s3Controller,
 } from './controllers/index.js';
-import { dropTables, createTables } from './models/sync.js';
-import { UsersRepository, PrisonersRepository } from './repositories/index.js';
 import { pool } from './models/db/pool.js';
+import { createTables, dropTables } from './models/sync.js';
+import { PrisonersRepository, UsersRepository } from './repositories/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'));
@@ -120,6 +120,32 @@ const server = http.createServer((req, res) => {
     } else if (url.match(/^\/guests\/get-guests\?visitId=[1-9][0-9]*$/)) {
       AuthController.requireAuth(req, res, () =>
         GuestController.getGuests(req, res)
+      );
+    } else if (url.match(/^\/prisoners\/get-count\?year=[1-9][0-9]*$/)) {
+      AuthController.requireAuth(req, res, () =>
+        PrisonerController.getNumberOfPrisonersPerYear(req, res)
+      );
+    } else if (
+      url.match(/^\/prisoners\/get-sentence-count\?min=[0-9]&max=[1-9][0-9]*$/)
+    ) {
+      AuthController.requireAuth(req, res, () =>
+        PrisonerController.getNumberOfPrisonersPerSentence(req, res)
+      );
+    } else if (url.match(/^\/visits\/get-month-count\?month=[0-1][0-9]$/)) {
+      AuthController.requireAuth(req, res, () =>
+        VisitController.getNumberOfVisitsPerMonth(req, res)
+      );       
+    } else if (url.match(/^\/prisoners\/get-no1$/)) {
+      AuthController.requireAuth(req, res, () =>
+      PrisonerController.getNumberOfPrisonersThisYear(req,res)   
+      );    
+    } else if (url.match(/^\/prisoners\/get-no2$/)) {
+      AuthController.requireAuth(req, res, () =>
+      PrisonerController.getNumberOfPrisonersFreeThisYear(req,res)  
+      );     
+    } else if (url.match(/^\/visits\/get-no3$/)) {      
+      AuthController.requireAuth(req, res, () =>
+      VisitController.getNumberOfVisitsAveragePerMonth(req,res)  
       );
     }
   }
