@@ -49,7 +49,7 @@ async function getPrisonersNoPerYear(year) {
   const response = await request.json();
 
   if (response.error) {
-    console.log(response.error);
+    return;
   } else {
     const numberOfPrisoners = parseInt(response.numberOfPrisoners);
     return numberOfPrisoners;
@@ -70,7 +70,7 @@ async function getPrisonersNoPerSentence(min, max) {
   const response = await request.json();
 
   if (response.error) {
-    console.log(response.error);
+    return;
   } else {
     const numberOfPrisoners = parseInt(response.numberOfPrisoners);
     return numberOfPrisoners;
@@ -90,7 +90,67 @@ async function getVisitsNoPerMonth(month) {
   const response = await request.json();
 
   if (response.error) {
+    return;
+  } else {
+    const numberOfVisits = parseInt(response.numberOfVisits);
+    return numberOfVisits;
+  }
+}
+
+async function getNo1() {
+  const request = await fetch(
+    '/prisoners/get-no1',
+    {
+      method: 'GET',
+      headers: {
+        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+      },
+    }
+  );
+  const response = await request.json();
+
+  if (response.error) {
     console.log(response.error);
+  } else {
+    const numberOfPrisoners = parseInt(response.numberOfPrisoners);
+    return numberOfPrisoners;
+  }
+}
+
+async function getNo2() {
+  const request = await fetch(
+    '/prisoners/get-no2',
+    {
+      method: 'GET',
+      headers: {
+        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+      },
+    }
+  );
+  const response = await request.json();
+
+  if (response.error) {
+    console.log(response.error);
+  } else {
+    const numberOfPrisoners = parseInt(response.numberOfPrisoners);
+    return numberOfPrisoners;
+  }
+}
+
+async function getNo3() {
+  const request = await fetch(
+    '/visits/get-no3',
+    {
+      method: 'GET',
+      headers: {
+        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+      },
+    }
+  );
+  const response = await request.json();
+
+  if (response.error) {
+    return;
   } else {
     const numberOfVisits = parseInt(response.numberOfVisits);
     return numberOfVisits;
@@ -162,7 +222,7 @@ async function createBarChart() {
   const prisonerCounts = await Promise.all(years.map(getPrisonersNoPerYear));
 
   const ctx = document.getElementById('chart1');
-  
+
   const screenWidth = window.innerWidth;
   let borderR, fsize;
   if (screenWidth < 475) {
@@ -178,7 +238,12 @@ async function createBarChart() {
     borderR = 5;
     fsize = 20;
   }
-  await new Chart(ctx, {
+
+  if (barChart) {
+    barChart.destroy();
+  }
+
+  barChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: getLast8Years(),
@@ -192,7 +257,7 @@ async function createBarChart() {
       ],
     },
     options: {
-      responsive: false,
+      responsive: true,
       aspectRatio: 1.3,
       scales: {
         x: {
@@ -251,7 +316,12 @@ async function createPieChart() {
   } else {
     fsize = 20;
   }
-  await new Chart(ctx, {
+
+  if (pieChart) {
+    pieChart.destroy();
+  }
+
+  pieChart = new Chart(ctx, {
     type: 'pie',
     data: {
       labels: ['0-2 ani', '2-5 ani', '5-7 ani', '+7 ani'],
@@ -265,7 +335,7 @@ async function createPieChart() {
       ],
     },
     options: {
-      responsive: false,
+      responsive: true,
       aspectRatio: 1.3,
       plugins: {
         legend: {
@@ -301,7 +371,12 @@ async function createLineChart() {
   } else {
     fsize = 20;
   }
-  await new Chart(ctx, {
+
+  if (lineChart) {
+    lineChart.destroy();
+  }
+
+  lineChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: monthNames,
@@ -314,7 +389,7 @@ async function createLineChart() {
       ],
     },
     options: {
-      responsive: false,
+      responsive: true,
       aspectRatio: 1.3,
       scales: {
         x: {
@@ -364,36 +439,28 @@ async function populateCards(){
   card3_no.innerHTML= await getNo3();
 }
 
-createBarChart();
-createPieChart();
-createLineChart();
-populateCards();
+let barChart, pieChart, lineChart;
 
-window.addEventListener('resize', async function () {
-  const chartElement1 = document.getElementById('chart1');
-  chartElement1.parentElement.removeChild(chartElement1);
+(async function () {
+  const request = await fetch('/users/get-profile', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
+  const response = await request.json();
 
-  const newChartElement1 = document.createElement('canvas');
-  newChartElement1.setAttribute('id', 'chart1');
-  newChartElement1.classList.add('charts');
-  document.querySelector('#chart-container1').appendChild(newChartElement1);
+  if (response.error) {
+    window.location.replace('/views/login.html');
+  }
+
   await createBarChart();
-
-  const chartElement2 = document.getElementById('chart2');
-  chartElement2.parentElement.removeChild(chartElement2);
-
-  const newChartElement2 = document.createElement('canvas');
-  newChartElement2.setAttribute('id', 'chart2');
-  newChartElement2.classList.add('charts');
-  document.querySelector('#chart-container2').appendChild(newChartElement2);
   await createPieChart();
-
-  const chartElement3 = document.getElementById('chart3');
-  chartElement3.parentElement.removeChild(chartElement3);
-
-  const newChartElement3 = document.createElement('canvas');
-  newChartElement3.setAttribute('id', 'chart3');
-  newChartElement3.classList.add('charts');
-  document.querySelector('#chart-container3').appendChild(newChartElement3);
+  await createLineChart();
+  await populateCards();
+})();
+window.addEventListener('resize', async function () {
+  await createBarChart();
+  await createPieChart();
   await createLineChart();
 });

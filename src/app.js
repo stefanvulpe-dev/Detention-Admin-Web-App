@@ -13,9 +13,9 @@ import {
   VisitController,
   s3Controller,
 } from './controllers/index.js';
-import { dropTables, createTables } from './models/sync.js';
-import { UsersRepository, PrisonersRepository } from './repositories/index.js';
 import { pool } from './models/db/pool.js';
+import { createTables, dropTables } from './models/sync.js';
+import { PrisonersRepository, UsersRepository } from './repositories/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 let serve = serveStatic(path.join(__dirname, 'public'));
@@ -122,17 +122,31 @@ const server = http.createServer((req, res) => {
         GuestController.getGuests(req, res)
       );
     } else if (url.match(/^\/prisoners\/get-count\?year=[1-9][0-9]*$/)) {
-        PrisonerController.getNumberOfPrisonersPerYear(req, res)        
-    } else if (url.match(/^\/prisoners\/get-sentence-count\?min=[0-9]&max=[1-9][0-9]*$/)) {
-      PrisonerController.getNumberOfPrisonersPerSentence(req, res)        
+      AuthController.requireAuth(req, res, () =>
+        PrisonerController.getNumberOfPrisonersPerYear(req, res)
+      );
+    } else if (
+      url.match(/^\/prisoners\/get-sentence-count\?min=[0-9]&max=[1-9][0-9]*$/)
+    ) {
+      AuthController.requireAuth(req, res, () =>
+        PrisonerController.getNumberOfPrisonersPerSentence(req, res)
+      );
     } else if (url.match(/^\/visits\/get-month-count\?month=[0-1][0-9]$/)) {
-      VisitController.getNumberOfVisitsPerMonth(req, res)        
+      AuthController.requireAuth(req, res, () =>
+        VisitController.getNumberOfVisitsPerMonth(req, res)
+      );       
     } else if (url.match(/^\/prisoners\/get-no1$/)) {
-      PrisonerController.getNumberOfPrisonersThisYear(req,res)       
+      AuthController.requireAuth(req, res, () =>
+      PrisonerController.getNumberOfPrisonersThisYear(req,res)   
+      );    
     } else if (url.match(/^\/prisoners\/get-no2$/)) {
-      PrisonerController.getNumberOfPrisonersFreeThisYear(req,res)       
-    } else if (url.match(/^\/visits\/get-no3$/)) {
-      VisitController.getNumberOfVisitsAveragePerMonth(req,res)       
+      AuthController.requireAuth(req, res, () =>
+      PrisonerController.getNumberOfPrisonersFreeThisYear(req,res)  
+      );     
+    } else if (url.match(/^\/visits\/get-no3$/)) {      
+      AuthController.requireAuth(req, res, () =>
+      VisitController.getNumberOfVisitsAveragePerMonth(req,res)  
+      );
     }
   }
 
