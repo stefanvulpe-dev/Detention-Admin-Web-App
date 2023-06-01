@@ -157,3 +157,21 @@ export const getNumberOfVisitsPerMonth = async (req, res) => {
     res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
+
+/**
+ *
+ * @path '/visits/get-no3'
+ * @method GET
+ */
+export const getNumberOfVisitsAveragePerMonth = async (req, res) => {
+  try {
+    const numberOfVisits =
+      await new VisitsRepository().getNumberOfVisitsAveragePerMonth();
+
+    res.writeHead(200, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: false, numberOfVisits }));
+  } catch (err) {
+    res.writeHead(400, { 'Content-type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};

@@ -127,6 +127,12 @@ const server = http.createServer((req, res) => {
       PrisonerController.getNumberOfPrisonersPerSentence(req, res)        
     } else if (url.match(/^\/visits\/get-month-count\?month=[0-1][0-9]$/)) {
       VisitController.getNumberOfVisitsPerMonth(req, res)        
+    } else if (url.match(/^\/prisoners\/get-no1$/)) {
+      PrisonerController.getNumberOfPrisonersThisYear(req,res)       
+    } else if (url.match(/^\/prisoners\/get-no2$/)) {
+      PrisonerController.getNumberOfPrisonersFreeThisYear(req,res)       
+    } else if (url.match(/^\/visits\/get-no3$/)) {
+      VisitController.getNumberOfVisitsAveragePerMonth(req,res)       
     }
   }
 

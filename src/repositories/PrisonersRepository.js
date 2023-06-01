@@ -131,4 +131,38 @@ export class PrisonersRepository {
       client.release();
     }
   }
+
+  async getNumberOfPrisonersThisYear() {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select count(*)
+        from prisoners
+        where extract(year from "detentionStartedAt") 
+        = extract(year from now());`
+      );
+      return result.rows[0].count;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
+
+  async getNumberOfPrisonersFreeThisYear() {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select count(*)
+        from prisoners
+        where extract(year from "detentionEndedAt") = extract(year from now())
+         and now() >= "detentionEndedAt";`
+      );
+      return result.rows[0].count;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
 }

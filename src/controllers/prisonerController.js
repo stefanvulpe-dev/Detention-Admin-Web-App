@@ -96,3 +96,39 @@ export const getNumberOfPrisonersPerSentence = async (req, res) => {
     res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
+
+/**
+ *
+ * @path '/prisoners/get-no1'
+ * @method GET
+ */
+export const getNumberOfPrisonersThisYear = async (req, res) => {
+  try {
+    const numberOfPrisoners =
+      await new PrisonersRepository().getNumberOfPrisonersThisYear();
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: false, numberOfPrisoners }));
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
+
+/**
+ *
+ * @path '/prisoners/get-no2'
+ * @method GET
+ */
+export const getNumberOfPrisonersFreeThisYear = async (req, res) => {
+  try {
+    const numberOfPrisoners =
+      await new PrisonersRepository().getNumberOfPrisonersFreeThisYear();
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: false, numberOfPrisoners }));
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};

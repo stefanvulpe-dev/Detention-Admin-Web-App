@@ -110,4 +110,22 @@ export class VisitsRepository {
       client.release();
     }
   }
+
+  async getNumberOfVisitsAveragePerMonth() {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(
+        `select avg(s.months_number)
+        from (select p."prisonerId",round(count(*)/(extract(year from age(current_date, pr."detentionStartedAt")) * 
+          12 + extract(month from age(current_date, pr."detentionStartedAt")))) as months_number
+          from visits v join prisoners_visits p on p."visitId" = v.id join
+          prisoners pr on pr.id = p."prisonerId"  group by p."prisonerId", pr."detentionStartedAt") s;`
+      );
+      return result.rows[0].avg;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
 }

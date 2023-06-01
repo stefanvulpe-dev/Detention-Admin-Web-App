@@ -97,6 +97,66 @@ async function getVisitsNoPerMonth(month) {
   }
 }
 
+async function getNo1() {
+  const request = await fetch(
+    '/prisoners/get-no1',
+    {
+      method: 'GET',
+      headers: {
+        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+      },
+    }
+  );
+  const response = await request.json();
+
+  if (response.error) {
+    console.log(response.error);
+  } else {
+    const numberOfPrisoners = parseInt(response.numberOfPrisoners);
+    return numberOfPrisoners;
+  }
+}
+
+async function getNo2() {
+  const request = await fetch(
+    '/prisoners/get-no2',
+    {
+      method: 'GET',
+      headers: {
+        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+      },
+    }
+  );
+  const response = await request.json();
+
+  if (response.error) {
+    console.log(response.error);
+  } else {
+    const numberOfPrisoners = parseInt(response.numberOfPrisoners);
+    return numberOfPrisoners;
+  }
+}
+
+async function getNo3() {
+  const request = await fetch(
+    '/visits/get-no3',
+    {
+      method: 'GET',
+      headers: {
+        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+      },
+    }
+  );
+  const response = await request.json();
+
+  if (response.error) {
+    console.log(response.error);
+  } else {
+    const numberOfVisits = parseInt(response.numberOfVisits);
+    return numberOfVisits;
+  }
+}
+
 async function createBarChart() {
   const years = getLast8Years();
   const prisonerCounts = await Promise.all(years.map(getPrisonersNoPerYear));
@@ -294,9 +354,20 @@ async function createLineChart() {
   });
 }
 
+async function populateCards(){
+  const card1_no=document.getElementById('no1');
+  const card2_no=document.getElementById('no2');
+  const card3_no=document.getElementById('no3');
+
+  card1_no.innerHTML= await getNo1();
+  card2_no.innerHTML= await getNo2();
+  card3_no.innerHTML= await getNo3();
+}
+
 createBarChart();
 createPieChart();
 createLineChart();
+populateCards();
 
 window.addEventListener('resize', async function () {
   const chartElement1 = document.getElementById('chart1');
