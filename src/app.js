@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import {
   AuthController,
   GuestController,
+  NewsController,
   PrisonerController,
   UserController,
   VisitController,
@@ -134,19 +135,21 @@ const server = http.createServer((req, res) => {
     } else if (url.match(/^\/visits\/get-month-count\?month=[0-1][0-9]$/)) {
       AuthController.requireAuth(req, res, () =>
         VisitController.getNumberOfVisitsPerMonth(req, res)
-      );       
+      );
     } else if (url.match(/^\/prisoners\/get-no1$/)) {
       AuthController.requireAuth(req, res, () =>
-      PrisonerController.getNumberOfPrisonersThisYear(req,res)   
-      );    
+        PrisonerController.getNumberOfPrisonersThisYear(req, res)
+      );
     } else if (url.match(/^\/prisoners\/get-no2$/)) {
       AuthController.requireAuth(req, res, () =>
-      PrisonerController.getNumberOfPrisonersFreeThisYear(req,res)  
-      );     
-    } else if (url.match(/^\/visits\/get-no3$/)) {      
-      AuthController.requireAuth(req, res, () =>
-      VisitController.getNumberOfVisitsAveragePerMonth(req,res)  
+        PrisonerController.getNumberOfPrisonersFreeThisYear(req, res)
       );
+    } else if (url.match(/^\/visits\/get-no3$/)) {
+      AuthController.requireAuth(req, res, () =>
+        VisitController.getNumberOfVisitsAveragePerMonth(req, res)
+      );
+    } else if (url.match(/^\/news\/get-news$/)) {
+      NewsController.getNews(req, res);
     }
   }
 
@@ -214,7 +217,7 @@ dropTables().then(() => {
         }
         return Promise.resolve(user);
       })
-      .then(user => {
+      .then(() => {
         console.log(`John Doe is here`);
       });
 
