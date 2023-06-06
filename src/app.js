@@ -1,7 +1,7 @@
 import { compileSassAndSave } from 'compile-sass';
 import 'dotenv/config';
 import * as fs from 'fs';
-import * as http from 'http';
+import https from 'https';
 import path, { dirname } from 'path';
 import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
@@ -29,7 +29,13 @@ await compileSassAndSave(
   path.join(__dirname, 'public/styles/css')
 );
 
-const server = http.createServer((req, res) => {
+const options = {
+  ca: fs.readFileSync('ca_bundle.crt'),
+  key: fs.readFileSync('private.key'),
+  cert: fs.readFileSync('certificate.crt'),
+};
+
+const server = https.createServer(options, (req, res) => {
   const url = req.url;
 
   //for serving css and assets
