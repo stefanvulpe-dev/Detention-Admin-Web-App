@@ -152,22 +152,10 @@ fileInput?.addEventListener('change', () => {
 });
 
 const profileLink = document.querySelector('a.profile-link');
-profileLink?.addEventListener('click', async event => {
-  event.preventDefault();
-  const request = await fetch('/users/get-profile', {
-    method: 'GET',
-    headers: {
-      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-    },
-  });
+const statsLink = document.querySelector('#stats-link');
 
-  const response = await request.json();
-  if (response.error) {
-    window.location.assign('/views/login.html');
-  } else {
-    window.location.assign('/views/userProfile.html');
-  }
-});
+requireAuth(profileLink, 'userProfile.html');
+requireAuth(statsLink, 'statistics.html');
 
 (async function () {
   const profilePicture = document.querySelector('img.person-logo');
@@ -194,3 +182,22 @@ profileLink?.addEventListener('click', async event => {
     profilePicture.src = response.url;
   }
 })();
+
+async function requireAuth(link, viewName) {
+  link?.addEventListener('click', async event => {
+    event.preventDefault();
+    const request = await fetch('/users/get-profile', {
+      method: 'GET',
+      headers: {
+        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+      },
+    });
+
+    const response = await request.json();
+    if (response.error) {
+      window.location.assign('/views/login.html');
+    } else {
+      window.location.assign(`/views/${viewName}`);
+    }
+  });
+}

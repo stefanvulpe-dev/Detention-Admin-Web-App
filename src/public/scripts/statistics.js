@@ -98,15 +98,12 @@ async function getVisitsNoPerMonth(month) {
 }
 
 async function getNo1() {
-  const request = await fetch(
-    '/prisoners/get-no1',
-    {
-      method: 'GET',
-      headers: {
-        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-      },
-    }
-  );
+  const request = await fetch('/prisoners/get-no1', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
   const response = await request.json();
 
   if (response.error) {
@@ -118,15 +115,12 @@ async function getNo1() {
 }
 
 async function getNo2() {
-  const request = await fetch(
-    '/prisoners/get-no2',
-    {
-      method: 'GET',
-      headers: {
-        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-      },
-    }
-  );
+  const request = await fetch('/prisoners/get-no2', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
   const response = await request.json();
 
   if (response.error) {
@@ -138,15 +132,12 @@ async function getNo2() {
 }
 
 async function getNo3() {
-  const request = await fetch(
-    '/visits/get-no3',
-    {
-      method: 'GET',
-      headers: {
-        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-      },
-    }
-  );
+  const request = await fetch('/visits/get-no3', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
   const response = await request.json();
 
   if (response.error) {
@@ -158,15 +149,12 @@ async function getNo3() {
 }
 
 async function getNo1() {
-  const request = await fetch(
-    '/prisoners/get-no1',
-    {
-      method: 'GET',
-      headers: {
-        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-      },
-    }
-  );
+  const request = await fetch('/prisoners/get-no1', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
   const response = await request.json();
 
   if (response.error) {
@@ -178,15 +166,12 @@ async function getNo1() {
 }
 
 async function getNo2() {
-  const request = await fetch(
-    '/prisoners/get-no2',
-    {
-      method: 'GET',
-      headers: {
-        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-      },
-    }
-  );
+  const request = await fetch('/prisoners/get-no2', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
   const response = await request.json();
 
   if (response.error) {
@@ -198,15 +183,12 @@ async function getNo2() {
 }
 
 async function getNo3() {
-  const request = await fetch(
-    '/visits/get-no3',
-    {
-      method: 'GET',
-      headers: {
-        csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-      },
-    }
-  );
+  const request = await fetch('/visits/get-no3', {
+    method: 'GET',
+    headers: {
+      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+    },
+  });
   const response = await request.json();
 
   if (response.error) {
@@ -429,36 +411,25 @@ async function createLineChart() {
   });
 }
 
-async function populateCards(){
-  const card1_no=document.getElementById('no1');
-  const card2_no=document.getElementById('no2');
-  const card3_no=document.getElementById('no3');
+async function populateCards() {
+  const card1_no = document.getElementById('no1');
+  const card2_no = document.getElementById('no2');
+  const card3_no = document.getElementById('no3');
 
-  card1_no.innerHTML= await getNo1();
-  card2_no.innerHTML= await getNo2();
-  card3_no.innerHTML= await getNo3();
+  card1_no.innerHTML = await getNo1();
+  card2_no.innerHTML = await getNo2();
+  card3_no.innerHTML = await getNo3();
 }
 
 let barChart, pieChart, lineChart;
 
 (async function () {
-  const request = await fetch('/users/get-profile', {
-    method: 'GET',
-    headers: {
-      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-    },
-  });
-  const response = await request.json();
-
-  if (response.error) {
-    window.location.replace('/views/login.html');
-  }
-
   await createBarChart();
   await createPieChart();
   await createLineChart();
   await populateCards();
 })();
+
 window.addEventListener('resize', async function () {
   await createBarChart();
   await createPieChart();

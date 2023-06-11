@@ -1,18 +1,10 @@
 (async function () {
-  const request = await fetch(
-    'https://newsapi.org/v2/everything?q=penitenciar OR închisoare&searchIn=title,description',
-    {
-      method: 'GET',
-      headers: { 'X-Api-Key': '380a949a47574d3f9ed787e834821edb' },
-    }
-  );
-  if (!request.ok) {
-    console.log('Error fetching news: ', request.status);
+  const request = await fetch('/news/get-news', { method: 'GET' });
+  const response = await request.json();
+  if (response.error) {
+    console.log(response.message);
   } else {
-    const response = await request.json();
-    const shuffledNews = response.articles.sort((a, b) => 0.5 - Math.random());
-    const news = shuffledNews.slice(0, 4);
-    renderNewsCards(news);
+    renderNewsCards(response.news);
   }
   document.querySelector('.main__container').style.display = 'grid';
 })();
