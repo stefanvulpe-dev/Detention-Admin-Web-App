@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import {
   AuthController,
   GuestController,
+  NewsController,
   PrisonerController,
   UserController,
   VisitController,
@@ -151,6 +152,8 @@ const server = http.createServer((req, res) => {
       AuthController.requireAuth(req, res, () =>
         VisitController.getNumberOfVisitsAveragePerMonth(req, res)
       );
+    } else if (url.match(/^\/news\/get-news$/)) {
+      NewsController.getNews(req, res);
     } else {
       const readStream = fs.createReadStream(`${VIEWS_PATH}/404.html`);
       res.writeHead(200, { 'Content-type': 'text/html' });
@@ -222,7 +225,7 @@ dropTables().then(() => {
         }
         return Promise.resolve(user);
       })
-      .then(user => {
+      .then(() => {
         console.log(`John Doe is here`);
       });
 
