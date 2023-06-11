@@ -30,9 +30,11 @@ await compileSassAndSave(
 );
 
 const options = {
-  ca: fs.readFileSync('ca_bundle.crt'),
-  key: fs.readFileSync('private.key'),
-  cert: fs.readFileSync('certificate.crt'),
+  ca: fs.readFileSync('/home/ec2-user/Detention-Admin-Web-App/ca_bundle.crt'),
+  key: fs.readFileSync('/home/ec2-user/Detention-Admin-Web-App/private.key'),
+  cert: fs.readFileSync(
+    '/home/ec2-user/Detention-Admin-Web-App/certificate.crt'
+  ),
 };
 
 const server = https.createServer(options, (req, res) => {
