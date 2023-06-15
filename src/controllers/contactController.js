@@ -1,7 +1,7 @@
 import joi from 'joi';
-import nodemailer from 'nodemailer';
+import { sendEmail } from './emailController.js';
 import * as Utils from './utils.js';
-import { generateHtml } from './utils.js';
+import { generateReviewHtml } from './utils.js';
 /**
  * @path /contact/send
  * @method POST
@@ -33,28 +33,9 @@ export const sendReview = async (req, res) => {
       throw new Error(error.message);
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_ADMIN_USER,
-        pass: process.env.GMAIL_ADMIN_PASS,
-      },
-    });
+    const html = generateReviewHtml(review);
 
-    const html = generateHtml(review);
-
-    const mailOptions = {
-      from: process.env.GMAIL_ADMIN_USER,
-      to: review.email,
-      subject: "Feedback 'Broken Dreams' procesat",
-      html: html,
-    };
-
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        throw new Error(error.message);
-      }
-    });
+    await sendEmail(review.email, "Feedback 'Broken Dreams' procesat", html);
 
     res.writeHead(201, {
       'Content-type': 'application/json',
