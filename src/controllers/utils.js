@@ -45,7 +45,7 @@ export const parseCookies = req => {
   return list;
 };
 
-export const generateHtml = review => {
+export const generateReviewHtml = review => {
   const filePath = path.join(__dirname, '../views/email.html');
   const source = fs.readFileSync(filePath, 'utf-8').toString();
   const template = handlebars.compile(source);
@@ -53,6 +53,20 @@ export const generateHtml = review => {
     firstName: review.firstName,
     lastName: review.lastName,
     suggestions: review.suggestions,
+  };
+  const modifiedHTML = template(replacements);
+  return modifiedHTML;
+};
+
+export const generateVisitHtml = (date, time, prisoner, visitNature) => {
+  const filePath = path.join(__dirname, '../views/visitEmail.html');
+  const source = fs.readFileSync(filePath, 'utf-8').toString();
+  const template = handlebars.compile(source);
+  const replacements = {
+    date: date,
+    time: time,
+    prisoner: prisoner,
+    visitNature: visitNature,
   };
   const modifiedHTML = template(replacements);
   return modifiedHTML;

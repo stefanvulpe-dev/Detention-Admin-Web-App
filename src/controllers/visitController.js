@@ -6,7 +6,9 @@ import {
   PrisonersRepository,
   VisitsRepository,
 } from '../repositories/index.js';
+import { sendEmail } from './emailController.js';
 import * as Utils from './utils.js';
+import { generateVisitHtml } from './utils.js';
 const joi = baseJoi.extend(dateExtension);
 
 /**
@@ -92,6 +94,20 @@ export const postAddVisit = async (req, res) => {
 
     visitsRepository.recordGuestVisits(guestsData, visitId);
     visitsRepository.recordPrisonerVisits(prisonerId, visitId);
+
+    const html = generateVisitHtml(
+      newVisit.visitDate,
+      newVisit.visitTime,
+      `${firstName}  ${lastName}`,
+      newVisit.visitNature
+    );
+    for (const guest of guests) {
+      await sendEmail(
+        guest.email,
+        "Programare la 'Broken Dreams' efectuata",
+        html
+      );
+    }
 
     res.writeHead(201, {
       'Content-type': 'application/json',
