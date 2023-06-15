@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
   <header class="header" id="page-header">
     <div class="header__container">
       <a href="/">
@@ -62,20 +61,141 @@
   </header>
 
   <main class="profile">
-    <div class="profile__card">
-      <div class="profile__card-banner">
-        <img src="" alt="profile-picture" class="profile__card-photo">
+    <div class="profile-wrapper">
+      <div class="profile__card">
+        <div class="profile__card-banner">
+          <img src="" alt="profile-picture" class="profile__card-photo">
+        </div>
+        <div class="profile__card-details">
+          <p class="user-name"></p>
+          <p class="user-email"></p>
+        </div>
+        <button type="button" class="profile__card-button">Edit your profile</button>
       </div>
-      <div class="profile__card-details">
-        <p class="user-name"></p>
-        <p class="user-email"></p>
+      <div class="custom-select">
+        <select class="download-options" data-value="" onfocus="this.setAttribute('data-value', this.value);"
+          onchange="this.value = this.getAttribute('data-value');">
+          <option value="" selected disabled hidden>Download statistics ↓</option>
+          <option value="">CSV 📄</option>
+          <option value="">HTML 📄</option>
+          <option value="">JSON 📄</option>
+        </select>
       </div>
-      <button type="button" class="profile__card-button">Edit your profile</button>
     </div>
-    <div class="profile__data">
+    <section class="profile__data">
       <h1 class="profile__title"></h1>
-      <div id="visitsHistory"></div>
-    </div>
+      <div id="visitsHistory">
+        <ul class="paginated-list" aria-live="polite">
+          <li>
+            <details class="help__qa">
+              <summary class="help__qa__question">
+                <div class="help__qa__question__arrow"></div>
+                <h2 class="help__qa__question__text">
+                  Vizita 29.03.2021
+                </h2>
+              </summary>
+              <ol class="help__qa__steps">
+                <li class="help__qa__steps__step">
+                  Detinut: ${prisoner.firstName} ${prisoner.lastName}
+                </li>
+                <li class="help__qa__steps__step">
+                  Durata vizitei: ${hours} ore si ${minutes} minute
+                </li>
+                <li class="help__qa__steps__step">
+                  Starea detinutului: ${visit.mood}
+                </li>
+                <li class="help__qa__steps__step">
+                  Natura vizitei: ${visit.nature}
+                </li>
+                <li class="help__qa__steps__step">
+                  Rezumatul discutiilor: ${visit.summary}
+                </li>
+                <li class="help__qa__steps__step">
+                  Obiecte furnizate: ${visit.objects}
+                </li>
+                <li class="help__qa__steps__step">
+                  ${guests.length > 1 ? 'Vizitatori' : 'Vizitator'}: ${guestNames}
+                </li>
+              </ol>
+            </details>
+          </li>
+          <li>
+            <details class="help__qa">
+              <summary class="help__qa__question">
+                <div class="help__qa__question__arrow"></div>
+                <h2 class="help__qa__question__text">
+                  Vizita 29.03.2021
+                </h2>
+              </summary>
+              <ol class="help__qa__steps">
+                <li class="help__qa__steps__step">
+                  Detinut: ${prisoner.firstName} ${prisoner.lastName}
+                </li>
+                <li class="help__qa__steps__step">
+                  Durata vizitei: ${hours} ore si ${minutes} minute
+                </li>
+                <li class="help__qa__steps__step">
+                  Starea detinutului: ${visit.mood}
+                </li>
+                <li class="help__qa__steps__step">
+                  Natura vizitei: ${visit.nature}
+                </li>
+                <li class="help__qa__steps__step">
+                  Rezumatul discutiilor: ${visit.summary}
+                </li>
+                <li class="help__qa__steps__step">
+                  Obiecte furnizate: ${visit.objects}
+                </li>
+                <li class="help__qa__steps__step">
+                  ${guests.length > 1 ? 'Vizitatori' : 'Vizitator'}: ${guestNames}
+                </li>
+              </ol>
+            </details>
+          </li>
+          <li>
+            <details class="help__qa">
+              <summary class="help__qa__question">
+                <div class="help__qa__question__arrow"></div>
+                <h2 class="help__qa__question__text">
+                  Vizita 29.03.2021
+                </h2>
+              </summary>
+              <ol class="help__qa__steps">
+                <li class="help__qa__steps__step">
+                  Detinut: ${prisoner.firstName} ${prisoner.lastName}
+                </li>
+                <li class="help__qa__steps__step">
+                  Durata vizitei: ${hours} ore si ${minutes} minute
+                </li>
+                <li class="help__qa__steps__step">
+                  Starea detinutului: ${visit.mood}
+                </li>
+                <li class="help__qa__steps__step">
+                  Natura vizitei: ${visit.nature}
+                </li>
+                <li class="help__qa__steps__step">
+                  Rezumatul discutiilor: ${visit.summary}
+                </li>
+                <li class="help__qa__steps__step">
+                  Obiecte furnizate: ${visit.objects}
+                </li>
+                <li class="help__qa__steps__step">
+                  ${guests.length > 1 ? 'Vizitatori' : 'Vizitator'}: ${guestNames}
+                </li>
+              </ol>
+            </details>
+          </li>
+        </ul>
+        <nav class="pagination-container">
+          <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+            &lt; Prev
+          </button>
+          <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
+            Next &gt;
+          </button>
+        </nav>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">

@@ -3,6 +3,9 @@
   const userEmail = document.querySelector('.user-email');
   const profileTitle = document.querySelector('.profile__title');
   const profilePicture = document.querySelector('img.profile__card-photo');
+  const downloadOptions = document.querySelector('.download-options');
+
+  downloadOptions.addEventListener('change', e => e.preventDefault());
 
   let request = await fetch('/users/get-profile', {
     method: 'GET',
@@ -109,8 +112,8 @@ async function renderHistory(visitsIds) {
     cardContent += renderVisitCard(visit, prisoner, guests);
   }
 
-  const history = document.querySelector('#visitsHistory');
-  history.innerHTML = cardContent;
+  // const history = document.querySelector('#visitsHistory');
+  // history.innerHTML = cardContent;
 }
 
 function renderVisitCard(visit, prisoner, guests) {

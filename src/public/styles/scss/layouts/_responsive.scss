@@ -220,6 +220,10 @@
         font-size: var(--fs-very-small);
       }
     }
+
+    .custom-select {
+      margin-top: 4.75rem;
+    }
   }
 }
 
@@ -345,6 +349,24 @@
 
   .profile {
     width: min(100% - 4rem, 57.5rem);
+  }
+
+  .profile {
+    &__card {
+      .user-email {
+        font-size: var(--fs-very-small);
+      }
+    }
+
+    .pagination-container {
+      button {
+        font-size: var(--fs-small);
+      }
+    }
+
+    .download-options {
+      font-size: var(--fs-small);
+    }
   }
 }
 
