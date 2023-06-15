@@ -170,7 +170,11 @@ select {
 }
 .contact__form-fieldset {
   font-size: var(--fs-regular);
-  font-weight: 600;
+  font-weight: 400;
+}
+.contact__form :is(input, textarea) {
+  font-size: var(--fs-small);
+  font-weight: 400;
 }
 :is(.contact__form-legend, .contact__form-button) {
   font-size: var(--fs-large);
@@ -551,11 +555,13 @@ select {
 .contact__form input {
   padding: 0.5rem 1rem;
   width: 100%;
+  outline: none;
   border: none;
   border-radius: 0.5rem;
 }
 .contact__form textarea[name=suggestions] {
   resize: none;
+  outline: none;
   width: 100%;
   height: 12.5rem;
   padding: 1rem;
@@ -576,6 +582,18 @@ select {
 }
 .contact__form-button:active {
   opacity: 0.5;
+}
+
+.error-border {
+  border: solid !important;
+  border-color: hsl(0, 97%, 65%) !important;
+  border-width: 0.2rem !important;
+}
+
+:is(.firstName-error, .lastName-error, .email-error, .suggestions-error) {
+  color: hsl(0, 97%, 65%);
+  padding-top: 0.5rem;
+  display: none;
 }
 
 body {

@@ -7,6 +7,7 @@ import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
 import {
   AuthController,
+  ContactController,
   GuestController,
   NewsController,
   PrisonerController,
@@ -180,6 +181,8 @@ const server = http.createServer((req, res) => {
       AuthController.requireAuth(req, res, () =>
         PrisonerController.getAllPrisonersNames(req, res)
       );
+    } else if (url.match(/^\/contact\/send/)) {
+      ContactController.sendReview(req, res);
     }
   }
 

@@ -1,0 +1,88 @@
+<html>
+
+<head>
+  <style>
+    table {
+      border-collapse: separate;
+      border-spacing: 10px;
+    }
+
+
+    p {
+      font-family: arial, sans-serif;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      color: gray;
+      font-size: small;
+    }
+
+    .topper {
+      background-color: #003d8f;
+      width: 100%;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      padding: 20px;
+    }
+
+    content {
+      margin: 0 auto;
+      width: 80%;
+    }
+
+    .field-title {
+      font-family: arial, sans-serif;
+      font-weight: bolder;
+      font-size: x-large;
+    }
+
+    .field-text {
+      font-family: arial, sans-serif;
+      font-size: larger;
+    }
+
+    .field-end {
+      font-size: larger;
+      font-weight: bold;
+      font-family: arial, sans-serif;
+      margin-left: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topper">
+    <h1>Thank you for your feedback!</h1>
+  </div>
+  <br>
+  <div class="content">
+    <br>
+    <br>
+    <br>
+    <span class="field-text">Dear reviewer, </span> <span class="field-title">{{firstName}} {{lastName}},</span>
+    <span class="field-text">thank you for your suggestion:</span>
+    <span class="field-title">{{suggestions}}</span>
+    <br>
+    <br>
+    <span class="field-end">Please let us know if you have anything to ask or suggest in the future. Best
+      regards, DeAD Team.</span>
+    <br>
+    <br>
+  </div>
+  <br>
+  <br>
+  <br>
+  <hr>
+  <div class="footer content">
+    <p>
+      Copyright &#169; Broken Dreams 2023
+    </p>
+  </div>
+
+</body>
+
+</html>
