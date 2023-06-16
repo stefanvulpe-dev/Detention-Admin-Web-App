@@ -1208,7 +1208,7 @@ body {
   align-self: start;
 }
 .profile .profile__card {
-  min-width: 17.5rem;
+  min-width: 20rem;
   grid-row: 1/2;
   align-self: start;
   background-color: hsl(0, 0%, 80%);
@@ -1323,6 +1323,62 @@ body {
 }
 .profile .pagination-container button:is(:hover, :focus) {
   opacity: 0.7;
+}
+.profile form {
+  margin-top: 2.5rem;
+}
+.profile form #myFileUpload {
+  display: none;
+}
+.profile form label[for=myFileUpload] {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-medium);
+  font-weight: 400;
+  background-color: hsl(169, 26%, 20%);
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  outline: 0;
+  padding: 1rem;
+  box-shadow: 0 0 1rem rgba(14, 14, 14, 0.6);
+}
+.profile form .label-text {
+  transition: all 350ms ease-in-out;
+}
+.profile form .label-text:is(:hover, :focus) {
+  opacity: 0.7;
+}
+.profile form button {
+  margin-top: 2.5rem;
+  margin-left: auto;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-medium);
+  font-weight: 600;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 97%, 65%);
+  box-shadow: 0 0 1rem rgba(14, 14, 14, 0.5);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  transition: opacity 350ms ease-in-out;
+}
+.profile form button:is(:hover, :focus) {
+  opacity: 0.7;
+}
+.profile form .upload-error {
+  margin-top: 1rem;
+  color: hsl(0, 97%, 65%);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+.profile form .red-outline {
+  outline: 3px solid hsl(0, 97%, 65%);
+  border-radius: 0.5rem;
 }
 
 .error {
@@ -1915,14 +1971,14 @@ body {
   padding: 0.5rem 0.75rem;
 }
 .guest-dialog .dialog__form .field-wrapper .error-message {
-  display: none;
+  visibility: hidden;
   color: hsl(0, 97%, 65%);
   font-size: var(--fs-very-small);
   font-weight: 600;
   margin-top: 0.5rem;
 }
 .guest-dialog .dialog__form .field-wrapper .error-message.visible {
-  display: block;
+  visibility: visible;
 }
 .guest-dialog .dialog__form .field-wrapper .error-outline {
   outline: 3px solid hsl(0, 97%, 65%);
@@ -2295,6 +2351,12 @@ body {
     font-size: var(--fs-small);
   }
   .profile .download-options {
+    font-size: var(--fs-small);
+  }
+  .profile form button {
+    font-size: var(--fs-small);
+  }
+  .profile form label[for=myFileUpload] {
     font-size: var(--fs-small);
   }
 }

@@ -367,6 +367,15 @@
     .download-options {
       font-size: var(--fs-small);
     }
+
+    form {
+      button {
+        font-size: var(--fs-small);
+      }
+      label[for='myFileUpload'] {
+        font-size: var(--fs-small);
+      }
+    }
   }
 }
 

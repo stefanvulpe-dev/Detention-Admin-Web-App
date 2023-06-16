@@ -199,9 +199,15 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'PUT') {
-    if (req.url.match(/^\/guests\/edit-guest$/)) {
+    if (url.match(/^\/guests\/edit-guest$/)) {
       AuthController.requireAuth(req, res, () =>
         GuestController.validateGuest(req, res)
+      );
+    }
+
+    if (url.match(/^\/users\/update-profile$/)) {
+      AuthController.requireAuth(req, res, () =>
+        UserController.updateUserDetails(req, res)
       );
     }
   }

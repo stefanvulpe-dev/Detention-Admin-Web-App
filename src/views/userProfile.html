@@ -72,7 +72,7 @@
         </div>
         <button type="button" class="profile__card-button">Edit your profile</button>
       </div>
-      <div class="custom-select">
+      <div class="custom-select" style="display: none;">
         <select class="download-options" data-value="" onfocus="this.setAttribute('data-value', this.value);"
           onchange="this.value = this.getAttribute('data-value');">
           <option value="" selected disabled hidden>Download statistics ↓</option>
@@ -81,111 +81,17 @@
           <option value="">JSON 📄</option>
         </select>
       </div>
+      <form action="#" id="importData" style="display: none;">
+        <input type="file" name="myFileUpload" id="myFileUpload" accept="text/csv, text/json">
+        <label for="myFileUpload"><span class="label-text">Import data 📂</span></label>
+        <p class="upload-error" style="display: none;">Only csv or json files are accepted!</p>
+        <button type="submit" style="display: none;">Save</button>
+      </form>
     </div>
     <section class="profile__data">
       <h1 class="profile__title"></h1>
       <div id="visitsHistory">
-        <ul class="paginated-list" aria-live="polite">
-          <li>
-            <details class="help__qa">
-              <summary class="help__qa__question">
-                <div class="help__qa__question__arrow"></div>
-                <h2 class="help__qa__question__text">
-                  Vizita 29.03.2021
-                </h2>
-              </summary>
-              <ol class="help__qa__steps">
-                <li class="help__qa__steps__step">
-                  Detinut: ${prisoner.firstName} ${prisoner.lastName}
-                </li>
-                <li class="help__qa__steps__step">
-                  Durata vizitei: ${hours} ore si ${minutes} minute
-                </li>
-                <li class="help__qa__steps__step">
-                  Starea detinutului: ${visit.mood}
-                </li>
-                <li class="help__qa__steps__step">
-                  Natura vizitei: ${visit.nature}
-                </li>
-                <li class="help__qa__steps__step">
-                  Rezumatul discutiilor: ${visit.summary}
-                </li>
-                <li class="help__qa__steps__step">
-                  Obiecte furnizate: ${visit.objects}
-                </li>
-                <li class="help__qa__steps__step">
-                  ${guests.length > 1 ? 'Vizitatori' : 'Vizitator'}: ${guestNames}
-                </li>
-              </ol>
-            </details>
-          </li>
-          <li>
-            <details class="help__qa">
-              <summary class="help__qa__question">
-                <div class="help__qa__question__arrow"></div>
-                <h2 class="help__qa__question__text">
-                  Vizita 29.03.2021
-                </h2>
-              </summary>
-              <ol class="help__qa__steps">
-                <li class="help__qa__steps__step">
-                  Detinut: ${prisoner.firstName} ${prisoner.lastName}
-                </li>
-                <li class="help__qa__steps__step">
-                  Durata vizitei: ${hours} ore si ${minutes} minute
-                </li>
-                <li class="help__qa__steps__step">
-                  Starea detinutului: ${visit.mood}
-                </li>
-                <li class="help__qa__steps__step">
-                  Natura vizitei: ${visit.nature}
-                </li>
-                <li class="help__qa__steps__step">
-                  Rezumatul discutiilor: ${visit.summary}
-                </li>
-                <li class="help__qa__steps__step">
-                  Obiecte furnizate: ${visit.objects}
-                </li>
-                <li class="help__qa__steps__step">
-                  ${guests.length > 1 ? 'Vizitatori' : 'Vizitator'}: ${guestNames}
-                </li>
-              </ol>
-            </details>
-          </li>
-          <li>
-            <details class="help__qa">
-              <summary class="help__qa__question">
-                <div class="help__qa__question__arrow"></div>
-                <h2 class="help__qa__question__text">
-                  Vizita 29.03.2021
-                </h2>
-              </summary>
-              <ol class="help__qa__steps">
-                <li class="help__qa__steps__step">
-                  Detinut: ${prisoner.firstName} ${prisoner.lastName}
-                </li>
-                <li class="help__qa__steps__step">
-                  Durata vizitei: ${hours} ore si ${minutes} minute
-                </li>
-                <li class="help__qa__steps__step">
-                  Starea detinutului: ${visit.mood}
-                </li>
-                <li class="help__qa__steps__step">
-                  Natura vizitei: ${visit.nature}
-                </li>
-                <li class="help__qa__steps__step">
-                  Rezumatul discutiilor: ${visit.summary}
-                </li>
-                <li class="help__qa__steps__step">
-                  Obiecte furnizate: ${visit.objects}
-                </li>
-                <li class="help__qa__steps__step">
-                  ${guests.length > 1 ? 'Vizitatori' : 'Vizitator'}: ${guestNames}
-                </li>
-              </ol>
-            </details>
-          </li>
-        </ul>
+        <ul class="paginated-list" aria-live="polite"></ul>
         <nav class="pagination-container">
           <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
             &lt; Prev
@@ -231,6 +137,7 @@
   </footer>
   <script src="/scripts/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="/scripts/modals.js"></script>
   <script src="/scripts/fetchProfile.js"></script>
 </body>
 
