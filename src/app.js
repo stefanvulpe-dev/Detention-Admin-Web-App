@@ -186,6 +186,8 @@ const server = http.createServer((req, res) => {
       ContactController.sendReview(req, res);
     } else if (url.match(/^\/uploadCSV/)) {
       ImportController.importCSV(req, res);
+    } else if (url.match(/^\/uploadJSON/)) {
+      ImportController.importJSON(req, res);
     }
   }
 
