@@ -27,7 +27,13 @@ export const importCSV = async (req, res) => {
       .on('end', () => {
         const prisonerRepository = new PrisonersRepository();
         for (const prisoner of prisoners) {
-          prisonerRepository.create(prisoner);
+          if (
+            prisoner.firstName !== undefined &&
+            prisoner.lastName !== undefined &&
+            prisoner.detentionStartedAt !== undefined &&
+            prisoner.detentionEndedAt !== undefined
+          )
+            prisonerRepository.create(prisoner);
         }
       })
       .on('error', err => {
