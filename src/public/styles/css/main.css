@@ -446,6 +446,10 @@ select {
   border-color: hsl(0, 97%, 65%);
 }
 
+.details__form__labels__container.input-error :is(input, textarea) {
+  border-color: hsl(0, 97%, 65%);
+}
+
 .about {
   width: min(65rem, 90%);
   min-height: 100vh;
@@ -979,7 +983,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  gap: 2rem;
+  gap: 1.5rem;
   justify-items: center;
   justify-content: center;
   align-items: center;
@@ -1001,7 +1005,6 @@ body {
   width: 100%;
   max-width: 100vh;
   outline: none;
-  border: none;
 }
 .details__form__labels__container .form-textarea {
   border-radius: 0.5rem;
@@ -1010,7 +1013,17 @@ body {
   width: 100%;
   resize: none;
   outline: none;
-  border: none;
+}
+.details__form__labels__container .validation-error {
+  display: block;
+  visibility: hidden;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-very-small);
+  font-weight: 400;
+}
+.details__form__labels__container .validation-error.display-error {
+  visibility: visible;
+  margin-top: 0;
 }
 .details__form__labels__title {
   padding-bottom: 1.5rem;
@@ -1041,6 +1054,14 @@ body {
 }
 .details__form__buttons__back {
   align-self: flex-start;
+}
+
+.details__form__labels__container :is(input, textarea) {
+  border: 0.2rem solid transparent;
+}
+
+.details__form__labels__container.success :is(input, textarea) {
+  border-color: transparent;
 }
 
 .login {
