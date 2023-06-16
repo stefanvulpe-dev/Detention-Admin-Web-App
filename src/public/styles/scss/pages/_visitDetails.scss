@@ -13,7 +13,7 @@
     flex-direction: column;
     &__labels {
       width: 100%;
-      @include grid-display(1fr, auto, 2rem, center, center, center, center);
+      @include grid-display(1fr, auto, 1.5rem, center, center, center, center);
       padding: 2rem;
       border-radius: 0.75rem;
       &__container {
@@ -26,7 +26,6 @@
           width: 100%;
           max-width: 100vh;
           outline: none;
-          border: none;
         }
         .form-textarea {
           border-radius: 0.5rem;
@@ -35,7 +34,17 @@
           width: 100%;
           resize: none;
           outline: none;
-          border: none;
+        }
+        .validation-error {
+          display: block;
+          visibility: hidden;
+          font-family: $ff-primary;
+          font-size: var(--fs-very-small);
+          font-weight: map-get($font-weights, regular);
+        }
+        .validation-error.display-error {
+          visibility: visible;
+          margin-top: 0;
         }
       }
       &__title {
@@ -69,4 +78,10 @@
       }
     }
   }
+}
+.details__form__labels__container :is(input,textarea) {
+  border: 0.2rem solid transparent;
+}
+.details__form__labels__container.success :is(input,textarea) {
+  border-color: transparent;
 }
