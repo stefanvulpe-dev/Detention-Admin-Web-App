@@ -132,3 +132,104 @@ export const getNumberOfPrisonersFreeThisYear = async (req, res) => {
     res.end(JSON.stringify({ error: true, message: err.message }));
   }
 };
+
+/**
+ *
+ * @path '/prisoners/get-info-json'
+ * @method GET
+ */
+export const getPrisonersInfoJSON = async (req, res) => {
+  try {
+    const info = await new PrisonersRepository().getPrisonersInfo();
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(info));
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
+
+/**
+ *
+ * @path '/prisoners/get-info-csv'
+ * @method GET
+ */
+export const getPrisonersInfoCSV = async (req, res) => {
+  try {
+    const info = await new PrisonersRepository().getPrisonersInfo();
+
+    const csv = `Counter,Prisoner,Detention Period,Total Number of Visits,Average Guests per Visit\n${info
+      .map(
+        row =>
+          `${row.counter},"${row.prisoner}",${row.detentionPeriod},${row.totalNumberOfVisits},${row.averageGuestsPerVisit}`
+      )
+      .join('\n')
+      .trim()}\n`;
+
+    res.setHeader('Content-Disposition', `attachment; filename="data.csv"`);
+    res.setHeader('Content-Type', 'text/csv');
+    res.end(csv);
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
+
+/**
+ *
+ * @path '/prisoners/get-info-html'
+ * @method GET
+ */
+export const getPrisonersInfoHTML = async (req, res) => {
+  try {
+    const info = await new PrisonersRepository().getPrisonersInfo();
+    const html = `
+    <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Document HTML</title>
+      </head>
+      <style>
+        table, th, td {
+        border:1px solid black;
+      }
+      </style>    
+      <body>
+        <h1>Informații despre deținuți</h1>
+        <table>
+          <tr>
+            <th>Counter</th>
+            <th>Prisoner</th>
+            <th>Detention Period</th>
+            <th>Total Number of Visits</th>
+            <th>Average Guests per Visit</th>
+          </tr>
+          ${info
+            .map(
+              row => `
+            <tr>
+              <td>${row.Counter}</td>
+              <td>${row.Prisoner}</td>
+              <td>${row.DetentionPeriod}</td>
+              <td>${row.TotalNumberOfVisits}</td>
+              <td>${row.AverageGuestsPerVisit}</td>
+            </tr>
+          `
+            )
+            .join('')}
+        </table>
+      </body>
+      </html>
+    `;
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename="document.html"'
+    );
+    res.setHeader('Content-Type', 'text/html');
+    res.end(html);
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: true, message: err.message }));
+  }
+};
