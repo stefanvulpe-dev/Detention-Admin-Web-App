@@ -371,6 +371,8 @@ function clearErrors() {
 
 const downloadSelect = document.querySelector('.download-options');
 
+let initialSelectedIndex = downloadSelect.selectedIndex;
+
 downloadSelect.addEventListener('change', async () => {
   const selectedValue = downloadSelect.value;
 
@@ -424,6 +426,7 @@ downloadSelect.addEventListener('change', async () => {
     link.href = URL.createObjectURL(blob);
     link.download = filename;
     link.click();
+    downloadSelect.selectedIndex = initialSelectedIndex;
   } catch (error) {
     console.error('A apărut o eroare la cererea Fetch:', error);
   }
