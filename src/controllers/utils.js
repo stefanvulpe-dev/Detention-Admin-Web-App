@@ -1,6 +1,7 @@
 import fs from 'fs';
 import handlebars from 'handlebars';
 import path, { dirname } from 'path';
+import { Readable } from 'stream';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -70,4 +71,26 @@ export const generateVisitHtml = (date, time, prisoner, visitNature) => {
   };
   const modifiedHTML = template(replacements);
   return modifiedHTML;
+};
+
+export const createReadableStreamFromString = str => {
+  const stream = new Readable();
+  stream._read = () => {};
+  stream.push(str);
+  stream.push(null);
+  return stream;
+};
+
+export const getCSVData = str => {
+  let body = str.replace(/;/g, ',');
+  const startToken = 'firstName';
+  const endToken = '----------------------------';
+
+  const startIndex = body.indexOf(startToken);
+  const endIndex = body.lastIndexOf(endToken);
+
+  if (startIndex !== -1 && endIndex !== -1 && startIndex < endIndex) {
+    body = body.substring(startIndex, endIndex);
+  }
+  return body;
 };

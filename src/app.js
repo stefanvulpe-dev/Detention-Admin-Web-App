@@ -9,6 +9,7 @@ import {
   AuthController,
   ContactController,
   GuestController,
+  ImportController,
   NewsController,
   PrisonerController,
   UserController,
@@ -183,6 +184,8 @@ const server = http.createServer((req, res) => {
       );
     } else if (url.match(/^\/contact\/send/)) {
       ContactController.sendReview(req, res);
+    } else if (url.match(/^\/uploadCSV/)) {
+      ImportController.importCSV(req, res);
     }
   }
 
