@@ -188,6 +188,7 @@ export const getPrisonersInfoHTML = async (req, res) => {
     <!DOCTYPE html>
       <html>
       <head>
+        <meta charset="UTF-8">
         <title>Document HTML</title>
       </head>
       <style>
@@ -209,11 +210,11 @@ export const getPrisonersInfoHTML = async (req, res) => {
             .map(
               row => `
             <tr>
-              <td>${row.Counter}</td>
-              <td>${row.Prisoner}</td>
-              <td>${row.DetentionPeriod}</td>
-              <td>${row.TotalNumberOfVisits}</td>
-              <td>${row.AverageGuestsPerVisit}</td>
+              <td>${row.counter}</td>
+              <td>${row.prisoner}</td>
+              <td>${row.detentionPeriod}</td>
+              <td>${row.totalNumberOfVisits}</td>
+              <td>${row.averageGuestsPerVisit}</td>
             </tr>
           `
             )
