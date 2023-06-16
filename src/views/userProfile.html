@@ -74,11 +74,11 @@
       </div>
       <div class="custom-select" style="display: none;">
         <select class="download-options" data-value="" onfocus="this.setAttribute('data-value', this.value);"
-          onchange="this.value = this.getAttribute('data-value');">
+        onchange="this.setAttribute('data-value', this.options[this.selectedIndex].value);">
           <option value="" selected disabled hidden>Download statistics ↓</option>
-          <option value="">CSV 📄</option>
-          <option value="">HTML 📄</option>
-          <option value="">JSON 📄</option>
+          <option value="CSV">CSV 📄</option>
+          <option value="HTML">HTML 📄</option>
+          <option value="JSON">JSON 📄</option>
         </select>
       </div>
       <form action="#" id="importData" style="display: none;">

@@ -165,4 +165,30 @@ export class PrisonersRepository {
       client.release();
     }
   }
+
+  async getPrisonersInfo() {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(`
+      SELECT
+      p.id AS "counter",
+      CONCAT(p."firstName", ' ', p."lastName") AS "prisoner",
+     (p."detentionEndedAt" - p."detentionStartedAt" || ' days')  "detentionPeriod",
+      (SELECT COUNT(*) FROM prisoners_visits WHERE "prisonerId" = p.id) AS "totalNumberOfVisits",
+      (SELECT ROUND(AVG(gv.visits_count),2) FROM
+        (SELECT COUNT(g."visitId") AS visits_count
+        FROM guests_visits g
+        JOIN prisoners_visits pv ON pv."visitId" = g."visitId"
+        WHERE pv."prisonerId" = p.id
+        GROUP BY g."visitId") gv) AS "averageGuestsPerVisit"
+    FROM prisoners p
+      `);
+
+      return result.rows;
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      client.release();
+    }
+  }
 }

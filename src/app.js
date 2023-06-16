@@ -155,6 +155,12 @@ const server = http.createServer((req, res) => {
       );
     } else if (url.match(/^\/news\/get-news$/)) {
       NewsController.getNews(req, res);
+    } else if (url.match(/^\/prisoners\/get-info-json$/)) {
+      PrisonerController.getPrisonersInfoJSON(req,res);
+    } else if (url.match(/^\/prisoners\/get-info-csv$/)) {
+      PrisonerController.getPrisonersInfoCSV(req,res);
+    } else if (url.match(/^\/prisoners\/get-info-html$/)) {
+      PrisonerController.getPrisonersInfoHTML(req,res);
     } else {
       const readStream = fs.createReadStream(`${VIEWS_PATH}/404.html`);
       res.writeHead(200, { 'Content-type': 'text/html' });

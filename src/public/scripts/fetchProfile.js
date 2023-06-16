@@ -368,3 +368,66 @@ function clearErrors() {
   });
   photoLabel.classList.remove('error-outline');
 }
+
+const downloadSelect = document.querySelector('.download-options');
+
+let initialSelectedIndex = downloadSelect.selectedIndex;
+
+downloadSelect.addEventListener('change', async () => {
+  const selectedValue = downloadSelect.value;
+
+  try {
+    if (!selectedValue) {
+      return; 
+    }
+
+    let filename;
+    let contentType;
+    let request;
+
+    switch (selectedValue) {
+      case 'CSV':
+        filename = 'statistics.csv';
+        contentType = 'text/csv';
+        request = await fetch('/prisoners/get-info-csv', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+          },
+        });
+        break;
+      case 'HTML':
+        filename = 'statistics.html';
+        contentType = 'text/html';
+        request = await fetch('/prisoners/get-info-html', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+          },
+        });
+        break;
+      case 'JSON':
+        filename = 'statistics.json';
+        contentType = 'application/json';
+        request = await fetch('/prisoners/get-info-json', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
+          },
+        });
+        break;
+    }
+    const response = await request.text();
+    const blob = new Blob([response], { type: contentType });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+    downloadSelect.selectedIndex = initialSelectedIndex;
+  } catch (error) {
+    console.error('A apărut o eroare la cererea Fetch:', error);
+  }
+});
