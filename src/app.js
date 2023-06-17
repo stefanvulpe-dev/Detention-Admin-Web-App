@@ -7,7 +7,9 @@ import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
 import {
   AuthController,
+  ContactController,
   GuestController,
+  ImportController,
   NewsController,
   PrisonerController,
   UserController,
@@ -162,6 +164,12 @@ const server = https.createServer(options, (req, res) => {
       );
     } else if (url.match(/^\/news\/get-news$/)) {
       NewsController.getNews(req, res);
+    } else if (url.match(/^\/prisoners\/get-info-json$/)) {
+      PrisonerController.getPrisonersInfoJSON(req, res);
+    } else if (url.match(/^\/prisoners\/get-info-csv$/)) {
+      PrisonerController.getPrisonersInfoCSV(req, res);
+    } else if (url.match(/^\/prisoners\/get-info-html$/)) {
+      PrisonerController.getPrisonersInfoHTML(req, res);
     } else {
       const readStream = fs.createReadStream(`${VIEWS_PATH}/404.html`);
       res.writeHead(200, { 'Content-type': 'text/html' });
@@ -188,6 +196,16 @@ const server = https.createServer(options, (req, res) => {
       AuthController.requireAuth(req, res, () =>
         PrisonerController.getAllPrisonersNames(req, res)
       );
+    } else if (url.match(/^\/contact\/send/)) {
+      ContactController.sendReview(req, res);
+    } else if (url.match(/^\/uploadCSV$/)) {
+      AuthController.requireAuth(req, res, () =>
+        ImportController.importCSV(req, res)
+      );
+    } else if (url.match(/^\/uploadJSON$/)) {
+      AuthController.requireAuth(req, res, () =>
+        ImportController.importJSON(req, res)
+      );
     }
   }
 
@@ -204,9 +222,15 @@ const server = https.createServer(options, (req, res) => {
   }
 
   if (req.method === 'PUT') {
-    if (req.url.match(/^\/guests\/edit-guest$/)) {
+    if (url.match(/^\/guests\/edit-guest$/)) {
       AuthController.requireAuth(req, res, () =>
         GuestController.validateGuest(req, res)
+      );
+    }
+
+    if (url.match(/^\/users\/update-profile$/)) {
+      AuthController.requireAuth(req, res, () =>
+        UserController.updateUserDetails(req, res)
       );
     }
   }

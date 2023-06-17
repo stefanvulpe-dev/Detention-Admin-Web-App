@@ -208,3 +208,6 @@ $colors: (
 .container__form-field.input-error :is(input, #photo-label) {
   border-color: map-get($colors, accent-red);
 }
+.details__form__labels__container.input-error :is(input, textarea) {
+  border-color: map-get($colors, accent-red);
+}

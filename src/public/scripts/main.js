@@ -148,7 +148,9 @@ const fileInput = document.querySelector(`input[type='file']`);
 fileInput?.addEventListener('change', () => {
   const file = fileInput.files[0];
   const fileUploadDetails = document.querySelector('#photo-label');
-  fileUploadDetails.textContent = `${file.name} 📁`;
+  if (fileUploadDetails) {
+    fileUploadDetails.textContent = `${file.name} 📁`;
+  }
 });
 
 const profileLink = document.querySelector('a.profile-link');

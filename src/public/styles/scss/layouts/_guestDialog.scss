@@ -73,7 +73,7 @@
       }
 
       .error-message {
-        display: none;
+        visibility: hidden;
         color: map-get($colors, accent-red);
         font-size: var(--fs-very-small);
         font-weight: map-get($font-weights, semi-bold);
@@ -81,7 +81,7 @@
       }
 
       .error-message.visible {
-        display: block;
+        visibility: visible;
       }
 
       .error-outline {
