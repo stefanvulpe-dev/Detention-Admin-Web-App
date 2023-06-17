@@ -26,7 +26,6 @@ export const importCSV = async (req, res) => {
         );
       } else {
         const uploadedFile = req.file;
-
         if (uploadedFile.mimetype !== 'text/csv')
           throw new Error('Not a CSV file.');
 

@@ -74,15 +74,15 @@
       </div>
       <div class="custom-select" style="display: none;">
         <select class="download-options" data-value="" onfocus="this.setAttribute('data-value', this.value);"
-        onchange="this.setAttribute('data-value', this.options[this.selectedIndex].value);">
+          onchange="this.setAttribute('data-value', this.options[this.selectedIndex].value);">
           <option value="" selected disabled hidden>Download statistics ↓</option>
           <option value="CSV">CSV 📄</option>
           <option value="HTML">HTML 📄</option>
           <option value="JSON">JSON 📄</option>
         </select>
       </div>
-      <form action="#" id="importData" style="display: none;">
-        <input type="file" name="myFileUpload" id="myFileUpload" accept="text/csv, text/json">
+      <form action="#" id="importData" style="display: none;" enctype="multipart/form-data">
+        <input type="file" name="myFileUpload" id="myFileUpload" accept=".csv, application/json">
         <label for="myFileUpload"><span class="label-text">Import data 📂</span></label>
         <p class="upload-error" style="display: none;">Only csv or json files are accepted!</p>
         <button type="submit" style="display: none;">Save</button>
@@ -139,6 +139,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <script src="/scripts/modals.js"></script>
   <script src="/scripts/fetchProfile.js"></script>
+  <script src="/scripts/importData.js"></script>
 </body>
 
 </html>
