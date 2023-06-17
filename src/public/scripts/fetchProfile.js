@@ -131,7 +131,13 @@ async function renderHistory(visitsIds) {
   }
 
   list.append(...listItems);
+
   pageCount = Math.ceil(listItems.length / paginationLimit);
+  if (pageCount === 0 || pageCount === 1) {
+    nextButton.style.display = 'none';
+    prevButton.style.display = 'none';
+  }
+
   setCurrentPage(currentPage);
 
   prevButton.addEventListener('click', () => {
@@ -141,11 +147,6 @@ async function renderHistory(visitsIds) {
   nextButton.addEventListener('click', () => {
     setCurrentPage(currentPage + 1);
   });
-
-  if (pageCount === 0 || pageCount === 1) {
-    nextButton.style.display = 'none';
-    prevButton.style.display = 'none';
-  }
 }
 
 function renderVisitCard(visit, prisoner, guests) {
