@@ -133,9 +133,9 @@ async function renderHistory(visitsIds) {
   list.append(...listItems);
 
   pageCount = Math.ceil(listItems.length / paginationLimit);
-  if (pageCount === 0 || pageCount === 1) {
-    nextButton.style.display = 'none';
-    prevButton.style.display = 'none';
+  if (pageCount > 1) {
+    nextButton.style.display = 'block';
+    prevButton.style.display = 'block';
   }
 
   setCurrentPage(currentPage);
