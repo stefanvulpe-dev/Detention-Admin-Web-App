@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
   <header class="header" id="page-header">
     <div class="header__container">
       <a href="/">
@@ -62,20 +61,47 @@
   </header>
 
   <main class="profile">
-    <div class="profile__card">
-      <div class="profile__card-banner">
-        <img src="" alt="profile-picture" class="profile__card-photo">
+    <div class="profile-wrapper">
+      <div class="profile__card">
+        <div class="profile__card-banner">
+          <img src="" alt="profile-picture" class="profile__card-photo">
+        </div>
+        <div class="profile__card-details">
+          <p class="user-name"></p>
+          <p class="user-email"></p>
+        </div>
+        <button type="button" class="profile__card-button">Edit your profile</button>
       </div>
-      <div class="profile__card-details">
-        <p class="user-name"></p>
-        <p class="user-email"></p>
+      <div class="custom-select" style="display: none;">
+        <select class="download-options" data-value="" onfocus="this.setAttribute('data-value', this.value);"
+        onchange="this.setAttribute('data-value', this.options[this.selectedIndex].value);">
+          <option value="" selected disabled hidden>Download statistics ↓</option>
+          <option value="CSV">CSV 📄</option>
+          <option value="HTML">HTML 📄</option>
+          <option value="JSON">JSON 📄</option>
+        </select>
       </div>
-      <button type="button" class="profile__card-button">Edit your profile</button>
+      <form action="#" id="importData" style="display: none;">
+        <input type="file" name="myFileUpload" id="myFileUpload" accept="text/csv, text/json">
+        <label for="myFileUpload"><span class="label-text">Import data 📂</span></label>
+        <p class="upload-error" style="display: none;">Only csv or json files are accepted!</p>
+        <button type="submit" style="display: none;">Save</button>
+      </form>
     </div>
-    <div class="profile__data">
+    <section class="profile__data">
       <h1 class="profile__title"></h1>
-      <div id="visitsHistory"></div>
-    </div>
+      <div id="visitsHistory">
+        <ul class="paginated-list" aria-live="polite"></ul>
+        <nav class="pagination-container">
+          <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+            &lt; Prev
+          </button>
+          <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
+            Next &gt;
+          </button>
+        </nav>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -111,6 +137,7 @@
   </footer>
   <script src="/scripts/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="/scripts/modals.js"></script>
   <script src="/scripts/fetchProfile.js"></script>
 </body>
 

@@ -446,6 +446,10 @@ select {
   border-color: hsl(0, 97%, 65%);
 }
 
+.details__form__labels__container.input-error :is(input, textarea) {
+  border-color: hsl(0, 97%, 65%);
+}
+
 .about {
   width: min(65rem, 90%);
   min-height: 100vh;
@@ -979,7 +983,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  gap: 2rem;
+  gap: 1.5rem;
   justify-items: center;
   justify-content: center;
   align-items: center;
@@ -1001,7 +1005,6 @@ body {
   width: 100%;
   max-width: 100vh;
   outline: none;
-  border: none;
 }
 .details__form__labels__container .form-textarea {
   border-radius: 0.5rem;
@@ -1010,7 +1013,17 @@ body {
   width: 100%;
   resize: none;
   outline: none;
-  border: none;
+}
+.details__form__labels__container .validation-error {
+  display: block;
+  visibility: hidden;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-very-small);
+  font-weight: 400;
+}
+.details__form__labels__container .validation-error.display-error {
+  visibility: visible;
+  margin-top: 0;
 }
 .details__form__labels__title {
   padding-bottom: 1.5rem;
@@ -1041,6 +1054,14 @@ body {
 }
 .details__form__buttons__back {
   align-self: flex-start;
+}
+
+.details__form__labels__container :is(input, textarea) {
+  border: 0.2rem solid transparent;
+}
+
+.details__form__labels__container.success :is(input, textarea) {
+  border-color: transparent;
 }
 
 .login {
@@ -1204,8 +1225,11 @@ body {
   font-weight: 400;
   padding-top: 0;
 }
-.profile__card {
-  min-width: 17.5rem;
+.profile .profile-wrapper {
+  align-self: start;
+}
+.profile .profile__card {
+  min-width: 20rem;
   grid-row: 1/2;
   align-self: start;
   background-color: hsl(0, 0%, 80%);
@@ -1219,7 +1243,7 @@ body {
   align-items: center;
   align-content: center;
 }
-.profile__card-photo {
+.profile .profile__card-photo {
   position: absolute;
   width: 6rem;
   margin-inline: auto;
@@ -1230,22 +1254,22 @@ body {
   border-radius: 100vh;
   border: 4px solid hsl(0, 0%, 24%);
 }
-.profile__card-details {
+.profile .profile__card-details {
   color: hsl(0, 0%, 0%);
   text-align: center;
   line-height: 2.5;
 }
-.profile__card-details .user-name {
+.profile .profile__card-details .user-name {
   font-size: var(--fs-medium);
   font-weight: 600;
   padding: 0 1rem 0.5rem 1rem;
   margin-bottom: 1rem;
   border-bottom: 2px dashed black;
 }
-.profile__card-details .user-email {
-  font-size: var(--fs-very-small);
+.profile .profile__card-details .user-email {
+  font-size: var(--fs-small);
 }
-.profile__card-button {
+.profile .profile__card-button {
   font-family: "Inter", sans-serif;
   font-size: var(--fs-small);
   font-weight: 600;
@@ -1259,16 +1283,123 @@ body {
   margin-bottom: 2.5rem;
   transition: all 350ms ease-in-out;
 }
-.profile__card-button:is(:hover, :focus) {
+.profile .profile__card-button:is(:hover, :focus) {
   opacity: 0.8;
 }
-.profile__card-banner {
+.profile .profile__card-banner {
   position: relative;
   width: 100%;
   padding-block: 4rem;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
   background-color: hsl(0, 97%, 65%);
+}
+.profile .download-options {
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-medium);
+  background-color: hsl(169, 26%, 20%);
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  outline: 0;
+  padding: 1rem;
+}
+.profile .download-options:is(:hover, :focus) {
+  opacity: 0.7;
+}
+.profile .custom-select {
+  width: 100%;
+  margin-top: 2.5rem;
+  background-color: hsl(169, 26%, 20%);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(14, 14, 14, 0.6);
+}
+.profile .pagination-container {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+}
+.profile .pagination-container button {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-medium);
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(169, 26%, 20%);
+  box-shadow: 0 0 1rem rgba(14, 14, 14, 0.5);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  transition: opacity 350ms ease-in-out;
+}
+.profile .pagination-container button:is(:hover, :focus) {
+  opacity: 0.7;
+}
+.profile form {
+  margin-top: 2.5rem;
+}
+.profile form #myFileUpload {
+  display: none;
+}
+.profile form label[for=myFileUpload] {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-medium);
+  font-weight: 400;
+  background-color: hsl(169, 26%, 20%);
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  outline: 0;
+  padding: 1rem;
+  box-shadow: 0 0 1rem rgba(14, 14, 14, 0.6);
+}
+.profile form .label-text {
+  transition: all 350ms ease-in-out;
+}
+.profile form .label-text:is(:hover, :focus) {
+  opacity: 0.7;
+}
+.profile form button {
+  margin-top: 2.5rem;
+  margin-left: auto;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-medium);
+  font-weight: 600;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 97%, 65%);
+  box-shadow: 0 0 1rem rgba(14, 14, 14, 0.5);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  transition: opacity 350ms ease-in-out;
+}
+.profile form button:is(:hover, :focus) {
+  opacity: 0.7;
+}
+.profile form .upload-error {
+  margin-top: 1rem;
+  color: hsl(0, 97%, 65%);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+.profile form .red-outline {
+  outline: 3px solid hsl(0, 97%, 65%);
+  border-radius: 0.5rem;
 }
 
 .error {
@@ -1861,14 +1992,14 @@ body {
   padding: 0.5rem 0.75rem;
 }
 .guest-dialog .dialog__form .field-wrapper .error-message {
-  display: none;
+  visibility: hidden;
   color: hsl(0, 97%, 65%);
   font-size: var(--fs-very-small);
   font-weight: 600;
   margin-top: 0.5rem;
 }
 .guest-dialog .dialog__form .field-wrapper .error-message.visible {
-  display: block;
+  visibility: visible;
 }
 .guest-dialog .dialog__form .field-wrapper .error-outline {
   outline: 3px solid hsl(0, 97%, 65%);
@@ -2128,6 +2259,9 @@ body {
   .profile__card-button {
     font-size: var(--fs-very-small);
   }
+  .profile .custom-select {
+    margin-top: 4.75rem;
+  }
 }
 @media screen and (min-width: 1150px) {
   .header .nav__toggle {
@@ -2230,6 +2364,21 @@ body {
   }
   .profile {
     width: min(100% - 4rem, 57.5rem);
+  }
+  .profile__card .user-email {
+    font-size: var(--fs-very-small);
+  }
+  .profile .pagination-container button {
+    font-size: var(--fs-small);
+  }
+  .profile .download-options {
+    font-size: var(--fs-small);
+  }
+  .profile form button {
+    font-size: var(--fs-small);
+  }
+  .profile form label[for=myFileUpload] {
+    font-size: var(--fs-small);
   }
 }
 @media screen and (min-width: 1470px) {

@@ -81,6 +81,37 @@ const userDetailsInputs = [
   },
 ];
 
+const profileInputs = [
+  {
+    id: 'lastName',
+    name: 'lastName',
+    type: 'text',
+    label: 'Nume',
+    required: true,
+  },
+  {
+    id: 'firstName',
+    name: 'firstName',
+    type: 'text',
+    label: 'Prenume',
+    required: true,
+  },
+  {
+    id: 'email',
+    name: 'email',
+    type: 'text',
+    label: 'Email',
+    required: true,
+  },
+  {
+    id: 'password',
+    name: 'password',
+    type: 'password',
+    label: 'Password',
+    required: true,
+  },
+];
+
 const renderDialogModal = (id, title, inputs, onSubmit, onClose) => {
   const detailsForm = document.createElement('form');
   detailsForm.classList.add('dialog__form');
@@ -158,7 +189,7 @@ const renderDialogModal = (id, title, inputs, onSubmit, onClose) => {
 
   let submitButton, formFooter;
 
-  if (id === 'addGuests' || id === 'editGuests') {
+  if (id === 'addGuests' || id === 'editGuests' || id === 'editProfile') {
     let input, inputLabel;
     input = document.createElement('input');
     inputLabel = document.createElement('label');
@@ -233,7 +264,7 @@ const renderDialogModal = (id, title, inputs, onSubmit, onClose) => {
 const showDialogModal = (id, title, inputs, onSubmit) => {
   renderDialogModal(id, title, inputs, onSubmit, () => closeDialog(id));
 
-  if (id === 'addGuests' || id === 'editGuests') {
+  if (id === 'addGuests' || id === 'editGuests' || id === 'editProfile') {
     const fileInput = document.querySelector(`input[data-parent='${id}']`);
     fileInput.addEventListener('change', () => {
       const file = fileInput.files[0];
@@ -250,7 +281,7 @@ const showDialogModal = (id, title, inputs, onSubmit) => {
 
 (function () {
   const addButton = document.querySelector('#add-visitor');
-  addButton.addEventListener('click', () =>
+  addButton?.addEventListener('click', () =>
     showDialogModal(
       'addGuests',
       'Introduceti datele personale',

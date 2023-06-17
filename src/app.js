@@ -156,6 +156,12 @@ const server = http.createServer((req, res) => {
       );
     } else if (url.match(/^\/news\/get-news$/)) {
       NewsController.getNews(req, res);
+    } else if (url.match(/^\/prisoners\/get-info-json$/)) {
+      PrisonerController.getPrisonersInfoJSON(req,res);
+    } else if (url.match(/^\/prisoners\/get-info-csv$/)) {
+      PrisonerController.getPrisonersInfoCSV(req,res);
+    } else if (url.match(/^\/prisoners\/get-info-html$/)) {
+      PrisonerController.getPrisonersInfoHTML(req,res);
     } else {
       const readStream = fs.createReadStream(`${VIEWS_PATH}/404.html`);
       res.writeHead(200, { 'Content-type': 'text/html' });
@@ -204,9 +210,15 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'PUT') {
-    if (req.url.match(/^\/guests\/edit-guest$/)) {
+    if (url.match(/^\/guests\/edit-guest$/)) {
       AuthController.requireAuth(req, res, () =>
         GuestController.validateGuest(req, res)
+      );
+    }
+
+    if (url.match(/^\/users\/update-profile$/)) {
+      AuthController.requireAuth(req, res, () =>
+        UserController.updateUserDetails(req, res)
       );
     }
   }
