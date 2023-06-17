@@ -228,7 +228,7 @@
       font-weight: map-get($font-weights, semi-bold);
     }
 
-    .red-outline {
+    label[for='myFileUpload'].red-outline {
       outline: 3px solid map-get($colors, accent-red);
       border-radius: 0.5rem;
     }
