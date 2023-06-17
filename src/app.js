@@ -9,6 +9,7 @@ import {
   AuthController,
   ContactController,
   GuestController,
+  ImportController,
   NewsController,
   PrisonerController,
   UserController,
@@ -156,11 +157,11 @@ const server = http.createServer((req, res) => {
     } else if (url.match(/^\/news\/get-news$/)) {
       NewsController.getNews(req, res);
     } else if (url.match(/^\/prisoners\/get-info-json$/)) {
-      PrisonerController.getPrisonersInfoJSON(req,res);
+      PrisonerController.getPrisonersInfoJSON(req, res);
     } else if (url.match(/^\/prisoners\/get-info-csv$/)) {
-      PrisonerController.getPrisonersInfoCSV(req,res);
+      PrisonerController.getPrisonersInfoCSV(req, res);
     } else if (url.match(/^\/prisoners\/get-info-html$/)) {
-      PrisonerController.getPrisonersInfoHTML(req,res);
+      PrisonerController.getPrisonersInfoHTML(req, res);
     } else {
       const readStream = fs.createReadStream(`${VIEWS_PATH}/404.html`);
       res.writeHead(200, { 'Content-type': 'text/html' });
@@ -189,6 +190,14 @@ const server = http.createServer((req, res) => {
       );
     } else if (url.match(/^\/contact\/send/)) {
       ContactController.sendReview(req, res);
+    } else if (url.match(/^\/uploadCSV$/)) {
+      AuthController.requireAuth(req, res, () =>
+        ImportController.importCSV(req, res)
+      );
+    } else if (url.match(/^\/uploadJSON$/)) {
+      AuthController.requireAuth(req, res, () =>
+        ImportController.importJSON(req, res)
+      );
     }
   }
 

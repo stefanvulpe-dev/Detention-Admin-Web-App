@@ -259,22 +259,43 @@ function enableExtraFeatures() {
     event.preventDefault();
     clearUploadErrors();
 
-    const formData = new FormData();
-    formData.append('file', fileInput.files[0]);
+    const files = document.getElementById('myFileUpload').files;
+    if (files.length > 0) {
+      const file = files[0];
+      const fileExtension = file.name.split('.').pop().toLowerCase();
 
-    const request = await fetch('/prisoners/import-data', {
-      method: 'POST',
-      body: formData,
-      headers: { csrfToken: JSON.parse(localStorage.getItem('csrfToken')) },
-    });
+      const formData = new FormData();
+      formData.append('file', file);
 
-    const response = await request.json();
+      let request;
 
-    if (response.error) {
-      showUploadErrors();
+      if (fileExtension === 'json') {
+        request = await fetch('/uploadJSON', {
+          method: 'POST',
+          body: formData,
+          headers: { csrfToken: JSON.parse(localStorage.getItem('csrfToken')) },
+        });
+      } else if (fileExtension === 'csv') {
+        request = await fetch('/uploadCSV', {
+          method: 'POST',
+          body: formData,
+          headers: { csrfToken: JSON.parse(localStorage.getItem('csrfToken')) },
+        });
+      } else {
+        showUploadErrors();
+        return;
+      }
+
+      const response = await request.json();
+
+      if (response.error) {
+        showUploadErrors();
+      } else {
+        alert(response.message);
+        window.location.reload();
+      }
     } else {
-      alert('Datele au fost importate cu succes!');
-      window.location.reload();
+      alert('The file was not uploaded correctly.');
     }
   });
 }
@@ -378,7 +399,7 @@ downloadSelect.addEventListener('change', async () => {
 
   try {
     if (!selectedValue) {
-      return; 
+      return;
     }
 
     let filename;

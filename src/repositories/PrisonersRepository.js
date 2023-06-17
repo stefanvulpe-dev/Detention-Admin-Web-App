@@ -10,7 +10,7 @@ export class PrisonersRepository {
           prisoner.firstName,
           prisoner.lastName,
           prisoner.detentionStartedAt,
-          prisoner.detentionPeriod,
+          prisoner.detentionPeriod || prisoner.detentionEndedAt,
         ]
       );
       return result.rows[0];

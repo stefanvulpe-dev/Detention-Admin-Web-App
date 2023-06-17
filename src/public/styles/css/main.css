@@ -1397,7 +1397,7 @@ body {
   font-size: var(--fs-small);
   font-weight: 600;
 }
-.profile form .red-outline {
+.profile form label[for=myFileUpload].red-outline {
   outline: 3px solid hsl(0, 97%, 65%);
   border-radius: 0.5rem;
 }
