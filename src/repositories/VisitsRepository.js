@@ -115,13 +115,22 @@ export class VisitsRepository {
     const client = await pool.connect();
     try {
       const result = await client.query(
-        `select avg(s.months_number)
-        from (select p."prisonerId",round(count(*)/(extract(year from age(current_date, pr."detentionStartedAt")) * 
-          12 + extract(month from age(current_date, pr."detentionStartedAt")))) as months_number
-          from visits v join prisoners_visits p on p."visitId" = v.id join
-          prisoners pr on pr.id = p."prisonerId"  group by p."prisonerId", pr."detentionStartedAt") s;`
+        `select avg(average_visits_per_month) as overall_average_visits_per_month
+          from (select prisoner_id,
+             case
+                 when total_months = 0 then 0
+                 else total_visits / total_months
+                 end as average_visits_per_month
+            from (select p.id as prisoner_id,
+                  count(v.id) as total_visits,
+                  (extract(year from age(p."detentionEndedAt", p."detentionStartedAt")) * 12 + extract(month from age(p."detentionEndedAt", p."detentionStartedAt")))
+                  as total_months
+            from prisoners p
+                     join prisoners_visits pv on pv."prisonerId" = p.id
+                     join visits v on v.id = pv."visitId"
+            group by p.id, p."detentionStartedAt", p."detentionEndedAt") as subquery) as subquery2;`
       );
-      return result.rows[0].avg;
+      return result.rows[0].overall_average_visits_per_month;
     } catch (error) {
       throw new Error(error.message);
     } finally {

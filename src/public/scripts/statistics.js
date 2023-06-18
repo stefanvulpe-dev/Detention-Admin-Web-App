@@ -107,7 +107,7 @@ async function getNo1() {
   const response = await request.json();
 
   if (response.error) {
-    console.log(response.error);
+    console.log(response.message);
   } else {
     const numberOfPrisoners = parseInt(response.numberOfPrisoners);
     return numberOfPrisoners;
@@ -124,7 +124,7 @@ async function getNo2() {
   const response = await request.json();
 
   if (response.error) {
-    console.log(response.error);
+    console.log(response.message);
   } else {
     const numberOfPrisoners = parseInt(response.numberOfPrisoners);
     return numberOfPrisoners;
@@ -141,61 +141,10 @@ async function getNo3() {
   const response = await request.json();
 
   if (response.error) {
-    return;
+    console.log(response.message);
   } else {
-    const numberOfVisits = parseInt(response.numberOfVisits);
-    return numberOfVisits;
-  }
-}
-
-async function getNo1() {
-  const request = await fetch('/prisoners/get-no1', {
-    method: 'GET',
-    headers: {
-      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-    },
-  });
-  const response = await request.json();
-
-  if (response.error) {
-    console.log(response.error);
-  } else {
-    const numberOfPrisoners = parseInt(response.numberOfPrisoners);
-    return numberOfPrisoners;
-  }
-}
-
-async function getNo2() {
-  const request = await fetch('/prisoners/get-no2', {
-    method: 'GET',
-    headers: {
-      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-    },
-  });
-  const response = await request.json();
-
-  if (response.error) {
-    console.log(response.error);
-  } else {
-    const numberOfPrisoners = parseInt(response.numberOfPrisoners);
-    return numberOfPrisoners;
-  }
-}
-
-async function getNo3() {
-  const request = await fetch('/visits/get-no3', {
-    method: 'GET',
-    headers: {
-      csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
-    },
-  });
-  const response = await request.json();
-
-  if (response.error) {
-    console.log(response.error);
-  } else {
-    const numberOfVisits = parseInt(response.numberOfVisits);
-    return numberOfVisits;
+    const numberOfVisits = parseFloat(response.numberOfVisits);
+    return numberOfVisits.toFixed(2);
   }
 }
 
