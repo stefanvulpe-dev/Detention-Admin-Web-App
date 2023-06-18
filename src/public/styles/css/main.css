@@ -601,7 +601,7 @@ select {
 }
 
 body {
-  background-image: url("/assets/background.png");
+  background-image: url("/assets/background.webp");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1747,7 +1747,7 @@ body {
 
 .hero {
   min-height: 100vh;
-  background-image: url("/assets/acasa/hero-bg.jpg");
+  background-image: url("/assets/acasa/hero-bg.webp");
   background-size: cover;
   background-position: center;
   display: flex;

@@ -46,8 +46,8 @@ function displayStandardImages() {
   const slimCard2Img = document.querySelector('#slimCard2 .card__img');
   const wideCard2Img = document.querySelector('#wideCard2 .card__img');
 
-  slimCard1Img.src = '/assets/acasa/police-landscape-1.jpg';
-  wideCard1Img.src = '/assets/acasa/police-portrait-1.jpg';
-  slimCard2Img.src = '/assets/acasa/police-landscape-2.jpg';
-  wideCard2Img.src = '/assets/acasa/police-portrait-2.jpg';
+  slimCard1Img.src = '/assets/acasa/police-landscape-1.webp';
+  wideCard1Img.src = '/assets/acasa/police-portrait-1.webp';
+  slimCard2Img.src = '/assets/acasa/police-landscape-2.webp';
+  wideCard2Img.src = '/assets/acasa/police-portrait-2.webp';
 }

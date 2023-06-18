@@ -170,7 +170,7 @@ requireAuth(statsLink, 'statistics.html');
   let response = await request.json();
 
   if (response.error) {
-    profilePicture.src = '/assets/header/person.jpg';
+    profilePicture.src = '/assets/header/person.webp';
   } else {
     request = await fetch(
       '/photos/get-photo?' +
