@@ -3,6 +3,7 @@
   const response = await request.json();
   if (response.error) {
     console.log(response.message);
+    displayStandardImages();
   } else {
     renderNewsCards(response.news);
   }
@@ -37,4 +38,16 @@ function renderNewsCards(news) {
       newsData[index].date;
     card.querySelector('.card__container-link').href = newsData[index].link;
   });
+}
+
+function displayStandardImages() {
+  const slimCard1Img = document.querySelector('#slimCard1 .card__img');
+  const wideCard1Img = document.querySelector('#wideCard1 .card__img');
+  const slimCard2Img = document.querySelector('#slimCard2 .card__img');
+  const wideCard2Img = document.querySelector('#wideCard2 .card__img');
+
+  slimCard1Img.src = '/assets/acasa/police-landscape-1.jpg';
+  wideCard1Img.src = '/assets/acasa/police-portrait-1.jpg';
+  slimCard2Img.src = '/assets/acasa/police-landscape-2.jpg';
+  wideCard2Img.src = '/assets/acasa/police-portrait-2.jpg';
 }
