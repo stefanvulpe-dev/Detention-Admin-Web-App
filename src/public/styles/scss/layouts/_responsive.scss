@@ -2,6 +2,11 @@
 @use '../base/' as *;
 
 @include media-min(map-get($breakpoints, medium)) {
+  .hero {
+    &__description {
+      width: 90%;
+    }
+  }
   .main {
     &__container {
       grid-template-columns: 1fr 1fr;
@@ -245,7 +250,11 @@
       }
     }
   }
-
+  .hero {
+    &__description {
+      width: 80%;
+    }
+  }
   .main {
     &__container {
       grid-template-columns: repeat(3, 1fr);
@@ -380,6 +389,11 @@
 }
 
 @include media-min(map-get($breakpoints, huge)) {
+  .hero {
+    &__description {
+      width: 70%;
+    }
+  }
   .main {
     &__container {
       grid-template-columns: 1.15fr 1fr 1fr 1.15fr;

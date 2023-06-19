@@ -8,8 +8,9 @@
     box-shadow: 0rem 0.25rem 0.5rem 0rem hsla(0, 0%, 0%, 0.39);
     cursor: pointer;
     transition: all 250ms ease-in-out;
-    &:is(:hover, :focus) {
-      box-shadow: 0 0 3.5rem map-get($colors, accent-charcoal);
+    &:is(:hover) {
+      background-color: map-get($colors, primary-white);
+      color: map-get($colors, primary-dark-gray);
     }
   }
   &__list__next-page {
@@ -19,8 +20,9 @@
     padding: 1rem 1.5rem;
     border-radius: 0.5rem;
     transition: all 250ms ease-in-out;
-    &:is(:hover, :focus) {
-      box-shadow: 0 0 3.5rem map-get($colors, accent-red);
+    &:is(:hover) {
+      background-color: map-get($colors, primary-white);
+      color: map-get($colors, accent-red);
     }
   }
 }

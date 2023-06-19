@@ -93,7 +93,7 @@ $font-sizes: (
   }
 
   &__description {
-    font-size: var(--fs-medium);
+    font-size: var(--fs-small);
     font-weight: map-get($font-weights, regular);
   }
 

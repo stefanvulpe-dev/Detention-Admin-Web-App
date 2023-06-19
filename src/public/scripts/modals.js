@@ -261,6 +261,15 @@ const renderDialogModal = (id, title, inputs, onSubmit, onClose) => {
   document.body.append(dialogWindow);
 };
 
+function getExtensionFile(file) {
+  const lastIndex = file.lastIndexOf('.');
+  if (lastIndex !== -1) {
+    const extension = file.slice(lastIndex);
+    return extension;
+  }
+  return '';
+}
+
 const showDialogModal = (id, title, inputs, onSubmit) => {
   renderDialogModal(id, title, inputs, onSubmit, () => closeDialog(id));
 
@@ -271,7 +280,15 @@ const showDialogModal = (id, title, inputs, onSubmit) => {
       const fileUploadDetails = document.querySelector(
         `label[data-parent='${id}']`
       );
-      fileUploadDetails.textContent = `${file.name} 📁`;
+      if (file.name.length > 10) {
+        fileUploadDetails.textContent =
+        file.name.slice(0, 10) +
+          '...' +
+          file.name.slice(-6) +
+          ' 📂';
+      } else {
+        fileUploadDetails.textContent = file.name + ' 📂';
+      }
     });
   }
 
@@ -290,3 +307,5 @@ const showDialogModal = (id, title, inputs, onSubmit) => {
     )
   );
 })();
+
+
