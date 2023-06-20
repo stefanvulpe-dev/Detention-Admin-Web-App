@@ -1773,6 +1773,21 @@ body {
 .hero__description {
   width: 100%;
   text-align: center;
+  position: relative;
+}
+.hero__description::before {
+  content: "❝";
+  font-size: 3rem;
+  position: absolute;
+  left: -2rem;
+  top: -1.75rem;
+}
+.hero__description::after {
+  content: "❝";
+  font-size: 3rem;
+  position: absolute;
+  right: -2rem;
+  top: -1.75rem;
 }
 .hero__main-link {
   padding: 1rem calc(1rem + 5vw);
@@ -2099,6 +2114,16 @@ body {
   .hero__description {
     width: 90%;
   }
+  .hero__description::before {
+    font-size: 4rem;
+    left: -3rem;
+    top: -2rem;
+  }
+  .hero__description::after {
+    font-size: 4rem;
+    right: -3rem;
+    top: -2rem;
+  }
   .main__container {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "slimCard1 slimCard2" "wideCard1 wideCard1" "wideCard2 wideCard2";
@@ -2288,6 +2313,14 @@ body {
   }
   .hero__description {
     width: 80%;
+  }
+  .hero__description::before {
+    font-size: 5rem;
+    top: -3rem;
+  }
+  .hero__description::after {
+    font-size: 5rem;
+    top: -3rem;
   }
   .main__container {
     grid-template-columns: repeat(3, 1fr);

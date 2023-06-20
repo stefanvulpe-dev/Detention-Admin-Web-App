@@ -21,6 +21,23 @@
   &__description {
     width: 100%;
     text-align: center;
+    position: relative;
+  }
+
+  &__description::before {
+    content: '❝';
+    font-size: 3rem;
+    position: absolute;
+    left: -2rem;
+    top: -1.75rem;
+  }
+
+  &__description::after {
+    content: '❝';
+    font-size: 3rem;
+    position: absolute;
+    right: -2rem;
+    top: -1.75rem;
   }
 
   &__main-link {

@@ -6,6 +6,18 @@
     &__description {
       width: 90%;
     }
+
+    &__description::before {
+      font-size: 4rem;
+      left: -3rem;
+      top: -2rem;
+    }
+
+    &__description::after {
+      font-size: 4rem;
+      right: -3rem;
+      top: -2rem;
+    }
   }
   .main {
     &__container {
@@ -253,6 +265,16 @@
   .hero {
     &__description {
       width: 80%;
+    }
+
+    &__description::before {
+      font-size: 5rem;
+      top: -3rem;
+    }
+
+    &__description::after {
+      font-size: 5rem;
+      top: -3rem;
     }
   }
   .main {
