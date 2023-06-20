@@ -50,7 +50,7 @@ export const validateGuest = async (req, res) => {
       const { error } = Joi.object({
         firstName: Joi.string().pattern(new RegExp(`^[a-z ,.'-]+$`, 'i')),
         lastName: Joi.string().pattern(new RegExp(`^[a-z ,.'-]+$`, 'i')),
-        nationalId: Joi.string().pattern(new RegExp('[0-9]{13}')),
+        nationalId: Joi.string().pattern(new RegExp('[0-9]{13}')).required(),
         passportNumber: Joi.string().required(),
         email: Joi.string().email().required(),
         relationship: Joi.string().pattern(new RegExp('[A-Za-zs]+')),

@@ -19,19 +19,38 @@
   }
 
   &__description {
-    width: 70%;
+    width: 100%;
     text-align: center;
+    position: relative;
+  }
+
+  &__description::before {
+    content: '❝';
+    font-size: 3rem;
+    position: absolute;
+    left: -2rem;
+    top: -1.75rem;
+  }
+
+  &__description::after {
+    content: '❝';
+    font-size: 3rem;
+    position: absolute;
+    right: -2rem;
+    top: -1.75rem;
   }
 
   &__main-link {
     padding: 1rem calc(1rem + 5vw);
     background-color: map-get($colors, accent-red);
+    color: map-get($colors, primary-white);
     border-radius: 2rem;
     transition: all 250ms ease-in-out;
   }
 
-  &__main-link:is(:hover, :focus) {
-    box-shadow: 0 0 3.5rem map-get($colors, accent-red);
+  &__main-link:is(:hover) {
+    background-color: map-get($colors, primary-white);
+    color: map-get($colors, accent-red);
   }
 
   &__arrow {

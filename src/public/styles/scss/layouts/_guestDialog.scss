@@ -144,8 +144,8 @@
       transition: all 350ms ease-in-out;
     }
 
-    .form-submit:is(:hover, :focus) {
-      box-shadow: 0 0 2rem map-get($colors, accent-red);
+    .form-submit:is(:hover) {
+      opacity: 70%;
     }
 
     .form-footer {
@@ -158,9 +158,10 @@
         }
 
         label[for='photo'] {
+          display: inline-block;
           background-color: map-get($colors, secondary-gray);
           margin-bottom: 0;
-          padding-block: 0.75rem;
+          padding: 1rem 1.5rem;
           border-radius: 0.75rem;
           text-align: center;
           cursor: pointer;

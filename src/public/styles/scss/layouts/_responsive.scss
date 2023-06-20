@@ -2,6 +2,27 @@
 @use '../base/' as *;
 
 @include media-min(map-get($breakpoints, medium)) {
+  .hero {
+    &__description {
+      width: 90%;
+    }
+
+    &__description::before {
+      font-size: 4rem;
+      left: -3rem;
+      top: -2rem;
+    }
+
+    &__description::after {
+      font-size: 4rem;
+      right: -3rem;
+      top: -2rem;
+    }
+
+    .wrapper {
+      gap: 4rem;
+    }
+  }
   .main {
     &__container {
       grid-template-columns: 1fr 1fr;
@@ -245,7 +266,21 @@
       }
     }
   }
+  .hero {
+    &__description {
+      width: 80%;
+    }
 
+    &__description::before {
+      font-size: 5rem;
+      top: -3rem;
+    }
+
+    &__description::after {
+      font-size: 5rem;
+      top: -3rem;
+    }
+  }
   .main {
     &__container {
       grid-template-columns: repeat(3, 1fr);
@@ -380,6 +415,11 @@
 }
 
 @include media-min(map-get($breakpoints, huge)) {
+  .hero {
+    &__description {
+      width: 70%;
+    }
+  }
   .main {
     &__container {
       grid-template-columns: 1.15fr 1fr 1fr 1.15fr;

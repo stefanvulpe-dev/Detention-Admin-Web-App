@@ -406,6 +406,7 @@ downloadSelect.addEventListener('change', async () => {
     let filename;
     let contentType;
     let request;
+    let response;
 
     switch (selectedValue) {
       case 'CSV':
@@ -418,6 +419,7 @@ downloadSelect.addEventListener('change', async () => {
             csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
           },
         });
+        response = await request.text();
         break;
       case 'HTML':
         filename = 'statistics.html';
@@ -429,6 +431,7 @@ downloadSelect.addEventListener('change', async () => {
             csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
           },
         });
+        response = await request.text();
         break;
       case 'JSON':
         filename = 'statistics.json';
@@ -440,9 +443,10 @@ downloadSelect.addEventListener('change', async () => {
             csrfToken: JSON.parse(localStorage.getItem('csrfToken')),
           },
         });
+        const jsonResponse = await request.json();
+        response = JSON.stringify(jsonResponse, null, 2);
         break;
     }
-    const response = await request.text();
     const blob = new Blob([response], { type: contentType });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);

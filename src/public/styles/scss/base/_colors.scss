@@ -20,10 +20,6 @@ $colors: (
   color: map-get($colors, primary-white);
 }
 
-.hero :is(.hero__main-link) {
-  color: map-get($colors, primary-dark);
-}
-
 .main {
   &__title {
     color: map-get($colors, primary-white);
