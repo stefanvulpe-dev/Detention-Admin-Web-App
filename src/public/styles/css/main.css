@@ -2124,6 +2124,9 @@ body {
     right: -3rem;
     top: -2rem;
   }
+  .hero .wrapper {
+    gap: 4rem;
+  }
   .main__container {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "slimCard1 slimCard2" "wideCard1 wideCard1" "wideCard2 wideCard2";
