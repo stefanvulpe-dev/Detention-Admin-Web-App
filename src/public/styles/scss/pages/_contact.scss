@@ -61,17 +61,13 @@
       border-radius: 0.5rem;
       padding: 1rem 1.5rem;
       cursor: pointer;
-      transition: opacity 0.2s, padding 0.2s, font-size 0.2s;
+      transition: all 250ms ease-in-out;
+      font-weight: map-get($font-weights, semi-bold);
     }
 
     &-button:hover {
-      opacity: 0.7;
-      padding: 1.5rem 2rem;
-      font-size: map-get($font-sizes, large);
-    }
-
-    &-button:active {
-      opacity: 0.5;
+      background-color: map-get($colors, primary-white);
+      color: map-get($colors, primary-dark);
     }
   }
 }

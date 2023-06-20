@@ -121,6 +121,20 @@ const submitSignupForm = async event => {
 const signupForm = document.querySelector('#signup-form');
 if (signupForm) {
   signupForm.addEventListener('submit', submitSignupForm);
+  const file_input = document.querySelector('#photo');
+  const fileInputLabel = document.querySelector(`label[for='photo']`);
+  file_input.addEventListener('change', event => {
+    event.preventDefault();
+    if (file_input.files[0].name.length > 10) {
+      fileInputLabel.textContent =
+        file_input.files[0].name.slice(0, 10) +
+        '...' +
+        file_input.files[0].name.slice(-6) +
+        ' 📂';
+    } else {
+      fileInputLabel.textContent = file_input.files[0].name + ' 📂';
+    }
+  });
 }
 
 const loginForm = document.querySelector('#login-form');

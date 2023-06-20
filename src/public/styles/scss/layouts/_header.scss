@@ -39,4 +39,8 @@
   .nav__toggle.active .bar:is(:nth-child(3)) {
     transform: translateY(-11px) rotate(45deg);
   }
+  .nav-link:hover{
+    opacity:60%;
+    transition: all 300ms ease-in-out;
+  }
 }
