@@ -11,6 +11,8 @@ It will also be recorded: the date of the meeting, its nature and duration (e.g.
 ## Links
 
 1. Live site URL: [DeAd Web App](https://detentionadmin.stefanvulpe.com/)
+2. API reference: [DeAd API](https://documenter.getpostman.com/view/26896615/2s93sjV9L5)
+3. Video tutorial: [How to use DeAd Web App](https://www.youtube.com/watch?v=B0USOjPRZYg&ab_channel=StefanVulpe)
 
 ## Authors
 
